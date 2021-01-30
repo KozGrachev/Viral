@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bobik808/Newsdemic.git"
+    "url": "git+https://github.com/Bobik808/Viral.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Bobik808/Newsdemic/issues"
+    "url": "https://github.com/Bobik808/Viral/issues"
   },
-  "homepage": "https://github.com/Bobik808/Newsdemic#readme",
+  "homepage": "https://github.com/Bobik808/Viral#readme",
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0"
   },
