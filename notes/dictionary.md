@@ -1,6 +1,6 @@
 **NAMING CONVENTIONS**
 
-*Names we have chnaged from original game*
+*Names we have changed from original game*
 
 (original -> new name)
 
@@ -17,8 +17,6 @@ infection intesity -> spread level
 
 outbreaks -> chaos meter
 
-population -> [not needed]
-
 epidemics -> going viral
 
 City Card -> connection card
@@ -26,6 +24,8 @@ City Card -> connection card
 Infection Card -> misinformation card
 
 uncured/cured -> active/debunked
+
+cube ->  marker
 
 **Actions**
 move            -> move

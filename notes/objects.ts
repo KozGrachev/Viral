@@ -6,18 +6,18 @@
 
 
 interface Gamestate{
-  cities: City[];
+  sources:Source[];
   players: Player[];
-  infectionIntensity: number[]; // [2, 2, 3, 4]
-  outbreaks: number;
-  diseases: Disease[];
-  cityCardDeck: CityCardDeck; 
-  infectionCardDeck: InfectionDeck; 
+  spreadLevel: number[]; // [2, 2, 3, 4]
+  chaosMeter: number;
+  misinformation: Misinformation[];
+  connectionDeck: ConnectionDeck; 
+  misinformationDeck: MisinformationDeck; 
 }
 
 interface Player { 
   name: string; 
-  cards:CityCard[]; 
+  cards:ConnectionCard[]; 
   isCurrent: boolean; 
   pawnColor:string; 
   role:Role, 
@@ -30,51 +30,51 @@ interface Role {
 
 }
 
-interface City {
-  id:number; 
+interface Source {
+  // id:number; ? is this needed ?
   name:string; 
   color: string; 
   players:Player[]; 
-  population:number;
-  cubes: Cube[];
+  markers: Marker[];
+  //!  population removed as not needed
 }
 
 
-interface Cube { 
+interface Marker { 
   color:string;
 }
 
-interface Disease {
+interface Misinformation {
   color: string;
-  cured: boolean;
+  debunked: boolean;
   //! Eradicated removed as not in this verison of the game
-  cubesLeft: number; 
+  markersLeft: number; 
 }
 
 
-type EpidemicCard = { // Constant
+type ViralCard = { // Constant
   
 }
 
-interface CityCard { // Contant
-  city: City;
-  color:City['color']; 
+interface ConnectionCard { // Contant
+  source: Source;
+  color:Source['color']; 
 }
 
-interface CityCardDeck {
-  deckActive:[CityCard | EpidemicCard];
-  deckPassive: CityCard[]; 
-}
-
-
-interface InfectionCard {
-  city: City; 
+interface ConnectionDeck {
+  deckActive:[ConnectionCard | ViralCard];
+  deckPassive: ConnectionCard|ViralCard[]; 
 }
 
 
-interface InfectionDeck {
-  deckActive: InfectionCard[]; 
-  deckPassive: InfectionCard[]; 
+interface MisinformationCard {
+  source: Source; 
+}
+
+
+interface MisinformationDeck {
+  deckActive: MisinformationCard[]; 
+  deckPassive: MisinformationCard[]; 
   
 }
 
