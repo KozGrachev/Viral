@@ -177,10 +177,6 @@ P1 move 1 - remove ALL yellow (City yellow = 0)
 ...
 All 3 cured = WIN
 
-
-
-
-
-
+~~~~~~~
 
 

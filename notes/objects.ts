@@ -78,6 +78,14 @@ interface InfectionDeck {
   
 }
 
+interface Source {
+  name:string,
+  connections:string[]
+  color:string
+}
+
+
+
 
 
 
