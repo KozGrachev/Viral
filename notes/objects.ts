@@ -8,9 +8,13 @@
 interface Gamestate{
   sources:Source[];
   players: Player[];
-  spreadLevel: number[]; // [2, 2, 3, 4]
+  spreadLevel: number; // [2, 2, 3, 4]
   chaosMeter: number;
-  misinformation: Misinformation[];
+  misinformation: {
+    red:Misinformation,
+    blue:Misinformation,
+    yellow:Misinformation
+  }; //! sits better as an object
   connectionDeck: ConnectionDeck; 
   misinformationDeck: MisinformationDeck; 
 }
@@ -21,6 +25,7 @@ interface Player {
   isCurrent: boolean; 
   pawnColor:string; 
   role:Role, 
+  currentSource: Source,
 }
 
 interface Role {
@@ -34,9 +39,15 @@ interface Source {
   // id:number; ? is this needed ?
   name:string; 
   color: string; 
-  players:Player[]; 
+  //! Removed player from source, current location fits better on Player
   markers: Marker[];
   //!  population removed as not needed
+}
+
+interface Source {
+  name:string,
+  connections:string[]
+  color:string
 }
 
 
@@ -45,7 +56,7 @@ interface Marker {
 }
 
 interface Misinformation {
-  color: string;
+  name: string;
   debunked: boolean;
   //! Eradicated removed as not in this verison of the game
   markersLeft: number; 
@@ -62,8 +73,8 @@ interface ConnectionCard { // Contant
 }
 
 interface ConnectionDeck {
-  deckActive:[ConnectionCard | ViralCard];
-  deckPassive: ConnectionCard|ViralCard[]; 
+  active:[ConnectionCard | ViralCard];
+  //! passive removed as cards just destroyed
 }
 
 
@@ -73,15 +84,9 @@ interface MisinformationCard {
 
 
 interface MisinformationDeck {
-  deckActive: MisinformationCard[]; 
-  deckPassive: MisinformationCard[]; 
+  active: MisinformationCard[]; 
+  passive: MisinformationCard[]; 
   
-}
-
-interface Source {
-  name:string,
-  connections:string[]
-  color:string
 }
 
 
