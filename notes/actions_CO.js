@@ -120,14 +120,58 @@ function movePlayer(player, location) {
   } 
 }
 
+
 //* Clear marker action
 
-//? called as event handler, will be passed colour of chosen marker
+//? called as event handler, will be passed colour of chosen marker and location
 
-function clear(player, markerColor) {
+function clear (player, markerColor, location) {
+  // default markers to remove to 1, and update if debunked 
+  let noOfMarkers = 1
   //? check if any colours/misinformations have been debunked
-  // remove marker from 
-  //todo update state like [player.currentSource = location]
+  if (Gamestate.misinformation[markerColor].debunked) {
+    //! reorganised marker types to seperate by colour
+    noOfMarkers = location.markers[markerColor]
+  }
+  //todo update state eg location.markers[markerColor] -= noOfMarkers
+  //todo update state to replace markers to count, eg Gamestate.misinformation[markerColor].markersLeft += noOfMarkers
+  // decrement actionscount
+  //todo update actionCount state
+  if (actionCount) {
+    updatePossibleActions(player)
+  } 
+}
+
+
+//* Share card action
+
+//? called as event handler, will be passed player, recipient, and card)
+
+//! the recipient (ie a player WHO ISNT HAVING THEIR TURN) needs to make a decision regarding the card swap mechanic if their hand is full but they are being given a card... possible routes: 1) they have to "accept" the shared card 2) control must temporarily pass to them to organise their cards 3) can this be pushed to the beginning of their next turn (hacky/cheat way?)
+
+
+function share (player, recipient, card) {
+  // remove card from player hand
+  //todo 
+  //! should call helper function relating to "swapping/discarding cards" if recipients hand is full
+  if (recipient.cards.length === 6) {
+    //todo update state to indicate hand full, triggering a card swap action on UI, eg recipient.cardHandFull = true
+  }
+
+
+
+}
+
+
+//* Swap out cards function
+
+//? should trigger a menu of the players hand and new card, and update the new hand once discard choice received
+
+function updateHand(player) {
+  // when to call this, when recieving user choice
+  
+
+
   // decrement actionscount
   //todo update actionCount state
   if (actionCount) {
