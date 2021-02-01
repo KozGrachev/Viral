@@ -10,7 +10,7 @@ function shuffle(array) {
     array[currentIndex]=array[randomIndex];
     array[randomIndex]=tempValue
   }
-
+  //!SET STATE
   return array;
 }
 
@@ -36,6 +36,27 @@ function didLose(Gamestate){
 function playerOrder(players) {
   shuffle(players) //! SET STATE
   players[0].isCurrent= true //! SET STATE
+}
+
+function insertViralCards(connectionDeck) {
+
+  const viral1:ViralCard={action:"viral"}
+  const viral2:ViralCard={action:"viral"}
+  const viral3:ViralCard={action:"viral"}
+  let first=connectionDeck.slice(0,(connectionDeck.length/3))
+  let second=connectionDeck.slice((connectionDeck.length/3),(2*connectionDeck.length/3))
+  let third=connectionDeck.slice((2*connectionDeck.length/3),connectionDeck.length)
+
+  first.push(viral1)
+  second.push(viral2)
+  third.push(viral3)
+
+  first=shuffle(first)
+  second=shuffle(second)
+  third=shuffle(third)
+
+  return[first+second+third]
+
 }
 
 
