@@ -110,8 +110,11 @@ check what players turn it is
 
 TURN(player){
 
+  
   <PLAYER PART>
 
+  ** FETCH AVAILABLE ACTIONS TO PLAYER FIRST, AND THEN 
+  
   if/while moves {...
 
   set moves=4

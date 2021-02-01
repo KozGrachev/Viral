@@ -39,7 +39,12 @@ interface Source {
   color: string; 
   //! Removed player from source, current location fits better on Player
   markers: Marker[];
-  //!  population removed as not needed
+  //? these below checks indicate whether a player can perform actions on the source at any point, such as moving to it, logging on/off, etc
+  canMove: boolean;
+  canLogOn: boolean;
+  canLogOff: boolean;
+  canShare: Player[]; //? arrray of Players at same location
+  canDebunk: Misinformation[]; //? array of misinfos possible to debunk at this location?
 }
 
 interface Connections { //! kept client-side
