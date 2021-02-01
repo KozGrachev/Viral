@@ -2,6 +2,10 @@
 
 //Time to save the world!!
 
+interface Turn {
+  // do we need a turn interface to keep track of how many actions left etc?
+}
+
 
 interface Gamestate{
   sources:Source[];
