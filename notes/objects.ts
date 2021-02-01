@@ -2,8 +2,6 @@
 
 //Time to save the world!!
 
-//hi this is Till does that work?
-
 
 interface Gamestate{
   sources:Source[];
@@ -44,10 +42,12 @@ interface Source {
   //!  population removed as not needed
 }
 
-interface Source {
-  name:string,
-  connections:string[]
-  color:string
+interface Connections { //! kept client-side
+  source01: string[],
+  source02: string[],
+  source03: string[],
+  source04: string[],
+  //! these will all be the location names as keys
 }
 
 
@@ -64,7 +64,8 @@ interface Misinformation {
 
 
 type ViralCard = { // Constant
-  
+  action:string
+  //? what does viral card need to contain? can cards be integrated?
 }
 
 interface ConnectionCard { // Contant

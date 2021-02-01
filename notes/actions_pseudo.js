@@ -29,10 +29,10 @@ save as connectionDeck.active
 //* deal cards
 /*
 (to each player)
-
-DEAL CARDS(number, player)
-take 2/3 cards from connectionDeck.active
-add to payer.cards[]
+(repeat x times)
+DEAL CARD(player)
+take 1 cards from connectionDeck.active
+add to player.cards[]
 */
 
 
@@ -98,4 +98,83 @@ Gamestate.players = [
   }]
 */
 
-//? should player location be stored on player, in source, or in both?
+
+//* Players turn
+
+/* 
+
+(Check if player is sure
+Depending on UI selection...)
+
+check what players turn it is
+
+TURN(player){
+
+  <PLAYER PART>
+
+  if/while moves {...
+
+  set moves=4
+
+  MOVE()
+  CLEAN()
+  LOGON()
+  LOGOFF()
+  DEBUNK(
+    DIDWIN()
+  )
+  SHARE()
+
+  moves--
+  }
+
+  <BOARD PART>
+
+  CONNECTIONCARDS{
+    let cards=0
+    WHILE(cards<2){
+    DEAL CARD (see func above)
+      if (viralCard){
+        VIRAL()
+      }
+      else{
+        if(players.cards.length===6){
+          prompt player to remove cards from hand- REMOVE(
+            show all 7 cards (6 + 1 new)
+            prompt play to discard 1
+          )
+        }
+        else{
+          players.cards+= newcard
+        }
+        cards++
+      }
+      
+    }
+      DIDLOSE()
+    }
+  
+  MISINFORMATIONCARDS(){
+    check spead level
+    while (spread level)
+      SELECT CARDS (see above)
+      DIDLOSE()
+  }
+}
+
+CYCLE TO NEXT PLAYER()
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
