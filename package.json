@@ -17,12 +17,7 @@
   },
   "homepage": "https://github.com/Bobik808/Viral#readme",
   "devDependencies": {
-    "@storybook/preset-scss": "^1.0.3",
-    "css-loader": "^5.0.1",
-    "cz-conventional-changelog": "^3.3.0",
-    "sass": "^1.32.5",
-    "sass-loader": "^10.1.1",
-    "style-loader": "^2.0.0"
+    "cz-conventional-changelog": "^3.3.0"
   },
   "config": {
     "commitizen": {
