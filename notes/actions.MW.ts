@@ -59,20 +59,44 @@ function insertViralCards(connectionDeck) {
 
 }
 
-function selectCard (gamestate,weight) {
-  let source=gamestate.misinformationDeck.active[0].source
+function selectCard (gamestate,weight) { //! misinfo card
+  let drawSource=gamestate.misinformationDeck.active[0].source
 
-  for(let i=0; i<gamestate.sources.length; i++){
-    if(gamestate.sources[i].name===source){
+  for(const source of gamestate.sources){
+    if(source.name===drawSource){
       while(weight>0){
-        gamestate.sources[i].markers.push(gamestate.sources[i].color) //!SET STATE
-        gamestate.misinformation[gamestate.sources[i].color]-- //!SET STATE
+        source.markers.push(source.color) //!SET STATE
+        gamestate.misinformation[source.color]-- //!SET STATE
       }
     }
   }
   gamestate.misinformationDeck.passive.push(gamestate.misinformationDeck.active[0]) //!SET STATE
   gamestate.misinformationDeck.active.shift()//!SET STATE
 
+}
+
+function dealCard (gamestate) { //! connection or viral card
+  let newCard=gamestate.connectionDeck.active[0]
+
+  if(newCard.action){
+    viral()
+  }
+  else {
+    for (const player of gamestate.players) {
+      if(player.isCurrent){
+        if(player.cards.length===6)
+          {
+            //todo front end to give player choice of card to delete
+          }
+        else player.cards.push(newCard)
+      }
+    }
+  }
+  
+}
+
+function viral () {
+  //todo Viral actions
 }
 
 
