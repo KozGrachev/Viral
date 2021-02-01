@@ -55,7 +55,23 @@ function insertViralCards(connectionDeck) {
   second=shuffle(second)
   third=shuffle(third)
 
-  return[first+second+third]
+  return[first+second+third] //! SET STATE
+
+}
+
+function selectCard (gamestate,weight) {
+  let source=gamestate.misinformationDeck.active[0].source
+
+  for(let i=0; i<gamestate.sources.length; i++){
+    if(gamestate.sources[i].name===source){
+      while(weight>0){
+        gamestate.sources[i].markers.push(gamestate.sources[i].color) //!SET STATE
+        gamestate.misinformation[gamestate.sources[i].color]-- //!SET STATE
+      }
+    }
+  }
+  gamestate.misinformationDeck.passive.push(gamestate.misinformationDeck.active[0]) //!SET STATE
+  gamestate.misinformationDeck.active.shift()//!SET STATE
 
 }
 
