@@ -79,14 +79,14 @@ function dealCard (gamestate) { //! connection or viral card
   let newCard=gamestate.connectionDeck.active[0]
 
   if(newCard.action){
-    viral()
+    viral(gamestate)
   }
   else {
     for (const player of gamestate.players) {
       if(player.isCurrent){
         if(player.cards.length===6)
           {
-            //todo front end to give player choice of card to delete
+            //* front end to give player choice of card to delete
           }
         else player.cards.push(newCard)
       }
@@ -95,8 +95,10 @@ function dealCard (gamestate) { //! connection or viral card
   
 }
 
-function viral () {
-  //todo Viral actions
+function viral (gamestate) {
+ //* increase infection level
+ //* pick card from bottom of misinfo deck
+ //* shuffle passive misinfo deck and put on top of active misinfo deck
 }
 
 
