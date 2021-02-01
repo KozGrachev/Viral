@@ -43,8 +43,11 @@ interface Source {
   canMove: boolean;
   canLogOn: boolean;
   canLogOff: boolean;
+  canClearRed: boolean;
+  canClearBlue: boolean;
+  canClearYellow: boolean;
   canShare: Player[]; //? arrray of Players at same location
-  canDebunk: Misinformation[]; //? array of misinfos possible to debunk at this location?
+  canDebunk: string[]; //? array of misinfos possible to debunk at this location?
 }
 
 interface Connections { //! kept client-side
