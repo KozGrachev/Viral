@@ -1,41 +1,44 @@
 
 //based on change of state 
+import { send } from "process";
 import io from "socket.io-client";
+//connection to the server
 
-const socket = io('http://192.168.1.26:3001')
+const URL:string || undefined  =process.env.CLIENT_URL
+const socket = io(URL)
+
+socket.on('updatedState', (state: GameStatedummy) => {
+
+  console.log(state, 'state')
+  // also could import store and then use store.dispatch(action)  
+  // if this doesn't work 
+  // updateState(state);
+})
+
+
+
+// const stateAction = (state) => ({
+//   type: 'UPDATE_STORE',
+//   payload: state,
+// });
+
+// //add todo will be called from the component
+// export const updateState = (state) => {
+//   return (dispatch) => {
+//     dispatch(stateAction(state));
+
+//   }
+// }
 
 const fakeUser = { username: 'Maria', room: '1' }
 
-
-
-
 export const sendChangedStateToBE = (state: GameStatedummy): void => {
   socket.emit('changeState', { fakeUser, state })
-
 }
 interface GameStatedummy {
 
 }
 
-// //add the thunk 
-// const addTodoStarted = (STATE) => ({
-//   type: 'UPDATE_STORE', 
-//   payload:STATE, 
-// });
-
-// //add todo will be called from the component
-// export const addTodo = (STATE) => {
-//   return (dispatch) => {
-//     dispatch(addTodoStarted(STATE));
-
-
-// socket.on('updatedState', (state:GameStatedummy) => {
-
-// addTodo(state); 
-
-//   //state will be the payload 
-//   //trigger redux with middleware dispatch 
-// })
 
 
 export const joinRoom = (username: string, room: string) => {
@@ -57,13 +60,6 @@ socket.on('joinConfirmation', (message: string) => {
 
 // on click => 
 joinRoom(fakeUser.username, fakeUser.room);
-
-// export const leaveRoom = () => {
-//   socket.emit('disconnect')
-// }
-//
-//onclick => 
-
 
 socket.on('userLeft', (message: string) => console.log(message))
 // leaveRoom ();

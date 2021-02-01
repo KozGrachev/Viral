@@ -4,6 +4,11 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { userJoin, userLeave } from './utils/users';
 import { IUser } from './utils/users';
+import { GameState } from './utils/game';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+import * as dotenv from 'dotenv';
+
+dotenv.config({ path: __dirname + '/.env' });
 const app = express();
 app.use(cors());
 
@@ -16,11 +21,8 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: { origin: 'http://192.168.1.26:3000', methods: ['GET', 'POST'] }
 });
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
-interface GameState {
-
-}
 
 io.on('connection', (socket) => {
   console.log('server connected');
@@ -43,6 +45,7 @@ io.on('connection', (socket) => {
 
 
   socket.on('changeState', ({ user, state }: { user: IUser, state: GameState }) => {
+    console.log(user, 'user from change state ');
     socket.broadcast.to(user.room).emit('updatedState', state);
     // will go and save this to redis 
   });
