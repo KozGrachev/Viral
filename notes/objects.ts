@@ -4,6 +4,8 @@
 
 interface Turn {
   // do we need a turn interface to keep track of how many actions left etc?
+  player: Player;
+  movesLeft: number;
 }
 
 
@@ -18,23 +20,26 @@ interface Gamestate{
     yellow:Misinformation
   }; //! sits better as an object
   connectionDeck: ConnectionDeck; 
-  misinformationDeck: MisinformationDeck; 
+  misinformationDeck: MisinformationDeck;
+  currentTurn: Turn; 
 }
 
 interface Player { 
   name: string; 
-  cards:ConnectionCard[]; 
+  cards:ConnectionCard[];
+  //! added below to trigger card swap action
+  cardHandFull: boolean; 
   isCurrent: boolean; 
   pawnColor:string; 
   role:Role, 
   currentSource: Source,
 }
 
+//! currently not used in MVP
 interface Role {
   name:string; 
   moves: number; 
   otherSpecialAbility:string; 
-
 }
 
 interface Source {
@@ -42,7 +47,9 @@ interface Source {
   name:string; 
   color: string; 
   //! Removed player from source, current location fits better on Player
-  markers: Marker[];
+  // markers: Marker[]; 
+  //! replace marker array with object holding status of each marker
+  markers: MarkerStatus;
   //? these below checks indicate whether a player can perform actions on the source at any point, such as moving to it, logging on/off, etc
   canMove: boolean;
   canLogOn: boolean;
@@ -62,9 +69,11 @@ interface Connections { //! kept client-side
   //! these will all be the location names as keys
 }
 
-
-interface Marker { 
-  color:string;
+//! this replaces Marker type, and holds the amount of each marker on a given source 
+interface MarkerStatus { 
+  red: number;
+  blue: number;
+  yellow: number;
 }
 
 interface Misinformation {
