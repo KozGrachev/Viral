@@ -19,9 +19,9 @@ app.get('/', (_, res) => {
 
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
-  cors: { origin: 'http://192.168.1.26:3000', methods: ['GET', 'POST'] }
+  cors: { origin: 'http://localhost:3000', methods: ['GET', 'POST'] }
 });
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 
 io.on('connection', (socket) => {
