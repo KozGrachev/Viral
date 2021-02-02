@@ -2,6 +2,7 @@
 //based on change of state 
 import { send } from "process";
 import io from "socket.io-client";
+
 //connection to the server
 
 const URL:string || undefined  =process.env.CLIENT_URL
