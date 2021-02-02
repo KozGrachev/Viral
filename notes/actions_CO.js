@@ -113,7 +113,7 @@ function getConnections(location) {
 
 //? called as event handler, so will be passed location to move to
 
-function moveAction(player, location) {
+function move (player, location) {
   // set players location to "location"
   //todo update state like [player.currentSource = location]
   // decrement actionscount
