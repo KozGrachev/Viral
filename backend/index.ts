@@ -3,8 +3,8 @@ import cors from 'cors';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { userJoin, userLeave } from './utils/users';
-import { IUser } from './utils/users';
-import { GameState } from './utils/game';
+// import { IUser } from './utils/users';
+// import { GameState } from './utils/game';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import * as dotenv from 'dotenv';
 
@@ -12,19 +12,14 @@ dotenv.config({ path: __dirname + '/.env' });
 const app = express();
 app.use(cors());
 
-
-app.get('/', (_, res) => {
-  res.send('it worksss');
-});
-
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: { origin: 'http://localhost:3000', methods: ['GET', 'POST'] }
 });
 const PORT = process.env.PORT || 3002;
 
-
 io.on('connection', (socket) => {
+
   console.log('server connected');
 
   socket.on('joinRoom', ({ username, room }: { username: string, room: string }) => {
@@ -43,9 +38,16 @@ io.on('connection', (socket) => {
 
   });
 
-  socket.on('onChangeState', (state:any) => {
-    console.log(state, 'state');
-  }); 
+  socket.on('onChangeState',
+    ({ newState, fakeUser }: { newState: any, fakeUser: any }) => {
+      console.log('newstate on the server',
+        newState.currentTurn.movesLeft);
+      const user = fakeUser;
+      socket.broadcast.to(user.room)
+        .emit('updatedState', newState);
+      //   // will go and save this to redis 
+    });
+
 
   // socket.on('onchangeState', ({ user, state }: { user: IUser, state: GameState }) => {
   //   console.log(user, 'user from change state ');
