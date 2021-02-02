@@ -21,14 +21,17 @@ interface Gamestate{
   }; //! sits better as an object
   connectionDeck: ConnectionDeck; 
   misinformationDeck: MisinformationDeck;
-  currentTurn: Turn; 
+  currentTurn: Turn;
+  //! added below win/lose triggers to state to trigger relevant ending events 
+  gameWon: boolean;
+  gameLost: boolean;
 }
 
 interface Player { 
   name: string; 
   cards:ConnectionCard[];
   //! added below to trigger card swap action
-  cardHandOverflow: boolean; //? this should trigger chard discard situation
+  cardHandOverflow: boolean; //? this should trigger card discard situation
   isCurrent: boolean; 
   pawnColor:string; 
   role:Role, 

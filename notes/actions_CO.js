@@ -153,12 +153,11 @@ function clear (player, markerColor, location) {
 //! the recipient cannot accept when their hand is full
 //! sharing can only go one way (initiated by the player whose turn it is, unlike in board game)
 
-
 function shareCard (player, recipient, sharedCard) {
   // remove card from player hand
-  // todo update state eg: player.cards.filter((card) => card !== sharedCard );
+  //todo update state eg: player.cards.filter((card) => card !== sharedCard );
   // put card in recipient hand
-  // todo update state eg: recipient.cards = [...recipient.cards, sharedCard];
+  //todo update state eg: recipient.cards = [...recipient.cards, sharedCard];
   //todo update actionCount state, eg Gamestate.currentTurn.movesleft
   if (actionCount) {
     updatePossibleActions(player)
@@ -171,13 +170,46 @@ function shareCard (player, recipient, sharedCard) {
 //? called when player chooses a card to discard from their hand
 
 function discardCard(player, card) {
-  // when to call this, when recieving user choice
-  
+  // remove card from player hand
+  //todo update state eg: player.cards.filter((card) => card !== sharedCard );
+  // reset cardHandOverflow trigger
+  //todo update state eg:  player.carHandOverflow = false
+}
 
 
-  // decrement actionscount
+//* Logon action / Logoff action
+//! these actions are identical, but will be passed different card (matching destination location for logon, and players current location for logoff)
+
+//? called as event handler, will be passed player, location, and card)
+
+function logOnOff (player, location, usedCard) {
+  // remove card from player hand
+  //todo update state eg: player.cards.filter((card) => card !== usedCard );
+  // set players location to "location"
+  //todo update state like [player.currentSource = location]
   //todo update actionCount state, eg Gamestate.currentTurn.movesleft
   if (actionCount) {
     updatePossibleActions(player)
   } 
+}
+
+
+//* Debunk action
+
+//? called as event handler, will be passed player, cards (array of 4), color)
+
+function debunk (player, usedCards, color) {
+  // remove cards from player hand
+  //todo update state eg: player.cards.filter((card) => !usedCards.includes(card));
+  // set misinformation type to debunked
+  //todo update state eg: Gamestate.misinformation[color].debunked = true
+  // check didWin (SEE: actions.MW) 
+  if (didWin(Gamestate.misinformation)) {
+    //todo update state to win game eg: Gamestate.gameWon = true
+  } else {
+    //todo update actionCount state, eg Gamestate.currentTurn.movesleft
+    if (actionCount) {
+      updatePossibleActions(player)
+    } 
+  }
 }
