@@ -14,10 +14,10 @@ function App() {
       },
     },
   };
-  
- // eslint-disable-next-line 
+
+ // eslint-disable-next-line
   const AppBar = () => (
-    <Box // eslint-disable-next-line 
+    <Box // eslint-disable-next-line
       tag='header'
       direction='row'
       align='center'
@@ -30,7 +30,6 @@ function App() {
 
 
   return (
-    <div className="App">
       <Grommet theme={theme}>
         <header className="App-header">
           <p>
