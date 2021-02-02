@@ -30,10 +30,11 @@ function App() {
 
 
   return (
-      <Grommet theme={theme}>
+    <Grommet theme={theme}>
+      <img className="svgtest" src={'../assets/youtube.svg'} alt="SVGTEST"/>
         <header className="App-header">
           <p>
-            Edit <code>src/App.tsx</code> and save to reload.
+            Testing Testing check 1, 2
         </p>
           <a
             className="App-link"
