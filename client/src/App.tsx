@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Grommet } from 'grommet';
 import './App.css';
-import './backend-dummy-client/dummy-client'; 
+import './backend-dummy-client/dummy-client';
 
 function App () {
 
@@ -44,9 +44,9 @@ function App () {
           Learn React
         </a>
       </header>
+      <div className="App">
+      </div>
     </Grommet>
-    <div className="App">
-    </div>
   );
 }
 
