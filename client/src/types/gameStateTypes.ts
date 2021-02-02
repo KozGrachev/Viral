@@ -108,6 +108,7 @@ export interface MisinformationDeck {
 export const UPDATE_GAME_STATE = 'UPDATE_GAME_STATE'
 
 
+//action type to update the game state
 interface UpdateGameStateAction {
   type: typeof UPDATE_GAME_STATE
   payload: GameState
