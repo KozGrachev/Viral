@@ -1,18 +1,40 @@
-
 //based on change of state 
 import io from "socket.io-client";
 import * as dotenv from 'dotenv';
+import { store } from '../redux/gameState/store'
+import { updateGameState } from "../redux/gameState/gameStateActions";
+import { GameState } from "../types/gameStateTypes";
+// import {gameState} from './dummy-state'
 
 //connection to the server
 dotenv.config({ path: __dirname + '../.env' });
 const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 
+<<<<<<< HEAD
 socket.on('updatedState', (state: GameStatedummy) => {
+=======
 
-  console.log(state, 'state')
-  // also could import store and then use store.dispatch(action)  
-  // if this doesn't work 
-  // updateState(state);
+//  socket.emit(state))
+
+
+
+const fakeUser = { username: 'Maria', room: '1' }
+
+
+store.subscribe(() => {
+  const newState = store.getState()
+  if (!newState.received) {
+    socket.emit('onChangeState', { newState, fakeUser })
+  }
+})
+
+>>>>>>> 647e7fe9070a7aeecc218426df102e9eec57afe6
+
+//data coming from backend 
+socket.on('updatedState', (newState: GameState) => {
+  console.log('state is back to client', newState.currentTurn.movesLeft, 'status' )
+  newState.received = true;
+  store.dispatch(updateGameState(newState))
 })
 
 
@@ -30,14 +52,10 @@ socket.on('updatedState', (state: GameStatedummy) => {
 //   }
 // }
 
-const fakeUser = { username: 'Maria', room: '1' }
 
-export const sendChangedStateToBE = (state: GameStatedummy): void => {
-  socket.emit('changeState', { fakeUser, state })
-}
-interface GameStatedummy {
-
-}
+// export const sendChangedStateToBE = (state: GameStatedummy): void => {
+//   socket.emit('changeState', { fakeUser, state })
+// }
 
 export const joinRoom = (username: string, room: string) => {
 

@@ -43,12 +43,15 @@ io.on('connection', (socket) => {
 
   });
 
+  socket.on('onChangeState', (state:any) => {
+    console.log(state, 'state');
+  }); 
 
-  socket.on('changeState', ({ user, state }: { user: IUser, state: GameState }) => {
-    console.log(user, 'user from change state ');
-    socket.broadcast.to(user.room).emit('updatedState', state);
-    // will go and save this to redis 
-  });
+  // socket.on('onchangeState', ({ user, state }: { user: IUser, state: GameState }) => {
+  //   console.log(user, 'user from change state ');
+  //   socket.broadcast.to(user.room).emit('updatedState', state);
+  //   // will go and save this to redis 
+  // });
 
   //   socket.emit will send back message to sender only,
   // io.emit will send message to all the client including sender

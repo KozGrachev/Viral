@@ -9,7 +9,7 @@ interface Turn {
 }
 
 
-interface Gamestate{
+interface Gamestate {
   sources:Source[];
   players: Player[];
   spreadLevel: number; // [2, 2, 3, 4]

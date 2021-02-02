@@ -3,39 +3,43 @@
 //Time to save the world!!
 
 export interface Turn {
-  // do we need a turn export interface to keep track of how many actions left etc?
-}
+  player: Player;
+  movesLeft: number;
+}// do we need a turn export interface to keep track of how many actions left etc?
 
 
-export interface GameState{
-  sources:Source[];
+
+export interface GameState {
+  received: boolean;
+  sources: Source[];
   players: Player[];
   spreadLevel: number; // [2, 2, 3, 4]
   chaosMeter: number;
   misinformation: {
-    red:Misinformation,
-    blue:Misinformation,
-    yellow:Misinformation
+    red: Misinformation,
+    blue: Misinformation,
+    yellow: Misinformation
   }; //! sits better as an object
-  connectionDeck: ConnectionDeck; 
-  misinformationDeck: MisinformationDeck; 
+  connectionDeck: ConnectionDeck;
+  misinformationDeck: MisinformationDeck;
+  currentTurn: Turn
 }
-
 export interface Player { 
   name: string; 
+  cardHandFull: boolean;
   cards:ConnectionCard[]; 
   isCurrent: boolean; 
   pawnColor:string; 
-  role:Role, 
+  // role:Role, 
   currentSource: Source,
 }
 
-export interface Role {
-  name:string; 
-  moves: number; 
-  otherSpecialAbility:string; 
+// export interface Role {
+//   name:string; 
+//   moves: number; 
+//   otherSpecialAbility:string; 
 
-}
+// }
 
 export interface Source {
   // id:number; ? is this needed ?
@@ -62,9 +66,15 @@ export interface Connections { //! kept client-side
   //! these will all be the location names as keys
 }
 
+export interface Marker {
+  color: string
+}
 
-export interface Marker { 
-  color:string;
+
+export interface MarkerStatus { 
+  red: number;
+  blue: number;
+  yellow:number
 }
 
 export interface Misinformation {
@@ -102,18 +112,30 @@ export interface MisinformationDeck {
   
 }
 
-
-//Redux  TypeChecking Action
+//Redux Types
+//Redux  TypeChecking Action - BELOW ARE EXAMPLES 
 
 export const UPDATE_GAME_STATE = 'UPDATE_GAME_STATE'
-
-
-//action type to update the game state
+export const UPDATE_PLAYER_LOCATION = 'UPDATE_PLAYER_MOVE'
+export const UPDATE_MOVES_LEFT='UPDATE_MOVES_LEFT'
+//action types to update the game state
 interface UpdateGameStateAction {
   type: typeof UPDATE_GAME_STATE
   payload: GameState
 }
 
 
+interface UpdateMovesLeftAction {
+  type: typeof UPDATE_MOVES_LEFT
+  payload: Turn['movesLeft']
+}
 
-export type GameStateActionTypes = UpdateGameStateAction
+interface UpdatePlayerLocationAction {
+  type: typeof UPDATE_PLAYER_LOCATION
+  payload: Player['currentSource']
+}
+
+
+
+export type GameStateActionTypes =
+  UpdateGameStateAction | UpdatePlayerLocationAction | UpdateMovesLeftAction
