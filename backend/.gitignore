@@ -4,9 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
+.env
+.eslintrc
 
 # testing
-/coverage
+/coveragegit 
 
 # production
 /build
