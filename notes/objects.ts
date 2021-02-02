@@ -9,7 +9,7 @@ interface Turn {
 }
 
 
-interface Gamestate{
+export interface Gamestate{
   sources:Source[];
   players: Player[];
   spreadLevel: number; // [2, 2, 3, 4]
@@ -26,7 +26,7 @@ interface Gamestate{
 
 interface Player { 
   name: string; 
-  cards:ConnectionCard[];
+  cards:(ConnectionCard | ViralCard)[];
   //! added below to trigger card swap action
   cardHandFull: boolean; 
   isCurrent: boolean; 
@@ -84,19 +84,18 @@ interface Misinformation {
 }
 
 
-type ViralCard = { // Constant
+export type ViralCard = { // Constant
   action:string
   //? what does viral card need to contain? can cards be integrated?
 }
 
-interface ConnectionCard { // Contant
+export interface ConnectionCard { // Contant
   source: Source;
   color:Source['color']; 
 }
 
 interface ConnectionDeck {
-  active:[ConnectionCard | ViralCard];
-  //! passive removed as cards just destroyed
+  active:(ConnectionCard | ViralCard)[];
 }
 
 

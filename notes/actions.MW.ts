@@ -1,6 +1,4 @@
-//* old and new variables
-//* return full state
-//* or helper of helper
+import {Gamestate,ViralCard,ConnectionCard} from './objects'
 
 //! HELPER HELPERS
 function shuffle(exampleDeck) { 
@@ -20,20 +18,24 @@ function shuffle(exampleDeck) {
 }
 
 
-function didWin(misinformation) {
-  if (misinformation.red.debunked===true&& 
-    misinformation.blue.debunked===true&&
-    misinformation.yellow.debunked===true)
+function didWin(state:Gamestate) {
+  if (state.misinformation.red.debunked===true&& 
+    state.misinformation.blue.debunked===true&&
+    state.misinformation.yellow.debunked===true)
   return true 
   else return false; 
 }
 
-function didLose(Gamestate){
-  if (Gamestate.chaosMeter===4)
+function didLose(state:Gamestate){
+  if (state.chaosMeter===4)
     return true
-  if (Gamestate.misinformation.red===0|| Gamestate.misinformation.blue===0|| Gamestate.misinformation.yellow===0)
+  if (
+    state.misinformation.red.markersLeft===0|| 
+    state.misinformation.blue.markersLeft===0|| 
+    state.misinformation.yellow.markersLeft===0
+    )
     return true
-  if (Gamestate.connectionDeck.active.length===0){
+  if (state.connectionDeck.active.length===0){
     return true
   }
   return false
@@ -41,7 +43,7 @@ function didLose(Gamestate){
 
 //! SET STATE
 
-function playerOrder(oldState) {
+function playerOrder(oldState:Gamestate) {
   let players=oldState.players
   let newPlayers=shuffle(players)
   newPlayers[0].isCurrent= true
@@ -49,9 +51,9 @@ function playerOrder(oldState) {
   return newState
 }
 
-function insertViralCards(oldState) {
+function insertViralCards(oldState:Gamestate) {
 
-  let oldDeck=oldState.connectionDeck
+  let oldDeck=oldState.connectionDeck.active
 
   const viral1:ViralCard={action:"viral"}
   const viral2:ViralCard={action:"viral"}
@@ -68,7 +70,7 @@ function insertViralCards(oldState) {
   second=shuffle(second)
   third=shuffle(third)
 
-  let connectionDeck=[first+second+third]
+  let connectionDeck=[...first,...second,...third]
 
   let newState={...oldState,connectionDeck}
   return newState
@@ -77,16 +79,16 @@ function insertViralCards(oldState) {
 
 //* spread level will define how many times this function is called 
 
-function infoCard (oldState,weight,viral) {
+function infoCard (oldState:Gamestate,weight:number,viral:boolean) {
   
   let oldDeck=oldState.misinformationDeck
 
   let drawSource
 
-  if(!viral){ //* if it's not from a "viral" call, take from top of depth
+  if(!viral){ 
     drawSource=oldDeck.active[0].source
   }
-  else { //* if it's viral take from bottom
+  else { 
     drawSource=oldDeck.active[oldDeck.active.length-1].source
   }
     for(const source of oldState.sources){
@@ -104,10 +106,11 @@ function infoCard (oldState,weight,viral) {
   return newState
 }
 
-function connectionCard (oldState) {
-  let newCard=oldState.connectionDeck.active[0]
 
-  if(newCard.action){
+function connectionCard (oldState:Gamestate) {
+  let newCard:any=oldState.connectionDeck.active[0]
+
+  if(newCard.action==='viral'){
     viral(oldState)
   }
   else {
@@ -117,8 +120,8 @@ function connectionCard (oldState) {
         player.cards.push(newCard)
         if(player.cards.length>6)
           {
-            let chosenCard=({source:"whatever", color:"pink"})//* front end to give player choice of card to delete
-            deleteCard(chosenCard)
+            let chosenCard="whatever" //* front end to give player choice of card to delete
+            deleteCard(chosenCard,oldState)
           }
       }
     }
@@ -128,8 +131,8 @@ function connectionCard (oldState) {
   return newState
 }
 
-function viral (oldState) {
- oldState.spreadlevel++
+function viral (oldState:Gamestate) {
+ oldState.spreadLevel++
  infoCard(oldState,3,true)
  //* shuffle passive misinfo deck and put on top of active misinfo deck
  oldState.misinformationDeck.active=[...shuffle(oldState.misinformationDeck.passive),...oldState.misinformationDeck.active]
@@ -137,8 +140,19 @@ function viral (oldState) {
  return newState
 }
 
-function deleteCard(card){
-  //todo remove card from players hand
+function deleteCard(card:ConnectionCard,oldState){
+  for (const player of oldState.players) {
+    if(player.isCurrent){
+      for(const [i,match] of player.cards){ 
+        if(match===card){
+          player.cards.splice(i)
+        }
+      }
+    }
+  }
+  let newState={...oldState}
+  return newState
+
 }
 
 
