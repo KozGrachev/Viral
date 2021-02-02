@@ -1,16 +1,11 @@
 
 //based on change of state 
 import io from "socket.io-client";
-
 import * as dotenv from 'dotenv';
 
 //connection to the server
 dotenv.config({ path: __dirname + '../.env' });
 const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
-
-
-
-
 
 socket.on('updatedState', (state: GameStatedummy) => {
 
@@ -44,8 +39,6 @@ interface GameStatedummy {
 
 }
 
-
-
 export const joinRoom = (username: string, room: string) => {
 
   // ultimately will passed on or read from the url  with 
@@ -68,15 +61,3 @@ joinRoom(fakeUser.username, fakeUser.room);
 
 
 socket.on('userLeft', (message: string) => console.log(message))
-// leaveRoom ();
-
-
-// sending the state to the backend
-// socket.emit('Gamestate', {state:IState})
-
-// //getting the state from the 
-// socket.on('gamestate', (state:any) => {
-//   dispatch({type:UpdateState, payload:state)
-// })
-
-// Join chatroom

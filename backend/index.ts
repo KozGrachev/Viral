@@ -64,7 +64,6 @@ io.on('connection', (socket) => {
         'userLeft', `${user.username} has left the game`);
     }
   });
-
 });
 
 
