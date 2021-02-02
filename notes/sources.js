@@ -7,7 +7,7 @@
 
 //todo define location by catagory
 
-const sources = [
+export const sources = [
   {
     name: 'influencer platform',
     connections: ['closed app group', 'university'],
