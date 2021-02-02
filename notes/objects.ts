@@ -28,7 +28,7 @@ interface Player {
   name: string; 
   cards:ConnectionCard[];
   //! added below to trigger card swap action
-  cardHandFull: boolean; 
+  cardHandOverflow: boolean; //? this should trigger chard discard situation
   isCurrent: boolean; 
   pawnColor:string; 
   role:Role, 

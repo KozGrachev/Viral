@@ -55,7 +55,10 @@ function updatePossibleActions(currentPlayer) {
     .players
     .filter((player) => player.name !== currentPlayer.name)
     .filter((otherPlayer) => otherPlayer.currentSource === location);
-  //todo update canShare of current source eg [Gamestate.sources[index].canShare = otherPlayers]
+  // check players have space in their hand
+  const possibleShares = otherplayers
+    .filter((player) => player.cards.length < 6)
+  //todo update canShare of current source eg [Gamestate.sources[index].canShare = possibleShares]
   // check if we are at home (debunk 1/2)
   const atHome = location.name === "crazy dave's house";
   // check hand contains current location (logoff)
@@ -114,7 +117,7 @@ function movePlayer(player, location) {
   // set players location to "location"
   //todo update state like [player.currentSource = location]
   // decrement actionscount
-  //todo update actionCount state
+  //todo update actionCount state, eg Gamestate.currentTurn.movesleft
   if (actionCount) {
     updatePossibleActions(player)
   } 
@@ -136,7 +139,7 @@ function clear (player, markerColor, location) {
   //todo update state eg location.markers[markerColor] -= noOfMarkers
   //todo update state to replace markers to count, eg Gamestate.misinformation[markerColor].markersLeft += noOfMarkers
   // decrement actionscount
-  //todo update actionCount state
+  //todo update actionCount state, eg Gamestate.currentTurn.movesleft
   if (actionCount) {
     updatePossibleActions(player)
   } 
@@ -147,33 +150,33 @@ function clear (player, markerColor, location) {
 
 //? called as event handler, will be passed player, recipient, and card)
 
-//! the recipient (ie a player WHO ISNT HAVING THEIR TURN) needs to make a decision regarding the card swap mechanic if their hand is full but they are being given a card... possible routes: 1) they have to "accept" the shared card 2) control must temporarily pass to them to organise their cards 3) can this be pushed to the beginning of their next turn (hacky/cheat way?)
+//! the recipient cannot accept when their hand is full
+//! sharing can only go one way (initiated by the player whose turn it is, unlike in board game)
 
 
-function share (player, recipient, card) {
+function shareCard (player, recipient, sharedCard) {
   // remove card from player hand
-  //todo 
-  //! should call helper function relating to "swapping/discarding cards" if recipients hand is full
-  if (recipient.cards.length === 6) {
-    //todo update state to indicate hand full, triggering a card swap action on UI, eg recipient.cardHandFull = true
-  }
-
-
-
+  // todo update state eg: player.cards.filter((card) => card !== sharedCard );
+  // put card in recipient hand
+  // todo update state eg: recipient.cards = [...recipient.cards, sharedCard];
+  //todo update actionCount state, eg Gamestate.currentTurn.movesleft
+  if (actionCount) {
+    updatePossibleActions(player)
+  } 
 }
 
 
 //* Swap out cards function
 
-//? should trigger a menu of the players hand and new card, and update the new hand once discard choice received
+//? called when player chooses a card to discard from their hand
 
-function updateHand(player) {
+function discardCard(player, card) {
   // when to call this, when recieving user choice
   
 
 
   // decrement actionscount
-  //todo update actionCount state
+  //todo update actionCount state, eg Gamestate.currentTurn.movesleft
   if (actionCount) {
     updatePossibleActions(player)
   } 
