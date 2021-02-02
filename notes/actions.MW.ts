@@ -1,4 +1,9 @@
-function shuffle(array) {
+const gamestate={connectionDeck:[1,2,3,4]}
+const exampleDeck=gamestate.connectionDeck
+
+
+function shuffle(exampleDeck) {
+  let array=exampleDeck
   let currentIndex=array.length
   let tempValue
   let randomIndex
@@ -10,9 +15,9 @@ function shuffle(array) {
     array[currentIndex]=array[randomIndex];
     array[randomIndex]=tempValue
   }
-  //!SET STATE
-  return array;
+  return array; //! NEW STATE
 }
+
 
 function didWin(misinformation) {
   if (misinformation.red.debunked===true&& 
@@ -33,9 +38,12 @@ function didLose(Gamestate){
   return false
 }
 
-function playerOrder(players) {
+function playerOrder(oldGamestate) {
+  let players=oldGamestate.players
   shuffle(players) //! SET STATE
   players[0].isCurrent= true //! SET STATE
+  let newState={...oldGamestate,players}
+  return newState
 }
 
 function insertViralCards(connectionDeck) {
@@ -63,7 +71,7 @@ function insertViralCards(connectionDeck) {
 //* spread level will define how many times this function is called 
 
 function selectCard (gamestate,weight,viral) { //! misinfo card
-
+  
   let drawSource
 
   if(!viral){ //* if it's not from a "viral" call, take from top of depth
@@ -83,6 +91,7 @@ function selectCard (gamestate,weight,viral) { //! misinfo card
   gamestate.misinformationDeck.passive.push(gamestate.misinformationDeck.active[0]) //!SET STATE
   gamestate.misinformationDeck.active.shift()//!SET STATE
 
+  return gamestate
 }
 
 function dealCard (gamestate) { //! connection or viral card
@@ -102,14 +111,15 @@ function dealCard (gamestate) { //! connection or viral card
       }
     }
   }
+  return gamestate
   
 }
 
 function viral (gamestate) {
  //* increase infection level
  gamestate.spreadlevel++
- //* pick card from bottom of misinfo deck
-
+ //* pick card from bottom of misinfo deck    
+ selectCard(gamestate,3,true)
  //* shuffle passive misinfo deck and put on top of active misinfo deck
 }
 
