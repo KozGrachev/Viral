@@ -140,11 +140,11 @@ function viral (oldState:Gamestate) {
  return newState
 }
 
-function deleteCard(card:ConnectionCard,oldState){
+function deleteCard(card:ConnectionCard,oldState:Gamestate){
   for (const player of oldState.players) {
     if(player.isCurrent){
-      for(const [i,match] of player.cards){ 
-        if(match===card){
+      for(const [i,value] of player.cards.entries()){ 
+        if(value===card){
           player.cards.splice(i,1)
         }
       }
