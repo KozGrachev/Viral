@@ -15,11 +15,16 @@ export const ReduxDummy: React.FC = (): JSX.Element => {
 
   const click = () => {
     dispatch(decrementMoves(movesLeft))
+    
   }
 
   return (
     <div>
+      <h1>
       {movesLeft}
+
+      </h1>
+      
       <button onClick ={click}>Hello, Click me</button> 
     </div>
   )

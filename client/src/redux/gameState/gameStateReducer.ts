@@ -1,6 +1,7 @@
 import { GameStateActionTypes, UPDATE_GAME_STATE, UPDATE_MOVES_LEFT, UPDATE_PLAYER_LOCATION } from './../../types/gameStateTypes';
 import { gameState } from '../../backend-dummy-client/dummy-state'
 import { GameState } from '../../types/gameStateTypes'
+// import {emit} from '../backend-dummy-client/dummy-client'
 //here should be a initial State of the Game
 const initialState: GameState = gameState
 
@@ -17,7 +18,7 @@ export function gameStateReducer(
       }
     case UPDATE_PLAYER_LOCATION:
       return {
-        ...state, ...state.players.map(player => {
+        ...state, received:false, ...state.players.map(player => {
           if (state.currentTurn.player === player) {
             return player.currentSource = action.payload
           } else {
@@ -30,9 +31,11 @@ export function gameStateReducer(
       }
     case UPDATE_MOVES_LEFT:
       return {
-        ...state, currentTurn: {...state.currentTurn, movesLeft:action.payload }
+        ...state,received:false,
+        currentTurn: { ...state.currentTurn, movesLeft: action.payload }
       }
 
     default: return state
   }
+  // return emit()
 }

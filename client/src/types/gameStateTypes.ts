@@ -10,6 +10,7 @@ export interface Turn {
 
 
 export interface GameState {
+  received: boolean;
   sources: Source[];
   players: Player[];
   spreadLevel: number; // [2, 2, 3, 4]

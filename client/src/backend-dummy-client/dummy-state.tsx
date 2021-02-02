@@ -67,7 +67,7 @@ const misinformation:Misinformation = {
 const turn:Turn = {
   // do we need a turn interface to keep track of how many actions left etc?
   player:player, 
-  movesLeft:4, 
+  movesLeft:40, 
 }
 
 // const ViralCard = { // Constant
@@ -100,7 +100,8 @@ const misinformationDeck:MisinformationDeck = {
 
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const  gameState:GameState = {
+export const gameState: GameState = {
+  received:false,
   sources: [source],
   players: [player],
   spreadLevel: 2,  // [2, 2, 3, 4]
