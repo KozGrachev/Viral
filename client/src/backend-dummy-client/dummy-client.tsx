@@ -6,7 +6,7 @@ import * as dotenv from 'dotenv';
 
 //connection to the server
 dotenv.config({ path: __dirname + '../.env' });
-const socket = io(process.env.CLIENT_URL || 'http://localhost:3001');
+const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 
 
 
