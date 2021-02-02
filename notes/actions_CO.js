@@ -93,6 +93,8 @@ function updatePossibleActions(currentPlayer) {
   //todo update current location canDebunk with debunkable array
   //* UPDATE ENTIRE STATE WITH ALL ABOVE CHANGES
   //todo return/dispatch state
+
+  
 }
 
 
@@ -110,7 +112,9 @@ function getConnections(location) {
 
 //? called as event handler, so will be passed location to move to
 
-function movePlayer(player, location) {
+function movePlayer (player, location, state) {
+  
+  
   // set players location to "location"
   //todo update state like [player.currentSource = location]
   // decrement actionscount
@@ -118,6 +122,11 @@ function movePlayer(player, location) {
   if (actionCount) {
     updatePossibleActions(player)
   } 
+
+ 
+
+
+  
 }
 
 
