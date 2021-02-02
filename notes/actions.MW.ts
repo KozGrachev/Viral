@@ -38,9 +38,12 @@ function didLose(Gamestate){
   return false
 }
 
-function playerOrder(players) {
+function playerOrder(oldGamestate) {
+  let players=oldGamestate.players
   shuffle(players) //! SET STATE
   players[0].isCurrent= true //! SET STATE
+  let newState={...oldGamestate,players}
+  return newState
 }
 
 function insertViralCards(connectionDeck) {
@@ -108,14 +111,15 @@ function dealCard (gamestate) { //! connection or viral card
       }
     }
   }
+  return gamestate
   
 }
 
 function viral (gamestate) {
  //* increase infection level
  gamestate.spreadlevel++
- //* pick card from bottom of misinfo deck
-
+ //* pick card from bottom of misinfo deck    
+ selectCard(gamestate,3,true)
  //* shuffle passive misinfo deck and put on top of active misinfo deck
 }
 
