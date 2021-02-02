@@ -59,10 +59,20 @@ function insertViralCards(connectionDeck) {
 
 }
 
-function selectCard (gamestate,weight) { //! misinfo card
-  let drawSource=gamestate.misinformationDeck.active[0].source
 
-  for(const source of gamestate.sources){
+//* spread level will define how many times this function is called 
+
+function selectCard (gamestate,weight,viral) { //! misinfo card
+
+  let drawSource
+
+  if(!viral){ //* if it's not from a "viral" call, take from top of depth
+    drawSource=gamestate.misinformationDeck.active[0].source
+  }
+  else { //* if it's viral take from bottom
+    drawSource=gamestate.misinformationDeck.active[gamestate.misinformationDeck.active.length-1].source
+  }
+    for(const source of gamestate.sources){
     if(source.name===drawSource){
       while(weight>0){
         source.markers.push(source.color) //!SET STATE
@@ -97,7 +107,9 @@ function dealCard (gamestate) { //! connection or viral card
 
 function viral (gamestate) {
  //* increase infection level
+ gamestate.spreadlevel++
  //* pick card from bottom of misinfo deck
+
  //* shuffle passive misinfo deck and put on top of active misinfo deck
 }
 
