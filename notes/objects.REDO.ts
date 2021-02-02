@@ -3,6 +3,7 @@
 interface Gamestate{
   sources: Source[];
   players: Player[];
+  turnOrder: string[];
   spreadLevel: number; 
   chaosMeter: number;
   misinformation: {
@@ -20,6 +21,7 @@ interface Gamestate{
 
 interface Player { 
   name: string; 
+  id: string;
   cards: Card[];
   cardHandOverflow: boolean;
   isCurrent: boolean; 

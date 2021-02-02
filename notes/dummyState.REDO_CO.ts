@@ -51,6 +51,7 @@ const initDummyState: Gamestate = {
   players: [
     { 
       name: 'Player 1', 
+      id: '1234',
       cards: [],
       cardHandOverflow: false,
       isCurrent: true, 
@@ -59,6 +60,7 @@ const initDummyState: Gamestate = {
     },
     { 
       name: 'Player 2', 
+      id: '5678', 
       cards: [],
       cardHandOverflow: false,
       isCurrent: true, 
@@ -66,6 +68,7 @@ const initDummyState: Gamestate = {
       currentSource: 'University'
     },
   ],
+  turnOrder: ['1234','5678'],
   spreadLevel: 1,
   chaosMeter: 0,
   misinformation: {
