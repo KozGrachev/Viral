@@ -1,11 +1,16 @@
 
 //based on change of state 
 import io from "socket.io-client";
+
 import * as dotenv from 'dotenv';
 
 //connection to the server
 dotenv.config({ path: __dirname + '../.env' });
 const socket = io(process.env.CLIENT_URL || 'http://localhost:3001');
+
+
+
+
 
 socket.on('updatedState', (state: GameStatedummy) => {
 
