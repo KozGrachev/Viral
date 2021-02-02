@@ -145,7 +145,7 @@ function deleteCard(card:ConnectionCard,oldState){
     if(player.isCurrent){
       for(const [i,match] of player.cards){ 
         if(match===card){
-          player.cards.splice(i)
+          player.cards.splice(i,1)
         }
       }
     }
