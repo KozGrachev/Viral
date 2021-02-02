@@ -1,5 +1,7 @@
 import React from 'react';
 import { Box, Grommet } from 'grommet';
+import './App.css';
+import './backend-dummy-client/dummy-client'; 
 
 function App () {
 
@@ -26,6 +28,7 @@ function App () {
     />
   );
 
+
   return (
     <Grommet theme={theme}>
       <header className="App-header">
@@ -42,6 +45,8 @@ function App () {
         </a>
       </header>
     </Grommet>
+    <div className="App">
+    </div>
   );
 }
 
