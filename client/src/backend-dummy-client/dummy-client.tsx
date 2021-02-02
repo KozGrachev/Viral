@@ -2,8 +2,11 @@
 //based on change of state 
 import { send } from "process";
 import io from "socket.io-client";
-//connection to the server 
-const socket = io('http://192.168.1.26:3001')
+
+//connection to the server
+
+const URL:string || undefined  =process.env.CLIENT_URL
+const socket = io(URL)
 
 socket.on('updatedState', (state: GameStatedummy) => {
 
