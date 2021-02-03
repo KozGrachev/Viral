@@ -1,4 +1,4 @@
-import {Gamestate,ViralCard,ConnectionCard} from './objects'
+import {Gamestate,Card} from './objects.REDO'
 
 //! HELPER HELPERS
 function shuffle(array:any[]) { 
@@ -34,7 +34,7 @@ function didLose(state:Gamestate){
     state.misinformation.yellow.markersLeft===0
     )
     return true
-  if (state.connectionDeck.active.length===0){
+  if (state.connectionDeck.length===0){
     return true
   }
   return false
@@ -52,11 +52,11 @@ function playerOrder(oldState:Gamestate) {
 
 function insertViralCards(oldState:Gamestate) {
 
-  let oldDeck=oldState.connectionDeck.active
+  let oldDeck=oldState.connectionDeck
 
-  const viral1:ViralCard={action:"viral"}
-  const viral2:ViralCard={action:"viral"}
-  const viral3:ViralCard={action:"viral"}
+  const viral1:Card={type:"viral",sourceName:null, color:null}
+  const viral2:Card={type:"viral",sourceName:null, color:null}
+  const viral3:Card={type:"viral",sourceName:null, color:null}
   let first=oldDeck.slice(0,(oldDeck.length/3))
   let second=oldDeck.slice((oldDeck.length/3),(2*oldDeck.length/3))
   let third=oldDeck.slice((2*oldDeck.length/3),oldDeck.length)
@@ -80,26 +80,29 @@ function insertViralCards(oldState:Gamestate) {
 
 function infoCard (oldState:Gamestate,weight:number,viral:boolean) {
   
-  let oldDeck=oldState.misinformationDeck
-
+  let oldDeck=oldState.misinformationDeckActive
   let drawSource
 
   if(!viral){ 
-    drawSource=oldDeck.active[0].source
+    drawSource=oldDeck[0].sourceName
   }
   else { 
-    drawSource=oldDeck.active[oldDeck.active.length-1].source
+    drawSource=oldDeck[oldDeck.length-1].sourceName //card name
   }
-    for(const source of oldState.sources){
-      if(source.name===drawSource){
-        while(weight>0){
-          source.markers[source.color]++
-          oldState.misinformation[source.color]--
-        }
+
+  for(const source of oldState.sources){
+    if(source.name===drawSource){
+      while(weight>0){
+        //* add marker to source
+        source[`markers${source.color}`]++
+        //* remove marker from global bucket
+        oldState.misinformation[source.color]--
+        weight--
       }
+    }
   }
-  oldDeck.passive.push(oldDeck.active[0])
-  oldDeck.active.shift()
+  oldState.misinformationDeckPassive.push(oldDeck[0])
+  oldState.misinformationDeckActive.shift()
 
   let newState={...oldState}
   return newState
@@ -107,9 +110,9 @@ function infoCard (oldState:Gamestate,weight:number,viral:boolean) {
 
 
 function connectionCard (oldState:Gamestate) {
-  let newCard:any=oldState.connectionDeck.active[0]
+  let newCard:Card=oldState.connectionDeck[0]
 
-  if(newCard.action==='viral'){
+  if(newCard.type==='viral'){
     viral(oldState)
   }
   else {
@@ -119,7 +122,11 @@ function connectionCard (oldState:Gamestate) {
         player.cards.push(newCard)
         if(player.cards.length>6)
           {
-            let chosenCard="whatever" //* front end to give player choice of card to delete
+            let chosenCard={
+              type: 'connection',
+              sourceName: 'University',
+              color: 'blue',
+            } //* front end to give player choice of card to delete
             deleteCard(chosenCard,oldState)
           }
       }
@@ -135,12 +142,12 @@ function viral (oldState:Gamestate) {
  oldState=infoCard(oldState,3,true)
  oldState.spreadLevel++
  //* shuffle passive misinfo deck and put on top of active misinfo deck
- oldState.misinformationDeck.active=[...shuffle(oldState.misinformationDeck.passive),...oldState.misinformationDeck.active]
+ oldState.misinformationDeckActive=[...shuffle(oldState.misinformationDeckPassive),...oldState.misinformationDeckActive]
  let newState={...oldState}
  return newState
 }
 
-function deleteCard(card:ConnectionCard,oldState:Gamestate){
+function deleteCard(card:Card,oldState:Gamestate){
   for (const player of oldState.players) {
     if(player.isCurrent){
       for(const [i,value] of player.cards.entries()){ 
