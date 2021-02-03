@@ -1,15 +1,15 @@
 //* STATE
 
-interface Gamestate{
+export interface Gamestate{
   sources: Source[];
   players: Player[];
   turnOrder: string[];
   spreadLevel: number; 
   chaosMeter: number;
   misinformation: {
-    red:Misinformation,
-    blue:Misinformation,
-    yellow:Misinformation
+    community:Misinformation,
+    social:Misinformation,
+    relations:Misinformation
   };
   connectionDeck: Card[];
   misinformationDeckActive: Card[];
@@ -19,7 +19,7 @@ interface Gamestate{
   gameLost: boolean;
 }
 
-interface Player { 
+export interface Player { 
   name: string; 
   id: string;
   cards: Card[];
@@ -29,37 +29,39 @@ interface Player {
   currentSource: string;
 }
 
-interface Source {
+export interface Source {
   name: string; 
-  color: string;
-  markersRed: number;
-  markersYellow: number;
-  markersBlue: number;
+  misinfoType: string;
+  markers_community: number;
+  markers_social: number;
+  markers_relations: number;
   canMove: boolean;
   canLogOn: boolean;
   canLogOff: boolean;
-  canClearRed: boolean;
-  canClearBlue: boolean;
-  canClearYellow: boolean;
+  canClearCommunity: boolean;
+  canClearSocial: boolean;
+  canClearRelations: boolean;
   canShare: Player[]; //? arrray of Players at same location
   canDebunk: string[]; //? array of misinfos possible to debunk at this location?
 }
 
-interface Misinformation {
+export interface Misinformation {
   name: string;
   debunked: boolean;
   markersLeft: number; 
 }
 
-interface Card {
-  type: string; //? 'connection', 'minformation' or 'viral'
+
+export interface Card {
+  cardType: string; //? 'connection', 'minformation' or 'viral'
+
   sourceName: string | null;
-  color: string | null;
+  misinfoType: string | null;
 }
 
 //* CLIENT
 
-interface Connections { //! kept client-side
+export interface Connections { //! kept client-side
   source01: string[],
   source02: string[],
   source03: string[],
