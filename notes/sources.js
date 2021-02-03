@@ -3,7 +3,7 @@
 
 //todo define location by category
 
-const sources = [
+export const sources = [
   {
     name: 'high school',
     connections: ['taxi', 'university'],
