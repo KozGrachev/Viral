@@ -44,7 +44,7 @@ socket.on('updatedState', (newState: GameState) => {
 
 
 // on click when user wants to restart game
-const restartGame = () => {
+export const restartGame = () => {
   joinRoom(fakeUser.username, fakeUser.room);
   socket.emit('resumeGame', fakeUser.room)
 }

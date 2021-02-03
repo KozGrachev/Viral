@@ -18,10 +18,10 @@ const httpServer = createServer(app);
 const PORT = process.env.PORT || 3002;
 
 const io = new Server(httpServer, {
-  cors: { origin: 'http://localhost:3000', methods: ['GET', 'POST'] }
+  cors: { origin: `${process.env.CLIENT_URL}`, methods: ['GET', 'POST'] }
 });
 
-let welcomeMessage = 'Welcome'; 
+let welcomeMessage = 'Welcome';
 
 io.on('connection', (socket) => {
   console.log('server connected');
@@ -53,7 +53,7 @@ io.on('connection', (socket) => {
     });
 
   socket.on('resumeGame', (room: IUser['room']) => {
-    welcomeMessage ='Welcome back'; 
+    welcomeMessage = 'Welcome back';
     getState(room).then(data => socket.emit('updatedState', data));
 
 
