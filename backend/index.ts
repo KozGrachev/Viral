@@ -21,6 +21,7 @@ const io = new Server(httpServer, {
   cors: { origin: 'http://localhost:3000', methods: ['GET', 'POST'] }
 });
 
+let welcomeMessage = 'Welcome'; 
 
 io.on('connection', (socket) => {
   console.log('server connected');
@@ -30,7 +31,7 @@ io.on('connection', (socket) => {
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit('joinConfirmation', `welcome ${username}, you can start playing now.`);
+    socket.emit('joinConfirmation', `${welcomeMessage} ${username}, you can start playing now.`);
 
     // Broadcast when a user connects
     socket.broadcast
@@ -46,14 +47,16 @@ io.on('connection', (socket) => {
       const user = fakeUser;
       socket.broadcast.to(user.room)
         .emit('updatedState', newState);
-
       //save to database
       setState(fakeUser.room, newState);
 
     });
 
   socket.on('resumeGame', (room: IUser['room']) => {
-    getState(room).then(data => console.log(data, 'db data'));
+    welcomeMessage ='Welcome back'; 
+    getState(room).then(data => socket.emit('updatedState', data));
+
+
   });
   // Runs when client disconnects
   socket.on('disconnect', () => {
