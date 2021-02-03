@@ -1,9 +1,9 @@
 //* ACTIONS
 
 
-function moveAction (oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate {
+function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate {
   //? update to one function with conditions to incorporate logon and off? (add card disposal mechanic) 
-  const newState = 
+  const newState: Gamestate = 
   {
     ...oldState,
     players : oldState.players
@@ -11,7 +11,7 @@ function moveAction (oldState: Gamestate, currentPlayerID: Player['id'], locatio
           { ...player, currentSource : location } :
           player
       ),
-    turnMovesLeft : oldState.turnMovesLeft - 1 //* decrement turn move count here
+    turnMovesLeft : oldState.turnMovesLeft - 1 
   };
   //? encapsulate below into nextMove check?
   if (newState.turnMovesLeft > 0) {
@@ -23,7 +23,7 @@ function moveAction (oldState: Gamestate, currentPlayerID: Player['id'], locatio
 }
 
 
-function clearMisinfo (oldState: Gamestate, currentPlayerID: Player['id'], misinfoType: Misinformation['name'], location: Source['name']): Gamestate {
+function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'], misinfoType: Misinformation['name'], location: Source['name']): Gamestate {
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
   // default markers to remove to 1, and update if debunked 
   let noOfMarkers: number = 1;
@@ -46,7 +46,7 @@ function clearMisinfo (oldState: Gamestate, currentPlayerID: Player['id'], misin
         markersLeft : oldState.misinformation[misinfoType].markersLeft + noOfMarkers
       }
     },
-    turnMovesLeft : oldState.turnMovesLeft - 1 //* decrement turn move count here
+    turnMovesLeft : oldState.turnMovesLeft - 1 
   };
   if (newState.turnMovesLeft > 0) {
     return updatePossibleActions(newState, currentPlayerID)
@@ -57,6 +57,69 @@ function clearMisinfo (oldState: Gamestate, currentPlayerID: Player['id'], misin
 }
 
 
+function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], recipient: Player['id'], sharedCard: Card['sourceName']): Gamestate {
+  // remove card from player hand
+  // put card in recipient hand
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    players : oldState.players
+      .map((player) => player.id === currentPlayerID ?
+          { 
+            ...player, 
+            cards : player.cards.filter((card) => card.sourceName !== sharedCard) 
+          } :
+            player.id === recipient ?
+              { 
+                ...player, 
+                cards : [...player.cards, {
+                  cardType: 'connection',
+                  sourceName: sharedCard,
+                  misinfoType: null
+                }] 
+              } :
+                player
+      ),
+    turnMovesLeft : oldState.turnMovesLeft - 1
+  };
+  if (newState.turnMovesLeft > 0) {
+    return updatePossibleActions(newState, currentPlayerID)
+  } else {
+    //? trigger next turn? -> another function
+    return newState;
+  }
+}
+
+
+//* Logon action / Logoff action
+//! these actions are identical, but will be passed different card (matching destination location for logon, and players current location for logoff)
+
+//? called as event handler, will be passed player, location, and card)
+
+function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name'], usedCard: Card['sourceName']): Gamestate {
+  // remove card from player hand
+  // set players location to "location"
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    players : oldState.players
+      .map((player) => player.id === currentPlayerID ?
+          { 
+            ...player, 
+            currentSource : location, 
+            cards : player.cards.filter((card) => card.sourceName !== usedCard)
+          } :
+          player
+      ),
+    turnMovesLeft : oldState.turnMovesLeft - 1 
+  };
+  if (newState.turnMovesLeft > 0) {
+    return updatePossibleActions(newState, currentPlayerID)
+  } else {
+    //? trigger next turn? -> another function
+    return newState;
+  } 
+}
 
 //* TURN
 
@@ -120,7 +183,7 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
       };
   };
   //* UPDATE ENTIRE STATE WITH ALL ABOVE CHANGES
-  const newState = 
+  const newState: Gamestate = 
   {
     ...oldState,
     sources : oldState.sources
