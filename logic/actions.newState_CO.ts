@@ -1,3 +1,6 @@
+import {Gamestate,Card,Source, Player, Misinformation, Connections} from './objects.REDO'
+import {sources} from './sources'
+
 //* ACTIONS
 
 
@@ -98,7 +101,7 @@ function debunkMisinfo(oldState: Gamestate,  currentPlayerID: Player['id'], used
   // set misinformation type to debunked
   //todo update state eg: Gamestate.misinformation[color].debunked = true
 
-  
+
   // check didWin (SEE: actions.MW) 
   if (didWin(Gamestate.misinformation)) {
     //todo update state to win game eg: Gamestate.gameWon = true
