@@ -1,4 +1,4 @@
-import React, { ReactComponentElement } from 'react';
+import React from 'react';
 
 export interface SourceProps {
   name: string,
@@ -8,7 +8,7 @@ export interface SourceProps {
 }
 
 
-export const Source: React.FC<SourceProps> = ({ name, connections, category, SVGIcon }) => { // SVGIcon
+export const Source: React.FC<SourceProps> = ({ name, connections, category, SVGIcon }: SourceProps) => { // SVGIcon
 
   return (
     <div className={`source-container ${name} ${category}`} >

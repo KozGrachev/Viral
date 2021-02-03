@@ -11,7 +11,7 @@ import { ReactComponent as whatsappIcon } from '../../assets/whatsapp-icon.svg'
 import { ReactComponent as redditIcon } from '../../assets/reddit-icon.svg'
 import { ReactComponent as youtubeIcon } from '../../assets/youtube-icon.svg'
 import { ReactComponent as illuminatifyIcon } from '../../assets/illuminatify-icon.svg'
-// import { ReactComponent as instagramIcon } from '../../assets/instagram-icon.svg'
+import { ReactComponent as highSchool } from '../../assets/highschool-icon.svg'
 // import { ReactComponent as instagramIcon } from '../../assets/instagram-icon.svg'
 // import { ReactComponent as instagramIcon } from '../../assets/instagram-icon.svg'
 // import { ReactComponent as instagramIcon } from '../../assets/instagram-icon.svg'
@@ -22,15 +22,16 @@ export default {
   decorators: [withDesign]
 } as Meta;
 
-const Template: Story<SourceProps> = (args) => <Source {...args} />
+const Template: Story<SourceProps> = (args: SourceProps) => <Source {...args} />
 
 
 
-// export const HighSchool = Template.bind({});
-// HighSchool.args = {
-//   name: 'HighSchool',
-//   category: 'community'
-// }
+export const HighSchool = Template.bind({});
+HighSchool.args = {
+  name: 'HighSchool',
+  category: 'community',
+  SVGIcon: highSchool
+}
 
 
 // export const Taxi = Template.bind({});
@@ -158,26 +159,26 @@ Reddit.args = {
   SVGIcon: redditIcon
 }
 
-export const Twitter = Template.bind({});
-Twitter.args = {
-  name: 'twitter',
-  category: 'social',
-  SVGIcon: twitterIcon
-}
+// export const Twitter = Template.bind({});
+// Twitter.args = {
+//   name: 'twitter',
+//   category: 'social',
+//   SVGIcon: twitterIcon
+// }
 
-export const WhatsApp = Template.bind({});
-WhatsApp.args = {
-  name: 'whatsapp',
-  category: 'social',
-  SVGIcon: whatsappIcon
-}
+// export const WhatsApp = Template.bind({});
+// WhatsApp.args = {
+//   name: 'whatsapp',
+//   category: 'social',
+//   SVGIcon: whatsappIcon
+// }
 
-export const TikTok = Template.bind({});
-TikTok.args = {
-  name: 'tik-tok',
-  category: 'social',
-  SVGIcon: tiktokIcon
-}
+// export const TikTok = Template.bind({});
+// TikTok.args = {
+//   name: 'tik-tok',
+//   category: 'social',
+//   SVGIcon: tiktokIcon
+// }
 
 
 
