@@ -59,7 +59,7 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
   .filter((name) => name !== location);
   //* debunk checks
   // check if we are at home (debunk 1/2)
-  const atHome: boolean = location === "crazy dave's house"; //todo change this value
+  const atHome: boolean = location === 'crazy dave';
   // check hand contains 4 of any misinfo type/area (debunk 2/2)
   const debunkable: string[] = []
   if (atHome) {
