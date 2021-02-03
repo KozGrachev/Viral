@@ -14,6 +14,7 @@ save as misinformationDeck.active
 /* 
 CREATE PLAYER(name, color, role)
   create new player object w/ input
+  needs id generated
 */
 
 

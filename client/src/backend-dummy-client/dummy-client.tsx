@@ -10,9 +10,7 @@ import { GameState } from "../types/gameStateTypes";
 dotenv.config({ path: __dirname + '../.env' });
 const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 
-
 const fakeUser = { username: 'Maria', room: '1' }
-
 
 store.subscribe(() => {
   const newState = store.getState()
