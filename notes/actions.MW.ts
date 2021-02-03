@@ -1,4 +1,4 @@
-import {Gamestate,Card} from './objects.REDO'
+import {Gamestate,Card,Source} from './objects.REDO'
 import {sources} from './sources'
 
 //! HELPER HELPERS
@@ -41,6 +41,22 @@ function didLose(state:Gamestate){
   return false
 }
 
+function createConnectionDeck() {
+  let deck:Card[]=[];
+  for (const source of sources){
+    deck.push({type:'connection',sourceName:source.name,misinfoType:source.category});
+  }
+  return deck;
+}
+
+function createMisinformationDeck() {
+  let deck:Card[]=[];
+  for (const source of sources){
+    deck.push({type:'misinformation',sourceName:source.name,misinfoType:source.category});
+  }
+  return deck;
+}
+
 //! SET STATE
 
 function playerOrder(oldState:Gamestate) {
@@ -55,9 +71,9 @@ function insertViralCards(oldState:Gamestate) {
 
   let oldDeck=oldState.connectionDeck
 
-  const viral1:Card={type:"viral",sourceName:null, area:null}
-  const viral2:Card={type:"viral",sourceName:null, area:null}
-  const viral3:Card={type:"viral",sourceName:null, area:null}
+  const viral1:Card={type:"viral",sourceName:null, misinfoType:null}
+  const viral2:Card={type:"viral",sourceName:null, misinfoType:null}
+  const viral3:Card={type:"viral",sourceName:null, misinfoType:null}
   let first=oldDeck.slice(0,(oldDeck.length/3))
   let second=oldDeck.slice((oldDeck.length/3),(2*oldDeck.length/3))
   let third=oldDeck.slice((2*oldDeck.length/3),oldDeck.length)
@@ -94,14 +110,14 @@ function infoCard (oldState:Gamestate,weight:number,viral:boolean) {
   for(const source of oldState.sources){
     if(source.name===drawSource){
       while(weight>0){
-        if(source[`markers_${source.area}`]==3){
-          //! OUTBREAK
+        if(source[`markers_${source.misinfoType}`]==3){
+          outbreak(source,oldState) //! OUTBREAK
         }
         else{
         //* add marker to source
-        source[`markers_${source.area}`]++
+        source[`markers_${source.misinfoType}`]++
         //* remove marker from global bucket
-        oldState.misinformation[source.area]--
+        oldState.misinformation[source.misinfoType]--
         didLose(oldState)
         }
         weight--
@@ -114,6 +130,22 @@ function infoCard (oldState:Gamestate,weight:number,viral:boolean) {
   let newState={...oldState}
   return newState
 }
+
+function outbreak(outbreak_source:Source,oldState:Gamestate) {
+  for (const source of sources){
+    if(source.sourceName===outbreak_source.name){
+      for(const connection of source.connections){
+        if(oldState.sources[`${connection}`][`markers_${outbreak_source.misinfoType}`]===3){
+          outbreak(oldState.sources[`${connection}`],oldState)
+        }
+        else{
+        oldState.sources[connection][`markers_${outbreak_source.misinfoType}`]++;
+        }
+      }
+    }
+  }
+}
+
 
 
 function connectionCard (oldState:Gamestate) {
@@ -132,7 +164,7 @@ function connectionCard (oldState:Gamestate) {
             let chosenCard={
               type: 'connection',
               sourceName: 'University',
-              area: 'community',
+              misinfoType: 'community',
             } //* front end to give player choice of card to delete
             deleteCard(chosenCard,oldState)
           }
@@ -169,25 +201,26 @@ function deleteCard(card:Card,oldState:Gamestate){
 
 }
 
-function createConnectionDeck() {
-  let deck:Card[]=[];
-  for (const source of sources){
-    deck.push({type:'connection',sourceName:source.name,area:source.category});
-  }
-  return deck;
+function createPlayer(name:string,color:string,oldState:Gamestate){ 
+  let random=Math.floor(Math.random() * 100000)
+  oldState.players.push({
+    name,
+    id:String(random),
+    cards:[],
+    cardHandOverflow:false,
+    isCurrent:false,
+    pawnColor:color,
+    currentSource:'crazy daves'})
 }
 
-function createMisinformationDeck() {
-  let deck:Card[]=[];
-  for (const source of sources){
-    deck.push({type:'misinformation',sourceName:source.name,area:source.category});
-  }
-  return deck;
+function setUp(oldstate:Gamestate){
+ const misinformationDeck=createMisinformationDeck()
+ const connectionDeck=createConnectionDeck()
+
 }
 
-function outbreak() {
-  //todo
-}
+
+
 
 
 

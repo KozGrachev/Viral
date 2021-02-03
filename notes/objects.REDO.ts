@@ -31,7 +31,7 @@ interface Player {
 
 export interface Source {
   name: string; 
-  area: string;
+  misinfoType: string;
   markers_community: number;
   markers_social: number;
   markers_relations: number;
@@ -54,7 +54,7 @@ interface Misinformation {
 export interface Card {
   type: string; //? 'connection', 'minformation' or 'viral'
   sourceName: string | null;
-  area: string | null;
+  misinfoType: string | null;
 }
 
 //* CLIENT
