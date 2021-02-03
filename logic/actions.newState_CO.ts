@@ -1,4 +1,5 @@
-import {Gamestate,Card,Source, Player, Misinformation, Connections} from './objects.REDO'
+import {Gamestate,Card,Source, Player, Misinformation, Connection} from './objects.REDO'
+import {didWin, playViralCard} from '../notes/actions.MW.COPY.forImport'
 import {sources} from './sources'
 
 //* ACTIONS
@@ -113,7 +114,7 @@ function debunkMisinfo(oldState: Gamestate,  currentPlayerID: Player['id'], used
     },
     turnMovesLeft : oldState.turnMovesLeft - 1,
   };
-  if (didWin(newState)) {
+  if (didWin(newState)) { 
     return {
       ...newState,
       gameWon: true,
@@ -132,7 +133,7 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
   const location: Player['currentSource'] = oldState.players[playerIndex].currentSource;
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
   //* move check
-  const adjacents: string[] = connections[location]; //! this may be changed relative to the sources/connections object
+  const adjacents: string[] = sources.filter((source) => source.name === location)[0].connections;
   //* clear checks
   const clearCommunityMisinfo: boolean = oldState.sources[sourceIndex].markers_community > 0;
   const clearSocialMisinfo: boolean = oldState.sources[sourceIndex].markers_social > 0;
@@ -216,7 +217,70 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
   return newState;
 }
 
+
+function boardActions(oldState: Gamestate, currentPlayerID: Player['id'], noOfCards: number): Gamestate {
+  // deal connection cards
+  const playerIndex = oldState.players
+    .map((player) => player.id)
+    .indexOf(currentPlayerID);
+  let cardsLeft = noOfCards;
+  while (cardsLeft > 0) {
+    const newState = dealConnectionCard(oldState, currentPlayerID);
+    if (newState.players[playerIndex].cards.length > 6) {
+      return {
+        ...newState,
+        players : newState.players
+          .map((player) => player.id === currentPlayerID ?
+              { ...player, cardHandOverflow : true } :
+              player
+          ),
+        dealHistory : cardsLeft - 1,
+      } //! exit function here
+    }
+    cardsLeft --;
+  }
+  // deal misinfo cards
+
+  //TODO - finish with misinfo deal, hook up so loop complete
+  
+
+
+}
+
 //* HELPERS
+
+
+function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player['id']):Gamestate {
+  //* first check if this card is the last one, thus ending the game
+  //! does the game end when card pile is zero, or is there one last move (ie when card pile -1)?
+  if (oldState.connectionDeck.length === 1) {
+    return {
+      ...oldState,
+      gameLost : true
+    }
+  }
+  const newCard: Card = oldState.connectionDeck[0]
+  if (newCard.cardType === 'viral') {
+    //? does viral function remove card? should it be returned? should it also break for game checks?
+    playViralCard(oldState)
+  }
+  else {
+    const newState: Gamestate = 
+    {
+      ...oldState,
+      players : oldState.players
+        .map((player) => player.id === currentPlayerID ?
+        { 
+          ...player, 
+          cards : [...player.cards, newCard], 
+        } :
+          player
+        ),
+      connectionDeck : oldState.connectionDeck.slice[1]
+    };
+    return newState;  
+  }
+}
 
 
 function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
@@ -244,36 +308,10 @@ function discardCard(oldState: Gamestate, currentPlayerID: Player['id'], discard
             player
       ),
   };
-  return newState;
+  //? calling boardActions with newState.dealHistory will decrement the amount of connection cards to be dealt, allowing the function to continue where it left off
+  return boardActions(newState, currentPlayerID, newState.dealHistory)
 }
 
 
 //* RESOURCES
 
-//? will be in format { sourceName : [array of source names] }
-const connections: Connections = {
-  source01: [],
-  source02: [],
-  source03: [],
-  source04: [],
-  source05: [],
-  source06: [],
-  source07: [],
-  source08: [],
-  source09: [],
-  source10: [],
-  source11: [],
-  source12: [],
-  source13: [],
-  source14: [],
-  source15: [],
-  source16: [],
-  source17: [],
-  source18: [],
-  source19: [],
-  source20: [],
-  source21: [],
-  source22: [],
-  source23: [],
-  source24: [],
-}
