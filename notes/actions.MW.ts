@@ -213,9 +213,25 @@ function createPlayer(name:string,color:string,oldState:Gamestate){
     currentSource:'crazy daves'})
 }
 
-function setUp(oldstate:Gamestate){
- const misinformationDeck=createMisinformationDeck()
- const connectionDeck=createConnectionDeck()
+function setUp(oldState:Gamestate){
+ const withoutViral=createConnectionDeck();
+ let cards;
+ let misinfo=6;
+
+ if(oldState.players.length>2) cards=3;
+ else cards=2
+
+ while(cards>0){
+   connectionCard(oldState)
+   cards--
+ }
+ const connectionDeck=insertViralCards({...oldState,connectionDeck:withoutViral})
+ const misinformationDeck=createMisinformationDeck();
+ const players=shuffle(oldState.players)
+
+ while(misinfo>0){
+   //TODO
+ }
 
 }
 
