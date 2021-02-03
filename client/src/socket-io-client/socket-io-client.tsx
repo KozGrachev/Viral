@@ -32,6 +32,13 @@ socket.on('updatedState', (newState: GameState) => {
 })
 
 
+const restartGame = () => {
+  socket.emit('resumeGame', fakeUser.room)
+}
+
+// on a click which allows user to resume game 
+restartGame()
+
 const joinRoom = (username: string, room: string) => {
   socket.emit('joinRoom', { username, room });
 }

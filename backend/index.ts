@@ -2,13 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-import { userJoin, userLeave } from './utils/users';
+import { IUser, userJoin, userLeave } from './utils/users';
 import { getState, setState } from './redis/redis-db';
 
 // import { IUser } from './utils/users';
 // import { GameState } from './utils/game';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import * as dotenv from 'dotenv';
+import { GameState } from './utils/game';
 
 dotenv.config({ path: __dirname + '/.env' });
 const app = express();
@@ -41,15 +42,19 @@ io.on('connection', (socket) => {
   });
 
   socket.on('onChangeState',
-    ({ newState, fakeUser }: { newState: any, fakeUser: any }) => {
+    ({ newState, fakeUser }: { newState: GameState, fakeUser: IUser }) => {
       const user = fakeUser;
       socket.broadcast.to(user.room)
         .emit('updatedState', newState);
 
       //save to database
-      setState(newState);
+      setState(fakeUser.room, newState);
+
     });
 
+  socket.on('resumeGame', (room: IUser['room']) => {
+    getState(room).then(data => console.log(data, 'db data'));
+  });
   // Runs when client disconnects
   socket.on('disconnect', () => {
     console.log('disconnect works');
