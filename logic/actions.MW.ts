@@ -57,6 +57,28 @@ function createMisinformationDeck() {
   return deck;
 }
 
+function createSources() {
+  let array:Source[]=[];
+  for (const source of sources){
+    array.push({
+      name:source.name,
+      misinfoType:source.category,
+      markers_community:0,
+      markers_social:0,
+      markers_relations:0,
+      canMove:false,
+      canLogOn:false,
+      canLogOff:false,
+      canClearCommunity:false,
+      canClearSocial:false,
+      canClearRelations:false,
+      canShare:[],
+      canDebunk:[],
+    })
+  }
+  return array
+}
+
 //! SET STATE
 
 function playerOrder(oldState:Gamestate) {
@@ -95,7 +117,7 @@ function insertViralCards(oldState:Gamestate) {
 
 //* spread level will define how many times this function is called 
 
-function infoCard (oldState:Gamestate,weight:number,viral:boolean) {
+function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
   
   let oldDeck=oldState.misinformationDeckActive
   let drawSource
@@ -111,13 +133,14 @@ function infoCard (oldState:Gamestate,weight:number,viral:boolean) {
     if(source.name===drawSource){
       while(weight>0){
         if(source[`markers_${source.misinfoType}`]==3){
-          outbreak(source,oldState) //! OUTBREAK
+          oldState.chaosMeter++
+          outbreak(source,oldState)
         }
         else{
         //* add marker to source
         source[`markers_${source.misinfoType}`]++
         //* remove marker from global bucket
-        oldState.misinformation[source.misinfoType]--
+        oldState.misinformation[source.misinfoType].markersLeft--
         didLose(oldState)
         }
         weight--
@@ -148,7 +171,7 @@ function outbreak(outbreak_source:Source,oldState:Gamestate) {
 
 
 
-function connectionCard (oldState:Gamestate) {
+function dealConnectionCard (oldState:Gamestate) {
   let newCard:Card=oldState.connectionDeck[0]
 
   if(newCard.cardType==='viral'){
@@ -159,6 +182,7 @@ function connectionCard (oldState:Gamestate) {
       if(player.isCurrent){
 
         player.cards.push(newCard)
+        oldState.connectionDeck.shift()
         if(player.cards.length>6)
           {
             let chosenCard={
@@ -178,7 +202,7 @@ function connectionCard (oldState:Gamestate) {
 
 function viral (oldState:Gamestate) {
  
- oldState=infoCard(oldState,3,true)
+ oldState=dealMisinfoCard(oldState,3,true)
  oldState.spreadLevel++
  //* shuffle passive misinfo deck and put on top of active misinfo deck
  oldState.misinformationDeckActive=[...shuffle(oldState.misinformationDeckPassive),...oldState.misinformationDeckActive]
@@ -211,38 +235,69 @@ function createPlayer(name:string,color:string,oldState:Gamestate){
     isCurrent:false,
     pawnColor:color,
     currentSource:'crazy dave'})
+  
+  let newState={...oldState}
+  return newState;
 }
 
-function setUp(oldState:Gamestate){
- const withoutViral=createConnectionDeck();
+function setUp(players){
+ 
  let cards;
  let misinfo=6;
  let index=0;
  let weights=[3,3,2,2,1,1]
 
- const misinformationDeck=createMisinformationDeck();
- const players=shuffle(oldState.players) 
- let updateState={...oldState,misinformationDeckActive:misinformationDeck,players}
+ const sources=createSources()
+ players=shuffle(players) 
+ const turnOrder=[] //! where is this set??
+ const spreadLevel=0; //! how is this managed??
+ const chaosMeter=0;
+ const misinformation={
+   community:{name:'community', debunked:false,markersLeft:16},
+   social:{name:'social', debunked:false,markersLeft:16},
+   relations:{name:'relations', debunked:false,markersLeft:16},
+  }
+ const withoutViral=shuffle(createConnectionDeck());
+ const misinformationDeckActive=shuffle(createMisinformationDeck());
+ const misinformationDeckPassive=[]
+ const turnMovesLeft=0;
+ const gameWon=false;
+ const gameLost=false;
+ 
 
- if(updateState.players.length>2) cards=3;
- else cards=2
+ let state={
+  sources,
+  players,
+  turnOrder,
+  spreadLevel,
+  chaosMeter,
+  misinformation,
+  connectionDeck:withoutViral,
+  misinformationDeckActive,
+  misinformationDeckPassive,
+  turnMovesLeft,
+  gameWon,
+  gameLost}
+
+ if(state.players.length>2) cards=2;
+ else cards=3
   
- for(let i=0; i<updateState.players.length; i++) {
+ for(let i=0; i<state.players.length; i++) { //* deal connection cards to players before inserting viral cards
   while(cards>0){
-    updateState=connectionCard(updateState)
+    state=dealConnectionCard(state)
     cards--
   }
-  updateState.players[i].isCurrent=false;
-  if(i!==updateState.players.length-1) updateState.players[i+1].isCurrent=true;
-  else updateState.players[0].isCurrent=true;
+  state.players[i].isCurrent=false;
+  if(i!==state.players.length-1) state.players[i+1].isCurrent=true;
+  else state.players[0].isCurrent=true;
  }
 
- updateState=insertViralCards({...updateState,connectionDeck:withoutViral})
+ let updateState=insertViralCards({...state,connectionDeck:withoutViral})
  
 
  while(misinfo>0){
   let weight=weights[index]
-  updateState=infoCard(updateState,weight,false)
+  updateState=dealMisinfoCard(updateState,weight,false)
   index++
   misinfo--
  }
