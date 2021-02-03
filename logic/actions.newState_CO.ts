@@ -13,7 +13,7 @@ function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location
           { ...player, currentSource : location } :
           player
       ),
-    turnMovesLeft : oldState.turnMovesLeft - 1 
+    turnMovesLeft : oldState.turnMovesLeft - 1, 
   };
   return nextMoveChecker(newState, currentPlayerID);
 }
@@ -40,7 +40,7 @@ function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'], misinf
         markersLeft : oldState.misinformation[misinfoType].markersLeft + noOfMarkers
       }
     },
-    turnMovesLeft : oldState.turnMovesLeft - 1 
+    turnMovesLeft : oldState.turnMovesLeft - 1,
   };
   return nextMoveChecker(newState, currentPlayerID);
 }
@@ -63,11 +63,11 @@ function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], recipient
                   cardType: 'connection',
                   sourceName: sharedCard,
                   misinfoType: null
-                }] 
+                  }], 
               } :
                 player
       ),
-    turnMovesLeft : oldState.turnMovesLeft - 1
+    turnMovesLeft : oldState.turnMovesLeft - 1,
   };
   return nextMoveChecker(newState, currentPlayerID);
 }
@@ -86,30 +86,40 @@ function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], location: 
           } :
           player
       ),
-    turnMovesLeft : oldState.turnMovesLeft - 1 
+    turnMovesLeft : oldState.turnMovesLeft - 1,
   };
   return nextMoveChecker(newState, currentPlayerID); 
 }
 
-//* Debunk action
-
-//? called as event handler, will be passed player, cards (array of 4), color)
 
 function debunkMisinfo(oldState: Gamestate,  currentPlayerID: Player['id'], usedCards: Card['sourceName'][], misinfoType: Misinformation['name']): Gamestate {
-  // remove cards from player hand
-  //todo update state eg: player.cards.filter((card) => !usedCards.includes(card));
-  // set misinformation type to debunked
-  //todo update state eg: Gamestate.misinformation[color].debunked = true
-
-
-  // check didWin (SEE: actions.MW) 
-  if (didWin(Gamestate.misinformation)) {
-    //todo update state to win game eg: Gamestate.gameWon = true
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    players : oldState.players
+      .map((player) => player.id === currentPlayerID ?
+          { 
+            ...player, 
+            cards : player.cards.filter((card) => !usedCards.includes(card.sourceName)) 
+          } :
+            player
+      ),
+    misinformation : {
+      ...oldState.misinformation,
+      [misinfoType] : {
+        ...oldState.misinformation[misinfoType],
+        debunked : true,
+      }
+    },
+    turnMovesLeft : oldState.turnMovesLeft - 1,
+  };
+  if (didWin(newState)) {
+    return {
+      ...newState,
+      gameWon: true,
+    }
   } else {
-    //todo update actionCount state, eg Gamestate.currentTurn.movesleft
-    if (actionCount) {
-      updatePossibleActions(player)
-    } 
+    return nextMoveChecker(newState, currentPlayerID)
   }
 }
 
