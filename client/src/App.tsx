@@ -3,7 +3,7 @@ import { Box, Grommet } from 'grommet';
 import './App.css';
 import './backend-dummy-client/dummy-client';
 
-function App() {
+function App () {
 
   const theme = {
     global: {
@@ -15,7 +15,7 @@ function App() {
     },
   };
 
- // eslint-disable-next-line
+  // eslint-disable-next-line
   const AppBar = () => (
     <Box // eslint-disable-next-line
       tag='header'
@@ -31,22 +31,21 @@ function App() {
 
   return (
     <Grommet theme={theme}>
-      <img className="svgtest" src={'../assets/youtube.svg'} alt="SVGTEST"/>
-        <header className="App-header">
-          <p>
-            Testing Testing check 1, 2
+      <header className="App-header">
+        <p>
+          Testing Testing check 1, 2
         </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
         </a>
       </header>
-      <div className="App">
-      </div>
+      <div className="App"> </div>
+
     </Grommet>
   );
 }
