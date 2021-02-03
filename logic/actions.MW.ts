@@ -44,7 +44,7 @@ function didLose(state:Gamestate){
 function createConnectionDeck() {
   let deck:Card[]=[];
   for (const source of sources){
-    deck.push({type:'connection',sourceName:source.name,misinfoType:source.category});
+    deck.push({cardType:'connection',sourceName:source.name,misinfoType:source.category});
   }
   return deck;
 }
@@ -52,7 +52,7 @@ function createConnectionDeck() {
 function createMisinformationDeck() {
   let deck:Card[]=[];
   for (const source of sources){
-    deck.push({type:'misinformation',sourceName:source.name,misinfoType:source.category});
+    deck.push({cardType:'misinformation',sourceName:source.name,misinfoType:source.category});
   }
   return deck;
 }
@@ -71,9 +71,9 @@ function insertViralCards(oldState:Gamestate) {
 
   let oldDeck=oldState.connectionDeck
 
-  const viral1:Card={type:"viral",sourceName:null, misinfoType:null}
-  const viral2:Card={type:"viral",sourceName:null, misinfoType:null}
-  const viral3:Card={type:"viral",sourceName:null, misinfoType:null}
+  const viral1:Card={cardType:"viral",sourceName:null, misinfoType:null}
+  const viral2:Card={cardType:"viral",sourceName:null, misinfoType:null}
+  const viral3:Card={cardType:"viral",sourceName:null, misinfoType:null}
   let first=oldDeck.slice(0,(oldDeck.length/3))
   let second=oldDeck.slice((oldDeck.length/3),(2*oldDeck.length/3))
   let third=oldDeck.slice((2*oldDeck.length/3),oldDeck.length)
@@ -151,7 +151,7 @@ function outbreak(outbreak_source:Source,oldState:Gamestate) {
 function connectionCard (oldState:Gamestate) {
   let newCard:Card=oldState.connectionDeck[0]
 
-  if(newCard.type==='viral'){
+  if(newCard.cardType==='viral'){
     viral(oldState)
   }
   else {
@@ -162,7 +162,7 @@ function connectionCard (oldState:Gamestate) {
         if(player.cards.length>6)
           {
             let chosenCard={
-              type: 'connection',
+              cardType: 'connection',
               sourceName: 'University',
               misinfoType: 'community',
             } //* front end to give player choice of card to delete
@@ -217,22 +217,38 @@ function setUp(oldState:Gamestate){
  const withoutViral=createConnectionDeck();
  let cards;
  let misinfo=6;
+ let index=0;
+ let weights=[3,3,2,2,1,1]
 
- if(oldState.players.length>2) cards=3;
- else cards=2
-
- while(cards>0){
-   connectionCard(oldState)
-   cards--
- }
- const connectionDeck=insertViralCards({...oldState,connectionDeck:withoutViral})
  const misinformationDeck=createMisinformationDeck();
- const players=shuffle(oldState.players)
+ const players=shuffle(oldState.players) 
+ let updateState={...oldState,misinformationDeckActive:misinformationDeck,players}
+
+ if(updateState.players.length>2) cards=3;
+ else cards=2
+  
+ for(let i=0; i<updateState.players.length; i++) {
+  while(cards>0){
+    updateState=connectionCard(updateState)
+    cards--
+  }
+  updateState.players[i].isCurrent=false;
+  if(i!==updateState.players.length-1) updateState.players[i+1].isCurrent=true;
+  else updateState.players[0].isCurrent=true;
+ }
+
+ updateState=insertViralCards({...updateState,connectionDeck:withoutViral})
+ 
 
  while(misinfo>0){
-   //TODO
+  let weight=weights[index]
+  updateState=infoCard(updateState,weight,false)
+  index++
+  misinfo--
  }
 
+ let newState={...updateState}
+ return newState
 }
 
 
