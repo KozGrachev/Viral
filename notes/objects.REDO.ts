@@ -7,9 +7,9 @@ export interface Gamestate{
   spreadLevel: number; 
   chaosMeter: number;
   misinformation: {
-    red:Misinformation,
-    blue:Misinformation,
-    yellow:Misinformation
+    community:Misinformation,
+    social:Misinformation,
+    relations:Misinformation
   };
   connectionDeck: Card[];
   misinformationDeckActive: Card[];
@@ -31,16 +31,16 @@ interface Player {
 
 export interface Source {
   name: string; 
-  color: string;
-  markersRed: number;
-  markersYellow: number;
-  markersBlue: number;
+  area: string;
+  markers_community: number;
+  markers_social: number;
+  markers_relations: number;
   canMove: boolean;
   canLogOn: boolean;
   canLogOff: boolean;
-  canClearRed: boolean;
-  canClearBlue: boolean;
-  canClearYellow: boolean;
+  canClearCommunity: boolean;
+  canClearSocial: boolean;
+  canClearRelations: boolean;
   canShare: Player[]; //? arrray of Players at same location
   canDebunk: string[]; //? array of misinfos possible to debunk at this location?
 }
@@ -54,7 +54,7 @@ interface Misinformation {
 export interface Card {
   type: string; //? 'connection', 'minformation' or 'viral'
   sourceName: string | null;
-  color: string | null;
+  area: string | null;
 }
 
 //* CLIENT

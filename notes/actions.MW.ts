@@ -1,4 +1,5 @@
 import {Gamestate,Card} from './objects.REDO'
+import {sources} from './sources'
 
 //! HELPER HELPERS
 function shuffle(array:any[]) { 
@@ -18,9 +19,9 @@ function shuffle(array:any[]) {
 
 
 function didWin(state:Gamestate) {
-  if (state.misinformation.red.debunked===true&& 
-    state.misinformation.blue.debunked===true&&
-    state.misinformation.yellow.debunked===true)
+  if (state.misinformation.community.debunked===true&& 
+    state.misinformation.social.debunked===true&&
+    state.misinformation.relations.debunked===true)
   return true 
   else return false; 
 }
@@ -29,9 +30,9 @@ function didLose(state:Gamestate){
   if (state.chaosMeter===4)
     return true
   if (
-    state.misinformation.red.markersLeft===0|| 
-    state.misinformation.blue.markersLeft===0|| 
-    state.misinformation.yellow.markersLeft===0
+    state.misinformation.community.markersLeft===0|| 
+    state.misinformation.social.markersLeft===0|| 
+    state.misinformation.relations.markersLeft===0
     )
     return true
   if (state.connectionDeck.length===0){
@@ -54,9 +55,9 @@ function insertViralCards(oldState:Gamestate) {
 
   let oldDeck=oldState.connectionDeck
 
-  const viral1:Card={type:"viral",sourceName:null, color:null}
-  const viral2:Card={type:"viral",sourceName:null, color:null}
-  const viral3:Card={type:"viral",sourceName:null, color:null}
+  const viral1:Card={type:"viral",sourceName:null, area:null}
+  const viral2:Card={type:"viral",sourceName:null, area:null}
+  const viral3:Card={type:"viral",sourceName:null, area:null}
   let first=oldDeck.slice(0,(oldDeck.length/3))
   let second=oldDeck.slice((oldDeck.length/3),(2*oldDeck.length/3))
   let third=oldDeck.slice((2*oldDeck.length/3),oldDeck.length)
@@ -93,10 +94,16 @@ function infoCard (oldState:Gamestate,weight:number,viral:boolean) {
   for(const source of oldState.sources){
     if(source.name===drawSource){
       while(weight>0){
+        if(source[`markers_${source.area}`]==3){
+          //! OUTBREAK
+        }
+        else{
         //* add marker to source
-        source[`markers${source.color}`]++
+        source[`markers_${source.area}`]++
         //* remove marker from global bucket
-        oldState.misinformation[source.color]--
+        oldState.misinformation[source.area]--
+        didLose(oldState)
+        }
         weight--
       }
     }
@@ -125,7 +132,7 @@ function connectionCard (oldState:Gamestate) {
             let chosenCard={
               type: 'connection',
               sourceName: 'University',
-              color: 'blue',
+              area: 'community',
             } //* front end to give player choice of card to delete
             deleteCard(chosenCard,oldState)
           }
@@ -163,10 +170,22 @@ function deleteCard(card:Card,oldState:Gamestate){
 }
 
 function createConnectionDeck() {
-  //todo
+  let deck:Card[]=[];
+  for (const source of sources){
+    deck.push({type:'connection',sourceName:source.name,area:source.category});
+  }
+  return deck;
 }
 
 function createMisinformationDeck() {
+  let deck:Card[]=[];
+  for (const source of sources){
+    deck.push({type:'misinformation',sourceName:source.name,area:source.category});
+  }
+  return deck;
+}
+
+function outbreak() {
   //todo
 }
 
