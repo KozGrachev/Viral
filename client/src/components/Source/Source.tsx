@@ -8,7 +8,7 @@ export interface SourceProps {
 }
 
 
-export const Source: React.FC<SourceProps> = ({ name, connections, category, SVGIcon }) => {
+export const Source: React.FC<SourceProps> = ({ name, connections, category, SVGIcon }) => { // SVGIcon
 
   return (
     <div className={`source-container ${name} ${category}`} >

@@ -1,7 +1,43 @@
 {
+    "plugins": [
+        {
+            "name": "@zeplin/cli-connect-react-plugin"
+        },
+        {
+            "name": "@zeplin/cli-connect-storybook-plugin",
+            "config": {
+                "url": "http://localhost:6006",
+                "startScript": "storybook"
+            }
+        }
+    ],
     "projects": [
         "6019fb32f9aac31f2164dc43"
     ],
     "styleguides": [],
-    "components": []
+    "components": [
+        
+        {
+            "path": "src/components/Source/ZeplinTest/Zep.tsx",
+            "zeplinNames": [
+                "social-icons-group"
+            ]
+        },
+        {
+            "path": "src/stories/Button.tsx",
+            "zeplinNames": [
+                "reddit-icon"
+            ]
+        },
+        {
+            "path": ".zeplin\\components.json",
+            "zeplinIds": [
+                "601a0c5fb88f9027642eceb8"
+            ]
+        },
+        {
+            "path": "src/components/Source/Source.tsx",
+            "zeplinNames": []
+        }
+    ]
 }

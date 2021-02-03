@@ -3,9 +3,18 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Source, SourceProps } from './Source';
 import { withDesign } from 'storybook-addon-designs'
-import { ReactComponent as twitterIcon } from '../../assets/twitter.svg'
+import { ReactComponent as twitterIcon } from '../../assets/twitter-icon.svg'
 import { ReactComponent as instagramIcon } from '../../assets/instagram-icon.svg'
-import { ReactComponent as fancyButton } from '../../assets/nm-button.svg'
+import { ReactComponent as facebookIcon } from '../../assets/facebook-icon.svg'
+import { ReactComponent as tiktokIcon } from '../../assets/tiktok-icon.svg'
+import { ReactComponent as whatsappIcon } from '../../assets/whatsapp-icon.svg'
+import { ReactComponent as redditIcon } from '../../assets/reddit-icon.svg'
+import { ReactComponent as youtubeIcon } from '../../assets/youtube-icon.svg'
+import { ReactComponent as illuminatifyIcon } from '../../assets/illuminatify-icon.svg'
+// import { ReactComponent as instagramIcon } from '../../assets/instagram-icon.svg'
+// import { ReactComponent as instagramIcon } from '../../assets/instagram-icon.svg'
+// import { ReactComponent as instagramIcon } from '../../assets/instagram-icon.svg'
+// import { ReactComponent as instagramIcon } from '../../assets/instagram-icon.svg'
 
 export default {
   title: 'Source',
@@ -15,25 +24,6 @@ export default {
 
 const Template: Story<SourceProps> = (args) => <Source {...args} />
 
-export const Twit = Template.bind({});
-Twit.args = {
-  name: 'twitter',
-  category: 'social',
-  SVGIcon: twitterIcon
-}
-
-export const Instagram = Template.bind({});
-Instagram.args = {
-  name: 'instagram',
-  category: 'social',
-  SVGIcon: instagramIcon
-}
-
-export const FancyButton = Template.bind({});
-FancyButton.args = {
-  name: 'FancyButton',
-  SVGIcon: fancyButton
-}
 
 
 // export const HighSchool = Template.bind({});
@@ -133,53 +123,61 @@ FancyButton.args = {
 //   category: 'relations'
 // }
 
-// export const Illuminati = Template.bind({});
-// Illuminati.args = {
-//   name: 'illuminati',
-//   category: 'social'
-// }
+export const Illuminati = Template.bind({});
+Illuminati.args = {
+  name: 'illuminati',
+  category: 'social',
+  SVGIcon: illuminatifyIcon
+}
 
-// export const YouTube = Template.bind({});
-// YouTube.args = {
-//   name: 'youtube',
-//   category: 'social'
-// }
+export const YouTube = Template.bind({});
+YouTube.args = {
+  name: 'youtube',
+  category: 'social',
+  SVGIcon: youtubeIcon
+}
 
-// export const Instagram = Template.bind({});
-// Instagram.args = {
-//   name: 'instagram',
-//   category: 'social'
-// }
+export const Instagram = Template.bind({});
+Instagram.args = {
+  name: 'instagram',
+  category: 'social',
+  SVGIcon: instagramIcon
+}
 
-// export const Facebook = Template.bind({});
-// Facebook.args = {
-//   name: 'facebook',
-//   category: 'social'
-// }
+export const Facebook = Template.bind({});
+Facebook.args = {
+  name: 'facebook',
+  category: 'social',
+  SVGIcon: facebookIcon
+}
 
-// export const Reddit = Template.bind({});
-// Reddit.args = {
-//   name: 'reddit',
-//   category: 'social'
-// }
+export const Reddit = Template.bind({});
+Reddit.args = {
+  name: 'reddit',
+  category: 'social',
+  SVGIcon: redditIcon
+}
 
-// export const Twitter = Template.bind({});
-// Twitter.args = {
-//   name: 'twitter',
-//   category: 'social'
-// }
+export const Twitter = Template.bind({});
+Twitter.args = {
+  name: 'twitter',
+  category: 'social',
+  SVGIcon: twitterIcon
+}
 
-// export const WhatsApp = Template.bind({});
-// WhatsApp.args = {
-//   name: 'whatsapp',
-//   category: 'social'
-// }
+export const WhatsApp = Template.bind({});
+WhatsApp.args = {
+  name: 'whatsapp',
+  category: 'social',
+  SVGIcon: whatsappIcon
+}
 
-// export const TikTok = Template.bind({});
-// TikTok.args = {
-//   name: 'tik-tok',
-//   category: 'social'
-// }
+export const TikTok = Template.bind({});
+TikTok.args = {
+  name: 'tik-tok',
+  category: 'social',
+  SVGIcon: tiktokIcon
+}
 
 
 

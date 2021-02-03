@@ -8,7 +8,7 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
     "@storybook/preset-scss",
-    "storybook-addon-designs",
+    // "storybook-addon-designs",
     "storybook-addon-jsx"
   ],
   // typescript: {
