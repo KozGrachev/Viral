@@ -210,7 +210,7 @@ function createPlayer(name:string,color:string,oldState:Gamestate){
     cardHandOverflow:false,
     isCurrent:false,
     pawnColor:color,
-    currentSource:'crazy daves'})
+    currentSource:'crazy dave'})
 }
 
 function setUp(oldState:Gamestate){
