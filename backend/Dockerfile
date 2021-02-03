@@ -10,12 +10,12 @@ WORKDIR /Vital_Docker
 COPY package*.json /Vital_Docker
 
 # install all dependencies
-RUN npm install
-
-# TypeScript
-RUN npm run tsc
+RUN npm install --also=dev
+#
 # Copy existing application directory contents
-COPY ./ /Vital_Docker
+COPY . /Vital_Docker
 
 EXPOSE 3002
 CMD [ "node", "index.js" ]
+
+# To allow default imports in CommonJS/AMD/UMD (e.g. import fs from "fs"), the typescript compiler adds __esModule flag and checks it in a transpiled code (from ES6 to CommonJS). It imports default exports by using an __importDefault helper function (which checks the __esModule flag)
