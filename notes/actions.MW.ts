@@ -1,8 +1,7 @@
 import {Gamestate,ViralCard,ConnectionCard} from './objects'
 
 //! HELPER HELPERS
-function shuffle(exampleDeck) { 
-  let array=exampleDeck
+function shuffle(array:any[]) { 
   let currentIndex=array.length
   let tempValue
   let randomIndex
@@ -132,8 +131,9 @@ function connectionCard (oldState:Gamestate) {
 }
 
 function viral (oldState:Gamestate) {
+ 
+ oldState=infoCard(oldState,3,true)
  oldState.spreadLevel++
- infoCard(oldState,3,true)
  //* shuffle passive misinfo deck and put on top of active misinfo deck
  oldState.misinformationDeck.active=[...shuffle(oldState.misinformationDeck.passive),...oldState.misinformationDeck.active]
  let newState={...oldState}
@@ -153,6 +153,14 @@ function deleteCard(card:ConnectionCard,oldState:Gamestate){
   let newState={...oldState}
   return newState
 
+}
+
+function createConnectionDeck() {
+  //todo
+}
+
+function createMisinformationDeck() {
+  //todo
 }
 
 
