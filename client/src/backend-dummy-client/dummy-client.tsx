@@ -10,13 +10,6 @@ import { GameState } from "../types/gameStateTypes";
 dotenv.config({ path: __dirname + '../.env' });
 const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 
-<<<<<<< HEAD
-socket.on('updatedState', (state: GameStatedummy) => {
-=======
-
-//  socket.emit(state))
-
-
 
 const fakeUser = { username: 'Maria', room: '1' }
 
@@ -28,36 +21,16 @@ store.subscribe(() => {
   }
 })
 
->>>>>>> 647e7fe9070a7aeecc218426df102e9eec57afe6
 
 //data coming from backend 
 socket.on('updatedState', (newState: GameState) => {
-  console.log('state is back to client', newState.currentTurn.movesLeft, 'status' )
+  console.log('state is back to client', newState.currentTurn.movesLeft, 'status')
   newState.received = true;
   store.dispatch(updateGameState(newState))
 })
 
 
-
-// const stateAction = (state) => ({
-//   type: 'UPDATE_STORE',
-//   payload: state,
-// });
-
-// //add todo will be called from the component
-// export const updateState = (state) => {
-//   return (dispatch) => {
-//     dispatch(stateAction(state));
-
-//   }
-// }
-
-
-// export const sendChangedStateToBE = (state: GameStatedummy): void => {
-//   socket.emit('changeState', { fakeUser, state })
-// }
-
-export const joinRoom = (username: string, room: string) => {
+const joinRoom = (username: string, room: string) => {
 
   // ultimately will passed on or read from the url  with 
   // const { username, room } = Qs.parse(location.search, {
@@ -74,7 +47,7 @@ socket.on('joinConfirmation', (message: string) => {
 });
 
 
-// on click => 
+// on 'start' => 
 joinRoom(fakeUser.username, fakeUser.room);
 
 

@@ -4,7 +4,7 @@ import { GameState, UPDATE_GAME_STATE, GameStateActionTypes, Player, Turn} from 
 // we need to create an action for each reduced case 
 
 
-//redux action to update whole gameState
+//redux action to update whole gameState // examples 
 export function updateGameState(gameState: GameState): GameStateActionTypes {
   
   return {

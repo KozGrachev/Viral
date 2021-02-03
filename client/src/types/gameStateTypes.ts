@@ -24,12 +24,12 @@ export interface GameState {
   misinformationDeck: MisinformationDeck;
   currentTurn: Turn
 }
-export interface Player { 
-  name: string; 
+export interface Player {
+  name: string;
   cardHandFull: boolean;
-  cards:ConnectionCard[]; 
-  isCurrent: boolean; 
-  pawnColor:string; 
+  cards: ConnectionCard[];
+  isCurrent: boolean;
+  pawnColor: string;
   // role:Role, 
   currentSource: Source,
 }
@@ -43,8 +43,8 @@ export interface Player {
 
 export interface Source {
   // id:number; ? is this needed ?
-  name:string; 
-  color: string; 
+  name: string;
+  color: string;
   //! Removed player from source, current location fits better on Player
   markers: Marker[];
   //? these below checks indicate whether a player can perform actions on the source at any point, such as moving to it, logging on/off, etc
@@ -71,45 +71,45 @@ export interface Marker {
 }
 
 
-export interface MarkerStatus { 
+export interface MarkerStatus {
   red: number;
   blue: number;
-  yellow:number
+  yellow: number
 }
 
 export interface Misinformation {
   name: string;
   debunked: boolean;
   //! Eradicated removed as not in this verison of the game
-  markersLeft: number; 
+  markersLeft: number;
 }
 
 
 type ViralCard = { // Constant
-  action:string
+  action: string
   //? what does viral card need to contain? can cards be integrated?
 }
 
 export interface ConnectionCard { // Contant
   source: Source;
-  color:Source['color']; 
+  color: Source['color'];
 }
 
 export interface ConnectionDeck {
-  active:[ConnectionCard | ViralCard];
+  active: [ConnectionCard | ViralCard];
   //! passive removed as cards just destroyed
 }
 
 
 export interface MisinformationCard {
-  source: Source; 
+  source: Source;
 }
 
 
 export interface MisinformationDeck {
-  active: MisinformationCard[]; 
-  passive: MisinformationCard[]; 
-  
+  active: MisinformationCard[];
+  passive: MisinformationCard[];
+
 }
 
 //Redux Types
@@ -117,7 +117,7 @@ export interface MisinformationDeck {
 
 export const UPDATE_GAME_STATE = 'UPDATE_GAME_STATE'
 export const UPDATE_PLAYER_LOCATION = 'UPDATE_PLAYER_MOVE'
-export const UPDATE_MOVES_LEFT='UPDATE_MOVES_LEFT'
+export const UPDATE_MOVES_LEFT = 'UPDATE_MOVES_LEFT'
 //action types to update the game state
 interface UpdateGameStateAction {
   type: typeof UPDATE_GAME_STATE

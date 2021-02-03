@@ -5,8 +5,6 @@ import { GameState } from '../../types/gameStateTypes'
 //here should be a initial State of the Game
 const initialState: GameState = gameState
 
-
-
 export function gameStateReducer(
   state = initialState,
   action: GameStateActionTypes
@@ -18,24 +16,21 @@ export function gameStateReducer(
       }
     case UPDATE_PLAYER_LOCATION:
       return {
-        ...state, received:false, ...state.players.map(player => {
+        ...state, received: false, ...state.players.map(player => {
           if (state.currentTurn.player === player) {
             return player.currentSource = action.payload
           } else {
             return state;
           }
         })
-        // or //  helperFunction(action.payload)
-        //or 
-        //helper function
+        // or helper function
       }
     case UPDATE_MOVES_LEFT:
       return {
-        ...state,received:false,
+        ...state, received: false,
         currentTurn: { ...state.currentTurn, movesLeft: action.payload }
       }
 
     default: return state
   }
-  // return emit()
 }

@@ -48,17 +48,6 @@ io.on('connection', (socket) => {
       //   // will go and save this to redis 
     });
 
-
-  // socket.on('onchangeState', ({ user, state }: { user: IUser, state: GameState }) => {
-  //   console.log(user, 'user from change state ');
-  //   socket.broadcast.to(user.room).emit('updatedState', state);
-  //   // will go and save this to redis 
-  // });
-
-  //   socket.emit will send back message to sender only,
-  // io.emit will send message to all the client including sender
-  // if you want to send message to all but not back to sender then socket.broadcast.emit
-
   // Runs when client disconnects
   socket.on('disconnect', () => {
     console.log('disconnect works');
