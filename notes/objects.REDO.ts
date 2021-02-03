@@ -52,9 +52,9 @@ interface Misinformation {
 }
 
 interface Card {
-  type: string; //? 'connection', 'minformation' or 'viral'
+  cardType: string; //? 'connection', 'minformation' or 'viral'
   sourceName: string | null;
-  area: string | null;
+  misinfoType: string | null;
 }
 
 //* CLIENT

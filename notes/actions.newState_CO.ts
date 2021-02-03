@@ -1,6 +1,8 @@
 //* ACTIONS
 
+
 function moveAction (oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate {
+  //? update to one function with conditions to incorporate logon and off? (add card disposal mechanic) 
   const newState = 
   {
     ...oldState,
@@ -21,6 +23,41 @@ function moveAction (oldState: Gamestate, currentPlayerID: Player['id'], locatio
 }
 
 
+function clearMisinfo (oldState: Gamestate, currentPlayerID: Player['id'], misinfoType: Misinformation['name'], location: Source['name']): Gamestate {
+  const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
+  // default markers to remove to 1, and update if debunked 
+  let noOfMarkers: number = 1;
+  // check if any colours/misinformations have been debunked
+  if (oldState.misinformation[misinfoType].debunked) {
+    noOfMarkers = oldState.sources[sourceIndex][`markers_${misinfoType}`]
+  };
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    sources : oldState.sources
+      .map((source) => source.name === location ?
+          { ...source, [`markers_${misinfoType}`] : source[`markers_${misinfoType}`] - noOfMarkers } :
+          source
+      ),
+    misinformation: {
+      ...oldState.misinformation,
+      [misinfoType] : {
+        ...oldState.misinformation[misinfoType],
+        markersLeft : oldState.misinformation[misinfoType].markersLeft + noOfMarkers
+      }
+    },
+    turnMovesLeft : oldState.turnMovesLeft - 1 //* decrement turn move count here
+  };
+  if (newState.turnMovesLeft > 0) {
+    return updatePossibleActions(newState, currentPlayerID)
+  } else {
+    //? trigger next turn? -> another function
+    return newState;
+  }
+}
+
+
+
 //* TURN
 
 function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
@@ -29,7 +66,7 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
   const location: Player['currentSource'] = oldState.players[playerIndex].currentSource;
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
   //* move check
-  const adjacents: string[] = connections[location];
+  const adjacents: string[] = connections[location]; //! this may be changed relative to the sources/connections object
   //* clear checks
   const clearCommunityMisinfo: boolean = oldState.sources[sourceIndex].markers_community > 0;
   const clearSocialMisinfo: boolean = oldState.sources[sourceIndex].markers_social > 0;
@@ -61,23 +98,23 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
   // check if we are at home (debunk 1/2)
   const atHome: boolean = location === 'crazy dave';
   // check hand contains 4 of any misinfo type/area (debunk 2/2)
-  const debunkable: string[] = []
+  const debunkable: Misinformation['name'][] = []
   if (atHome) {
     if (
       oldState.players[playerIndex].cards
-      .filter((card) => card.area === 'community')
+      .filter((card) => card.misinfoType === 'community')
       .length >= 4) {
         debunkable.push('community')
       };
     if (
       oldState.players[playerIndex].cards
-      .filter((card) => card.area === 'social')
+      .filter((card) => card.misinfoType === 'social')
       .length >= 4) {
         debunkable.push('social')
       };
     if (
       oldState.players[playerIndex].cards
-      .filter((card) => card.area === 'relations')
+      .filter((card) => card.misinfoType === 'relations')
       .length >= 4) {
         debunkable.push('relations')
       };
@@ -114,6 +151,9 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
 }
 
 //* HELPERS
+
+//find next player (using id and turn array)
+//find next player (using id and turn array)
 
 
 //* RESOURCES
