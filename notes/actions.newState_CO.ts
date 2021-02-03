@@ -1,8 +1,7 @@
 //* ACTIONS
 
 
-function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate {
-  //? update to one function with conditions to incorporate logon and off? (add card disposal mechanic) 
+function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate { 
   const newState: Gamestate = 
   {
     ...oldState,
@@ -13,13 +12,7 @@ function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location
       ),
     turnMovesLeft : oldState.turnMovesLeft - 1 
   };
-  //? encapsulate below into nextMove check?
-  if (newState.turnMovesLeft > 0) {
-    return updatePossibleActions(newState, currentPlayerID)
-  } else {
-    //? trigger next turn? -> another function
-    return newState;
-  }
+  return nextMoveChecker(newState, currentPlayerID);
 }
 
 
@@ -48,12 +41,7 @@ function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'], misinf
     },
     turnMovesLeft : oldState.turnMovesLeft - 1 
   };
-  if (newState.turnMovesLeft > 0) {
-    return updatePossibleActions(newState, currentPlayerID)
-  } else {
-    //? trigger next turn? -> another function
-    return newState;
-  }
+  return nextMoveChecker(newState, currentPlayerID);
 }
 
 
@@ -82,19 +70,9 @@ function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], recipient
       ),
     turnMovesLeft : oldState.turnMovesLeft - 1
   };
-  if (newState.turnMovesLeft > 0) {
-    return updatePossibleActions(newState, currentPlayerID)
-  } else {
-    //? trigger next turn? -> another function
-    return newState;
-  }
+  return nextMoveChecker(newState, currentPlayerID);
 }
 
-
-//* Logon action / Logoff action
-//! these actions are identical, but will be passed different card (matching destination location for logon, and players current location for logoff)
-
-//? called as event handler, will be passed player, location, and card)
 
 function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name'], usedCard: Card['sourceName']): Gamestate {
   // remove card from player hand
@@ -113,12 +91,7 @@ function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], location: 
       ),
     turnMovesLeft : oldState.turnMovesLeft - 1 
   };
-  if (newState.turnMovesLeft > 0) {
-    return updatePossibleActions(newState, currentPlayerID)
-  } else {
-    //? trigger next turn? -> another function
-    return newState;
-  } 
+  return nextMoveChecker(newState, currentPlayerID); 
 }
 
 //* TURN
@@ -215,8 +188,16 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
 
 //* HELPERS
 
-//find next player (using id and turn array)
-//find next player (using id and turn array)
+//find next player (using id and turn array) - MALCOLM'S FUNCTION
+
+function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  if (oldState.turnMovesLeft > 0) {
+    return updatePossibleActions(oldState, currentPlayerID)
+  } else {
+    //? move onto 'board actions' part of turn
+    return oldState; //! change here
+  }
+}
 
 
 //* RESOURCES
