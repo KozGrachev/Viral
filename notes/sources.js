@@ -16,7 +16,7 @@ export const sources = [
   },
   {
     name: 'local cult',
-    connections: ['taxi', 'pub', 'auntie'],
+    connections: ['taxi', 'pub', 'uncle-eugene'],
     category:'community'
   },
   {
@@ -45,13 +45,13 @@ export const sources = [
     category: 'community'
   },
   {
-    name: 'auntie',
+    name: 'uncle-eugene',
     connections: ['local cult', 'opinionated grandpa', 'mother-in-law', 'guy at the bus stop'],
     category: 'relations'
   },
   {
     name: 'mother-in-law',
-    connections: ['auntie', 'evil-ex', 'cousin'],
+    connections: ['uncle-eugene', 'evil-ex', 'cousin'],
     category: 'relations'
   },
   {
@@ -71,7 +71,7 @@ export const sources = [
   },
   {
     name: 'guy at the bus stop',
-    connections: ['auntie', 'evil-ex', 'crazy dave'],
+    connections: ['uncle-eugene', 'evil-ex', 'crazy dave'],
     category: 'relations'
   },
   {
@@ -81,7 +81,7 @@ export const sources = [
   },
   {
     name: 'opinionated grandpa',
-    connections: ['crazy dave', 'auntie', 'ASDA'],
+    connections: ['crazy dave', 'uncle-eugene', 'ASDA'],
     category: 'relations'
   },
   {
