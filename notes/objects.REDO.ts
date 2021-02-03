@@ -1,6 +1,6 @@
 //* STATE
 
-interface Gamestate{
+export interface Gamestate{
   sources: Source[];
   players: Player[];
   turnOrder: string[];
@@ -29,9 +29,9 @@ interface Player {
   currentSource: string;
 }
 
-interface Source {
+export interface Source {
   name: string; 
-  area: string;
+  misinfoType: string;
   markers_community: number;
   markers_social: number;
   markers_relations: number;
@@ -51,8 +51,10 @@ interface Misinformation {
   markersLeft: number; 
 }
 
-interface Card {
+
+export interface Card {
   cardType: string; //? 'connection', 'minformation' or 'viral'
+
   sourceName: string | null;
   misinfoType: string | null;
 }

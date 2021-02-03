@@ -1,4 +1,5 @@
-import {Gamestate,ViralCard,ConnectionCard} from './objects'
+import {Gamestate,Card,Source} from './objects.REDO'
+import {sources} from './sources'
 
 //! HELPER HELPERS
 function shuffle(array:any[]) { 
@@ -18,9 +19,9 @@ function shuffle(array:any[]) {
 
 
 function didWin(state:Gamestate) {
-  if (state.misinformation.red.debunked===true&& 
-    state.misinformation.blue.debunked===true&&
-    state.misinformation.yellow.debunked===true)
+  if (state.misinformation.community.debunked===true&& 
+    state.misinformation.social.debunked===true&&
+    state.misinformation.relations.debunked===true)
   return true 
   else return false; 
 }
@@ -29,15 +30,31 @@ function didLose(state:Gamestate){
   if (state.chaosMeter===4)
     return true
   if (
-    state.misinformation.red.markersLeft===0|| 
-    state.misinformation.blue.markersLeft===0|| 
-    state.misinformation.yellow.markersLeft===0
+    state.misinformation.community.markersLeft===0|| 
+    state.misinformation.social.markersLeft===0|| 
+    state.misinformation.relations.markersLeft===0
     )
     return true
-  if (state.connectionDeck.active.length===0){
+  if (state.connectionDeck.length===0){
     return true
   }
   return false
+}
+
+function createConnectionDeck() {
+  let deck:Card[]=[];
+  for (const source of sources){
+    deck.push({type:'connection',sourceName:source.name,misinfoType:source.category});
+  }
+  return deck;
+}
+
+function createMisinformationDeck() {
+  let deck:Card[]=[];
+  for (const source of sources){
+    deck.push({type:'misinformation',sourceName:source.name,misinfoType:source.category});
+  }
+  return deck;
 }
 
 //! SET STATE
@@ -52,11 +69,11 @@ function playerOrder(oldState:Gamestate) {
 
 function insertViralCards(oldState:Gamestate) {
 
-  let oldDeck=oldState.connectionDeck.active
+  let oldDeck=oldState.connectionDeck
 
-  const viral1:ViralCard={action:"viral"}
-  const viral2:ViralCard={action:"viral"}
-  const viral3:ViralCard={action:"viral"}
+  const viral1:Card={type:"viral",sourceName:null, misinfoType:null}
+  const viral2:Card={type:"viral",sourceName:null, misinfoType:null}
+  const viral3:Card={type:"viral",sourceName:null, misinfoType:null}
   let first=oldDeck.slice(0,(oldDeck.length/3))
   let second=oldDeck.slice((oldDeck.length/3),(2*oldDeck.length/3))
   let third=oldDeck.slice((2*oldDeck.length/3),oldDeck.length)
@@ -80,36 +97,61 @@ function insertViralCards(oldState:Gamestate) {
 
 function infoCard (oldState:Gamestate,weight:number,viral:boolean) {
   
-  let oldDeck=oldState.misinformationDeck
-
+  let oldDeck=oldState.misinformationDeckActive
   let drawSource
 
   if(!viral){ 
-    drawSource=oldDeck.active[0].source
+    drawSource=oldDeck[0].sourceName
   }
   else { 
-    drawSource=oldDeck.active[oldDeck.active.length-1].source
+    drawSource=oldDeck[oldDeck.length-1].sourceName //card name
   }
-    for(const source of oldState.sources){
-      if(source.name===drawSource){
-        while(weight>0){
-          source.markers[source.color]++
-          oldState.misinformation[source.color]--
+
+  for(const source of oldState.sources){
+    if(source.name===drawSource){
+      while(weight>0){
+        if(source[`markers_${source.misinfoType}`]==3){
+          outbreak(source,oldState) //! OUTBREAK
         }
+        else{
+        //* add marker to source
+        source[`markers_${source.misinfoType}`]++
+        //* remove marker from global bucket
+        oldState.misinformation[source.misinfoType]--
+        didLose(oldState)
+        }
+        weight--
       }
+    }
   }
-  oldDeck.passive.push(oldDeck.active[0])
-  oldDeck.active.shift()
+  oldState.misinformationDeckPassive.push(oldDeck[0])
+  oldState.misinformationDeckActive.shift()
 
   let newState={...oldState}
   return newState
 }
 
+function outbreak(outbreak_source:Source,oldState:Gamestate) {
+  for (const source of sources){
+    if(source.sourceName===outbreak_source.name){
+      for(const connection of source.connections){
+        if(oldState.sources[`${connection}`][`markers_${outbreak_source.misinfoType}`]===3){
+          outbreak(oldState.sources[`${connection}`],oldState)
+        }
+        else{
+        oldState.sources[connection][`markers_${outbreak_source.misinfoType}`]++;
+        }
+      }
+    }
+  }
+}
+
+
 
 function connectionCard (oldState:Gamestate) {
-  let newCard:any=oldState.connectionDeck.active[0]
+  let newCard:Card=oldState.connectionDeck[0]
 
-  if(newCard.action==='viral'){
+  if(newCard.type==='viral'){
     viral(oldState)
   }
   else {
@@ -119,7 +161,11 @@ function connectionCard (oldState:Gamestate) {
         player.cards.push(newCard)
         if(player.cards.length>6)
           {
-            let chosenCard="whatever" //* front end to give player choice of card to delete
+            let chosenCard={
+              type: 'connection',
+              sourceName: 'University',
+              misinfoType: 'community',
+            } //* front end to give player choice of card to delete
             deleteCard(chosenCard,oldState)
           }
       }
@@ -135,12 +181,12 @@ function viral (oldState:Gamestate) {
  oldState=infoCard(oldState,3,true)
  oldState.spreadLevel++
  //* shuffle passive misinfo deck and put on top of active misinfo deck
- oldState.misinformationDeck.active=[...shuffle(oldState.misinformationDeck.passive),...oldState.misinformationDeck.active]
+ oldState.misinformationDeckActive=[...shuffle(oldState.misinformationDeckPassive),...oldState.misinformationDeckActive]
  let newState={...oldState}
  return newState
 }
 
-function deleteCard(card:ConnectionCard,oldState:Gamestate){
+function deleteCard(card:Card,oldState:Gamestate){
   for (const player of oldState.players) {
     if(player.isCurrent){
       for(const [i,value] of player.cards.entries()){ 
@@ -155,13 +201,42 @@ function deleteCard(card:ConnectionCard,oldState:Gamestate){
 
 }
 
-function createConnectionDeck() {
-  //todo
+function createPlayer(name:string,color:string,oldState:Gamestate){ 
+  let random=Math.floor(Math.random() * 100000)
+  oldState.players.push({
+    name,
+    id:String(random),
+    cards:[],
+    cardHandOverflow:false,
+    isCurrent:false,
+    pawnColor:color,
+    currentSource:'crazy daves'})
 }
 
-function createMisinformationDeck() {
-  //todo
+function setUp(oldState:Gamestate){
+ const withoutViral=createConnectionDeck();
+ let cards;
+ let misinfo=6;
+
+ if(oldState.players.length>2) cards=3;
+ else cards=2
+
+ while(cards>0){
+   connectionCard(oldState)
+   cards--
+ }
+ const connectionDeck=insertViralCards({...oldState,connectionDeck:withoutViral})
+ const misinformationDeck=createMisinformationDeck();
+ const players=shuffle(oldState.players)
+
+ while(misinfo>0){
+   //TODO
+ }
+
 }
+
+
+
 
 
 
