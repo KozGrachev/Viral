@@ -92,32 +92,39 @@ const initDummyState: Gamestate = {
     {
       type: 'connection',
       sourceName: 'University',
+      color: 'blue',
     },
     {
       type: 'connection',
       sourceName: 'Gym',
+      color: 'red',
     },
     {
       type: 'connection',
       sourceName: 'Instagram',
+      color: 'yellow',
     },
     {
       type: 'viral',
       sourceName: null,
+      color: null,
     },
   ],
   misinformationDeckActive: [
     {
       type: 'misinformation',
       sourceName: 'University',
+      color: 'blue',
     },
     {
       type: 'misinformation',
       sourceName: 'Gym',
+      color: 'red',
     },
     {
       type: 'misinformation',
       sourceName: 'Instagram',
+      color: 'yellow',
     },
   ],
   misinformationDeckPassive: [],

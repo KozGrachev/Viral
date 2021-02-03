@@ -101,7 +101,7 @@ function updatePossibleActions(currentPlayer) {
 
 //* for getting connection from source location (helper function) 
 
-function getConnections(location) {
+function getConnection(location) {
   const connections = Object.entries(Connections)
   .filter(([key]) => key === location)
   .map(([_, value]) => value)
