@@ -96,6 +96,8 @@ function updatePossibleActions(currentPlayer) {
   //todo update current location canDebunk with debunkable array
   //* UPDATE ENTIRE STATE WITH ALL ABOVE CHANGES
   //todo return/dispatch state
+
+  
 }
 
 
@@ -121,6 +123,11 @@ function move (player, location) {
   if (actionCount) {
     updatePossibleActions(player)
   } 
+
+ 
+
+
+  
 }
 
 

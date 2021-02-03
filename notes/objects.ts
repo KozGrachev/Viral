@@ -1,4 +1,3 @@
-
 // //? put obljects here as we use/store stuff
 
 // //Time to save the world!!
@@ -113,9 +112,5 @@
 //   passive: MisinformationCard[]; 
 
 // }
-
-
-
-
 
 
