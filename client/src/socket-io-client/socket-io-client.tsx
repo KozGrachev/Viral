@@ -11,6 +11,10 @@ dotenv.config({ path: __dirname + '../.env' });
 const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 
 const fakeUser = { username: 'Maria', room: '1' }
+// ultimately will passed on or read from the url  with 
+// const { username, room } = Qs.parse(location.search, {
+//   ignoreQueryPrefix: true
+// });
 
 store.subscribe(() => {
   const newState = store.getState()
@@ -29,24 +33,16 @@ socket.on('updatedState', (newState: GameState) => {
 
 
 const joinRoom = (username: string, room: string) => {
-
-  // ultimately will passed on or read from the url  with 
-  // const { username, room } = Qs.parse(location.search, {
-  //   ignoreQueryPrefix: true
-  // });
-
   socket.emit('joinRoom', { username, room });
-
 }
 
 // Message from server
 socket.on('joinConfirmation', (message: string) => {
-  console.log(message);
+  console.log(message); // display message to the screen 
 });
 
 
 // on 'start' => 
 joinRoom(fakeUser.username, fakeUser.room);
-
 
 socket.on('userLeft', (message: string) => console.log(message))
