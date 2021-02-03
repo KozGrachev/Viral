@@ -1,98 +1,226 @@
 //* ACTIONS
 
-function moveAction (oldState: Gamestate, playerID: string, location: string): Gamestate {
-  const newState = 
+
+function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate { 
+  const newState: Gamestate = 
   {
     ...oldState,
     players : oldState.players
-      .map((player) => player.id === playerID ?
+      .map((player) => player.id === currentPlayerID ?
           { ...player, currentSource : location } :
           player
       ),
+    turnMovesLeft : oldState.turnMovesLeft - 1 
+  };
+  return nextMoveChecker(newState, currentPlayerID);
+}
+
+
+function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'], misinfoType: Misinformation['name'], location: Source['name']): Gamestate {
+  const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
+  let noOfMarkers: number = 1;
+  if (oldState.misinformation[misinfoType].debunked) {
+    noOfMarkers = oldState.sources[sourceIndex][`markers_${misinfoType}`]
+  };
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    sources : oldState.sources
+      .map((source) => source.name === location ?
+          { ...source, [`markers_${misinfoType}`] : source[`markers_${misinfoType}`] - noOfMarkers } :
+          source
+      ),
+    misinformation: {
+      ...oldState.misinformation,
+      [misinfoType] : {
+        ...oldState.misinformation[misinfoType],
+        markersLeft : oldState.misinformation[misinfoType].markersLeft + noOfMarkers
+      }
+    },
+    turnMovesLeft : oldState.turnMovesLeft - 1 
+  };
+  return nextMoveChecker(newState, currentPlayerID);
+}
+
+
+function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], recipient: Player['id'], sharedCard: Card['sourceName']): Gamestate {
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    players : oldState.players
+      .map((player) => player.id === currentPlayerID ?
+          { 
+            ...player, 
+            cards : player.cards.filter((card) => card.sourceName !== sharedCard) 
+          } :
+            player.id === recipient ?
+              { 
+                ...player, 
+                cards : [...player.cards, {
+                  cardType: 'connection',
+                  sourceName: sharedCard,
+                  misinfoType: null
+                }] 
+              } :
+                player
+      ),
     turnMovesLeft : oldState.turnMovesLeft - 1
   };
-  //? encapsulate below into nextMove check?
-  if (newState.turnMovesLeft > 0) {
-    // run updatePossibleMoves function
-    return newState;
+  return nextMoveChecker(newState, currentPlayerID);
+}
+
+
+function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name'], usedCard: Card['sourceName']): Gamestate {
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    players : oldState.players
+      .map((player) => player.id === currentPlayerID ?
+          { 
+            ...player, 
+            currentSource : location, 
+            cards : player.cards.filter((card) => card.sourceName !== usedCard)
+          } :
+          player
+      ),
+    turnMovesLeft : oldState.turnMovesLeft - 1 
+  };
+  return nextMoveChecker(newState, currentPlayerID); 
+}
+
+//* Debunk action
+
+//? called as event handler, will be passed player, cards (array of 4), color)
+
+function debunkMisinfo(oldState: Gamestate,  currentPlayerID: Player['id'], usedCards: Card['sourceName'][], misinfoType: Misinformation['name']): Gamestate {
+  // remove cards from player hand
+  //todo update state eg: player.cards.filter((card) => !usedCards.includes(card));
+  // set misinformation type to debunked
+  //todo update state eg: Gamestate.misinformation[color].debunked = true
+
+  
+  // check didWin (SEE: actions.MW) 
+  if (didWin(Gamestate.misinformation)) {
+    //todo update state to win game eg: Gamestate.gameWon = true
   } else {
-    //? trigger next turn?
-    return newState;
+    //todo update actionCount state, eg Gamestate.currentTurn.movesleft
+    if (actionCount) {
+      updatePossibleActions(player)
+    } 
   }
 }
 
 
 //* TURN
 
-function updatePossibleActions(oldState: Gamestate, playerID: string): Gamestate {
-
-  const playerIndex: number = oldState.players.map((player) => player.id).indexOf(playerID);
-  const location: string = oldState.players[playerIndex].currentSource;
+function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  //* settup
+  const playerIndex: number = oldState.players.map((player) => player.id).indexOf(currentPlayerID);
+  const location: Player['currentSource'] = oldState.players[playerIndex].currentSource;
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
-  const adjacents: string[] = connections[location];
-  // create list of locations to update the canMove boolean
-  //todo create list in format that can update state, ie [Gamestate.sources[index].canMove = true, ...] 
-  // check markers
-  // const redMisinfo = location.markers.filter((marker) => marker.color === 'red').length;
-  const redMisinfo: number = oldState.sources[sourceIndex].markersRed
-  const blueMisinfo: number = oldState.sources[sourceIndex].markersBlue
-  const zellowMisinfo: number = oldState.sources[sourceIndex].markersYellow
-  //todo create object to add to state to update the current location's "canClearRed/Blue/Yellow" properties, ie: [Gamestate.sources[index].canClearBlue = true, ...]
-  // check if another player is there
-  const otherPlayers: Player[] = oldState
-    .players
-    .filter((player) => player.id !== playerID)
-    .filter((otherPlayer) => otherPlayer.currentSource.name === location);
-  // check players have space in their hand
-  const possibleShares: Player[] = otherplayers
-    .filter((player) => player.cards.length < 6)
-  //todo update canShare of current source eg [Gamestate.sources[index].canShare = possibleShares]
+  //* move check
+  const adjacents: string[] = connections[location]; //! this may be changed relative to the sources/connections object
+  //* clear checks
+  const clearCommunityMisinfo: boolean = oldState.sources[sourceIndex].markers_community > 0;
+  const clearSocialMisinfo: boolean = oldState.sources[sourceIndex].markers_social > 0;
+  const clearRelationsMisinfo: boolean = oldState.sources[sourceIndex].markers_relations > 0;
+  //* share checks
+  // check if cards in hand
+  let possibleShares: Player[] = [];
+  if (oldState.players[playerIndex].cards.length > 0) {
+    // check if another player is there
+    const otherPlayers: Player[] = oldState
+      .players
+      .filter((player) => player.id !== currentPlayerID)
+      .filter((otherPlayer) => otherPlayer.currentSource === location);
+    // check players have space in their hand
+    possibleShares = otherPlayers
+      .filter((player) => player.cards.length < 6)
+  }
+  //* logoff checks
+  // check hand contains current location card
+  const logoffPossible: boolean = oldState.players[playerIndex].cards
+  .filter((card) => card.sourceName === location)
+  .length > 0;
+  //* logon check
+  // check hand contains other location card
+  const logonPossible: Card['sourceName'][] = oldState.players[playerIndex].cards
+  .map((card) => card.sourceName)
+  .filter((name) => name !== location);
+  //* debunk checks
   // check if we are at home (debunk 1/2)
-  const atHome: boolean = location === "crazy dave's house";
-  // check hand contains current location (logoff)
-  const canLogOff: boolean = oldState.players[playerIndex].cards
-    .filter((card) => card.sourceName === location)
-    .length > 0;
-  //todo update canLogOff state of ALL sources other than current, ie: [Gamestate.sources[index].canLogOff = true, ...]
-  // check hand contains other location (logon)
-  const logonSourceCards: Card[] = oldState.players[playerIndex].cards
-    .map((card) => card.sourceName)
-    .filter((name) => name !== location);
-  //todo update canLogOn of all sources listed in logonSourceCards
-  // check hand contains 4 of any colour (debunk 2/2)
-  const debunkable: string[] = []
+  const atHome: boolean = location === 'crazy dave';
+  // check hand contains 4 of any misinfo type/area (debunk 2/2)
+  const debunkable: Misinformation['name'][] = []
   if (atHome) {
     if (
       oldState.players[playerIndex].cards
-      .filter((card) => card.color === 'red')
+      .filter((card) => card.misinfoType === 'community')
       .length >= 4) {
-        debunkable.push('red')
+        debunkable.push('community')
       };
     if (
       oldState.players[playerIndex].cards
-      .filter((card) => card.color === 'blue')
+      .filter((card) => card.misinfoType === 'social')
       .length >= 4) {
-        debunkable.push('blue')
+        debunkable.push('social')
       };
     if (
       oldState.players[playerIndex].cards
-      .filter((card) => card.color === 'yellow')
+      .filter((card) => card.misinfoType === 'relations')
       .length >= 4) {
-        debunkable.push('yellow')
+        debunkable.push('relations')
       };
   };
-  //todo update current location canDebunk with debunkable array
   //* UPDATE ENTIRE STATE WITH ALL ABOVE CHANGES
-  //todo return/dispatch state
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    sources : oldState.sources
+      .map((source) => source.name === location ?
+          { ...source, 
+            canMove : false,
+            canLogOn: false,
+            canLogOff: false,
+            canClearCommunity: clearCommunityMisinfo,
+            canClearSocial: clearSocialMisinfo,
+            canClearRelations: clearRelationsMisinfo,
+            canShare: possibleShares,
+            canDebunk: debunkable,
+          } :
+          { ...source, 
+            canMove : adjacents.includes(source.name),
+            canLogOn: logonPossible.includes(source.name),
+            canLogOff: logoffPossible,
+            canClearCommunity: clearCommunityMisinfo,
+            canClearSocial: clearSocialMisinfo,
+            canClearRelations: clearRelationsMisinfo,
+            canShare: [],
+            canDebunk: [],
+          }
+      ),
+  };
+  return newState;
 }
 
 //* HELPERS
+
+//find next player (using id and turn array) - MALCOLM'S FUNCTION
+
+function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  if (oldState.turnMovesLeft > 0) {
+    return updatePossibleActions(oldState, currentPlayerID)
+  } else {
+    //? move onto 'board actions' part of turn
+    return oldState; //! change here
+  }
+}
 
 
 //* RESOURCES
 
 //? will be in format { sourceName : [array of source names] }
-const connections: Connections {
+const connections: Connections = {
   source01: [],
   source02: [],
   source03: [],

@@ -51,8 +51,10 @@ interface Misinformation {
   markersLeft: number; 
 }
 
+
 export interface Card {
-  type: string; //? 'connection', 'minformation' or 'viral'
+  cardType: string; //? 'connection', 'minformation' or 'viral'
+
   sourceName: string | null;
   misinfoType: string | null;
 }
