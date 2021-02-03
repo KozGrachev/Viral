@@ -218,7 +218,6 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
 
 //* HELPERS
 
-//find next player (using id and turn array) - MALCOLM'S FUNCTION
 
 function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
   if (oldState.turnMovesLeft > 0) {
@@ -227,6 +226,25 @@ function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id']): Ga
     //? move onto 'board actions' part of turn
     return oldState; //! change here
   }
+}
+
+
+// called when player has chosen to discard card from hand, when cardHandOverflow === true
+function discardCard(oldState: Gamestate, currentPlayerID: Player['id'], discardedCard: Card['sourceName']): Gamestate {
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    players : oldState.players
+      .map((player) => player.id === currentPlayerID ?
+          { 
+            ...player, 
+            cards : player.cards.filter((card) => card.sourceName !== discardedCard),
+            cardHandOverflow: false, 
+          } :
+            player
+      ),
+  };
+  return newState;
 }
 
 
