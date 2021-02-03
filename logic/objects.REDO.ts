@@ -19,7 +19,7 @@ export interface Gamestate{
   gameLost: boolean;
 }
 
-interface Player { 
+export interface Player { 
   name: string; 
   id: string;
   cards: Card[];
@@ -45,7 +45,7 @@ export interface Source {
   canDebunk: string[]; //? array of misinfos possible to debunk at this location?
 }
 
-interface Misinformation {
+export interface Misinformation {
   name: string;
   debunked: boolean;
   markersLeft: number; 
@@ -61,7 +61,7 @@ export interface Card {
 
 //* CLIENT
 
-interface Connections { //! kept client-side
+export interface Connections { //! kept client-side
   source01: string[],
   source02: string[],
   source03: string[],
