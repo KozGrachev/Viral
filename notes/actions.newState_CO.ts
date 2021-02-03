@@ -1,22 +1,21 @@
 //* ACTIONS
 
-function moveAction (oldState: Gamestate, playerID: string, location: string): Gamestate {
+function moveAction (oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate {
   const newState = 
   {
     ...oldState,
     players : oldState.players
-      .map((player) => player.id === playerID ?
+      .map((player) => player.id === currentPlayerID ?
           { ...player, currentSource : location } :
           player
       ),
-    turnMovesLeft : oldState.turnMovesLeft - 1
+    turnMovesLeft : oldState.turnMovesLeft - 1 //* decrement turn move count here
   };
   //? encapsulate below into nextMove check?
   if (newState.turnMovesLeft > 0) {
-    // run updatePossibleMoves function
-    return newState;
+    return updatePossibleActions(newState, currentPlayerID)
   } else {
-    //? trigger next turn?
+    //? trigger next turn? -> another function
     return newState;
   }
 }
@@ -24,66 +23,94 @@ function moveAction (oldState: Gamestate, playerID: string, location: string): G
 
 //* TURN
 
-function updatePossibleActions(oldState: Gamestate, playerID: string): Gamestate {
-
-  const playerIndex: number = oldState.players.map((player) => player.id).indexOf(playerID);
-  const location: string = oldState.players[playerIndex].currentSource;
+function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  //* settup
+  const playerIndex: number = oldState.players.map((player) => player.id).indexOf(currentPlayerID);
+  const location: Player['currentSource'] = oldState.players[playerIndex].currentSource;
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
+  //* move check
   const adjacents: string[] = connections[location];
-  // create list of locations to update the canMove boolean
-  //todo create list in format that can update state, ie [Gamestate.sources[index].canMove = true, ...] 
-  // check markers
-  // const redMisinfo = location.markers.filter((marker) => marker.color === 'red').length;
-  const redMisinfo: number = oldState.sources[sourceIndex].markersRed
-  const blueMisinfo: number = oldState.sources[sourceIndex].markersBlue
-  const zellowMisinfo: number = oldState.sources[sourceIndex].markersYellow
-  //todo create object to add to state to update the current location's "canClearRed/Blue/Yellow" properties, ie: [Gamestate.sources[index].canClearBlue = true, ...]
-  // check if another player is there
-  const otherPlayers: Player[] = oldState
-    .players
-    .filter((player) => player.id !== playerID)
-    .filter((otherPlayer) => otherPlayer.currentSource.name === location);
-  // check players have space in their hand
-  const possibleShares: Player[] = otherplayers
-    .filter((player) => player.cards.length < 6)
-  //todo update canShare of current source eg [Gamestate.sources[index].canShare = possibleShares]
+  //* clear checks
+  const clearCommunityMisinfo: boolean = oldState.sources[sourceIndex].markers_community > 0;
+  const clearSocialMisinfo: boolean = oldState.sources[sourceIndex].markers_social > 0;
+  const clearRelationsMisinfo: boolean = oldState.sources[sourceIndex].markers_relations > 0;
+  //* share checks
+  // check if cards in hand
+  let possibleShares: Player[] = [];
+  if (oldState.players[playerIndex].cards.length > 0) {
+    // check if another player is there
+    const otherPlayers: Player[] = oldState
+      .players
+      .filter((player) => player.id !== currentPlayerID)
+      .filter((otherPlayer) => otherPlayer.currentSource === location);
+    // check players have space in their hand
+    possibleShares = otherPlayers
+      .filter((player) => player.cards.length < 6)
+  }
+  //* logoff checks
+  // check hand contains current location card
+  const logoffPossible: boolean = oldState.players[playerIndex].cards
+  .filter((card) => card.sourceName === location)
+  .length > 0;
+  //* logon check
+  // check hand contains other location card
+  const logonPossible: Card['sourceName'][] = oldState.players[playerIndex].cards
+  .map((card) => card.sourceName)
+  .filter((name) => name !== location);
+  //* debunk checks
   // check if we are at home (debunk 1/2)
-  const atHome: boolean = location === "crazy dave's house";
-  // check hand contains current location (logoff)
-  const canLogOff: boolean = oldState.players[playerIndex].cards
-    .filter((card) => card.sourceName === location)
-    .length > 0;
-  //todo update canLogOff state of ALL sources other than current, ie: [Gamestate.sources[index].canLogOff = true, ...]
-  // check hand contains other location (logon)
-  const logonSourceCards: Card[] = oldState.players[playerIndex].cards
-    .map((card) => card.sourceName)
-    .filter((name) => name !== location);
-  //todo update canLogOn of all sources listed in logonSourceCards
-  // check hand contains 4 of any colour (debunk 2/2)
+  const atHome: boolean = location === "crazy dave's house"; //todo change this value
+  // check hand contains 4 of any misinfo type/area (debunk 2/2)
   const debunkable: string[] = []
   if (atHome) {
     if (
       oldState.players[playerIndex].cards
-      .filter((card) => card.color === 'red')
+      .filter((card) => card.area === 'community')
       .length >= 4) {
-        debunkable.push('red')
+        debunkable.push('community')
       };
     if (
       oldState.players[playerIndex].cards
-      .filter((card) => card.color === 'blue')
+      .filter((card) => card.area === 'social')
       .length >= 4) {
-        debunkable.push('blue')
+        debunkable.push('social')
       };
     if (
       oldState.players[playerIndex].cards
-      .filter((card) => card.color === 'yellow')
+      .filter((card) => card.area === 'relations')
       .length >= 4) {
-        debunkable.push('yellow')
+        debunkable.push('relations')
       };
   };
-  //todo update current location canDebunk with debunkable array
   //* UPDATE ENTIRE STATE WITH ALL ABOVE CHANGES
-  //todo return/dispatch state
+  const newState = 
+  {
+    ...oldState,
+    sources : oldState.sources
+      .map((source) => source.name === location ?
+          { ...source, 
+            canMove : false,
+            canLogOn: false,
+            canLogOff: false,
+            canClearCommunity: clearCommunityMisinfo,
+            canClearSocial: clearSocialMisinfo,
+            canClearRelations: clearRelationsMisinfo,
+            canShare: possibleShares,
+            canDebunk: debunkable,
+          } :
+          { ...source, 
+            canMove : adjacents.includes(source.name),
+            canLogOn: logonPossible.includes(source.name),
+            canLogOff: logoffPossible,
+            canClearCommunity: clearCommunityMisinfo,
+            canClearSocial: clearSocialMisinfo,
+            canClearRelations: clearRelationsMisinfo,
+            canShare: [],
+            canDebunk: [],
+          }
+      ),
+  };
+  return newState;
 }
 
 //* HELPERS
@@ -92,7 +119,7 @@ function updatePossibleActions(oldState: Gamestate, playerID: string): Gamestate
 //* RESOURCES
 
 //? will be in format { sourceName : [array of source names] }
-const connections: Connections {
+const connections: Connections = {
   source01: [],
   source02: [],
   source03: [],

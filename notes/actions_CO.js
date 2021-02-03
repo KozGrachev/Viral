@@ -25,7 +25,7 @@ function playerActions(currentPlayer) {
 
 //* Possible Actions (within "playerActions" function)
 
-function updatePossibleActions(currentPlayer) {
+function updatePossibleActionsOld(currentPlayer) {
 
   //* STATE CHECK TO DETERMINE WHAT ACTIONS ARE POSSIBLE
   //? These checks will be send to UI to determine what actions are made available
