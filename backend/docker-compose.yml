@@ -1,43 +1,36 @@
 version: '3.7'
 # all the containers have to declare inside services
 services:
-  # App service
-  Vital_Docker:
+  # # App service
+  # Vital_Docker:
     # application rely on redis running
-    depends_on:
-      - redis
+    # depends_on:
+    #   - redis
       
     # this build context will take the commands from Dockerfile
-    build:
-      context: .
-      dockerfile: Dockerfile
-    # image name
-    image: Vital_Docker
-    # container name
-    container_name: Vital_Docker
-    # always restart the container if it stops.
-    restart: always
-    # docker run -t is allow
-    tty: true
-    # application port, this is take value from env file
-    ports:
-      - "${SERVER_PORT}:${SERVER_PORT}"
-    # working directory
-    working_dir: /Vital_Docker
-    # application environment
-    environment:
-      SERVICE_NAME: Vital_Docker
-      SERVICE_TAGS: dev
-      REDIS_PORT: ${DB_PORT}
-      REDIS_HOST: ${DB_HOST}
-    
-   
-  # Redis service
-  redis:
-    # image name
-    image: redis:3
-    # container name
-    container_name: redis
+    # build:
+    #   context: .
+    #   # dockerfile: Dockerfile
+    # # image name
+    # image: Vital_Docker
+    # # container name
+    # container_name: Vital_Docker
+    # # always restart the container if it stops.
+    # restart: always
+    # # docker run -t is allow
+    # tty: true
+    # # application port, this is take value from env file
+    # ports:
+    #   - "${SERVER_PORT}:${SERVER_PORT}"
+    # # working directory
+    # working_dir: /Vital_Docker
+    # # application environment
+    # environment:
+    #   SERVICE_NAME: Vital_Docker
+    #   SERVICE_TAGS: dev
+      # REDIS_PORT: ${DB_PORT}
+      # REDIS_HOST: ${DB_HOST}
+      
     # execute the command once start redis container
     command: [
         "redis-server",
@@ -46,7 +39,6 @@ services:
         "--port",
         "6379"
     ]
-  
     # redis port, this is take value from env file
     ports:
       - '${DB_PORT}:${DB_PORT}'

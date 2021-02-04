@@ -1,5 +1,5 @@
 import { promisify } from 'util';
-import redis from 'redis'
+import redis from 'redis';
 import dotenv from 'dotenv';
 import { GameState } from '../utils/game';
 import { IUser } from '../utils/users';
@@ -28,21 +28,19 @@ client.on('ready', () => {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars 
 const redisGetAsync = promisify(client.get).bind(client);
 
-export const setState = (room:IUser['room'], state: GameState): void => {
+export const setState = (room: IUser['room'], state: GameState): void => {
 
   const json = JSON.stringify(state);
   client.set(room, json);
 
 };
 
-export const getState = async (room:IUser['room']): Promise<GameState | null> => {
+export const getState = async (room: IUser['room']): Promise<GameState | undefined> => {
 
   const json = await redisGetAsync(room);
   if (json) {
     const state = JSON.parse(json);
     return state;
-  } else {
-    return null;
   }
 };
 
