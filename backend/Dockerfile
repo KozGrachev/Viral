@@ -16,5 +16,5 @@ RUN npm install --also=dev
 COPY . /Vital_Docker
 
 EXPOSE 3002
-CMD [ "node",  "index.js" ]
 
+CMD [ "node",  "index.js" ]
