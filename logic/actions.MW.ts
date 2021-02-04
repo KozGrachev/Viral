@@ -134,7 +134,7 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
       while(weight>0){
         if(source[`markers_${source.misinfoType}`]==3){
           oldState.chaosMeter++
-          outbreak(source,oldState)
+          oldState=outbreak(source,oldState)
         }
         else{
         //* add marker to source
@@ -155,18 +155,25 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
 }
 
 function outbreak(outbreak_source:Source,oldState:Gamestate) {
+  let connections;
   for (const source of sources){
-    if(source.sourceName===outbreak_source.name){
-      for(const connection of source.connections){
+    if(source.name===outbreak_source.name){
+      connections=source.connections  //* set list of connections to spread to
+    }
+  }
+  for(const connection of connections){ !//TODO
+
+  }
+     
         if(oldState.sources[`${connection}`][`markers_${outbreak_source.misinfoType}`]===3){
           outbreak(oldState.sources[`${connection}`],oldState)
         }
         else{
         oldState.sources[connection][`markers_${outbreak_source.misinfoType}`]++;
         }
-      }
-    }
-  }
+   
+  let newState={...oldState}
+  return newState
 }
 
 
