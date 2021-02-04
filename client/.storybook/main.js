@@ -1,4 +1,4 @@
-import '!style-loader!css-loader!sass-loader!./SourceCard.scss'; //scss-loader.scss';
+// import '!style-loader!css-loader!sass-loader!./SourceCard.scss'; //scss-loader.scss';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
