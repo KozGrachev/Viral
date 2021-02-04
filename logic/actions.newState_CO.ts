@@ -1,5 +1,5 @@
 import {Gamestate,Card,Source, Player, Misinformation, Connection} from './objects.REDO'
-import {didWin, playViralCard} from '../notes/actions.MW.COPY.forImport'
+import {didWin, playViralCard, dealMisinfoCard, outbreak} from '../notes/actions.MW.COPY.forImport'
 import {sources} from './sources'
 
 //* ACTIONS
@@ -224,8 +224,9 @@ function boardActions(oldState: Gamestate, currentPlayerID: Player['id'], noOfCa
     .map((player) => player.id)
     .indexOf(currentPlayerID);
   let cardsLeft = noOfCards;
+  let newState: Gamestate = oldState; //? cant be defined in while loop?
   while (cardsLeft > 0) {
-    const newState = dealConnectionCard(oldState, currentPlayerID);
+    newState = dealConnectionCard(oldState, currentPlayerID);
     if (newState.players[playerIndex].cards.length > 6) {
       return {
         ...newState,
@@ -239,21 +240,45 @@ function boardActions(oldState: Gamestate, currentPlayerID: Player['id'], noOfCa
     }
     cardsLeft --;
   }
+  //? do we need to put breaks here, and how, for the front end to update or show when a card ahs been dealt?
+  // check spread marker for weight
   // deal misinfo cards
-
-  //TODO - finish with misinfo deal, hook up so loop complete
-  
-
-
+  let misinfoCardNo = [2,2,3,4][newState.spreadLevel];
+  while (misinfoCardNo > 0) {
+    newState = dealMisinfoCard(newState, 1, false)
+  }
+  //change current player turn
+  //? anything else needs resetting?
+  return nextTurn(newState, currentPlayerID)
 }
 
 //* HELPERS
 
+function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  const playerIndex: number = oldState.players.map((player) => player.id).indexOf(currentPlayerID);
+  const nextPlayerIndex: number = playerIndex === oldState.players.length - 1 ?
+    0 : 
+    playerIndex + 1;
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    players : oldState.players
+      .map((player, index) => index === playerIndex ?
+          { ...player, isCurrent : false  } :
+          index === nextPlayerIndex ?
+            { ...player, isCurrent : true  } :
+            player
+      ),
+    // reset number of moves
+    turnMovesLeft : 4, 
+  };
+  return newState;
+}
 
-function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player['id']):Gamestate {
-  //* first check if this card is the last one, thus ending the game
-  //! does the game end when card pile is zero, or is there one last move (ie when card pile -1)?
-  if (oldState.connectionDeck.length === 1) {
+
+function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  //* if no cards left then game is lost
+  if (oldState.connectionDeck.length === 0) {
     return {
       ...oldState,
       gameLost : true
