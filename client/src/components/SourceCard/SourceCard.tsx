@@ -1,17 +1,20 @@
 import React from 'react';
-import Source from '../Source/Source'
+import { getIcon } from '../../helpers/iconExporter'
+import { toCamelCase } from '../../helpers/utils'
+// import {sources} from '../../dictionaries/sources-COPY'
+
 
 export interface SourceCardProps {
-  sourceName: 'string',
+  name: string,
 
 }
 
 
-export const Source: React.FC<SourceCardProps> = ({ sourceName }: SourceCardProps) => { // SVGIcon
-
+export const Source: React.FC<SourceCardProps> = ({ name }: SourceCardProps) => { // SVGIcon
+  const SVGIcon: React.FunctionComponent<React.SVGProps<SVGSVGElement>> = getIcon(toCamelCase(name) + 'Icon');
   return (
     <div className="source-card-container" >
-      <Source name={sourceName}  />
+      <SVGIcon name={name}  />
       <div className="name" >
       </div>
     </div>

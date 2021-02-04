@@ -1,5 +1,6 @@
 import React from 'react';
 import { getIcon } from '../../helpers/iconExporter'
+import { toCamelCase } from '../../helpers/utils';
 
 
 export interface SourceProps {
@@ -10,10 +11,6 @@ export interface SourceProps {
 
 
 export const Source: React.FC<SourceProps> = ({ name }: SourceProps) => { // SVGIcon
-  const toCamelCase = (str: string): string =>
-    str
-      .toLowerCase()
-      .replace(/[^a-zA-Z0-9]+(.)/g, (_, letter) => letter.toUpperCase());
   console.log('THIS IS THE NAME::::::: ',toCamelCase(name));
   const SVGIcon: React.FunctionComponent<React.SVGProps<SVGSVGElement>> = getIcon(toCamelCase(name)+'Icon');
 
