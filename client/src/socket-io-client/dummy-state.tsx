@@ -1,5 +1,3 @@
-
-
 import { GameState, Turn, Player, Source, Misinformation, MarkerStatus, MisinformationCard, ConnectionDeck, MisinformationDeck, ConnectionCard } from '../types/gameStateTypes'
 // import { sources } from '../../../notes/sources'
 

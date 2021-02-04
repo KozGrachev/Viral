@@ -1,35 +1,32 @@
-import { GameStateActionTypes, UPDATE_GAME_STATE, UPDATE_MOVES_LEFT, UPDATE_PLAYER_LOCATION } from './../../types/gameStateTypes';
+import { CLEAR_MISINFO, GameStateActionTypes, LOG_ON_OFF, MOVE_ACTION, SHARE_CARD } from './../../types/gameStateTypes';
 import { gameState } from '../../socket-io-client/dummy-state'
-import { GameState } from '../../types/gameStateTypes'
+import { Gamestate } from '../../types/gameStateTypes'
+import { clearMisinfo, logOnOff, moveAction, shareCard } from '../../../../logic/actions.newState_CO'
 // import {emit} from '../backend-dummy-client/dummy-client'
 //here should be a initial State of the Game
-const initialState: GameState = gameState
+const initialState: Gamestate = gameState
 
 export function gameStateReducer(
   state = initialState,
   action: GameStateActionTypes
-): GameState {
+): Gamestate {
   switch (action.type) {
-    case UPDATE_GAME_STATE:
-      return {
-        ...state, ...action.payload
-      }
-    case UPDATE_PLAYER_LOCATION:
-      return {
-        ...state, received: false, ...state.players.map(player => {
-          if (state.currentTurn.player === player) {
-            return player.currentSource = action.payload
-          } else {
-            return state;
-          }
-        })
-        // or helper function
-      }
-    case UPDATE_MOVES_LEFT:
-      return {
-        ...state, received: false,
-        currentTurn: { ...state.currentTurn, movesLeft: action.payload }
-      }
+    case MOVE_ACTION: {
+      const ap = action.payload;
+      return moveAction(ap.oldState, ap.currentPlayerID, ap.location)
+    }
+    case CLEAR_MISINFO: {
+      const ap = action.payload;
+      return clearMisinfo(ap.oldState, ap.currentPlayerID, ap.misinfoType, ap.location)
+    }
+    case SHARE_CARD: {  
+      const ap = action.payload;
+      return shareCard(ap.oldState, ap.currentPlayerID, ap.recipient, ap.sharedCard)
+    }
+    case LOG_ON_OFF: {
+      const ap = action.payload;
+      return logOnOff(ap.oldState, ap.currentPlayerID, ap.location, ap.usedCard)
+    }
 
     default: return state
   }
