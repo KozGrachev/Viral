@@ -16,5 +16,8 @@
     "url": "https://github.com/Bobik808/Viral/issues"
   },
   "homepage": "https://github.com/Bobik808/Viral#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0"
+  }
 }
