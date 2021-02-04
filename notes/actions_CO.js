@@ -25,7 +25,7 @@ function playerActions(currentPlayer) {
 
 //* Possible Actions (within "playerActions" function)
 
-function updatePossibleActions(currentPlayer) {
+function updatePossibleActionsOld(currentPlayer) {
 
   //* STATE CHECK TO DETERMINE WHAT ACTIONS ARE POSSIBLE
   //? These checks will be send to UI to determine what actions are made available
@@ -160,7 +160,7 @@ function clear (player, markerColor, location) {
 //! the recipient cannot accept when their hand is full
 //! sharing can only go one way (initiated by the player whose turn it is, unlike in board game)
 
-function shareCard (player, recipient, sharedCard) {
+function shareCardOld(player, recipient, sharedCard) {
   // remove card from player hand
   //todo update state eg: player.cards.filter((card) => card !== sharedCard );
   // put card in recipient hand
@@ -176,7 +176,7 @@ function shareCard (player, recipient, sharedCard) {
 
 //? called when player chooses a card to discard from their hand
 
-function discardCard(player, card) {
+function discardCardOld(player, card) {
   // remove card from player hand
   //todo update state eg: player.cards.filter((card) => card !== sharedCard );
   // reset cardHandOverflow trigger
@@ -189,7 +189,7 @@ function discardCard(player, card) {
 
 //? called as event handler, will be passed player, location, and card)
 
-function logOnOff (player, location, usedCard) {
+function logOnOffOld(player, location, usedCard) {
   // remove card from player hand
   //todo update state eg: player.cards.filter((card) => card !== usedCard );
   // set players location to "location"
