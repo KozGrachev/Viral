@@ -54,7 +54,9 @@ export interface Misinformation {
 
 
 export interface Card {
-  cardType: string;
+
+  cardType: string; //? 'connection', 'minformation' or 'viral'
+
   sourceName: string | null;
   misinfoType: string | null;
 }
