@@ -266,7 +266,6 @@ function setUp(players){
 
  const sources=createSources()
  players=shuffle(players) 
- const turnOrder=[] //! where is this set??
  const spreadLevel=0; //! how is this managed??
  const chaosMeter=0;
  const misinformation={
@@ -286,7 +285,6 @@ function setUp(players){
  let state={
   sources,
   players,
-  turnOrder,
   spreadLevel,
   chaosMeter,
   misinformation,
