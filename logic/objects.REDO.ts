@@ -3,7 +3,6 @@
 export interface Gamestate{
   sources: Source[];
   players: Player[];
-  turnOrder: string[];
   spreadLevel: number; 
   chaosMeter: number;
   misinformation: {

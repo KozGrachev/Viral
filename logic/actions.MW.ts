@@ -90,7 +90,7 @@ function playerOrder(oldState:Gamestate) {
 }
 
 function insertViralCards(oldState:Gamestate) {
-
+  console.log('inserting viral cards to connection deck')
   let oldDeck=oldState.connectionDeck
 
   const viral1:Card={cardType:"viral",sourceName:null, misinfoType:null}
@@ -128,7 +128,7 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
   else { 
     drawSource=oldDeck[0].sourceName
   }
-
+  console.log('dealing misinformation card', drawSource)
   for(const source of oldState.sources){
     if(source.name===drawSource){
       while(weight>0){
@@ -160,6 +160,7 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
 }
 
 function outbreak(outbreak_source:Source,oldState:Gamestate) {
+  console.log('outbreak!! chaos meter increases')
   oldState.chaosMeter++
   let connections:string[];
   for (const source of sources){
@@ -180,7 +181,7 @@ function outbreak(outbreak_source:Source,oldState:Gamestate) {
       }
     }
   }
-        
+  console.log('outbreak on', outbreak_source)
   let newState={...oldState}
   return newState
 }
@@ -189,7 +190,7 @@ function outbreak(outbreak_source:Source,oldState:Gamestate) {
 
 function dealConnectionCard (oldState:Gamestate) {
   let newCard:Card=oldState.connectionDeck[0]
-
+  
   if(newCard.cardType==='viral'){
     oldState=viral(oldState)
     oldState.connectionDeck.shift()
@@ -197,7 +198,7 @@ function dealConnectionCard (oldState:Gamestate) {
   else {
     for (const player of oldState.players) {
       if(player.isCurrent){
-
+        console.log('dealing connection card', newCard)
         player.cards.push(newCard)
         oldState.connectionDeck.shift()
         if(player.cards.length>6)
@@ -218,7 +219,7 @@ function dealConnectionCard (oldState:Gamestate) {
 }
 
 function viral (oldState:Gamestate) {
- 
+ console.log('viral card!!!')
  oldState=dealMisinfoCard(oldState,3,true)
  oldState.spreadLevel++
  //* shuffle passive misinfo deck and put on top of active misinfo deck
@@ -277,7 +278,7 @@ function setUp(players){
  const misinformationDeckActive=shuffle(createMisinformationDeck());
  const misinformationDeckPassive=[]
  const dealHistory=0;
- const turnMovesLeft=0;
+ const turnMovesLeft=4;
  const gameWon=false;
  const gameLost=false;
  
@@ -299,15 +300,18 @@ function setUp(players){
  if(state.players.length>2) cards=2;
  else cards=3
   
- for(let i=0; i<state.players.length; i++) { //* deal connection cards to players before inserting viral cards
-  while(cards>0){
-    state=dealConnectionCard(state)
-    cards--
+ for (let i = 0; i < state.players.length; i++) { //* deal connection cards to players before inserting viral cards
+  console.log(state.players)
+    if (state.players.length > 2) cards = 2;
+    else cards = 3
+    while (cards > 0) {
+      state = dealConnectionCard(state)
+      cards--
+    }
+    state.players[i].isCurrent = false;
+    if (i !== state.players.length - 1) state.players[i + 1].isCurrent = true;
+    else state.players[0].isCurrent = true;
   }
-  state.players[i].isCurrent=false;
-  if(i!==state.players.length-1) state.players[i+1].isCurrent=true;
-  else state.players[0].isCurrent=true;
- }
 
  let updateState=insertViralCards({...state,connectionDeck:withoutViral})
  
