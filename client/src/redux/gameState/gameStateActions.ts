@@ -1,35 +1,62 @@
-import { UPDATE_MOVES_LEFT, UPDATE_PLAYER_LOCATION } from './../../types/gameStateTypes';
-import { GameState, UPDATE_GAME_STATE, GameStateActionTypes, Player, Turn } from '../../types/gameStateTypes'
+import { ClearmisinfoProps, CLEAR_MISINFO, DebunkMisinfoProps, DEBUNK_MISINFO, discardCardProps, DISCARD_ACTION, Gamestate, logOnOffProps, LOG_ON_OFF, MoveActionProps, MOVE_ACTION, ShareCardProps, SHARE_CARD, UPDATE_GAME_STATE } from './../../types/gameStateTypes';
+import { GameStateActionTypes } from '../../types/gameStateTypes'
 //Below are example of actions with typescript. 
 // we need to create an action for each reduced case 
 
 
+export function moveAction(props: MoveActionProps): GameStateActionTypes {
+  const { oldState, currentPlayerID, location } = props
+  return {
+    type: MOVE_ACTION,
+    payload: { oldState, currentPlayerID, location }
+  }
+}
+
+
+
+export function clearMisinfoAction(props: ClearmisinfoProps): GameStateActionTypes {
+  const { oldState, currentPlayerID, location, misinfoType } = props;
+  return {
+    type: CLEAR_MISINFO,
+    payload: { oldState, currentPlayerID, location, misinfoType }
+  }
+}
+
+
+export function shareCardAction(props: ShareCardProps): GameStateActionTypes {
+  const { oldState, currentPlayerID, recipient, sharedCard } = props;
+  return {
+    type: SHARE_CARD,
+    payload: { oldState, currentPlayerID, recipient, sharedCard }
+  }
+}
+
+export function logOnOffAction(props: logOnOffProps): GameStateActionTypes {
+  const { oldState, currentPlayerID, location, usedCard } = props;
+  return {
+    type: LOG_ON_OFF,
+    payload: { oldState, currentPlayerID, location, usedCard }
+  }
+}
+export function debunkMisinfoAction(props: DebunkMisinfoProps): GameStateActionTypes {
+  const { oldState, currentPlayerID, usedCards, misinfoType } = props;
+  return {
+    type: DEBUNK_MISINFO,
+    payload: { oldState, currentPlayerID, usedCards, misinfoType }
+  }
+}
+
+export function discardCardAction(props: discardCardProps): GameStateActionTypes {
+  const { oldState, currentPlayerID, discardedCard } = props;
+  return {
+    type: DISCARD_ACTION,
+    payload: { oldState, currentPlayerID, discardedCard }
+  }
+}
 //redux action to update whole gameState // examples 
-export function updateGameState(gameState: GameState): GameStateActionTypes {
+export function updateGameState(gameState: Gamestate): GameStateActionTypes {
   return {
     type: UPDATE_GAME_STATE,
     payload: gameState
   }
 }
-
-export function decrementMoves(movesLeft: Turn['movesLeft']): GameStateActionTypes {
-  return {
-    type: UPDATE_MOVES_LEFT,
-    payload: movesLeft
-  }
-}
-
-
-
-export function updatePlayerLocation(currentSource: Player['currentSource']): GameStateActionTypes {
-  return {
-    type: UPDATE_PLAYER_LOCATION,
-    payload: currentSource
-  }
-}
-
-
-
-
-
-

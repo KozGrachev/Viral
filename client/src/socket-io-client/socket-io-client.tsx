@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import * as dotenv from 'dotenv';
 import { store } from '../redux/gameState/store'
 import { updateGameState } from "../redux/gameState/gameStateActions";
-import { GameState } from "../types/gameStateTypes";
+import { Gamestate } from "../types/gameStateTypes";
 // import {gameState} from './dummy-state'
 
 //connection to the server

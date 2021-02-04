@@ -1,14 +1,14 @@
 
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GameState } from '../types/gameStateTypes';
+import { Gamestate } from '../types/gameStateTypes';
 import { decrementMoves } from '../redux/gameState/gameStateActions'
 import { joinRoom } from './socket-io-client';
-import { join } from 'path';
+
 export const ReduxDummy: React.FC = (): JSX.Element => {
 
-  const gameState = useSelector((state: GameState) => state)
-  const movesLeft = Number(gameState.currentTurn.movesLeft) - 1
+  const gameState = useSelector((state: Gamestate) => state)
+  // const movesLeft = Number(gameState.currentTurn.movesLeft) - 1
   const dispatch = useDispatch();
   const click = () => {
     dispatch(decrementMoves(movesLeft))
