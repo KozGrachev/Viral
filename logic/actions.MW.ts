@@ -147,7 +147,7 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
       }
     }
   }
-  oldState.misinformationDeckPassive.push(oldDeck[0])
+  oldState.misinformationDeckPassive.push(oldDeck[0]) //! LOOK INTO THIS
   oldState.misinformationDeckActive.shift()
 
   let newState={...oldState}
@@ -155,23 +155,26 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
 }
 
 function outbreak(outbreak_source:Source,oldState:Gamestate) {
-  let connections;
+  let connections:string[];
   for (const source of sources){
     if(source.name===outbreak_source.name){
       connections=source.connections  //* set list of connections to spread to
     }
   }
-  for(const connection of connections){ !//TODO
-
-  }
-     
-        if(oldState.sources[`${connection}`][`markers_${outbreak_source.misinfoType}`]===3){
-          outbreak(oldState.sources[`${connection}`],oldState)
+  for(const connection of connections){ 
+    for (const source of oldState.sources){
+      if (source.name===connection){
+        if(source[`markers_${outbreak_source.misinfoType}`]===3){
+          oldState=outbreak(source,oldState)
         }
         else{
-        oldState.sources[connection][`markers_${outbreak_source.misinfoType}`]++;
+          source[`markers_${outbreak_source.misinfoType}`]++
         }
-   
+        
+      }
+    }
+  }
+        
   let newState={...oldState}
   return newState
 }
@@ -182,7 +185,8 @@ function dealConnectionCard (oldState:Gamestate) {
   let newCard:Card=oldState.connectionDeck[0]
 
   if(newCard.cardType==='viral'){
-    viral(oldState)
+    oldState=viral(oldState)
+    oldState.connectionDeck.shift()
   }
   else {
     for (const player of oldState.players) {
@@ -267,6 +271,7 @@ function setUp(players){
  const withoutViral=shuffle(createConnectionDeck());
  const misinformationDeckActive=shuffle(createMisinformationDeck());
  const misinformationDeckPassive=[]
+ const dealHistory=0;
  const turnMovesLeft=0;
  const gameWon=false;
  const gameLost=false;
@@ -282,6 +287,7 @@ function setUp(players){
   connectionDeck:withoutViral,
   misinformationDeckActive,
   misinformationDeckPassive,
+  dealHistory,
   turnMovesLeft,
   gameWon,
   gameLost}
