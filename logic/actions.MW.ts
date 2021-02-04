@@ -122,11 +122,11 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
   let oldDeck=oldState.misinformationDeckActive
   let drawSource
 
-  if(!viral){ 
-    drawSource=oldDeck[0].sourceName
+  if(viral){ 
+    drawSource=oldDeck[oldDeck.length-1].sourceName
   }
   else { 
-    drawSource=oldDeck[oldDeck.length-1].sourceName //card name
+    drawSource=oldDeck[0].sourceName
   }
 
   for(const source of oldState.sources){
@@ -147,9 +147,14 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
       }
     }
   }
+  if (viral){
+    oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length-1])
+    oldState.misinformationDeckActive.pop()
+  }
+  else{
   oldState.misinformationDeckPassive.push(oldDeck[0]) //! LOOK INTO THIS
   oldState.misinformationDeckActive.shift()
-
+  }
   let newState={...oldState}
   return newState
 }
