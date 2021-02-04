@@ -15,6 +15,7 @@ export interface Gamestate{
   misinformationDeckActive: Card[];
   misinformationDeckPassive: Card[];
   turnMovesLeft: number;
+  dealHistory: number; //? this is needed for the discardCard funtion to return back to where it was called from, and is the noOfCards parameter passed to boardActions
   gameWon: boolean;
   gameLost: boolean;
 }
@@ -41,8 +42,8 @@ export interface Source {
   canClearCommunity: boolean;
   canClearSocial: boolean;
   canClearRelations: boolean;
-  canShare: Player[]; //? arrray of Players at same location
-  canDebunk: string[]; //? array of misinfos possible to debunk at this location?
+  canShare: Player[];
+  canDebunk: string[];
 }
 
 export interface Misinformation {
@@ -53,6 +54,7 @@ export interface Misinformation {
 
 
 export interface Card {
+
   cardType: string; //? 'connection', 'minformation' or 'viral'
 
   sourceName: string | null;
@@ -61,30 +63,8 @@ export interface Card {
 
 //* CLIENT
 
-export interface Connections { //! kept client-side
-  source01: string[],
-  source02: string[],
-  source03: string[],
-  source04: string[],
-  source05: string[],
-  source06: string[],
-  source07: string[],
-  source08: string[],
-  source09: string[],
-  source10: string[],
-  source11: string[],
-  source12: string[],
-  source13: string[],
-  source14: string[],
-  source15: string[],
-  source16: string[],
-  source17: string[],
-  source18: string[],
-  source19: string[],
-  source20: string[],
-  source21: string[],
-  source22: string[],
-  source23: string[],
-  source24: string[],
-  //! these will all be the location names as keys
+export interface Connection {
+  name: string;
+  connections: string[];
+  category: string;
 }
