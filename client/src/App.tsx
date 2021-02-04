@@ -3,16 +3,12 @@ import { Box, Grommet } from 'grommet';
 import './App.css';
 import './backend-dummy-client/dummy-client';
 
-<<<<<<< HEAD
-function App () {
-=======
 import { ReduxDummy } from './backend-dummy-client/dummy-redux-component';
 import { Provider } from 'react-redux';
 import {store} from './redux/gameState/store'
 
 
 function App() {
->>>>>>> bff5c0ce86821818a6cdebc4d7c6790a70e62f01
 
   const dummy = true
   
@@ -25,13 +21,8 @@ function App() {
       },
     },
   };
-<<<<<<< HEAD
 
   // eslint-disable-next-line
-=======
-  
-  // eslint-disable-next-line 
->>>>>>> bff5c0ce86821818a6cdebc4d7c6790a70e62f01
   const AppBar = () => (
     <Box // eslint-disable-next-line
       tag='header'

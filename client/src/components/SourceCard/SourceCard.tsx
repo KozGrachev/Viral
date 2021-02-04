@@ -1,6 +1,6 @@
 import React from 'react';
 import { getIcon } from '../../helpers/iconExporter'
-import { toCamelCase } from '../../helpers/utils'
+import { toCamelCase, toPascalCase } from '../../helpers/utils'
 import './SourceCard.css'
 
 export interface SourceCardProps {
@@ -13,9 +13,9 @@ export const SourceCard: React.FC<SourceCardProps> = ({ name, category }: Source
   const SVGIcon: React.FunctionComponent<React.SVGProps<SVGSVGElement>> = getIcon(toCamelCase(name) + 'Icon');
   return (
     <div className={`source-card-container ${category}`} >
-      <SVGIcon name={name}  />
+      <SVGIcon name={name} className="card-icon" />
       <div className="name-container" >
-        <p>{name}</p>
+        <p className="title">{toPascalCase(name)}</p>
       </div>
     </div>
   )
