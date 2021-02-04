@@ -4,6 +4,9 @@ import {sources} from './sources'
 
 //* ACTIONS
 
+//! ID randomly generated, so need way to hook up "player"
+//! Hook up end of nextTurn function with updatePossibleActions
+
 
 function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate { 
   const newState: Gamestate = 
@@ -196,7 +199,7 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
             canMove : false,
             canLogOn: false,
             canLogOff: false,
-            canClearCommunity: clearCommunityMisinfo,
+            canClearCommunity: clearCommunityMisinfo,//! this is same for all sources
             canClearSocial: clearSocialMisinfo,
             canClearRelations: clearRelationsMisinfo,
             canShare: possibleShares,
@@ -206,9 +209,9 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
             canMove : adjacents.includes(source.name),
             canLogOn: logonPossible.includes(source.name),
             canLogOff: logoffPossible,
-            canClearCommunity: clearCommunityMisinfo,
-            canClearSocial: clearSocialMisinfo,
-            canClearRelations: clearRelationsMisinfo,
+            // canClearCommunity: clearCommunityMisinfo,
+            // canClearSocial: clearSocialMisinfo,
+            // canClearRelations: clearRelationsMisinfo,
             canShare: [],
             canDebunk: [],
           }
@@ -272,7 +275,7 @@ function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate
     // reset number of moves
     turnMovesLeft : 4, 
   };
-  return newState;
+  return newState; //? call updatePossibleActions to start next turn
 }
 
 

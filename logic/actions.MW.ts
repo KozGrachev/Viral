@@ -277,7 +277,7 @@ function setUp(players){
  const misinformationDeckActive=shuffle(createMisinformationDeck());
  const misinformationDeckPassive=[]
  const dealHistory=0;
- const turnMovesLeft=0;
+ const turnMovesLeft=4;
  const gameWon=false;
  const gameLost=false;
  
