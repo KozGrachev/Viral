@@ -1,5 +1,7 @@
 // this initial state presumes 2 players, 3 locations (one for each color), 3 connection and 3 misinfo cards, and 1 viral card. 
 
+import {Gamestate,Card,Source, Player, Misinformation, Connection} from './objects.REDO'
+
 const initDummyState: Gamestate = {
   sources: [
     {
@@ -68,21 +70,20 @@ const initDummyState: Gamestate = {
       currentSource: 'University'
     },
   ],
-  turnOrder: ['1234','5678'],
   spreadLevel: 1,
   chaosMeter: 0,
   misinformation: {
-    red:{
+    community:{
       name: 'Misinfo Type 1',
       debunked: false,
       markersLeft: 16, 
     },
-    blue:{
+    social:{
       name: 'Misinfo Type 2',
       debunked: false,
       markersLeft: 16, 
     },
-    yellow:{
+    relations:{
       name: 'Misinfo Type 3',
       debunked: false,
       markersLeft: 16, 
@@ -90,45 +91,46 @@ const initDummyState: Gamestate = {
   },
   connectionDeck: [
     {
-      type: 'connection',
+      cardType: 'connection',
       sourceName: 'University',
-      color: 'blue',
+      misinfoType: 'blue',
     },
     {
-      type: 'connection',
+      cardType: 'connection',
       sourceName: 'Gym',
-      color: 'red',
+      misinfoType: 'red',
     },
     {
-      type: 'connection',
+      cardType: 'connection',
       sourceName: 'Instagram',
-      color: 'yellow',
+      misinfoType: 'yellow',
     },
     {
-      type: 'viral',
+      cardType: 'viral',
       sourceName: null,
-      color: null,
+      misinfoType: null,
     },
   ],
   misinformationDeckActive: [
     {
-      type: 'misinformation',
+      cardType: 'misinformation',
       sourceName: 'University',
-      color: 'blue',
+      misinfoType: 'blue',
     },
     {
-      type: 'misinformation',
+      cardType: 'misinformation',
       sourceName: 'Gym',
-      color: 'red',
+      misinfoType: 'red',
     },
     {
-      type: 'misinformation',
+      cardType: 'misinformation',
       sourceName: 'Instagram',
-      color: 'yellow',
+      misinfoType: 'yellow',
     },
   ],
   misinformationDeckPassive: [],
   turnMovesLeft: 4,
+  dealHistory: 0,
   gameWon: false,
   gameLost: false,
 }
