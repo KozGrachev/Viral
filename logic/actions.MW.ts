@@ -122,18 +122,18 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
   let oldDeck=oldState.misinformationDeckActive
   let drawSource
 
-  if(!viral){ 
-    drawSource=oldDeck[0].sourceName
+  if(viral){ 
+    drawSource=oldDeck[oldDeck.length-1].sourceName
   }
   else { 
-    drawSource=oldDeck[oldDeck.length-1].sourceName //card name
+    drawSource=oldDeck[0].sourceName
   }
 
   for(const source of oldState.sources){
     if(source.name===drawSource){
       while(weight>0){
         if(source[`markers_${source.misinfoType}`]==3){
-          oldState.chaosMeter++
+          
           oldState=outbreak(source,oldState)
         }
         else{
@@ -147,31 +147,40 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
       }
     }
   }
-  oldState.misinformationDeckPassive.push(oldDeck[0])
+  if (viral){
+    oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length-1])
+    oldState.misinformationDeckActive.shift()
+  }
+  else{
+  oldState.misinformationDeckPassive.push(oldDeck[0]) //! LOOK INTO THIS
   oldState.misinformationDeckActive.shift()
-
+  }
   let newState={...oldState}
   return newState
 }
 
 function outbreak(outbreak_source:Source,oldState:Gamestate) {
-  let connections;
+  oldState.chaosMeter++
+  let connections:string[];
   for (const source of sources){
     if(source.name===outbreak_source.name){
       connections=source.connections  //* set list of connections to spread to
     }
   }
-  for(const connection of connections){ !//TODO
-
-  }
-     
-        if(oldState.sources[`${connection}`][`markers_${outbreak_source.misinfoType}`]===3){
-          outbreak(oldState.sources[`${connection}`],oldState)
+  for(const connection of connections){ 
+    for (const source of oldState.sources){
+      if (source.name===connection){
+        if(source[`markers_${outbreak_source.misinfoType}`]===3){
+          oldState=outbreak(source,oldState)
         }
         else{
-        oldState.sources[connection][`markers_${outbreak_source.misinfoType}`]++;
+          source[`markers_${outbreak_source.misinfoType}`]++
         }
-   
+        
+      }
+    }
+  }
+        
   let newState={...oldState}
   return newState
 }
@@ -182,7 +191,8 @@ function dealConnectionCard (oldState:Gamestate) {
   let newCard:Card=oldState.connectionDeck[0]
 
   if(newCard.cardType==='viral'){
-    viral(oldState)
+    oldState=viral(oldState)
+    oldState.connectionDeck.shift()
   }
   else {
     for (const player of oldState.players) {
@@ -256,7 +266,6 @@ function setUp(players){
 
  const sources=createSources()
  players=shuffle(players) 
- const turnOrder=[] //! where is this set??
  const spreadLevel=0; //! how is this managed??
  const chaosMeter=0;
  const misinformation={
@@ -267,6 +276,7 @@ function setUp(players){
  const withoutViral=shuffle(createConnectionDeck());
  const misinformationDeckActive=shuffle(createMisinformationDeck());
  const misinformationDeckPassive=[]
+ const dealHistory=0;
  const turnMovesLeft=0;
  const gameWon=false;
  const gameLost=false;
@@ -275,13 +285,13 @@ function setUp(players){
  let state={
   sources,
   players,
-  turnOrder,
   spreadLevel,
   chaosMeter,
   misinformation,
   connectionDeck:withoutViral,
   misinformationDeckActive,
   misinformationDeckPassive,
+  dealHistory,
   turnMovesLeft,
   gameWon,
   gameLost}
