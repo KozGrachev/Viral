@@ -2,7 +2,7 @@ require("dotenv").config();
 const axios = require("axios");
 const figmaRestApi = require("./util/figmaRestApi");
 const Utils = require("./util/utils");
-const outputFolder = "../client/src/assets/";
+const outputFolder = "../client/src/assets/allIcons/";
 const rateLimit = 20;
 const waitTimeInSeconds = 45;
 
@@ -36,7 +36,7 @@ const svgExporter = async () => {
 
     Utils.createFolder(outputFolder);
 
-    for (let i = 0; i < numOfSvgs; i += rateLimit) {
+    for (i = 0; i < numOfSvgs; i += rateLimit) {
       const requests = svgs.slice(i, i + rateLimit).map(async (svg) => {
         // Get URL of each SVG
         let svgName = await svg.name;
