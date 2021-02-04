@@ -26,6 +26,7 @@ export interface Gamestate {
   dealHistory: number; //? this is needed for the discardCard funtion to return back to where it was called from, and is the noOfCards parameter passed to boardActions
   gameWon: boolean;
   gameLost: boolean;
+  received: false;
 }
 
 export interface Player {
@@ -84,6 +85,9 @@ export const MOVE_ACTION = 'MOVE_ACTION'
 export const CLEAR_MISINFO = 'CLEAR_MISINFO'
 export const SHARE_CARD = 'SHARE_CARD'
 export const LOG_ON_OFF = 'LOG_ON_OFF'
+export const DEBUNK_MISINFO = 'DEBUNK_MISINFO'
+export const DISCARD_ACTION = 'DISCARD_ACTION'
+export const UPDATE_GAME_STATE = 'UPDATE_GAME_STATE'
 
 export interface MoveActionProps {
   oldState: Gamestate,
@@ -133,5 +137,36 @@ export interface logOnOffPropsAction {
   payload: logOnOffProps;
 }
 
+export interface DebunkMisinfoAction {
+  type: typeof DEBUNK_MISINFO,
+  payload: DebunkMisinfoProps
+}
+
+
+export interface DebunkMisinfoProps {
+  oldState: Gamestate,
+  currentPlayerID: Player['id'],
+  usedCards: Card['sourceName'][],
+  misinfoType: Misinformation['name']
+}
+
+export interface discardCardProps {
+  oldState: Gamestate,
+  currentPlayerID: Player['id'],
+  discardedCard: Card['sourceName']
+
+}
+
+export interface discardCardAction {
+  type: typeof DISCARD_ACTION,
+  payload: discardCardProps
+}
+
+interface UpdateGameStateAction {
+  type: typeof UPDATE_GAME_STATE
+  payload: Gamestate
+}
+
 export type GameStateActionTypes =
-  MoveAction | ClearMisinfoAction | ShareCardAction | logOnOffPropsAction
+  MoveAction | ClearMisinfoAction | ShareCardAction | logOnOffPropsAction |
+  DebunkMisinfoAction | discardCardAction | UpdateGameStateAction
