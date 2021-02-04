@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && nodemon index.js"
+    "start": "tsc && nodemon index.js",
+    "lint": "eslint */*.{js,ts,tsx} && eslint *.{js,ts,tsx}",
+    "lintfix": "eslint ./*.{js,ts,tsx} --fix && eslint */*.{js,ts,tsx} --fix" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.16.1",
+    "@types/redis": "^2.8.28",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
     "cz-conventional-changelog": "^3.3.0",
@@ -30,7 +33,13 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
+    "redis": "^3.0.2",
     "socket.io": "^3.1.0",
-    "ts-node": "^9.1.1"
+    "ts-node": "^9.1.1",
+    "typescript": "^3.3.3",
+    "@types/express": "^4.16.1",
+    "@types/redis": "^2.8.28",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1"
   }
 }
