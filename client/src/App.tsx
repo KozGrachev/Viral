@@ -1,0 +1,74 @@
+import React from 'react';
+import { Box, Grommet } from 'grommet';
+import './App.css';
+import './backend-dummy-client/dummy-client';
+
+<<<<<<< HEAD
+function App () {
+=======
+import { ReduxDummy } from './backend-dummy-client/dummy-redux-component';
+import { Provider } from 'react-redux';
+import {store} from './redux/gameState/store'
+
+
+function App() {
+>>>>>>> bff5c0ce86821818a6cdebc4d7c6790a70e62f01
+
+  const dummy = true
+  
+  const theme = {
+    global: {
+      font: {
+        family: 'Roboto',
+        size: '18px',
+        height: '20px',
+      },
+    },
+  };
+<<<<<<< HEAD
+
+  // eslint-disable-next-line
+=======
+  
+  // eslint-disable-next-line 
+>>>>>>> bff5c0ce86821818a6cdebc4d7c6790a70e62f01
+  const AppBar = () => (
+    <Box // eslint-disable-next-line
+      tag='header'
+      direction='row'
+      align='center'
+      justify='between'
+      background='brand'
+      pad={{ left: 'medium', right: 'small', vertical: 'small' }}
+      elevation='medium'
+    />
+  );
+
+  if (dummy) return (
+    <Provider store={store}>
+      <ReduxDummy />
+    </Provider>)
+
+
+  return (
+    <Grommet theme={theme}>
+      <header className="App-header">
+        <p>
+          Testing Testing check 1, 2
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+      <div className="App"> </div>
+
+    </Grommet>
+  );
+}
+
+export default App;
