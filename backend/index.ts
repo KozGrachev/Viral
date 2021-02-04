@@ -2,24 +2,28 @@ import express from 'express';
 import cors from 'cors';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-import { userJoin, userLeave } from './utils/users';
+import { IUser, userJoin, userLeave } from './utils/users';
+import { getState, setState } from './redis/redis-db';
+
 // import { IUser } from './utils/users';
 // import { GameState } from './utils/game';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import * as dotenv from 'dotenv';
+import { GameState } from './utils/game';
 
 dotenv.config({ path: __dirname + '/.env' });
 const app = express();
 app.use(cors());
-
 const httpServer = createServer(app);
-const io = new Server(httpServer, {
-  cors: { origin: 'http://localhost:3000', methods: ['GET', 'POST'] }
-});
 const PORT = process.env.PORT || 3002;
 
-io.on('connection', (socket) => {
+const io = new Server(httpServer, {
+  cors: { origin: `${process.env.CLIENT_URL}`, methods: ['GET', 'POST'] }
+});
 
+let welcomeMessage = 'Welcome';
+
+io.on('connection', (socket) => {
   console.log('server connected');
 
   socket.on('joinRoom', ({ username, room }: { username: string, room: string }) => {
@@ -27,7 +31,7 @@ io.on('connection', (socket) => {
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit('joinConfirmation', `welcome ${username}, you can start playing now.`);
+    socket.emit('joinConfirmation', `${welcomeMessage} ${username}, you can start playing now.`);
 
     // Broadcast when a user connects
     socket.broadcast
@@ -39,15 +43,21 @@ io.on('connection', (socket) => {
   });
 
   socket.on('onChangeState',
-    ({ newState, fakeUser }: { newState: any, fakeUser: any }) => {
-      console.log('newstate on the server',
-        newState.currentTurn.movesLeft);
+    ({ newState, fakeUser }: { newState: GameState, fakeUser: IUser }) => {
       const user = fakeUser;
       socket.broadcast.to(user.room)
         .emit('updatedState', newState);
-      //   // will go and save this to redis 
+      //save to database
+      setState(fakeUser.room, newState);
+
     });
 
+  socket.on('resumeGame', (room: IUser['room']) => {
+    welcomeMessage = 'Welcome back';
+    getState(room).then(data => socket.emit('updatedState', data));
+
+
+  });
   // Runs when client disconnects
   socket.on('disconnect', () => {
     console.log('disconnect works');

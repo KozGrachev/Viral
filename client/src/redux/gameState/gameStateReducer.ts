@@ -1,5 +1,5 @@
 import { GameStateActionTypes, UPDATE_GAME_STATE, UPDATE_MOVES_LEFT, UPDATE_PLAYER_LOCATION } from './../../types/gameStateTypes';
-import { gameState } from '../../backend-dummy-client/dummy-state'
+import { gameState } from '../../socket-io-client/dummy-state'
 import { GameState } from '../../types/gameStateTypes'
 // import {emit} from '../backend-dummy-client/dummy-client'
 //here should be a initial State of the Game
