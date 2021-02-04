@@ -30,14 +30,7 @@ services:
     #   SERVICE_TAGS: dev
       # REDIS_PORT: ${DB_PORT}
       # REDIS_HOST: ${DB_HOST}
-    
-   
-  # Redis service
-  redis:
-    # image name
-    image: redis:3
-    # container name
-    # container_name: redis
+      
     # execute the command once start redis container
     command: [
         "redis-server",
