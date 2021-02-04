@@ -63,7 +63,7 @@ export function playerOrder(oldState:Gamestate) {
   let players=oldState.players
   let newPlayers=shuffle(players)
   newPlayers[0].isCurrent= true
-  let newState={...oldState,newPlayers}
+  let newState={...oldState,players : newPlayers} //!needs to return players not newPlayers
   return newState
 }
 
@@ -151,7 +151,7 @@ export function outbreak(outbreak_source:Source,oldState:Gamestate) {
 export function dealConnectionCardOld (oldState:Gamestate) {
   let newCard:Card=oldState.connectionDeck[0]
 
-  if(newCard.type==='viral'){
+  if(newCard.cardType==='viral'){
     viral(oldState)
   }
   else {
