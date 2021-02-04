@@ -90,7 +90,7 @@ function playerOrder(oldState:Gamestate) {
 }
 
 function insertViralCards(oldState:Gamestate) {
-
+  console.log('inserting viral cards to connection deck')
   let oldDeck=oldState.connectionDeck
 
   const viral1:Card={cardType:"viral",sourceName:null, misinfoType:null}
@@ -128,7 +128,7 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
   else { 
     drawSource=oldDeck[0].sourceName
   }
-
+  console.log('dealing misinformation card', drawSource)
   for(const source of oldState.sources){
     if(source.name===drawSource){
       while(weight>0){
@@ -160,6 +160,7 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
 }
 
 function outbreak(outbreak_source:Source,oldState:Gamestate) {
+  console.log('outbreak!! chaos meter increases')
   oldState.chaosMeter++
   let connections:string[];
   for (const source of sources){
@@ -180,7 +181,7 @@ function outbreak(outbreak_source:Source,oldState:Gamestate) {
       }
     }
   }
-        
+  console.log('outbreak on', outbreak_source)
   let newState={...oldState}
   return newState
 }
@@ -189,7 +190,7 @@ function outbreak(outbreak_source:Source,oldState:Gamestate) {
 
 function dealConnectionCard (oldState:Gamestate) {
   let newCard:Card=oldState.connectionDeck[0]
-
+  console.log('dealing connection card', newCard)
   if(newCard.cardType==='viral'){
     oldState=viral(oldState)
     oldState.connectionDeck.shift()
@@ -218,7 +219,7 @@ function dealConnectionCard (oldState:Gamestate) {
 }
 
 function viral (oldState:Gamestate) {
- 
+ console.log('viral card!!!')
  oldState=dealMisinfoCard(oldState,3,true)
  oldState.spreadLevel++
  //* shuffle passive misinfo deck and put on top of active misinfo deck
