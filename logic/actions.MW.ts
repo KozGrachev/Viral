@@ -81,7 +81,7 @@ function createSources() {
 
 //! SET STATE
 
-function playerOrder(oldState:Gamestate) {
+function playerOrder(oldState:Gamestate) { //! where to put this?
   let players=oldState.players
   let newPlayers=shuffle(players)
   newPlayers[0].isCurrent= true
@@ -265,8 +265,7 @@ function setUp(players){
  let index=0;
  let weights=[3,3,2,2,1,1]
 
- const sources=createSources()
- players=shuffle(players) 
+ const sources=createSources() 
  const spreadLevel=0; //! how is this managed??
  const chaosMeter=0;
  const misinformation={
@@ -326,6 +325,28 @@ function setUp(players){
  let newState={...updateState}
  return newState
 }
+
+
+let array = [{
+  name: 'Player 1',
+  id: '1234',
+  cards: [],
+  cardHandOverflow: false,
+  isCurrent: true,
+  pawnColor: 'green',
+  currentSource: 'crazy dave'
+},
+{
+  name: 'Player 2',
+  id: '5678',
+  cards: [],
+  cardHandOverflow: false,
+  isCurrent: false,
+  pawnColor: 'purple',
+  currentSource: 'crazy dave'
+},
+]
+
 
 
 
