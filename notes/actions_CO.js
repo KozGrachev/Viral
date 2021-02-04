@@ -176,7 +176,7 @@ function shareCardOld(player, recipient, sharedCard) {
 
 //? called when player chooses a card to discard from their hand
 
-function discardCard(player, card) {
+function discardCardOld(player, card) {
   // remove card from player hand
   //todo update state eg: player.cards.filter((card) => card !== sharedCard );
   // reset cardHandOverflow trigger
