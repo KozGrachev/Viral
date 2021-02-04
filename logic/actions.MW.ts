@@ -133,7 +133,7 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
     if(source.name===drawSource){
       while(weight>0){
         if(source[`markers_${source.misinfoType}`]==3){
-          oldState.chaosMeter++
+          
           oldState=outbreak(source,oldState)
         }
         else{
@@ -149,7 +149,7 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
   }
   if (viral){
     oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length-1])
-    oldState.misinformationDeckActive.pop()
+    oldState.misinformationDeckActive.shift()
   }
   else{
   oldState.misinformationDeckPassive.push(oldDeck[0]) //! LOOK INTO THIS
@@ -160,6 +160,7 @@ function dealMisinfoCard (oldState:Gamestate,weight:number,viral:boolean) {
 }
 
 function outbreak(outbreak_source:Source,oldState:Gamestate) {
+  oldState.chaosMeter++
   let connections:string[];
   for (const source of sources){
     if(source.name===outbreak_source.name){
