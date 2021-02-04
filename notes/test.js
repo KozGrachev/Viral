@@ -1,229 +1,4 @@
-const test={
-  chaosMeter: 1,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil ex"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from hr"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}],
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil ex"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from hr"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}],
-  misinformationDeckPassive: [[circular object Object], [circular object Object], [circular object Object], [circular object Object], [circular object Object], [circular object Object], [circular object Object]],
-  players: [{
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}],
-  currentSource: "University",
-  id: "1234",
-  isCurrent: true,
-  name: "Player 1",
-  pawnColor: "green"
-}, {
-  cardHandOverflow: false,
-  cards: [[circular object Object], [circular object Object]],
-  currentSource: "University",
-  id: "5678",
-  isCurrent: false,
-  name: "Player 2",
-  pawnColor: "purple"
-}],
-  sources: [{
+[{
   canClearCommunity: false,
   canClearRelations: false,
   canClearSocial: false,
@@ -232,7 +7,7 @@ const test={
   canLogOn: false,
   canMove: false,
   canShare: [],
-  markers_community: 0,
+  markers_community: 3,
   markers_relations: 0,
   markers_social: 0,
   misinfoType: "community",
@@ -246,7 +21,7 @@ const test={
   canLogOn: false,
   canMove: false,
   canShare: [],
-  markers_community: 3,
+  markers_community: 2,
   markers_relations: 0,
   markers_social: 0,
   misinfoType: "community",
@@ -271,10 +46,10 @@ const test={
   canClearSocial: false,
   canDebunk: [],
   canLogOff: false,
-  canLogOn: false,
+  canLogOn: true,
   canMove: false,
   canShare: [],
-  markers_community: 3,
+  markers_community: 0,
   markers_relations: 0,
   markers_social: 0,
   misinfoType: "community",
@@ -304,7 +79,7 @@ const test={
   canShare: [],
   markers_community: 0,
   markers_relations: 0,
-  markers_social: 1,
+  markers_social: 0,
   misinfoType: "community",
   name: "hair salon"
 }, {
@@ -314,7 +89,7 @@ const test={
   canDebunk: [],
   canLogOff: false,
   canLogOn: false,
-  canMove: false,
+  canMove: true,
   canShare: [],
   markers_community: 0,
   markers_relations: 0,
@@ -330,7 +105,7 @@ const test={
   canLogOn: false,
   canMove: false,
   canShare: [],
-  markers_community: 3,
+  markers_community: 0,
   markers_relations: 0,
   markers_social: 0,
   misinfoType: "community",
@@ -345,7 +120,7 @@ const test={
   canMove: false,
   canShare: [],
   markers_community: 0,
-  markers_relations: 1,
+  markers_relations: 0,
   markers_social: 0,
   misinfoType: "relations",
   name: "auntie"
@@ -369,7 +144,7 @@ const test={
   canClearSocial: false,
   canDebunk: [],
   canLogOff: false,
-  canLogOn: false,
+  canLogOn: true,
   canMove: false,
   canShare: [],
   markers_community: 0,
@@ -401,7 +176,7 @@ const test={
   canMove: false,
   canShare: [],
   markers_community: 0,
-  markers_relations: 2,
+  markers_relations: 0,
   markers_social: 0,
   misinfoType: "relations",
   name: "evil ex"
@@ -421,15 +196,15 @@ const test={
   name: "guy at the bus stop"
 }, {
   canClearCommunity: false,
-  canClearRelations: false,
+  canClearRelations: true,
   canClearSocial: false,
   canDebunk: [],
   canLogOff: false,
   canLogOn: false,
-  canMove: false,
+  canMove: true,
   canShare: [],
   markers_community: 0,
-  markers_relations: 0,
+  markers_relations: 1,
   markers_social: 0,
   misinfoType: "relations",
   name: "crazy dave"
@@ -440,10 +215,10 @@ const test={
   canDebunk: [],
   canLogOff: false,
   canLogOn: false,
-  canMove: false,
+  canMove: true,
   canShare: [],
   markers_community: 0,
-  markers_relations: 0,
+  markers_relations: 3,
   markers_social: 0,
   misinfoType: "relations",
   name: "opinionated grandpa"
@@ -468,11 +243,11 @@ const test={
   canDebunk: [],
   canLogOff: false,
   canLogOn: false,
-  canMove: false,
+  canMove: true,
   canShare: [],
   markers_community: 0,
   markers_relations: 0,
-  markers_social: 0,
+  markers_social: 2,
   misinfoType: "social",
   name: "youtube"
 }, {
@@ -486,7 +261,7 @@ const test={
   canShare: [],
   markers_community: 0,
   markers_relations: 0,
-  markers_social: 1,
+  markers_social: 0,
   misinfoType: "social",
   name: "intagram"
 }, {
@@ -500,7 +275,7 @@ const test={
   canShare: [],
   markers_community: 0,
   markers_relations: 0,
-  markers_social: 2,
+  markers_social: 0,
   misinfoType: "social",
   name: "facebook"
 }, {
@@ -514,7 +289,7 @@ const test={
   canShare: [],
   markers_community: 0,
   markers_relations: 0,
-  markers_social: 1,
+  markers_social: 0,
   misinfoType: "social",
   name: "reddit"
 }, {
@@ -559,8 +334,4 @@ const test={
   markers_social: 0,
   misinfoType: "social",
   name: "tik-tok"
-}],
-  spreadLevel: 1,
-  turnMovesLeft: 0,
-  turnOrder: []
-}
+}]
