@@ -1,30 +1,39 @@
 
-import { ReactComponent as twitterIcon } from '../../assets/social/twitter-icon.svg'
-import { ReactComponent as instagramIcon } from '../../assets/social/instagram-icon.svg'
-import { ReactComponent as facebookIcon } from '../../assets/social/facebook-icon.svg'
-import { ReactComponent as tiktokIcon } from '../../assets/social/tiktok-icon.svg'
-import { ReactComponent as whatsappIcon } from '../../assets/social/whatsapp-icon.svg'
-import { ReactComponent as redditIcon } from '../../assets/social/reddit-icon.svg'
-import { ReactComponent as youtubeIcon } from '../../assets/social/youtube-icon.svg'
-import { ReactComponent as illuminatifyIcon } from '../../assets/social/illuminatify-icon.svg'
+import { ReactComponent as twitterIcon } from '../assets/social/twitter-icon.svg'
+import { ReactComponent as instagramIcon } from '../assets/social/instagram-icon.svg'
+import { ReactComponent as facebookIcon } from '../assets/social/facebook-icon.svg'
+import { ReactComponent as tiktokIcon } from '../assets/social/tiktok-icon.svg'
+import { ReactComponent as whatsappIcon } from '../assets/social/whatsapp-icon.svg'
+import { ReactComponent as redditIcon } from '../assets/social/reddit-icon.svg'
+import { ReactComponent as youtubeIcon } from '../assets/social/youtube-icon.svg'
+import { ReactComponent as illuminatifyIcon } from '../assets/social/illuminatify-icon.svg'
 
-import { ReactComponent as highSchoolIcon } from '../../assets/community/highschool-icon.svg'
-import { ReactComponent as taxiIcon } from '../../assets/community/taxi-icon.svg'
-import { ReactComponent as localCultIcon } from '../../assets/community/local-cult-icon.svg'
-import { ReactComponent as hairSalonIcon } from '../../assets/community/hair-salon-icon.svg'
-import { ReactComponent as gymIcon } from '../../assets/community/gym-icon.svg'
-import { ReactComponent as asdaIcon } from '../../assets/community/asda-icon.svg'
-import { ReactComponent as pubIcon } from '../../assets/community/pub-icon.svg'
-import { ReactComponent as universityIcon } from '../../assets/community/university-icon.svg'
+import { ReactComponent as highSchoolIcon } from '../assets/community/highschool-icon.svg'
+import { ReactComponent as taxiIcon } from '../assets/community/taxi-icon.svg'
+import { ReactComponent as localCultIcon } from '../assets/community/local-cult-icon.svg'
+import { ReactComponent as hairSalonIcon } from '../assets/community/hair-salon-icon.svg'
+import { ReactComponent as gymIcon } from '../assets/community/gym-icon.svg'
+import { ReactComponent as asdaIcon } from '../assets/community/asda-icon.svg'
+import { ReactComponent as pubIcon } from '../assets/community/pub-icon.svg'
+import { ReactComponent as universityIcon } from '../assets/community/university-icon.svg'
 
-import { ReactComponent as cousinIcon } from '../../assets/relations/cousin-icon.svg'
-import { ReactComponent as guyAtTheBusStop } from '../../assets/relations/guy-at-the-bus-stop.svg'
-import { ReactComponent as crazyDaveIcon } from '../../assets/relations/crazy-dave-icon.svg'
-import { ReactComponent as motherInLawIcon } from '../../assets/relations/mother-in-law-icon.svg'
-import { ReactComponent as franFromHRIcon } from '../../assets/relations/fran-from-hr-icon.svg'
-import { ReactComponent as evilExIcon } from '../../assets/relations/evil-ex-icon.svg'
-import { ReactComponent as opinionatedGrandpaIcon } from '../../assets/relations/opinionated-grandpa-icon.svg'
-import { ReactComponent as uncleEugeneIcon } from '../../assets/relations/uncle-eugene-icon.svg'
+import { ReactComponent as cousinIcon } from '../assets/relations/cousin-icon.svg'
+import { ReactComponent as guyAtTheBusStopIcon } from '../assets/relations/guy-at-the-bus-stop.svg'
+import { ReactComponent as crazyDaveIcon } from '../assets/relations/crazy-dave-icon.svg'
+import { ReactComponent as motherInLawIcon } from '../assets/relations/mother-in-law-icon.svg'
+import { ReactComponent as franFromHrIcon } from '../assets/relations/fran-from-hr-icon.svg'
+import { ReactComponent as evilExIcon } from '../assets/relations/evil-ex-icon.svg'
+import { ReactComponent as opinionatedGrandpaIcon } from '../assets/relations/opinionated-grandpa-icon.svg'
+import { ReactComponent as uncleEugeneIcon } from '../assets/relations/uncle-eugene-icon.svg'
+
+
+
+
+
+// interface svgsMap {
+//   [name: string]: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+// }
+// const svgs: svgsMap = {
 
 
 const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> ={
@@ -45,10 +54,10 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   pubIcon,
   universityIcon,
   cousinIcon,
-  guyAtTheBusStop,
+  guyAtTheBusStopIcon,
   crazyDaveIcon,
   motherInLawIcon,
-  franFromHRIcon,
+  franFromHrIcon,
   evilExIcon,
   opinionatedGrandpaIcon,
   uncleEugeneIcon,
@@ -58,6 +67,8 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
 
 
 export const getIcon = (name: string): React.FunctionComponent<React.SVGProps<SVGSVGElement>> => {
+  // return youtubeIcon;
+  // return svgs['youtubeIcon'];
   return svgs[name];
 }
 
