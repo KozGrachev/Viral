@@ -8,7 +8,7 @@ export const LOG_ON_OFF = 'LOG_ON_OFF'
 export const DEBUNK_MISINFO = 'DEBUNK_MISINFO'
 export const DISCARD_ACTION = 'DISCARD_ACTION'
 export const UPDATE_GAME_STATE = 'UPDATE_GAME_STATE'
-
+export const ADD_PLAYER = 'ADD_PLAYER'
 export interface MoveActionProps {
   oldState: Gamestate,
   currentPlayerID: Player['id'],
@@ -82,11 +82,22 @@ export interface discardCardAction {
   payload: discardCardProps
 }
 
-interface UpdateGameStateAction {
+export interface UpdateGameStateAction {
   type: typeof UPDATE_GAME_STATE
   payload: Gamestate
+}
+
+export interface AddPlayerProps {
+  name: string,
+  color: string
+}
+interface AddPlayerAction {
+  type: typeof ADD_PLAYER
+  payload: AddPlayerProps
 }
 
 export type GameStateActionTypes =
   MoveAction | ClearMisinfoAction | ShareCardAction | logOnOffPropsAction |
   DebunkMisinfoAction | discardCardAction | UpdateGameStateAction
+
+export type PlayerStateActionTypes = AddPlayerAction; 
