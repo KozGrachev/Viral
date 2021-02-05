@@ -266,7 +266,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   // deal misinfo cards
   let misinfoCardNo = [2, 2, 3, 4][newState.spreadLevel];
   while (misinfoCardNo > 0) {
-    newState = dealMisinfoCard(newState, 1, false)
+    newState = dealMisinfoCard(newState, 1, false)!
   }
   //change current player turn
   //? anything else needs resetting?

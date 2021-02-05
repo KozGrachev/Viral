@@ -2,15 +2,13 @@ import React from 'react';
 import { Box, Grommet } from 'grommet';
 import './App.css';
 import './socket-io-client/socket-io-client';
-import { ReduxDummy } from './socket-io-client/dummy-redux-component';
+// import { ReduxDummy } from './socket-io-client/dummy-redux-component';
 import { Provider } from 'react-redux';
-import {store} from './redux/gameState/store'
+import { store } from './redux/gameState/store'
 
 
 function App() {
 
-  const dummy = true
-  
   const theme = {
     global: {
       font: {
@@ -34,10 +32,6 @@ function App() {
     />
   );
 
-  if (dummy) return (
-    <Provider store={store}>
-      <ReduxDummy />
-    </Provider>)
 
 
   return (

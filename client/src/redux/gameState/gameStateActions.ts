@@ -1,5 +1,5 @@
-import { ClearmisinfoProps, CLEAR_MISINFO, DebunkMisinfoProps, DEBUNK_MISINFO, discardCardProps, DISCARD_ACTION, Gamestate, logOnOffProps, LOG_ON_OFF, MoveActionProps, MOVE_ACTION, ShareCardProps, SHARE_CARD, UPDATE_GAME_STATE } from './../../types/gameStateTypes';
-import { GameStateActionTypes } from '../../types/gameStateTypes'
+import { ClearmisinfoProps, CLEAR_MISINFO, DebunkMisinfoProps, DEBUNK_MISINFO, discardCardProps, DISCARD_ACTION, logOnOffProps, LOG_ON_OFF, MoveActionProps, MOVE_ACTION, ShareCardProps, SHARE_CARD, UPDATE_GAME_STATE, GameStateActionTypes, PlayerStateActionTypes, ADD_PLAYER } from './reduxTypes';
+import { Gamestate, } from '../../types/gameStateTypes'
 //Below are example of actions with typescript. 
 // we need to create an action for each reduced case 
 
@@ -58,5 +58,12 @@ export function updateGameState(gameState: Gamestate): GameStateActionTypes {
   return {
     type: UPDATE_GAME_STATE,
     payload: gameState
+  }
+}
+
+export function AddPlayerAction(name: string, color: string): PlayerStateActionTypes {
+  return {
+    type: ADD_PLAYER,
+    payload: { name, color }
   }
 }
