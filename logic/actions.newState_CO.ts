@@ -1,6 +1,5 @@
 import {Gamestate,Card,Source, Player, Misinformation, Connection} from './objects.REDO'
 import {didWin, playViralCard, dealMisinfoCard, outbreak} from '../notes/actions.MW.COPY.forImport'
-import {sources} from './sources'
 
 //* ACTIONS
 

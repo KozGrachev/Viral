@@ -1,11 +1,10 @@
 // this initial state presumes 2 players, 3 locations (one for each color), 3 connection and 3 misinfo cards, and 1 viral card. 
-
-import {Gamestate,Card,Source, Player, Misinformation, Connection} from './objects.REDO'
+import { Gamestate, Card, Source, Player, Misinformation, Connection } from './objects.REDO'
 
 const initDummyState: Gamestate = {
   sources: [
     {
-      name: 'University', 
+      name: 'University',
       misinfoType: 'blue',
       markers_community: 0,
       markers_social: 0,
@@ -20,7 +19,7 @@ const initDummyState: Gamestate = {
       canDebunk: [],
     },
     {
-      name: 'Gym', 
+      name: 'Gym',
       misinfoType: 'red',
       markers_community: 0,
       markers_social: 0,
@@ -35,7 +34,7 @@ const initDummyState: Gamestate = {
       canDebunk: [],
     },
     {
-      name: 'Instagram', 
+      name: 'Instagram',
       misinfoType: 'yellow',
       markers_community: 0,
       markers_social: 0,
@@ -51,21 +50,21 @@ const initDummyState: Gamestate = {
     },
   ],
   players: [
-    { 
-      name: 'Player 1', 
+    {
+      name: 'Player 1',
       id: '1234',
       cards: [],
       cardHandOverflow: false,
-      isCurrent: true, 
+      isCurrent: true,
       pawnColor: 'green',
       currentSource: 'University'
     },
-    { 
-      name: 'Player 2', 
-      id: '5678', 
+    {
+      name: 'Player 2',
+      id: '5678',
       cards: [],
       cardHandOverflow: false,
-      isCurrent: true, 
+      isCurrent: true,
       pawnColor: 'purple',
       currentSource: 'University'
     },
@@ -73,20 +72,20 @@ const initDummyState: Gamestate = {
   spreadLevel: 1,
   chaosMeter: 0,
   misinformation: {
-    community:{
+    community: {
       name: 'Misinfo Type 1',
       debunked: false,
-      markersLeft: 16, 
+      markersLeft: 16,
     },
-    social:{
+    social: {
       name: 'Misinfo Type 2',
       debunked: false,
-      markersLeft: 16, 
+      markersLeft: 16,
     },
-    relations:{
+    relations: {
       name: 'Misinfo Type 3',
       debunked: false,
-      markersLeft: 16, 
+      markersLeft: 16,
     },
   },
   connectionDeck: [
