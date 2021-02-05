@@ -1,0 +1,80 @@
+.other-player-container {
+  position: relative;
+  border: 1px dashed greenyellow;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.purple {
+  background-color: #9B5DE5;
+  color: white
+}
+
+.green {
+  background-color: #00F5D4;
+  color: black
+}
+
+.fuchsia {
+  background-color: #F15BB5;
+  color: white
+}
+
+.blue {
+  background-color: #00BBF9;
+  color: white
+}
+
+.yellow {
+  background-color: #FEE440;
+  color: black;
+}
+
+.player-avatar {
+  font-weight: 700;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  /* top: 50%; */
+  width: 100px;
+  height: 100px;
+}
+
+.player-hand {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%); */
+  /* transform-origin: center; */
+  /* border: 1px dashed greenyellow; */
+}
+
+.displace {
+  width: 120px;
+  /* height: 100px; */
+  left: 50%;
+  top: 50%;
+  transform-origin: left;
+  position: absolute;
+  /* border: 1px dashed red; */
+}
+
+.other-player-card {
+  /* border: 1px dashed rgb(92, 47, 255); */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+
+  /* transform: translate(140%, -50%); */
+  /* transform-origin:center; */
+}
+
+.other-player-card svg {
+  width: 40px;
+  height: 40px;
+}

@@ -1,13 +1,6 @@
-// todo define basic three catagories of misinformation
-//todo define location by category
+import {Connection} from './objects.REDO'
 
-<<<<<<< HEAD:notes/sources.ts
-
-=======
-//todo define location by category
->>>>>>> 99a9fc58c736bafb084a80c1ff5d1b44338b6c36:logic/sources.js
-
-export const sources = [
+export const connections: Connection[] = [
   {
     name: 'high school',
     connections: ['taxi', 'university'],
@@ -20,13 +13,8 @@ export const sources = [
   },
   {
     name: 'local cult',
-<<<<<<< HEAD:notes/sources.ts
-    connections: ['taxi', 'pub', 'uncle-eugene'],
-    category:'community'
-=======
     connections: ['taxi', 'pub', 'auntie'],
     category: 'community',
->>>>>>> 99a9fc58c736bafb084a80c1ff5d1b44338b6c36:logic/sources.js
   },
   {
     name: 'pub',
@@ -45,7 +33,7 @@ export const sources = [
   },
   {
     name: 'gym',
-    connections: ['intagram', 'ASDA', 'pub', 'hair salon'],
+    connections: ['instagram', 'asda', 'pub', 'hair salon'],
     category: 'community',
   },
   {
@@ -54,17 +42,7 @@ export const sources = [
     category: 'community',
   },
   {
-<<<<<<< HEAD:notes/sources.ts
-    name: 'uncle-eugene',
-    connections: ['local cult', 'opinionated grandpa', 'mother-in-law', 'guy at the bus stop'],
-    category: 'relations'
-  },
-  {
-    name: 'mother-in-law',
-    connections: ['uncle-eugene', 'evil-ex', 'cousin'],
-    category: 'relations'
-=======
-    name: 'auntie',
+    name: 'uncle eugene',
     connections: [
       'local cult',
       'opinionated grandpa',
@@ -75,18 +53,17 @@ export const sources = [
   },
   {
     name: 'mother-in-law',
-    connections: ['auntie', 'evil-ex', 'cousin'],
+    connections: ['auntie', 'evil ex', 'cousin'],
     category: 'relations',
->>>>>>> 99a9fc58c736bafb084a80c1ff5d1b44338b6c36:logic/sources.js
   },
   {
     name: 'cousin',
-    connections: ['mother-in-law', 'evil-ex', 'fran from HR'],
+    connections: ['mother-in-law', 'evil ex', 'fran from hr'],
     category: 'relations',
   },
   {
     name: 'fran from hr',
-    connections: ['cousin', 'evil-ex'],
+    connections: ['cousin', 'evil ex'],
     category: 'relations',
   },
   {
@@ -94,64 +71,54 @@ export const sources = [
     connections: [
       'mother-in-law',
       'cousin',
-      'fran from HR',
+      'fran from hr',
       'guy at the bus stop',
     ],
     category: 'relations',
   },
   {
     name: 'guy at the bus stop',
-<<<<<<< HEAD:notes/sources.ts
-    connections: ['uncle-eugene', 'evil-ex', 'crazy dave'],
-    category: 'relations'
-=======
-    connections: ['auntie', 'evil-ex', 'crazy dave'],
+    connections: ['auntie', 'evil ex', 'crazy dave'],
     category: 'relations',
->>>>>>> 99a9fc58c736bafb084a80c1ff5d1b44338b6c36:logic/sources.js
   },
   {
     name: 'crazy dave',
     connections: [
       'guy at the bus stop',
       'opinionated grandpa',
-      'ASDA',
-      'illuminati',
+      'asda',
+      'illuminatify',
     ],
     category: 'relations',
   },
   {
     name: 'opinionated grandpa',
-<<<<<<< HEAD:notes/sources.ts
-    connections: ['crazy dave', 'uncle-eugene', 'ASDA'],
-    category: 'relations'
-=======
-    connections: ['crazy dave', 'auntie', 'ASDA'],
+    connections: ['crazy dave', 'auntie', 'asda'],
     category: 'relations',
->>>>>>> 99a9fc58c736bafb084a80c1ff5d1b44338b6c36:logic/sources.js
   },
   {
-    name: 'illuminati',
+    name: 'illuminatify',
     connections: ['crazy dave', 'whatsapp', 'youtube'],
     category: 'social',
   },
   {
     name: 'youtube',
-    connections: ['illuminati', 'ASDA', 'intagram'],
+    connections: ['illuminatify', 'asda', 'instagram'],
     category: 'social',
   },
   {
-    name: 'intagram',
+    name: 'instagram',
     connections: ['youtube', 'gym', 'facebook', 'reddit'],
     category: 'social',
   },
   {
     name: 'facebook',
-    connections: ['intagram', 'hair salon', 'reddit'],
+    connections: ['instagram', 'hair salon', 'reddit'],
     category: 'social',
   },
   {
     name: 'reddit',
-    connections: ['intagram', 'facebook', 'whatsapp', 'twitter'],
+    connections: ['instagram', 'facebook', 'whatsapp', 'twitter'],
     category: 'social',
   },
   {
@@ -161,11 +128,11 @@ export const sources = [
   },
   {
     name: 'whatsapp',
-    connections: ['reddit', 'illuminati', 'tik-tok', 'twitter'],
+    connections: ['reddit', 'illuminatify', 'tiktok', 'twitter'],
     category: 'social',
   },
   {
-    name: 'tik-tok',
+    name: 'tiktok',
     connections: ['whatsapp'],
     category: 'social',
   },

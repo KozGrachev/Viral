@@ -1,3 +1,2 @@
-# Newsdemic
-
+# Viral
 A game where you stop the virus of misinformation...

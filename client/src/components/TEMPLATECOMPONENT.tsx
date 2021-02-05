@@ -5,7 +5,7 @@ export interface SOMECOMPONENTProps {
 }
 
 
-export const Source: React.FC<SOMECOMPONENTProps> = ({ }: SOMECOMPONENTProps) => { // SVGIcon
+export const SOMECOMPONENT: React.FC<SOMECOMPONENTProps> = ({ }: SOMECOMPONENTProps) => { // SVGIcon
 
   return (
     <div className="" >
