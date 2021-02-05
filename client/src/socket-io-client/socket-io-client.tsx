@@ -1,10 +1,12 @@
 //based on change of state 
 import io from "socket.io-client";
 import * as dotenv from 'dotenv';
-import { store } from '../redux/gameState/store'
+import { RootState } from '../redux/gameState/store'
 import { updateGameState } from "../redux/gameState/gameStateActions";
 import { Gamestate } from "../types/gameStateTypes";
-// import {gameState} from './dummy-state'
+import { useSelector } from "react-redux";
+import userEvent from "@testing-library/user-event";
+import { skipPartiallyEmittedExpressions } from "typescript";
 
 //connection to the server
 dotenv.config({ path: __dirname + '../.env' });
@@ -16,11 +18,10 @@ const fakeUser = { username: 'Maria', room: '2' }
 //   ignoreQueryPrefix: true
 // });
 
-
-// user enters his credentials -> my game -> /player - room name -> 
-// click the start button and where are the credentials come from player object = now should i store in the same store or as a separate store?
-
-
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const Player = useSelector((state: RootState) => state.Player);
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const store = useSelector((state: RootState) => state.GameState)
 
 // on click - 'start game' 
 export const joinRoom = (username: string, room: string) => {
@@ -35,7 +36,7 @@ socket.on('joinConfirmation', (message: string) => {
 
 //subscripion to any game state changes 
 store.subscribe(() => {
-  const newState = store.getState().gameStateReducer
+  const newState = store.gameStateReducer
   if (!newState.received) {
     socket.emit('onChangeState', { newState, fakeUser })
   }
