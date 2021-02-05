@@ -1,4 +1,4 @@
-import { Gamestate, Card, Source,Player } from '../types/gameStateTypes'
+import { Gamestate, Card, Source, Player } from '../types/gameStateTypes'
 import { connections as sources } from './connections'
 
 //! HELPER HELPERS
@@ -120,8 +120,8 @@ export function insertViralCards(oldState: Gamestate) {
 
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
 
-  let oldDeck:Card[] = oldState.misinformationDeckActive
-  let drawSource:string|null
+  let oldDeck: Card[] = oldState.misinformationDeckActive
+  let drawSource: string | null
 
   if (isViral) {
     drawSource = oldDeck[oldDeck.length - 1].sourceName
@@ -137,40 +137,40 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
 
       while (weight > 0) {
 
-        let key='markers_'+source.misinfoType
-        let key2=source.misinfoType
-        if(key===`markers_community` && key2===`community`
-        ||key===`markers_social`&& key2===`social`
-        ||key===`markers_relations`&& key2===`relations`
+        let key = 'markers_' + source.misinfoType
+        let key2 = source.misinfoType
+        if (key === `markers_community` && key2 === `community`
+          || key === `markers_social` && key2 === `social`
+          || key === `markers_relations` && key2 === `relations`
         ) {
           if (source[key] === 3) {
             oldState = outbreak(source, oldState)
           }
-          else{
-            
-              source[key]++
-              oldState.misinformation[key2].markersLeft--
-            }
-            
-            didLose(oldState)
+          else {
 
-          
-        
+            source[key]++
+            oldState.misinformation[key2].markersLeft--
+          }
+
+          didLose(oldState)
+
+
+
           weight--
+        }
       }
     }
+    if (isViral) {
+      oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length - 1])
+      oldState.misinformationDeckActive.shift()
+    }
+    else {
+      oldState.misinformationDeckPassive.push(oldDeck[0]) //! LOOK INTO THIS
+      oldState.misinformationDeckActive.shift()
+    }
+    let newState = { ...oldState }
+    return newState
   }
-  if (isViral) {
-    oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length - 1])
-    oldState.misinformationDeckActive.shift()
-  }
-  else {
-    oldState.misinformationDeckPassive.push(oldDeck[0]) //! LOOK INTO THIS
-    oldState.misinformationDeckActive.shift()
-  }
-  let newState = { ...oldState }
-  return newState
-}
 }
 
 export function outbreak(outbreak_source: Source, oldState: Gamestate) {
@@ -185,14 +185,14 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
   for (const connection of connections) {
     for (const source of oldState.sources) {
       if (source.name === connection) {
-        let key=outbreak_source.misinfoType
-        if(key==='markers_community'|| key==='markers_relations'|| key==='markers_social')
-        if (source[key] === 3) {
-          oldState = outbreak(source, oldState)
-        }
-        else {
-          source[key]++
-        }
+        let key = outbreak_source.misinfoType
+        if (key === 'markers_community' || key === 'markers_relations' || key === 'markers_social')
+          if (source[key] === 3) {
+            oldState = outbreak(source, oldState)
+          }
+          else {
+            source[key]++
+          }
 
       }
     }
@@ -240,7 +240,7 @@ export function dealConnectionCard(oldState: Gamestate) {
 export function viral(oldState: Gamestate) {
   console.log('viral card!!!')
   oldState = dealMisinfoCard(oldState, 3, true)!
-  
+
   oldState.spreadLevel++
   //* shuffle passive misinfo deck and put on top of active misinfo deck
   oldState.misinformationDeckActive = [...shuffle(oldState.misinformationDeckPassive), ...oldState.misinformationDeckActive]
@@ -263,9 +263,13 @@ export function viral(oldState: Gamestate) {
 
 // }
 
-export function createPlayer(name: string, color: string, oldState: Gamestate) {
+
+
+export function createPlayer(name: string, color: string) {
+
+  // update the state fo rthe player
   let random = Math.floor(Math.random() * 100000)
-  oldState.players.push({
+  const player = {
     name,
     id: String(random),
     cards: [],
@@ -273,13 +277,21 @@ export function createPlayer(name: string, color: string, oldState: Gamestate) {
     isCurrent: false,
     pawnColor: color,
     currentSource: 'crazy dave'
-  })
+  }
+  return player
+
+}
+
+
+export function addPlayerToGame(player: Player, oldState: Gamestate) {
+
+  oldState.players.push(player)
 
   let newState = { ...oldState }
   return newState;
 }
 
-export function setUp(players:Player[]) {
+export function setUp(players: Player[]) {
 
   let cards;
   let misinfo = 6;
@@ -296,12 +308,12 @@ export function setUp(players:Player[]) {
   }
   const withoutViral = shuffle(createConnectionDeck());
   const misinformationDeckActive = shuffle(createMisinformationDeck());
-  const misinformationDeckPassive:Card[] = []
+  const misinformationDeckPassive: Card[] = []
   const dealHistory = 0;
   const turnMovesLeft = 4;
   const gameWon = false;
   const gameLost = false;
-  const received=false;
+  const received = false;
 
 
   let state = {

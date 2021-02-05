@@ -4,10 +4,10 @@ import { Gamestate } from '../../types/gameStateTypes'
 import { clearMisinfo, debunkMisinfo, discardCard, logOnOff, moveAction, shareCard } from '../../logic/actions.newState_CO'
 // import {emit} from '../backend-dummy-client/dummy-client'
 //here should be a initial State of the Game
-const initialState: Gamestate = gameState
+const GameState: Gamestate = gameState; 
 
 export function gameStateReducer(
-  state = initialState,
+  state = GameState,
   action: GameStateActionTypes
 ): Gamestate {
   switch (action.type) {

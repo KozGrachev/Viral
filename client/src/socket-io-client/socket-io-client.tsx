@@ -35,7 +35,7 @@ socket.on('joinConfirmation', (message: string) => {
 
 //subscripion to any game state changes 
 store.subscribe(() => {
-  const newState = store.getState()
+  const newState = store.getState().gameStateReducer
   if (!newState.received) {
     socket.emit('onChangeState', { newState, fakeUser })
   }

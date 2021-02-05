@@ -1,4 +1,4 @@
-
+export {}
 // import React from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { Gamestate } from '../types/gameStateTypes';

@@ -1,6 +1,6 @@
-// import { GameState, Turn, Player, Source, Misinformation, MarkerStatus, MisinformationCard, ConnectionDeck, MisinformationDeck, ConnectionCard } from '../types/gameStateTypes'
+// import { Gamestate, Turn, Player, Source, Misinformation } from '../types/gameStateTypes'
 // // import { sources } from '../../../notes/sources'
-
+export { }
 
 // //! currently not used in MVP
 // // const Role  = {
@@ -73,32 +73,32 @@
 // //   //? what does viral card need to contain? can cards be integrated?
 // // }
 
-// const connectionCard: ConnectionCard = { // Contant
-//   source: source,
-//   color: source['color']
-// }
+// // const connectionCard: ConnectionCard = { // Contant
+// //   source: source,
+// //   color: source['color']
+// // }
 
-// const connectionDeck: ConnectionDeck = {
-//   active: [connectionCard]
-//   //! passive removed as cards just destroyed
-// }
-
-
-// const misinformationCard: MisinformationCard = {
-//   source: source,
-// }
+// // const connectionDeck: ConnectionDeck = {
+// //   active: [connectionCard]
+// //   //! passive removed as cards just destroyed
+// // }
 
 
-// const misinformationDeck: MisinformationDeck = {
-//   active: [misinformationCard],
-//   passive: []
+// // const misinformationCard: MisinformationCard = {
+// //   source: source,
+// // }
 
-// }
+
+// // const misinformationDeck: MisinformationDeck = {
+// //   active: [misinformationCard],
+// //   passive: []
+
+// // }
 
 
 
 // // eslint-disable-next-line @typescript-eslint/no-unused-vars
-// export const gameState: GameState = {
+// export const gameState: Gamestate = {
 //   received: false,
 //   sources: [source],
 //   players: [player],
@@ -109,8 +109,7 @@
 //     blue: misinformation,
 //     yellow: misinformation
 //   },  //! sits better as an object
-//   connectionDeck: connectionDeck,
-//   misinformationDeck: misinformationDeck,
+
 //   currentTurn: turn
 // }
 
