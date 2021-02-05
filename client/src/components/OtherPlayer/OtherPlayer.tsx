@@ -46,7 +46,7 @@ export interface OtherPlayerProps {
 
 
 export const OtherPlayer: React.FC<OtherPlayerProps> = ({ player }: OtherPlayerProps) => { // SVGIcon
-
+  
   const renderCards = (): JSX.Element[] => {
     const angle = 40;
     const numGaps = player.cards.length - 1;

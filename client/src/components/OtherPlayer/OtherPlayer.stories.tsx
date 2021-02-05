@@ -73,7 +73,6 @@ StoryName2.args = {
     cards: [
       connections[Math.floor(Math.random() * (connections.length - 1))],
       connections[Math.floor(Math.random() * (connections.length - 1))],
-
     ],
     cardHandFull: false,
     isCurrent: true,

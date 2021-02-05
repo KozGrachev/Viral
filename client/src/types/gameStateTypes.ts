@@ -38,6 +38,7 @@ export interface Player {
   isCurrent: boolean;
   pawnColor: string;
   currentSource: string;
+  room: string;
 }
 
 export interface Source {

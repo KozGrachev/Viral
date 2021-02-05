@@ -7,8 +7,8 @@ import './backend-dummy-client/dummy-client';
 import './socket-io-client/socket-io-client';
 // import { ReduxDummy } from './socket-io-client/dummy-redux-component';
 import { Provider } from 'react-redux';
-import { store } from './redux/gameState/store'
-
+import { store } from './redux/gameState/store';
+import { CureDeck } from './components/CureDeck/CureDeck';
 
 function App() {
   const dummy = true;
@@ -36,22 +36,12 @@ function App() {
     />
   );
 
-
   return (
-    <Grommet theme={theme}>
-      <header className='App-header'>
-        <p>Testing Testing check 1, 2</p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-      <div className='App'> </div>
-    </Grommet>
+    <Provider store={store}>
+
+      {/* <CureDeck /> */}
+
+    </Provider>
   );
 }
 

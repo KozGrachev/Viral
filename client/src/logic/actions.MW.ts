@@ -263,7 +263,7 @@ export function viral(oldState: Gamestate) {
 
 
 
-export function createPlayer(name: string, color: string) {
+export function createPlayer(name: string, color: string, room: string) {
 
   // update the state fo rthe player
   let random = Math.floor(Math.random() * 100000)
@@ -274,7 +274,8 @@ export function createPlayer(name: string, color: string) {
     cardHandOverflow: false,
     isCurrent: false,
     pawnColor: color,
-    currentSource: 'crazy dave'
+    currentSource: 'crazy dave',
+    room: room
   }
   return player
 

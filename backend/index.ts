@@ -5,11 +5,8 @@ import { Server } from 'socket.io';
 import { IUser, userJoin, userLeave } from './utils/users';
 import { getState, setState } from './redis/redis-db';
 
-// import { IUser } from './utils/users';
-// import { GameState } from './utils/game';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 import * as dotenv from 'dotenv';
-import { GameState } from './utils/game';
+import { Gamestate } from './utils/game';
 
 dotenv.config({ path: __dirname + '/.env' });
 const app = express();
@@ -26,24 +23,24 @@ let welcomeMessage = 'Welcome';
 io.on('connection', (socket) => {
   console.log('server connected');
 
-  socket.on('joinRoom', ({ username, room }: { username: string, room: string }) => {
-    const user = userJoin(socket.id, username, room);
+  socket.on('joinRoom', ({ name, room }: { name: string, room: string }) => {
+    const user = userJoin(socket.id, name, room);
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit('joinConfirmation', `${welcomeMessage} ${username}, you can start playing now.`);
+    socket.emit('joinConfirmation', `${welcomeMessage} ${name}, you can start playing now.`);
 
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
       .emit(
         'joinConfirmation',
-        `${username} has joined the game`);
+        `${name} has joined the game`);
 
   });
 
   socket.on('onChangeState',
-    ({ newState, fakeUser }: { newState: GameState, fakeUser: IUser }) => {
+    ({ newState, fakeUser }: { newState: Gamestate, fakeUser: IUser }) => {
       const user = fakeUser;
       socket.broadcast.to(user.room)
         .emit('updatedState', newState);
@@ -65,7 +62,7 @@ io.on('connection', (socket) => {
 
     if (user) {
       io.to(user.room).emit(
-        'userLeft', `${user.username} has left the game`);
+        'userLeft', `${user.name} has left the game`);
     }
   });
 });
