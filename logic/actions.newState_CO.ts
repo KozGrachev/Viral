@@ -1,11 +1,14 @@
 import {Gamestate,Card,Source, Player, Misinformation, Connection} from './objects.REDO'
-import {didWin, playViralCard} from '../notes/actions.MW.COPY.forImport'
+import {didWin, playViralCard, dealMisinfoCard, outbreak} from '../notes/actions.MW.COPY.forImport'
 import {sources} from './sources'
 
 //* ACTIONS
 
+//! ID randomly generated, so need way to hook up "player"
+//! Hook up end of nextTurn function with updatePossibleActions
 
-function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate { 
+
+export function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate { 
   const newState: Gamestate = 
   {
     ...oldState,
@@ -16,11 +19,13 @@ function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location
       ),
     turnMovesLeft : oldState.turnMovesLeft - 1, 
   };
+  console.log('player moved to',location);
+  console.log('there are', newState.turnMovesLeft, 'moves left')
   return nextMoveChecker(newState, currentPlayerID);
 }
 
 
-function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'], misinfoType: Misinformation['name'], location: Source['name']): Gamestate {
+export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'], misinfoType: Misinformation['name'], location: Source['name']): Gamestate {
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
   let noOfMarkers: number = 1;
   if (oldState.misinformation[misinfoType].debunked) {
@@ -43,11 +48,13 @@ function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'], misinf
     },
     turnMovesLeft : oldState.turnMovesLeft - 1,
   };
+  console.log('player cleared', noOfMarkers,misinfoType);
+  console.log('there are', newState.turnMovesLeft, 'moves left')
   return nextMoveChecker(newState, currentPlayerID);
 }
 
 
-function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], recipient: Player['id'], sharedCard: Card['sourceName']): Gamestate {
+export function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], recipient: Player['id'], sharedCard: Card['sourceName']): Gamestate {
   const newState: Gamestate = 
   {
     ...oldState,
@@ -70,11 +77,13 @@ function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], recipient
       ),
     turnMovesLeft : oldState.turnMovesLeft - 1,
   };
+  console.log('player shared',sharedCard,'with player',recipient);
+  console.log('there are', newState.turnMovesLeft, 'moves left')
   return nextMoveChecker(newState, currentPlayerID);
 }
 
 
-function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name'], usedCard: Card['sourceName']): Gamestate {
+export function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name'], usedCard: Card['sourceName']): Gamestate {
   const newState: Gamestate = 
   {
     ...oldState,
@@ -89,11 +98,13 @@ function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], location: 
       ),
     turnMovesLeft : oldState.turnMovesLeft - 1,
   };
+  console.log('player flew to', location, 'using the', usedCard, 'card');
+  console.log('there are', newState.turnMovesLeft, 'moves left')
   return nextMoveChecker(newState, currentPlayerID); 
 }
 
 
-function debunkMisinfo(oldState: Gamestate,  currentPlayerID: Player['id'], usedCards: Card['sourceName'][], misinfoType: Misinformation['name']): Gamestate {
+export function debunkMisinfo(oldState: Gamestate,  currentPlayerID: Player['id'], usedCards: Card['sourceName'][], misinfoType: Misinformation['name']): Gamestate {
   const newState: Gamestate = 
   {
     ...oldState,
@@ -115,11 +126,14 @@ function debunkMisinfo(oldState: Gamestate,  currentPlayerID: Player['id'], used
     turnMovesLeft : oldState.turnMovesLeft - 1,
   };
   if (didWin(newState)) { 
+    console.log('congratulations, you debunked all the misinformation and won')
     return {
       ...newState,
       gameWon: true,
     }
   } else {
+    console.log('player debunked', misinfoType);
+    console.log('there are', newState.turnMovesLeft, 'moves left')
     return nextMoveChecker(newState, currentPlayerID)
   }
 }
@@ -127,7 +141,7 @@ function debunkMisinfo(oldState: Gamestate,  currentPlayerID: Player['id'], used
 
 //* TURN
 
-function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
   //* settup
   const playerIndex: number = oldState.players.map((player) => player.id).indexOf(currentPlayerID);
   const location: Player['currentSource'] = oldState.players[playerIndex].currentSource;
@@ -196,7 +210,7 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
             canMove : false,
             canLogOn: false,
             canLogOff: false,
-            canClearCommunity: clearCommunityMisinfo,
+            canClearCommunity: clearCommunityMisinfo,//! this is same for all sources
             canClearSocial: clearSocialMisinfo,
             canClearRelations: clearRelationsMisinfo,
             canShare: possibleShares,
@@ -206,9 +220,9 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
             canMove : adjacents.includes(source.name),
             canLogOn: logonPossible.includes(source.name),
             canLogOff: logoffPossible,
-            canClearCommunity: clearCommunityMisinfo,
-            canClearSocial: clearSocialMisinfo,
-            canClearRelations: clearRelationsMisinfo,
+            // canClearCommunity: clearCommunityMisinfo,
+            // canClearSocial: clearSocialMisinfo,
+            // canClearRelations: clearRelationsMisinfo,
             canShare: [],
             canDebunk: [],
           }
@@ -218,15 +232,17 @@ function updatePossibleActions(oldState: Gamestate, currentPlayerID: Player['id'
 }
 
 
-function boardActions(oldState: Gamestate, currentPlayerID: Player['id'], noOfCards: number): Gamestate {
+export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'], noOfCards: number): Gamestate {
   // deal connection cards
   const playerIndex = oldState.players
     .map((player) => player.id)
     .indexOf(currentPlayerID);
   let cardsLeft = noOfCards;
+  let newState: Gamestate = oldState; //? cant be defined in while loop?
   while (cardsLeft > 0) {
-    const newState = dealConnectionCard(oldState, currentPlayerID);
+    newState = dealConnectionCard(oldState, currentPlayerID);
     if (newState.players[playerIndex].cards.length > 6) {
+      console.log('your hand is full, you need to discard a card');
       return {
         ...newState,
         players : newState.players
@@ -239,21 +255,47 @@ function boardActions(oldState: Gamestate, currentPlayerID: Player['id'], noOfCa
     }
     cardsLeft --;
   }
+  //? do we need to put breaks here, and how, for the front end to update or show when a card ahs been dealt?
+  // check spread marker for weight
   // deal misinfo cards
-
-  //TODO - finish with misinfo deal, hook up so loop complete
-  
-
-
+  let misinfoCardNo = [2,2,3,4][newState.spreadLevel];
+  while (misinfoCardNo > 0) {
+    newState = dealMisinfoCard(newState, 1, false)
+  }
+  //change current player turn
+  //? anything else needs resetting?
+  return nextTurn(newState, currentPlayerID)
 }
 
 //* HELPERS
 
+export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  const playerIndex: number = oldState.players.map((player) => player.id).indexOf(currentPlayerID);
+  const nextPlayerIndex: number = playerIndex === oldState.players.length - 1 ?
+    0 : 
+    playerIndex + 1;
+  const newState: Gamestate = 
+  {
+    ...oldState,
+    players : oldState.players
+      .map((player, index) => index === playerIndex ?
+          { ...player, isCurrent : false  } :
+          index === nextPlayerIndex ?
+            { ...player, isCurrent : true  } :
+            player
+      ),
+    // reset number of moves
+    turnMovesLeft : 4, 
+  };
+  console.log('next players turn!')
+  return newState; //? call updatePossibleActions to start next turn
+}
 
-function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player['id']):Gamestate {
-  //* first check if this card is the last one, thus ending the game
-  //! does the game end when card pile is zero, or is there one last move (ie when card pile -1)?
-  if (oldState.connectionDeck.length === 1) {
+
+export function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  //* if no cards left then game is lost
+  if (oldState.connectionDeck.length === 0) {
+    console.log('no more connections... you lost!');
     return {
       ...oldState,
       gameLost : true
@@ -262,6 +304,7 @@ function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player['id']):
   const newCard: Card = oldState.connectionDeck[0]
   if (newCard.cardType === 'viral') {
     //? does viral function remove card? should it be returned? should it also break for game checks?
+    console.log('you drew a viral card!');
     playViralCard(oldState)
   }
   else {
@@ -278,12 +321,13 @@ function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player['id']):
         ),
       connectionDeck : oldState.connectionDeck.slice[1]
     };
+    console.log('player was dealt a', newCard.sourceName, 'connection card');
     return newState;  
   }
 }
 
 
-function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+export function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
   if (oldState.turnMovesLeft > 0) {
     return updatePossibleActions(oldState, currentPlayerID)
   } else {
@@ -294,7 +338,7 @@ function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id']): Ga
 
 
 // called when player has chosen to discard card from hand, when cardHandOverflow === true
-function discardCard(oldState: Gamestate, currentPlayerID: Player['id'], discardedCard: Card['sourceName']): Gamestate {
+export function discardCard(oldState: Gamestate, currentPlayerID: Player['id'], discardedCard: Card['sourceName']): Gamestate {
   const newState: Gamestate = 
   {
     ...oldState,

@@ -190,7 +190,11 @@ function outbreak(outbreak_source:Source,oldState:Gamestate) {
 
 function dealConnectionCard (oldState:Gamestate) {
   let newCard:Card=oldState.connectionDeck[0]
+
   
+
+  console.log('dealing connection card', newCard)
+
   if(newCard.cardType==='viral'){
     oldState=viral(oldState)
     oldState.connectionDeck.shift()
