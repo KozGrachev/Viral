@@ -89,7 +89,8 @@ export interface UpdateGameStateAction {
 
 export interface AddPlayerProps {
   name: string,
-  color: string
+  color: string,
+  room: string
 }
 interface AddPlayerAction {
   type: typeof ADD_PLAYER
