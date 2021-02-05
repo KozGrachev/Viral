@@ -1,3 +1,51 @@
+"dealing connection card", {
+  cardType: "connection",
+  misinfoType: "social",
+  sourceName: "tik-tok"
+}
+"dealing connection card", {
+  cardType: "connection",
+  misinfoType: "relations",
+  sourceName: "crazy dave"
+}
+"dealing connection card", {
+  cardType: "connection",
+  misinfoType: "social",
+  sourceName: "intagram"
+}
+"inserting viral cards to connection deck"
+"dealing misinformation card", "opinionated grandpa"
+"dealing misinformation card", "asda"
+"dealing misinformation card", "evil ex"
+"dealing misinformation card", "cousin"
+"dealing misinformation card", "taxi"
+"dealing misinformation card", "pub"
+[{
+  cardType: "connection",
+  misinfoType: "social",
+  sourceName: "tik-tok"
+}, {
+  cardType: "connection",
+  misinfoType: "relations",
+  sourceName: "crazy dave"
+}, {
+  cardType: "connection",
+  misinfoType: "social",
+  sourceName: "intagram"
+}]
+[{
+  cardType: "connection",
+  misinfoType: "social",
+  sourceName: "tik-tok"
+}, {
+  cardType: "connection",
+  misinfoType: "relations",
+  sourceName: "crazy dave"
+}, {
+  cardType: "connection",
+  misinfoType: "social",
+  sourceName: "intagram"
+}]
 [{
   canClearCommunity: false,
   canClearRelations: false,
@@ -7,7 +55,7 @@
   canLogOn: false,
   canMove: false,
   canShare: [],
-  markers_community: 3,
+  markers_community: 0,
   markers_relations: 0,
   markers_social: 0,
   misinfoType: "community",
@@ -21,7 +69,7 @@
   canLogOn: false,
   canMove: false,
   canShare: [],
-  markers_community: 2,
+  markers_community: 1,
   markers_relations: 0,
   markers_social: 0,
   misinfoType: "community",
@@ -46,10 +94,10 @@
   canClearSocial: false,
   canDebunk: [],
   canLogOff: false,
-  canLogOn: true,
+  canLogOn: false,
   canMove: false,
   canShare: [],
-  markers_community: 0,
+  markers_community: 1,
   markers_relations: 0,
   markers_social: 0,
   misinfoType: "community",
@@ -89,7 +137,7 @@
   canDebunk: [],
   canLogOff: false,
   canLogOn: false,
-  canMove: true,
+  canMove: false,
   canShare: [],
   markers_community: 0,
   markers_relations: 0,
@@ -105,7 +153,7 @@
   canLogOn: false,
   canMove: false,
   canShare: [],
-  markers_community: 0,
+  markers_community: 3,
   markers_relations: 0,
   markers_social: 0,
   misinfoType: "community",
@@ -144,11 +192,11 @@
   canClearSocial: false,
   canDebunk: [],
   canLogOff: false,
-  canLogOn: true,
+  canLogOn: false,
   canMove: false,
   canShare: [],
   markers_community: 0,
-  markers_relations: 1,
+  markers_relations: 2,
   markers_social: 0,
   misinfoType: "relations",
   name: "cousin"
@@ -176,7 +224,7 @@
   canMove: false,
   canShare: [],
   markers_community: 0,
-  markers_relations: 0,
+  markers_relations: 2,
   markers_social: 0,
   misinfoType: "relations",
   name: "evil ex"
@@ -196,15 +244,15 @@
   name: "guy at the bus stop"
 }, {
   canClearCommunity: false,
-  canClearRelations: true,
+  canClearRelations: false,
   canClearSocial: false,
   canDebunk: [],
   canLogOff: false,
   canLogOn: false,
-  canMove: true,
+  canMove: false,
   canShare: [],
   markers_community: 0,
-  markers_relations: 1,
+  markers_relations: 0,
   markers_social: 0,
   misinfoType: "relations",
   name: "crazy dave"
@@ -215,7 +263,7 @@
   canDebunk: [],
   canLogOff: false,
   canLogOn: false,
-  canMove: true,
+  canMove: false,
   canShare: [],
   markers_community: 0,
   markers_relations: 3,
@@ -243,11 +291,11 @@
   canDebunk: [],
   canLogOff: false,
   canLogOn: false,
-  canMove: true,
+  canMove: false,
   canShare: [],
   markers_community: 0,
   markers_relations: 0,
-  markers_social: 2,
+  markers_social: 0,
   misinfoType: "social",
   name: "youtube"
 }, {

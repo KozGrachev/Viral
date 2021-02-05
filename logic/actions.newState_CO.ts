@@ -2,6 +2,14 @@ import {Gamestate,Card,Source, Player, Misinformation, Connection} from './objec
 import {didWin, playViralCard, dealMisinfoCard, outbreak} from '../notes/actions.MW.COPY.forImport'
 import {sources} from './sources'
 
+//* START THE GAME!
+//? called when start button pressed? after game initialised and player order set
+
+export function startGame(oldState: Gamestate) {
+  const currentPlayerID: Player['id'] = oldState.players[0].id;
+  return updatePossibleActions(oldState, currentPlayerID);
+}
+
 //* ACTIONS
 
 //! ID randomly generated, so need way to hook up "player"
@@ -255,7 +263,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
     }
     cardsLeft --;
   }
-  //? do we need to put breaks here, and how, for the front end to update or show when a card ahs been dealt?
+  //? do we need to put breaks here, and how, for the front end to update or show when a card has been dealt?
   // check spread marker for weight
   // deal misinfo cards
   let misinfoCardNo = [2,2,3,4][newState.spreadLevel];
@@ -332,7 +340,7 @@ export function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id
     return updatePossibleActions(oldState, currentPlayerID)
   } else {
     //? move onto 'board actions' part of turn
-    return oldState; //! change here
+    return boardActions(oldState, currentPlayerID, 2)
   }
 }
 
