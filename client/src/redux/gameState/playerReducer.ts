@@ -15,7 +15,7 @@ export function playerStateReducer(
 ): Player {
   switch (action.type) {
     case ADD_PLAYER: {
-      return createPlayer(action.payload.name, action.payload.color)
+      return createPlayer(action.payload.name, action.payload.color, action.payload.room)
     }
     default: return state
   }
