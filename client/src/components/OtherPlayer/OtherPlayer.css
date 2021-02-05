@@ -31,6 +31,18 @@
   color: black;
 }
 
+.current {
+  border: 3px solid #00ff1a;
+  /* border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, #00C853, #B2FF59); */
+  /* background-clip: padding-box; */
+  /* !importanté */
+  /* border: solid $border transparent; */
+  /* !importanté */
+}
+
 .player-avatar {
   font-weight: 700;
   position: relative;
@@ -77,4 +89,10 @@
 .other-player-card svg {
   width: 40px;
   height: 40px;
+  transform: scale(1);
+  transition: transform 200ms ease-in-out;
+}
+
+.other-player-card svg:hover {
+  transform: scale(1.2);
 }

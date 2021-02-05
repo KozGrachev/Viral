@@ -5,7 +5,9 @@ export interface ChaosMeterProps {
   name: string;
 }
 
+
 export const ChaosMeter: React.FC<ChaosMeterProps> = ({
+  // should take the chaos value from redux store
   name,
 }: ChaosMeterProps) => {
   return (
@@ -18,21 +20,21 @@ export const ChaosMeter: React.FC<ChaosMeterProps> = ({
           r='30px'
         ></circle>
         <circle
-          className='progressbar__thumb 
+          className='progressbar__thumb
           progressbar__thumb--track-1'
           cx='50%'
           cy='50%'
           r='30px'
         ></circle>
         <circle
-          className='progressbar__thumb 
+          className='progressbar__thumb
           progressbar__thumb--track-2'
           cx='50%'
           cy='50%'
           r='30px'
         ></circle>
         <circle
-          className='progressbar__thumb 
+          className='progressbar__thumb
           progressbar__thumb--track-3'
           cx='50%'
           cy='50%'
