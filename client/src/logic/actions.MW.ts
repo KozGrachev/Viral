@@ -139,8 +139,8 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
 
         let key='markers_'+source.misinfoType
         let key2=source.misinfoType
-        if(key===`markers_community` &&key2===`community`
-        ||key===`markers_social`&&key2===`social`
+        if(key===`markers_community` && key2===`community`
+        ||key===`markers_social`&& key2===`social`
         ||key===`markers_relations`&& key2===`relations`
         ) {
           if (source[key] === 3) {
@@ -170,6 +170,7 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
   }
   let newState = { ...oldState }
   return newState
+}
 }
 
 export function outbreak(outbreak_source: Source, oldState: Gamestate) {
@@ -238,7 +239,8 @@ export function dealConnectionCard(oldState: Gamestate) {
 
 export function viral(oldState: Gamestate) {
   console.log('viral card!!!')
-  oldState = dealMisinfoCard(oldState, 3, true)
+  oldState = dealMisinfoCard(oldState, 3, true)!
+  
   oldState.spreadLevel++
   //* shuffle passive misinfo deck and put on top of active misinfo deck
   oldState.misinformationDeckActive = [...shuffle(oldState.misinformationDeckPassive), ...oldState.misinformationDeckActive]
@@ -339,7 +341,7 @@ export function setUp(players:Player[]) {
 
   while (misinfo > 0) {
     let weight = weights[index]
-    updateState = dealMisinfoCard(updateState, weight, false)
+    updateState = dealMisinfoCard(updateState, weight, false)!
     index++
     misinfo--
   }
