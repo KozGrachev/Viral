@@ -1,5 +1,5 @@
-import { Gamestate, Card, Source, Player, Misinformation, Connection } from '../types/gameStateTypes'
-import { didWin, viral as playViralCard, dealMisinfoCard, outbreak } from './actions.MW'
+import { Gamestate, Card, Source, Player, Misinformation } from '../types/gameStateTypes'
+import { didWin, viral as playViralCard, dealMisinfoCard } from './actions.MW'
 import { connections as sources } from './connections'
 
 //* START THE GAME
@@ -325,7 +325,7 @@ export function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player[
           } :
           player
         ),
-      connectionDeck: oldState.connectionDeck.slice[1]
+      connectionDeck: oldState.connectionDeck.slice(1)
     };
     console.log('player was dealt a', newCard.sourceName, 'connection card');
     return newState;
