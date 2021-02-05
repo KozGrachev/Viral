@@ -81,7 +81,7 @@ function createSources() {
 
 //! SET STATE
 
-function playerOrder(oldState:Gamestate) {
+function playerOrder(oldState:Gamestate) { //! where to put this?
   let players=oldState.players
   let newPlayers=shuffle(players)
   newPlayers[0].isCurrent= true
@@ -190,7 +190,11 @@ function outbreak(outbreak_source:Source,oldState:Gamestate) {
 
 function dealConnectionCard (oldState:Gamestate) {
   let newCard:Card=oldState.connectionDeck[0]
+
+  
+
   console.log('dealing connection card', newCard)
+
   if(newCard.cardType==='viral'){
     oldState=viral(oldState)
     oldState.connectionDeck.shift()
@@ -198,7 +202,7 @@ function dealConnectionCard (oldState:Gamestate) {
   else {
     for (const player of oldState.players) {
       if(player.isCurrent){
-
+        console.log('dealing connection card', newCard)
         player.cards.push(newCard)
         oldState.connectionDeck.shift()
         if(player.cards.length>6)
@@ -265,8 +269,7 @@ function setUp(players){
  let index=0;
  let weights=[3,3,2,2,1,1]
 
- const sources=createSources()
- players=shuffle(players) 
+ const sources=createSources() 
  const spreadLevel=0; //! how is this managed??
  const chaosMeter=0;
  const misinformation={
@@ -300,15 +303,18 @@ function setUp(players){
  if(state.players.length>2) cards=2;
  else cards=3
   
- for(let i=0; i<state.players.length; i++) { //* deal connection cards to players before inserting viral cards
-  while(cards>0){
-    state=dealConnectionCard(state)
-    cards--
+ for (let i = 0; i < state.players.length; i++) { //* deal connection cards to players before inserting viral cards
+  console.log(state.players)
+    if (state.players.length > 2) cards = 2;
+    else cards = 3
+    while (cards > 0) {
+      state = dealConnectionCard(state)
+      cards--
+    }
+    state.players[i].isCurrent = false;
+    if (i !== state.players.length - 1) state.players[i + 1].isCurrent = true;
+    else state.players[0].isCurrent = true;
   }
-  state.players[i].isCurrent=false;
-  if(i!==state.players.length-1) state.players[i+1].isCurrent=true;
-  else state.players[0].isCurrent=true;
- }
 
  let updateState=insertViralCards({...state,connectionDeck:withoutViral})
  
@@ -323,6 +329,28 @@ function setUp(players){
  let newState={...updateState}
  return newState
 }
+
+
+let array = [{
+  name: 'Player 1',
+  id: '1234',
+  cards: [],
+  cardHandOverflow: false,
+  isCurrent: true,
+  pawnColor: 'green',
+  currentSource: 'crazy dave'
+},
+{
+  name: 'Player 2',
+  id: '5678',
+  cards: [],
+  cardHandOverflow: false,
+  isCurrent: false,
+  pawnColor: 'purple',
+  currentSource: 'crazy dave'
+},
+]
+
 
 
 
