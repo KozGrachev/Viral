@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import * as dotenv from 'dotenv';
 import { store } from '../redux/gameState/store'
 import { updateGameState } from "../redux/gameState/gameStateActions";
-import { GameState } from "../types/gameStateTypes";
+import { Gamestate } from "../types/gameStateTypes";
 // import {gameState} from './dummy-state'
 
 //connection to the server
@@ -15,6 +15,12 @@ const fakeUser = { username: 'Maria', room: '2' }
 // const { username, room } = Qs.parse(location.search, {
 //   ignoreQueryPrefix: true
 // });
+
+
+// user enters his credentials -> my game -> /player - room name -> 
+// click the start button and where are the credentials come from player object = now should i store in the same store or as a separate store?
+
+
 
 // on click - 'start game' 
 export const joinRoom = (username: string, room: string) => {
@@ -29,14 +35,14 @@ socket.on('joinConfirmation', (message: string) => {
 
 //subscripion to any game state changes 
 store.subscribe(() => {
-  const newState = store.getState()
+  const newState = store.getState().gameStateReducer
   if (!newState.received) {
     socket.emit('onChangeState', { newState, fakeUser })
   }
 })
 
 //data coming from backend after game state changed
-socket.on('updatedState', (newState: GameState) => {
+socket.on('updatedState', (newState: Gamestate) => {
   console.log('state is back to after user rejoins', newState)
   newState.received = true;
   store.dispatch(updateGameState(newState))
