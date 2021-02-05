@@ -1,33 +1,27 @@
 //based on change of state 
 import io from "socket.io-client";
 import * as dotenv from 'dotenv';
-import { store } from '../redux/gameState/store'
+import { RootState, store } from '../redux/gameState/store'
 import { updateGameState } from "../redux/gameState/gameStateActions";
 import { Gamestate } from "../types/gameStateTypes";
-// import {gameState} from './dummy-state'
+import { useSelector } from "react-redux";
 
 //connection to the server
 dotenv.config({ path: __dirname + '../.env' });
 const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 
-const fakeUser = { username: 'Maria', room: '2' }
-// ultimately will passed on or read from the url  with 
-// const { username, room } = Qs.parse(location.search, {
-//   ignoreQueryPrefix: true
-// });
 
-
-// user enters his credentials -> my game -> /player - room name -> 
-// click the start button and where are the credentials come from player object = now should i store in the same store or as a separate store?
-
-
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const Player = useSelector((state: RootState) => state.Player);
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const GameState = useSelector((state: RootState) => state.GameState)
 
 // on click - 'start game' 
 export const joinRoom = (username: string, room: string) => {
-  socket.emit('joinRoom', { username, room });
+  socket.emit('joinRoom', Player);
 }
 
-// Message from server
+// Message from server // welcome component 
 socket.on('joinConfirmation', (message: string) => {
   console.log(message); // display message to the screen 
 });
@@ -35,11 +29,10 @@ socket.on('joinConfirmation', (message: string) => {
 
 //subscripion to any game state changes 
 store.subscribe(() => {
-  const newState = store.getState().gameStateReducer
-  if (!newState.received) {
-    socket.emit('onChangeState', { newState, fakeUser })
-  }
-})
+  const newState = useSelector((state: RootState) => state.GameState)
+  socket.emit('onChangeState', { newState, Player })
+}
+)
 
 //data coming from backend after game state changed
 socket.on('updatedState', (newState: Gamestate) => {
@@ -49,13 +42,11 @@ socket.on('updatedState', (newState: Gamestate) => {
 })
 
 
-// on click when user wants to restart game
+// on click when user wants to restart game 
 export const restartGame = () => {
-  joinRoom(fakeUser.username, fakeUser.room);
-  socket.emit('resumeGame', fakeUser.room)
+  joinRoom(Player.name, Player.room);
+  socket.emit('resumeGame', Player.room)
 }
-// on a click which allows user to resume game 
-// restartGame()
 
-
-socket.on('userLeft', (message: string) => console.log(message))
+// how to we tell the users 
+socket.on('userLeft', (message: string) => console.log(message)) // need a end game button 
