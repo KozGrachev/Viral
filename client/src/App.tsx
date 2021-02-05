@@ -1,6 +1,9 @@
 import React from 'react';
 import { Box, Grommet } from 'grommet';
 import './App.css';
+import './backend-dummy-client/dummy-client';
+
+// import { ReduxDummy } from './backend-dummy-client/dummy-redux-component';
 import './socket-io-client/socket-io-client';
 // import { ReduxDummy } from './socket-io-client/dummy-redux-component';
 import { Provider } from 'react-redux';
@@ -8,6 +11,7 @@ import { store } from './redux/gameState/store'
 
 
 function App() {
+  const dummy = true;
 
   const theme = {
     global: {
@@ -18,8 +22,8 @@ function App() {
       },
     },
   };
-  // eslint-disable-next-line
 
+  // eslint-disable-next-line
   const AppBar = () => (
     <Box // eslint-disable-next-line
       tag='header'
@@ -33,24 +37,20 @@ function App() {
   );
 
 
-
   return (
     <Grommet theme={theme}>
-      <header className="App-header">
-        <p>
-          Testing Testing check 1, 2
-        </p>
+      <header className='App-header'>
+        <p>Testing Testing check 1, 2</p>
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          className='App-link'
+          href='https://reactjs.org'
+          target='_blank'
+          rel='noopener noreferrer'
         >
           Learn React
         </a>
       </header>
-      <div className="App"> </div>
-
+      <div className='App'> </div>
     </Grommet>
   );
 }

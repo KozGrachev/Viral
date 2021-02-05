@@ -19,9 +19,9 @@ const fakeUser = { username: 'Maria', room: '2' }
 // });
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
-const Player = useSelector((state: RootState) => state.Player);
+const Player = useSelector((state:RootState) => state.Player); 
 // eslint-disable-next-line react-hooks/rules-of-hooks
-const store = useSelector((state: RootState) => state.GameState)
+const store = useSelector((state:RootState) => state.GameState)
 
 // on click - 'start game' 
 export const joinRoom = (username: string, room: string) => {
@@ -36,7 +36,7 @@ socket.on('joinConfirmation', (message: string) => {
 
 //subscripion to any game state changes 
 store.subscribe(() => {
-  const newState = store.gameStateReducer
+  const newState = store.getState().gameStateReducer
   if (!newState.received) {
     socket.emit('onChangeState', { newState, fakeUser })
   }
