@@ -1,17 +1,13 @@
 import React from 'react';
 import { Box, Grommet } from 'grommet';
 import './App.css';
-import './backend-dummy-client/dummy-client';
 
-// import { ReduxDummy } from './backend-dummy-client/dummy-redux-component';
 import './socket-io-client/socket-io-client';
-// import { ReduxDummy } from './socket-io-client/dummy-redux-component';
 import { Provider } from 'react-redux';
 import { store } from './redux/gameState/store';
 import { CureDeck } from './components/CureDeck/CureDeck';
 
 function App() {
-  const dummy = true;
 
   const theme = {
     global: {

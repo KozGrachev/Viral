@@ -24,6 +24,7 @@ io.on('connection', (socket) => {
   console.log('server connected');
 
   socket.on('joinRoom', ({ name, room }: { name: string, room: string }) => {
+
     const user = userJoin(socket.id, name, room);
     socket.join(user.room);
 
@@ -40,19 +41,17 @@ io.on('connection', (socket) => {
   });
 
   socket.on('onChangeState',
-    ({ newState, fakeUser }: { newState: Gamestate, fakeUser: IUser }) => {
-      const user = fakeUser;
+    ({ newState, Player }: { newState: Gamestate, Player: IUser }) => {
+      const user = Player;
       socket.broadcast.to(user.room)
         .emit('updatedState', newState);
       //save to database
-      setState(fakeUser.room, newState);
-
+      setState(user.room, newState);
     });
 
   socket.on('resumeGame', (room: IUser['room']) => {
     welcomeMessage = 'Welcome back';
     getState(room).then(data => socket.emit('updatedState', data));
-
 
   });
   // Runs when client disconnects
