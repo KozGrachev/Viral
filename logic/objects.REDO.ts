@@ -8,6 +8,7 @@ export interface Gamestate{
 
   chaosMeter: number;
   misinformation: {
+    // [key: string] : Misinformation,
     community:Misinformation,
     social:Misinformation,
     relations:Misinformation

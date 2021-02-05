@@ -2,11 +2,15 @@ import {Gamestate,Card,Source, Player, Misinformation, Connection} from './objec
 import {didWin, playViralCard, dealMisinfoCard, outbreak} from '../notes/actions.MW.COPY.forImport'
 import {sources} from './sources'
 
+//* START THE GAME
+//? called when start button pressed? after game initialised and player order set
+
+export function startGame(oldState: Gamestate) {
+  const currentPlayerID: Player['id'] = oldState.players[0].id;
+  return updatePossibleActions(oldState, currentPlayerID);
+}
+
 //* ACTIONS
-
-//! ID randomly generated, so need way to hook up "player"
-//! Hook up end of nextTurn function with updatePossibleActions
-
 
 export function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate { 
   const newState: Gamestate = 
@@ -210,7 +214,7 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
             canMove : false,
             canLogOn: false,
             canLogOff: false,
-            canClearCommunity: clearCommunityMisinfo,//! this is same for all sources
+            canClearCommunity: clearCommunityMisinfo,
             canClearSocial: clearSocialMisinfo,
             canClearRelations: clearRelationsMisinfo,
             canShare: possibleShares,
@@ -220,9 +224,9 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
             canMove : adjacents.includes(source.name),
             canLogOn: logonPossible.includes(source.name),
             canLogOff: logoffPossible,
-            // canClearCommunity: clearCommunityMisinfo,
-            // canClearSocial: clearSocialMisinfo,
-            // canClearRelations: clearRelationsMisinfo,
+            canClearCommunity: false,
+            canClearSocial: false,
+            canClearRelations: false,
             canShare: [],
             canDebunk: [],
           }
@@ -238,7 +242,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
     .map((player) => player.id)
     .indexOf(currentPlayerID);
   let cardsLeft = noOfCards;
-  let newState: Gamestate = oldState; //? cant be defined in while loop?
+  let newState: Gamestate = oldState;
   while (cardsLeft > 0) {
     newState = dealConnectionCard(oldState, currentPlayerID);
     if (newState.players[playerIndex].cards.length > 6) {
@@ -251,11 +255,11 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
               player
           ),
         dealHistory : cardsLeft - 1,
-      } //! exit function here
+      } // exits function here
     }
     cardsLeft --;
   }
-  //? do we need to put breaks here, and how, for the front end to update or show when a card ahs been dealt?
+  //? do we need to put breaks here, and how, for the front end to update or show when a card has been dealt?
   // check spread marker for weight
   // deal misinfo cards
   let misinfoCardNo = [2,2,3,4][newState.spreadLevel];
@@ -288,7 +292,7 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
     turnMovesLeft : 4, 
   };
   console.log('next players turn!')
-  return newState; //? call updatePossibleActions to start next turn
+  return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
 }
 
 
@@ -332,7 +336,7 @@ export function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id
     return updatePossibleActions(oldState, currentPlayerID)
   } else {
     //? move onto 'board actions' part of turn
-    return oldState; //! change here
+    return boardActions(oldState, currentPlayerID, 2)
   }
 }
 
@@ -355,7 +359,4 @@ export function discardCard(oldState: Gamestate, currentPlayerID: Player['id'], 
   //? calling boardActions with newState.dealHistory will decrement the amount of connection cards to be dealt, allowing the function to continue where it left off
   return boardActions(newState, currentPlayerID, newState.dealHistory)
 }
-
-
-//* RESOURCES
 
