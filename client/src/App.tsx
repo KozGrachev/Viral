@@ -3,7 +3,9 @@ import { Box, Grommet } from 'grommet';
 import './App.css';
 import './backend-dummy-client/dummy-client';
 
-import { ReduxDummy } from './backend-dummy-client/dummy-redux-component';
+// import { ReduxDummy } from './backend-dummy-client/dummy-redux-component';
+import './socket-io-client/socket-io-client';
+import { ReduxDummy } from './socket-io-client/dummy-redux-component';
 import { Provider } from 'react-redux';
 import { store } from './redux/gameState/store';
 

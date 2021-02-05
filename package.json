@@ -16,7 +16,11 @@
     "url": "https://github.com/Bobik808/Viral/issues"
   },
   "homepage": "https://github.com/Bobik808/Viral#readme",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "eslint": "^7.19.0",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0"
   }

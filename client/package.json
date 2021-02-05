@@ -14,7 +14,7 @@
     "@types/socket.io-client": "^1.4.35",
     "grommet": "^2.16.2",
     "grommet-icons": "^4.5.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-docgen-typescript": "^1.21.0",
     "react-dom": "^17.0.1",
@@ -24,6 +24,7 @@
     "socket.io-client": "^3.1.0",
     "styled-components": "^5.2.1",
     "typescript": "^3.9.4",
+    "uuid": "^8.3.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
