@@ -28,9 +28,6 @@ var http_1 = require('http');
 var socket_io_1 = require('socket.io');
 var users_1 = require('./utils/users');
 var redis_db_1 = require('./redis/redis-db');
-// import { IUser } from './utils/users';
-// import { GameState } from './utils/game';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 var dotenv = __importStar(require('dotenv'));
 dotenv.config({ path: __dirname + '/.env' });
 var app = express_1.default();
@@ -38,21 +35,21 @@ app.use(cors_1.default());
 var httpServer = http_1.createServer(app);
 var PORT = process.env.PORT || 3002;
 var io = new socket_io_1.Server(httpServer, {
-  cors: { origin: 'http://localhost:3000', methods: ['GET', 'POST'] }
+  cors: { origin: '' + process.env.CLIENT_URL, methods: ['GET', 'POST'] }
 });
 var welcomeMessage = 'Welcome';
 io.on('connection', function (socket) {
   console.log('server connected');
   socket.on('joinRoom', function (_a) {
-    var username = _a.username, room = _a.room;
-    var user = users_1.userJoin(socket.id, username, room);
+    var name = _a.name, room = _a.room;
+    var user = users_1.userJoin(socket.id, name, room);
     socket.join(user.room);
     // Welcome current user
-    socket.emit('joinConfirmation', welcomeMessage + ' ' + username + ', you can start playing now.');
+    socket.emit('joinConfirmation', welcomeMessage + ' ' + name + ', you can start playing now.');
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
-      .emit('joinConfirmation', username + ' has joined the game');
+      .emit('joinConfirmation', name + ' has joined the game');
   });
   socket.on('onChangeState', function (_a) {
     var newState = _a.newState, fakeUser = _a.fakeUser;
@@ -71,7 +68,7 @@ io.on('connection', function (socket) {
     console.log('disconnect works');
     var user = users_1.userLeave(socket.id);
     if (user) {
-      io.to(user.room).emit('userLeft', user.username + ' has left the game');
+      io.to(user.room).emit('userLeft', user.name + ' has left the game');
     }
   });
 });

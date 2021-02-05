@@ -3,10 +3,10 @@ Object.defineProperty(exports, '__esModule', { value: true });
 exports.userLeave = exports.userJoin = exports.users = void 0;
 exports.users = [];
 // Join user to chat
-function userJoin (id, username, room) {
+function userJoin (id, name, room) {
   var user = {
     id: id,
-    username: username,
+    name: name,
     room: room
   };
   exports.users.push(user);

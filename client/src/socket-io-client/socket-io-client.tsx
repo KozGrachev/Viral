@@ -14,7 +14,6 @@ const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const Player = useSelector((state: RootState) => state.Player);
 // eslint-disable-next-line react-hooks/rules-of-hooks
-const GameState = useSelector((state: RootState) => state.GameState)
 
 // on click - 'start game' 
 export const joinRoom = (username: string, room: string) => {
