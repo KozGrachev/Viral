@@ -2,7 +2,7 @@ import {Gamestate,Card,Source, Player, Misinformation, Connection} from './objec
 import {didWin, playViralCard, dealMisinfoCard, outbreak} from '../notes/actions.MW.COPY.forImport'
 import {sources} from './sources'
 
-//* START THE GAME!
+//* START THE GAME
 //? called when start button pressed? after game initialised and player order set
 
 export function startGame(oldState: Gamestate) {
@@ -11,10 +11,6 @@ export function startGame(oldState: Gamestate) {
 }
 
 //* ACTIONS
-
-//! ID randomly generated, so need way to hook up "player"
-//! Hook up end of nextTurn function with updatePossibleActions
-
 
 export function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], location: Source['name']): Gamestate { 
   const newState: Gamestate = 
@@ -218,7 +214,7 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
             canMove : false,
             canLogOn: false,
             canLogOff: false,
-            canClearCommunity: clearCommunityMisinfo,//! this is same for all sources
+            canClearCommunity: clearCommunityMisinfo,
             canClearSocial: clearSocialMisinfo,
             canClearRelations: clearRelationsMisinfo,
             canShare: possibleShares,
@@ -228,9 +224,9 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
             canMove : adjacents.includes(source.name),
             canLogOn: logonPossible.includes(source.name),
             canLogOff: logoffPossible,
-            // canClearCommunity: clearCommunityMisinfo,
-            // canClearSocial: clearSocialMisinfo,
-            // canClearRelations: clearRelationsMisinfo,
+            canClearCommunity: false,
+            canClearSocial: false,
+            canClearRelations: false,
             canShare: [],
             canDebunk: [],
           }
@@ -246,7 +242,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
     .map((player) => player.id)
     .indexOf(currentPlayerID);
   let cardsLeft = noOfCards;
-  let newState: Gamestate = oldState; //? cant be defined in while loop?
+  let newState: Gamestate = oldState;
   while (cardsLeft > 0) {
     newState = dealConnectionCard(oldState, currentPlayerID);
     if (newState.players[playerIndex].cards.length > 6) {
@@ -259,7 +255,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
               player
           ),
         dealHistory : cardsLeft - 1,
-      } //! exit function here
+      } // exits function here
     }
     cardsLeft --;
   }
@@ -296,7 +292,7 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
     turnMovesLeft : 4, 
   };
   console.log('next players turn!')
-  return newState; //? call updatePossibleActions to start next turn
+  return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
 }
 
 
@@ -363,7 +359,4 @@ export function discardCard(oldState: Gamestate, currentPlayerID: Player['id'], 
   //? calling boardActions with newState.dealHistory will decrement the amount of connection cards to be dealt, allowing the function to continue where it left off
   return boardActions(newState, currentPlayerID, newState.dealHistory)
 }
-
-
-//* RESOURCES
 
