@@ -1,4 +1,4 @@
-import {Connection} from './objects.REDO'
+import {Connection} from '../../../logic/objects.REDO'
 
 export const connections: Connection[] = [
   {
