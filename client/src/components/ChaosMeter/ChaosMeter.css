@@ -34,7 +34,7 @@
 }
 
 .progressbar__thumb--track-2 {
-  stroke: red;
+  stroke: green;
   animation-duration: 1.8s;
   animation-delay: 0.2s;
 }
@@ -47,6 +47,6 @@
 
 @keyframes progress {
   to {
-    stroke-dasharray: 110;
+    stroke-dasharray: 100;
   }
 }
