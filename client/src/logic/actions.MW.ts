@@ -139,9 +139,9 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
 
         let key = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
-        if (key === `markers_community` && key2 === `community`
-          || key === `markers_social` && key2 === `social`
-          || key === `markers_relations` && key2 === `relations`
+        if ((key === `markers_community` && key2 === `community`)
+          || (key === `markers_social` && key2 === `social`)
+          || (key === `markers_relations` && key2 === `relations`)
         ) {
           if (source[key] === 3) {
             oldState = outbreak(source, oldState)
@@ -207,8 +207,6 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
 export function dealConnectionCard(oldState: Gamestate) {
   let newCard: Card = oldState.connectionDeck[0]
 
-
-
   console.log('dealing connection card', newCard)
 
   if (newCard.cardType === 'viral') {
@@ -221,17 +219,17 @@ export function dealConnectionCard(oldState: Gamestate) {
         console.log('dealing connection card', newCard)
         player.cards.push(newCard)
         oldState.connectionDeck.shift()
-        if (player.cards.length > 6) {
-          let chosenCard = {
-            cardType: 'connection',
-            sourceName: 'University',
-            misinfoType: 'community',
-          } //* front end to give player choice of card to delete
-          //deleteCard(chosenCard, oldState)
+        // if (player.cards.length > 6) { //! not relevent at this stage
+        //   let chosenCard = {
+        //     cardType: 'connection',
+        //     sourceName: 'University',
+        //     misinfoType: 'community',
+        //   } 
+        //   //deleteCard(chosenCard, oldState)
         }
       }
     }
-  }
+  
 
   let newState = { ...oldState }
   return newState
