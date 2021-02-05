@@ -26,7 +26,7 @@ export interface Gamestate {
   dealHistory: number; //? this is needed for the discardCard funtion to return back to where it was called from, and is the noOfCards parameter passed to boardActions
   gameWon: boolean;
   gameLost: boolean;
-  received: false;
+  received: boolean;
 }
 
 export interface Player {
