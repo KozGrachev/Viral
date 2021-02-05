@@ -15,6 +15,7 @@ export interface Gamestate {
   spreadLevel: number; // 0,1,2 or 3
   chaosMeter: number;
   misinformation: {
+    [key: string]: Misinformation, //? see: typescript index rules
     community: Misinformation,
     social: Misinformation,
     relations: Misinformation
@@ -23,10 +24,10 @@ export interface Gamestate {
   misinformationDeckActive: Card[];
   misinformationDeckPassive: Card[];
   turnMovesLeft: number;
-  dealHistory: number; //? this is needed for the discardCard funtion to return back to where it was called from, and is the noOfCards parameter passed to boardActions
+  dealHistory: number;
   gameWon: boolean;
   gameLost: boolean;
-  received: false;
+  received: boolean;
 }
 
 export interface Player {
@@ -40,6 +41,7 @@ export interface Player {
 }
 
 export interface Source {
+  [key: string]: any, //? see: typescript index rules
   name: string;
   misinfoType: string;
   markers_community: number;
