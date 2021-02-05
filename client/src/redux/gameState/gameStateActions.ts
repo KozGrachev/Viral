@@ -61,9 +61,9 @@ export function updateGameState(gameState: Gamestate): GameStateActionTypes {
   }
 }
 
-export function AddPlayerAction(name: string, color: string): PlayerStateActionTypes {
+export function AddPlayerAction(name: string, color: string, room:string): PlayerStateActionTypes {
   return {
     type: ADD_PLAYER,
-    payload: { name, color }
+    payload: { name, color, room }
   }
 }
