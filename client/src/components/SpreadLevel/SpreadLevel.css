@@ -1,0 +1,28 @@
+.spread-level-container {
+  height: 150px;
+  width: 500px;
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.spread-level-circle {
+  font-size: larger;
+  font-weight: bold;
+  border: solid;
+  color:aliceblue;
+  border-color: black;
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+  border-radius: 50%;
+  background-color: rgb(85, 29, 138);
+  flex-basis: 18%;
+}
+
+.isActive {
+  background-color: rgb(60, 190, 88);
+}
