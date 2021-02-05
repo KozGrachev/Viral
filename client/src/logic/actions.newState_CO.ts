@@ -3,7 +3,7 @@ import { didWin, viral as playViralCard, dealMisinfoCard, outbreak } from './act
 import { connections as sources } from './connections'
 
 //* START THE GAME
-//? called when start button pressed? after game initialised and player order set
+//? called when start button pressed, after game initialised and player order set
 
 export function startGame(oldState: Gamestate) {
   const currentPlayerID: Player['id'] = oldState.players[0].id;
@@ -42,7 +42,7 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
       .map((source) => source.name === location ?
         { ...source, [`markers_${misinfoType}`]: source[`markers_${misinfoType}`] - noOfMarkers } :
         source
-      ),
+      ), 
     misinformation: {
       ...oldState.misinformation,
       [misinfoType]: {
