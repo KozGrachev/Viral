@@ -1,13 +1,8 @@
 import React from 'react';
 import './NewGameMenu.css';
 
-export interface NewGameMenuProps {
-  name: string;
-}
 
-export const NewGameMenu: React.FC<NewGameMenuProps> = ({
-  name,
-}: NewGameMenuProps) => {
+export const NewGameMenu: React.FC = () => {
   return (
     <form className='form'>
       <div className='menu-container'>

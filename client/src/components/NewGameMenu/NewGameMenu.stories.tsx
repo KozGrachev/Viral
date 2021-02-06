@@ -1,7 +1,7 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { NewGameMenu, NewGameMenuProps } from './NewGameMenu';
+import { NewGameMenu } from './NewGameMenu';
 import { withDesign } from 'storybook-addon-designs';
 
 export default {
@@ -10,8 +10,8 @@ export default {
   decorators: [withDesign],
 } as Meta;
 
-const Template: Story<NewGameMenuProps> = (args: NewGameMenuProps) => (
-  <NewGameMenu {...args} />
+const Template: Story = () => (
+  <NewGameMenu  />
 );
 
 export const GameMenu = Template.bind({});

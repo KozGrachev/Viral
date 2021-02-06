@@ -101,4 +101,4 @@ export type GameStateActionTypes =
   MoveAction | ClearMisinfoAction | ShareCardAction | logOnOffPropsAction |
   DebunkMisinfoAction | discardCardAction | UpdateGameStateAction
 
-export type PlayerStateActionTypes = AddPlayerAction; 
+export type PlayerStateActionTypes = AddPlayerAction;
