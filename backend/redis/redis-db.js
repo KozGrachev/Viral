@@ -84,19 +84,19 @@ var getState = function (room) { return __awaiter(void 0, void 0, void 0, functi
 exports.getState = getState;
 // get all games saved room:Game list returns as an array of strings 
 var getGames = function (patern) { return __awaiter(void 0, void 0, void 0, function () {
-    var data;
+    var games;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, redisKEYSAsync(patern).then(function (data) { return data; })];
+            case 0: return [4 /*yield*/, redisKEYSAsync(patern)];
             case 1:
-                data = _a.sent();
-                // console.log(data);
-                return [2 /*return*/, data];
+                games = _a.sent();
+                if (games)
+                    return [2 /*return*/, games];
+                return [2 /*return*/];
         }
     });
 }); };
 exports.getGames = getGames;
-// // get all games saved room:Game list returns as an array of strings 
 // export const deleteGame = async (room: string): Promise<string> => {
 //   await redisDelAsync(room).then(data => data);
 //   return `${room} successfully deleted`;

@@ -35,7 +35,7 @@ app.use(cors_1.default());
 var httpServer = http_1.createServer(app);
 var PORT = process.env.PORT || 3002;
 var io = new socket_io_1.Server(httpServer, {
-    cors: { origin: "" + process.env.CLIENT_URL, methods: ['GET', 'POST'] }
+    cors: { origin: "" + process.env.CLIENT_URL, methods: ['GET', 'POST', 'DELETE'] }
 });
 var welcomeMessage = 'Welcome';
 io.on('connection', function (socket) {
@@ -62,6 +62,9 @@ io.on('connection', function (socket) {
     socket.on('resumeGame', function (room) {
         welcomeMessage = 'Welcome back';
         redis_db_1.getState(room).then(function (data) { return socket.emit('updatedState', data); });
+    });
+    socket.on('getGames', function () {
+        redis_db_1.getGames('*').then(function (data) { return socket.emit('games', data); });
     });
     // Runs when client disconnects
     socket.on('disconnect', function () {
