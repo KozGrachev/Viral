@@ -58,7 +58,8 @@ export const initDummyState: Gamestate = {
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'green',
-      currentSource: 'University'
+      currentSource: 'University', 
+      room:'1', 
     },
     {
       name: 'Player 2',
@@ -67,7 +68,9 @@ export const initDummyState: Gamestate = {
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'purple',
-      currentSource: 'University'
+      currentSource: 'University', 
+      room:'1', 
+
     },
   ],
   spreadLevel: 1,

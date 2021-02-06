@@ -4,23 +4,22 @@ import * as dotenv from 'dotenv';
 import { RootState, store } from '../redux/gameState/store'
 import { updateGameState } from "../redux/gameState/gameStateActions";
 import { Gamestate } from "../types/gameStateTypes";
-import { useSelector } from "react-redux";
 
 //connection to the server
 dotenv.config({ path: __dirname + '../.env' });
 const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const Player = useSelector((state: RootState) => state.Player);
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const GameState = useSelector((state: RootState) => state.GameState)
+const Player = store.getState().playerStateReducer 
 
 // on click - 'start game' 
-export const joinRoom = (username: string, room: string) => {
-  socket.emit('joinRoom', Player);
+export const joinRoom = (name: string, room: string) => {
+  console.log()
+  socket.emit('joinRoom', {name, room});
+  console.log(name, room)
 }
 
+joinRoom(Player.name, Player.room )
 // Message from server // welcome component 
 socket.on('joinConfirmation', (message: string) => {
   console.log(message); // display message to the screen 
@@ -29,7 +28,7 @@ socket.on('joinConfirmation', (message: string) => {
 
 //subscripion to any game state changes 
 store.subscribe(() => {
-  const newState = useSelector((state: RootState) => state.GameState)
+  const newState = store.getState().gameStateReducer 
   socket.emit('onChangeState', { newState, Player })
 }
 )
@@ -42,10 +41,11 @@ socket.on('updatedState', (newState: Gamestate) => {
 })
 
 
+
 // on click when user wants to restart game 
-export const restartGame = () => {
-  joinRoom(Player.name, Player.room);
-  socket.emit('resumeGame', Player.room)
+export const restartGame = (name:string, room:string) => {
+  joinRoom(name, room);
+  socket.emit('resumeGame', {Player})
 }
 
 // how to we tell the users 

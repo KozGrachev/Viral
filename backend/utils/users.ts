@@ -12,6 +12,7 @@ export function userJoin (id: string, name: string, room: string): IUser {
     name,
     room
   };
+
   users.push(user);
   return user;
 }
