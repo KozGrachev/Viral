@@ -17,12 +17,12 @@ export interface CureDeckProps {
 export const CureDeck: React.FC<CureDeckProps> = ({ hasACureForMisinformationA
   , hasACureForMisinformationB, hasACureForMisinformationC }: CureDeckProps) => { // SVGIcon
   // using redux instead of props for real implementation
-  // const gamestate = useSelector((state: RootState) => state.GameState.connectionDeck)
+  const gamestate = useSelector((state: RootState) => state.GameState.connectionDeck)
 
 
 
-  let noCureString = "No cure - it´s the end"
-  let cureString = "u have a cure bitches!"
+  let noCureString = "No cure - we're screwed"
+  let cureString = "We have a cure bitches!"
   const CureDeck = (<>
     <div className="misinformation-cure-deck-container A">{hasACureForMisinformationA ? cureString : noCureString}</div>
     <div className="misinformation-cure-deck-container B">{hasACureForMisinformationB ? cureString : noCureString}</div>

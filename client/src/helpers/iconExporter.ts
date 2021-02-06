@@ -27,6 +27,18 @@ import { ReactComponent as opinionatedGrandpaIcon } from '../assets/allIcons/opi
 import { ReactComponent as uncleEugeneIcon } from '../assets/allIcons/uncle-eugene-icon.svg'
 
 
+import { ReactComponent as markerSocial1 } from '../assets/allIcons/marker-social-1.svg'
+import { ReactComponent as markerSocial2 } from '../assets/allIcons/marker-social-2.svg'
+import { ReactComponent as markerSocial3 } from '../assets/allIcons/marker-social-3.svg'
+import { ReactComponent as markerCommunity1 } from '../assets/allIcons/marker-community-1.svg'
+import { ReactComponent as markerCommunity2 } from '../assets/allIcons/marker-community-2.svg'
+import { ReactComponent as markerCommunity3 } from '../assets/allIcons/marker-community-3.svg'
+import { ReactComponent as markerRelations1 } from '../assets/allIcons/marker-relations-1.svg'
+import { ReactComponent as markerRelations2 } from '../assets/allIcons/marker-relations-2.svg'
+import { ReactComponent as markerRelations3 } from '../assets/allIcons/marker-relations-3.svg'
+
+import { ReactComponent as map } from '../assets/allIcons/map.svg'
+import { ReactComponent as gameBoard } from '../assets/allIcons/game-board.svg'
 
 
 
@@ -36,7 +48,7 @@ import { ReactComponent as uncleEugeneIcon } from '../assets/allIcons/uncle-euge
 // const svgs: svgsMap = {
 
 
-const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> ={
+const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
   twitterIcon,
   instagramIcon,
   facebookIcon,
@@ -61,7 +73,19 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   evilExIcon,
   opinionatedGrandpaIcon,
   uncleEugeneIcon,
+  markerSocial1,
+  markerSocial2,
+  markerSocial3,
+  markerCommunity1,
+  markerCommunity2,
+  markerCommunity3,
+  markerRelations1,
+  markerRelations2,
+  markerRelations3,
+  map,
+  gameBoard,
 }
+
 
 
 
@@ -69,7 +93,7 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
 export const getIcon = (name: string): React.FunctionComponent<React.SVGProps<SVGSVGElement>> => {
   // return youtubeIcon;
   // return svgs['youtubeIcon'];
-  return svgs[name];
+  return svgs[name] ?? svgs.markerSocial3;  //? if the left hand side is undefined or null, return the right hand side
 }
 
 
@@ -79,7 +103,7 @@ const two = 2345;
 const three = 3456;
 
 
-const nums: Record<string,number> = {
+const nums: Record<string, number> = {
   one, two, three
 }
 

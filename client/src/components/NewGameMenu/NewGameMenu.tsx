@@ -12,11 +12,13 @@ export const NewGameMenu: React.FC = () => {
           name='player name'
           placeholder='player name...'
         ></input>
+
         <input
           type='text'
           name='number of players'
           placeholder='1 - 4 players...'
         ></input>
+
         <button className='start_game_button' type='submit'>
           Play
         </button>
@@ -24,3 +26,4 @@ export const NewGameMenu: React.FC = () => {
     </form>
   );
 };
+

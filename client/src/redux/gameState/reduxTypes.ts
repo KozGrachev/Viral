@@ -112,4 +112,3 @@ export type GameStateActionTypes =
 
 export type PlayerStateActionTypes = AddPlayerAction;
 
-export type AllGamesActionTypes = GetAllGamesAction

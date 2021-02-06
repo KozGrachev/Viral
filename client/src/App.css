@@ -4,7 +4,58 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Comfortaa',
-    cursive;
-  color: red;
+  /* font-family: 'Comfortaa',
+    cursive; */
+  /* color: red; */
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: 500px auto;
+  grid-template-areas: "sidebar gameboard";
+  height: 100vh;
+}
+
+
+.sidebar-left {
+
+  display: flex;
+  flex-direction: column;
+  grid-area: sidebar;
+  width: 100%;
+  height: 100%;
+  border: 3px solid red;
+}
+
+
+.board-container {
+  grid-area: gameboard;
+  width: 100%;
+  height: 100%;
+  border: 3px solid green;
+}
+
+
+
+
+
+
+
+.source-card-hand {
+  /* display: grid; */
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  /* height: 800px; */
+  grid-template-rows: repeat(auto-fill, auto);
+  grid-template-columns: 500px;
+  border: 3px solid yellow;
+  padding: 10px;
+}
+
+.source-card-cell{
+  width: 100%;
+  height: 100px;
+  border: 3px solid rgb(136, 255, 0);
 }
