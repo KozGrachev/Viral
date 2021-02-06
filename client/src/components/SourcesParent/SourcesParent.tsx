@@ -32,14 +32,14 @@ export interface SourceProps {
 export const SourcesParent: React.FC<SourceProps> = ({ name, category }: SourceProps) => { // SVGIcon
   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
 
-  
+
 
   return (
     <div className={`source-container`} >
       <Source name="whatsapp" category="social" />
       <Source name="uncle eugene" category="relations" />
       <Source name="pub" category="community" />
-
+      
     </div>
   )
 }
