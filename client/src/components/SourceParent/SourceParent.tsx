@@ -5,12 +5,13 @@ import { Source as SourceComponent } from '../Source/Source'
 import {Source} from '../../types/gameStateTypes'
 import { render } from '@testing-library/react';
 
-const SourceParent = () => {
+export const SourceParent = () => {
   const sources = initDummyState.sources;
 
   const renderSources = (srcArr: Source[]) => {
     return srcArr.map(source => {
-      return <SourceComponent name={source.name} category={source.category} />
+      //! GET source.markers_community etc and plug into props of SourceComponent
+      return <SourceComponent name={source.name} markersCommunity={3} markersRelations={1}  markersSocial={2} />
     })
   }
 
@@ -22,6 +23,4 @@ const SourceParent = () => {
 }
 
 
-
-export default SourceParent
 
