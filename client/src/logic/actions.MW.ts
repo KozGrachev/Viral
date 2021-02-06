@@ -211,7 +211,7 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
 }
 
 
-function viralCheck(object:any): object is ViralCard{
+export function viralCheck(object:any): object is ViralCard{
   return true
 }
 
