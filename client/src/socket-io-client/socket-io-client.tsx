@@ -4,7 +4,6 @@ import * as dotenv from 'dotenv';
 import { RootState, store } from '../redux/gameState/store'
 import { updateGameState } from "../redux/gameState/gameStateActions";
 import { Gamestate } from "../types/gameStateTypes";
-import { useSelector } from "react-redux";
 
 //connection to the server
 dotenv.config({ path: __dirname + '../.env' });
