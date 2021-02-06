@@ -29,8 +29,8 @@ function App() {
     // <Grommet theme={grommet} full>
     <Provider store={store}>
 
-      {/* <CureDeck /> */}
       <div className="app-container">
+      {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
 
         {/* <Map /> */}
         {/* <GameBoard /> */}
