@@ -1,4 +1,4 @@
-import { Gamestate, Card, Source, Player } from '../types/gameStateTypes'
+import { Gamestate, Card,ViralCard, Source, Player } from '../types/gameStateTypes'
 import { connections as sources } from './connections'
 
 //! HELPER HELPERS
@@ -89,13 +89,15 @@ export function playerOrder(oldState: Gamestate) { //! where to put this?
   return newState
 }
 
+
+
 export function insertViralCards(oldState: Gamestate) {
   console.log('inserting viral cards to connection deck')
   let oldDeck = oldState.connectionDeck
 
-  const viral1: Card = { cardType: "viral", sourceName: null, misinfoType: null }
-  const viral2: Card = { cardType: "viral", sourceName: null, misinfoType: null }
-  const viral3: Card = { cardType: "viral", sourceName: null, misinfoType: null }
+  const viral1: ViralCard = { cardType: "viral"}
+  const viral2: ViralCard = { cardType: "viral"}
+  const viral3: ViralCard = { cardType: "viral"}
   let first = oldDeck.slice(0, (oldDeck.length / 3))
   let second = oldDeck.slice((oldDeck.length / 3), (2 * oldDeck.length / 3))
   let third = oldDeck.slice((2 * oldDeck.length / 3), oldDeck.length)
@@ -209,12 +211,16 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
 }
 
 
+function viralCheck(object:any): object is ViralCard{
+  return true
+}
+
 export function dealConnectionCard(oldState: Gamestate) {
-  let newCard: Card = oldState.connectionDeck[0]
+  let newCard: Card|ViralCard = oldState.connectionDeck[0]
 
   console.log('dealing connection card', newCard)
-
-  if (newCard.cardType === 'viral') {
+  
+  if (viralCheck(newCard)) {
     oldState = viral(oldState)
     oldState.connectionDeck.shift()
   }
@@ -224,12 +230,10 @@ export function dealConnectionCard(oldState: Gamestate) {
         console.log('dealing connection card', newCard)
         player.cards.push(newCard)
         oldState.connectionDeck.shift()
-       
         }
       }
     }
   
-
   let newState = { ...oldState }
   return newState
 }

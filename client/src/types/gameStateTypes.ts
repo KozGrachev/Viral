@@ -20,7 +20,7 @@ export interface Gamestate {
     social: Misinformation,
     relations: Misinformation
   };
-  connectionDeck: Card[];
+  connectionDeck: (Card|ViralCard)[];
   misinformationDeckActive: Card[];
   misinformationDeckPassive: Card[];
   turnMovesLeft: number;
@@ -68,9 +68,12 @@ export interface Misinformation {
 export interface Card {
 
   cardType: string; //? 'connection', 'minformation' or 'viral'
+  sourceName: string;
+  misinfoType: string;
+}
 
-  sourceName: string | null;
-  misinfoType: string | null;
+export interface  ViralCard{
+  cardType:string
 }
 
 //* CLIENT
