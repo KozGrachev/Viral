@@ -3,7 +3,7 @@ import cors from 'cors';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { IUser, userJoin, userLeave } from './utils/users';
-import { getState, setState } from './redis/redis-db';
+import { getState, setState, getGames } from './redis/redis-db';
 
 import * as dotenv from 'dotenv';
 import { Gamestate } from './utils/game';
@@ -15,13 +15,16 @@ const httpServer = createServer(app);
 const PORT = process.env.PORT || 3002;
 
 const io = new Server(httpServer, {
-  cors: { origin: `${process.env.CLIENT_URL}`, methods: ['GET', 'POST'] }
+  cors: { origin: `${process.env.CLIENT_URL}`, methods: ['GET', 'POST', 'DELETE'] }
 });
+
+
 
 let welcomeMessage = 'Welcome';
 
 io.on('connection', (socket) => {
   console.log('server connected');
+
 
   socket.on('joinRoom', ({ name, room }: { name: string, room: string }) => {
 
@@ -54,6 +57,12 @@ io.on('connection', (socket) => {
     getState(room).then(data => socket.emit('updatedState', data));
 
   });
+
+  
+  socket.on('getGames', () => {
+    getGames('*').then(data => socket.emit('games', data));
+  });
+
   // Runs when client disconnects
   socket.on('disconnect', () => {
     console.log('disconnect works');
