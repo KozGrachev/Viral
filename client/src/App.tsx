@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Grommet } from 'grommet';
 import './App.css';
-import './backend-dummy-client/dummy-client';
+//import './backend-dummy-client/dummy-client';
 
 // import { ReduxDummy } from './backend-dummy-client/dummy-redux-component';
 import './socket-io-client/socket-io-client';

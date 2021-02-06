@@ -127,7 +127,6 @@ function typeCheck(string:string){
   else return false
 }
 
-
 //* spread level will define how many times this function is called 
 
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
@@ -151,6 +150,7 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
 
         let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
+
         if(typeCheck(key1)&&typeCheck(key2)){
         
           if (source[key1] === 3) {
