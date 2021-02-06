@@ -10,7 +10,7 @@ export default {
   decorators: [withDesign]
 } as Meta;
 
- const Template: Story<SpreadLevelProps> = (args: SpreadLevelProps) => <SpreadLevel {...args} />
+ const Template: Story = () => <SpreadLevel />
 
 export const SpreadLevelOne = Template.bind({});
 SpreadLevelOne.args = {
