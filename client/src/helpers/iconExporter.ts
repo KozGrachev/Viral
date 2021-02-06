@@ -37,6 +37,8 @@ import { ReactComponent as markerRelations1 } from '../assets/allIcons/marker-re
 import { ReactComponent as markerRelations2 } from '../assets/allIcons/marker-relations-2.svg'
 import { ReactComponent as markerRelations3 } from '../assets/allIcons/marker-relations-3.svg'
 
+import { ReactComponent as map } from '../assets/allIcons/map.svg'
+import { ReactComponent as gameBoard } from '../assets/allIcons/game-board.svg'
 
 
 
@@ -80,6 +82,8 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   markerRelations1,
   markerRelations2,
   markerRelations3,
+  map,
+  gameBoard,
 }
 
 
@@ -89,7 +93,7 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
 export const getIcon = (name: string): React.FunctionComponent<React.SVGProps<SVGSVGElement>> => {
   // return youtubeIcon;
   // return svgs['youtubeIcon'];
-  return svgs[name];
+  return svgs[name] ?? svgs.markerSocial3;  //? if the left hand side is undefined or null, return the right hand side
 }
 
 

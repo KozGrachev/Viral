@@ -64,12 +64,19 @@ export interface Misinformation {
   markersLeft: number;
 }
 
+//! FOR TESTING-------------
+export interface SourceCard {
+
+  cardType: string; //? 'connection', 'minformation' or 'viral'
+  sourceName: string; // without null, for testing
+  misinfoType: string;
+}
+//!-------------------------
 
 export interface Card {
 
   cardType: string; //? 'connection', 'minformation' or 'viral'
-
-  sourceName: string | null;
+  sourceName: string | null; // null possibly to be removed?
   misinfoType: string | null;
 }
 
