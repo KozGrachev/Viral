@@ -13,6 +13,7 @@ import { getIcon } from './helpers/iconExporter'
 import { SourceCard } from './components/SourceCard/SourceCard';
 import { CardHand } from './components/CardHand/CardHand';
 import {SourceDeck} from './components/sourceDeck/sourceDeck'
+import {MarkersStore} from './components/MarkersStore/MarkersStore'
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
         </div>
         <div className="board-container">
         <SourceDeck/>
+        <MarkersStore/>
         </div>
       </div>
     </Provider>
