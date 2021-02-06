@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsc && nodemon index.js",
     "lint": "eslint */*.{js,ts,tsx} && eslint *.{js,ts,tsx}",
-    "lintfix": "eslint ./*.{js,ts,tsx} --fix && eslint */*.{js,ts,tsx} --fix" 
+    "lintfix": "eslint ./*.{js,ts,tsx} --fix && eslint */*.{js,ts,tsx} --fix"
   },
   "keywords": [],
   "author": "",

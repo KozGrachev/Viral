@@ -1,16 +1,18 @@
 import React from 'react';
 import { Box, Grommet } from 'grommet';
 import './App.css';
-import './socket-io-client/socket-io-client';
-import { ReduxDummy } from './socket-io-client/dummy-redux-component';
-import { Provider } from 'react-redux';
-import {store} from './redux/gameState/store'
+import './backend-dummy-client/dummy-client';
 
+// import { ReduxDummy } from './backend-dummy-client/dummy-redux-component';
+import './socket-io-client/socket-io-client';
+// import { ReduxDummy } from './socket-io-client/dummy-redux-component';
+import { Provider } from 'react-redux';
+import { store } from './redux/gameState/store';
+import { CureDeck } from './components/CureDeck/CureDeck';
 
 function App() {
+  const dummy = true;
 
-  const dummy = true
-  
   const theme = {
     global: {
       font: {
@@ -20,8 +22,8 @@ function App() {
       },
     },
   };
-  // eslint-disable-next-line
 
+  // eslint-disable-next-line
   const AppBar = () => (
     <Box // eslint-disable-next-line
       tag='header'
@@ -34,30 +36,12 @@ function App() {
     />
   );
 
-  if (dummy) return (
-    <Provider store={store}>
-      <ReduxDummy />
-    </Provider>)
-
-
   return (
-    <Grommet theme={theme}>
-      <header className="App-header">
-        <p>
-          Testing Testing check 1, 2
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div className="App"> </div>
+    <Provider store={store}>
 
-    </Grommet>
+      {/* <CureDeck /> */}
+
+    </Provider>
   );
 }
 
