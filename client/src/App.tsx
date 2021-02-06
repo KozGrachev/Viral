@@ -15,6 +15,7 @@ import { MarkersStore } from './components/MarkersStore/MarkersStore'
 import { MisinformationDeck } from './components/MisinformationDeck/misinformationDeck'
 import { ChaosMeter } from './components/ChaosMeter/ChaosMeter'
 import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
+import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from './components/SourceParent/SourceParent';
 
 
@@ -34,7 +35,7 @@ function App () {
       <div className="app-container">
         {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
         {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
-
+        <PlayerPrompt />
         {/* <Map /> */}
         {/* <GameBoard /> */}
         <div className="sidebar-left">
