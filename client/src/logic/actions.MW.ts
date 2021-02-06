@@ -1,4 +1,4 @@
-import { Gamestate, Card, Source, Player } from '../types/gameStateTypes'
+import { Gamestate, Card,ViralCard, Source, Player } from '../types/gameStateTypes'
 import { connections as sources } from './connections'
 
 //! HELPER HELPERS
@@ -89,13 +89,15 @@ export function playerOrder(oldState: Gamestate) { //! where to put this?
   return newState
 }
 
+
+
 export function insertViralCards(oldState: Gamestate) {
   console.log('inserting viral cards to connection deck')
   let oldDeck = oldState.connectionDeck
 
-  const viral1: Card = { cardType: "viral", sourceName: null, misinfoType: null }
-  const viral2: Card = { cardType: "viral", sourceName: null, misinfoType: null }
-  const viral3: Card = { cardType: "viral", sourceName: null, misinfoType: null }
+  const viral1: ViralCard = { cardType: "viral"}
+  const viral2: ViralCard = { cardType: "viral"}
+  const viral3: ViralCard = { cardType: "viral"}
   let first = oldDeck.slice(0, (oldDeck.length / 3))
   let second = oldDeck.slice((oldDeck.length / 3), (2 * oldDeck.length / 3))
   let third = oldDeck.slice((2 * oldDeck.length / 3), oldDeck.length)
@@ -115,6 +117,17 @@ export function insertViralCards(oldState: Gamestate) {
 
 }
 
+function typeCheck(string:string){
+  if(
+    string==='social'||
+    string==='community'|| 
+    string==='relations'||
+    string==='markers_community'||
+    string==='markers_social'||
+    string==='markers_relations')
+  return true
+  else return false
+}
 
 //* spread level will define how many times this function is called 
 
@@ -137,35 +150,30 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
 
       while (weight > 0) {
 
-        let key = 'markers_' + source.misinfoType
+        let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
-        if (key === `markers_community` && key2 === `community`
-          || key === `markers_social` && key2 === `social`
-          || key === `markers_relations` && key2 === `relations`
-        ) {
-          if (source[key] === 3) {
+
+        if(typeCheck(key1)&&typeCheck(key2)){
+        
+          if (source[key1] === 3) {
             oldState = outbreak(source, oldState)
           }
           else {
-
-            source[key]++
+            source[key1]++
             oldState.misinformation[key2].markersLeft--
           }
-
           didLose(oldState)
-
-
-
           weight--
         }
       }
     }
+
     if (isViral) {
       oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length - 1])
-      oldState.misinformationDeckActive.shift()
+      oldState.misinformationDeckActive.pop()
     }
     else {
-      oldState.misinformationDeckPassive.push(oldDeck[0]) //! LOOK INTO THIS
+      oldState.misinformationDeckPassive.push(oldDeck[0])
       oldState.misinformationDeckActive.shift()
     }
     let newState = { ...oldState }
@@ -186,7 +194,7 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
     for (const source of oldState.sources) {
       if (source.name === connection) {
         let key = outbreak_source.misinfoType
-        if (key === 'markers_community' || key === 'markers_relations' || key === 'markers_social')
+        if (typeCheck(key))
           if (source[key] === 3) {
             oldState = outbreak(source, oldState)
           }
@@ -203,15 +211,16 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
 }
 
 
+function viralCheck(object:any): object is ViralCard{
+  return true
+}
 
 export function dealConnectionCard(oldState: Gamestate) {
-  let newCard: Card = oldState.connectionDeck[0]
-
-
+  let newCard: Card|ViralCard = oldState.connectionDeck[0]
 
   console.log('dealing connection card', newCard)
-
-  if (newCard.cardType === 'viral') {
+  
+  if (viralCheck(newCard)) {
     oldState = viral(oldState)
     oldState.connectionDeck.shift()
   }
@@ -221,18 +230,10 @@ export function dealConnectionCard(oldState: Gamestate) {
         console.log('dealing connection card', newCard)
         player.cards.push(newCard)
         oldState.connectionDeck.shift()
-        if (player.cards.length > 6) {
-          let chosenCard = {
-            cardType: 'connection',
-            sourceName: 'University',
-            misinfoType: 'community',
-          } //* front end to give player choice of card to delete
-          //deleteCard(chosenCard, oldState)
         }
       }
     }
-  }
-
+  
   let newState = { ...oldState }
   return newState
 }
@@ -247,22 +248,6 @@ export function viral(oldState: Gamestate) {
   let newState = { ...oldState }
   return newState
 }
-
-// export function deleteCard(card: Card, oldState: Gamestate) {
-//   for (const player of oldState.players) {
-//     if (player.isCurrent) {
-//       for (const [i, value] of player.cards.entries()) {
-//         if (value === card) {
-//           player.cards.splice(i, 1)
-//         }
-//       }
-//     }
-//   }
-//   let newState = { ...oldState }
-//   return newState
-
-// }
-
 
 
 export function createPlayer(name: string, color: string, room: string) {
@@ -282,7 +267,6 @@ export function createPlayer(name: string, color: string, room: string) {
   return player
 
 }
-
 
 export function addPlayerToGame(player: Player, oldState: Gamestate) {
 
@@ -362,6 +346,36 @@ export function setUp(players: Player[]) {
   let newState = { ...updateState }
   return newState
 }
+
+
+
+// export function deleteCard(card: Card, oldState: Gamestate) {
+//   for (const player of oldState.players) {
+//     if (player.isCurrent) {
+//       for (const [i, value] of player.cards.entries()) {
+//         if (value === card) {
+//           player.cards.splice(i, 1)
+//         }
+//       }
+//     }
+//   }
+//   let newState = { ...oldState }
+//   return newState
+
+// }
+
+// if ((key === `markers_community` && key2 === `community`)
+        //   || (key === `markers_social` && key2 === `social`)
+        //   || (key === `markers_relations` && key2 === `relations`)
+        // ) {
+
+ // if (player.cards.length > 6) { //! not relevent at this stage
+        //   let chosenCard = {
+        //     cardType: 'connection',
+        //     sourceName: 'University',
+        //     misinfoType: 'community',
+        //   } 
+        //   deleteCard(chosenCard, oldState)
 
 
 // let array = [{
