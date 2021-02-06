@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+}
+
+.player_pawn {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  border-radius: 50%;
+}
+.player_pawn_2 {
+  height: 100px;
+  width: 100px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+.player_pawn_3 {
+  height: 100px;
+  width: 100px;
+  background-color: Blue;
+  border-radius: 50%;
+}
+.player_pawn_4 {
+  height: 100px;
+  width: 100px;
+  background-color: Green;
+  border-radius: 50%;
+}
+
+.player_pawn p {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+}
+.player_pawn_2 p {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+}
+.player_pawn_3 p {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+}
+.player_pawn_4 p {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+}
