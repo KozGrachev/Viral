@@ -1,62 +1,60 @@
-import React from 'react';
-import { Box, Grommet } from 'grommet';
+import React, { useEffect, useState } from 'react';
+// import { Box, Button, Grommet, Card, CardHeader, CardBody, CardFooter, Meter } from 'grommet';
+// import { Notification } from 'grommet-icons';
 import './App.css';
-import './backend-dummy-client/dummy-client';
-
-// import { ReduxDummy } from './backend-dummy-client/dummy-redux-component';
 import './socket-io-client/socket-io-client';
-import { ReduxDummy } from './socket-io-client/dummy-redux-component';
 import { Provider } from 'react-redux';
 import { store } from './redux/gameState/store';
+import { getGames } from './socket-io-client/socket-io-client';
+import { CureDeck } from './components/CureDeck/CureDeck';
+import { getIcon } from './helpers/iconExporter'
+import { SourceCard } from './components/SourceCard/SourceCard';
+import { CardHand } from './components/CardHand/CardHand';
+import { SourceDeck } from './components/sourceDeck/sourceDeck'
+import { MarkersStore } from './components/MarkersStore/MarkersStore'
+import { MisinformationDeck } from './components/MisinformationDeck/misinformationDeck'
+import { ChaosMeter } from './components/ChaosMeter/ChaosMeter'
+import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
+import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
 
 function App() {
-  const dummy = true;
 
-  const theme = {
-    global: {
-      font: {
-        family: 'Roboto',
-        size: '18px',
-        height: '20px',
-      },
-    },
-  };
+  const [showSidebar, setShowSidebar] = useState(false);
 
-  // eslint-disable-next-line
-  const AppBar = () => (
-    <Box // eslint-disable-next-line
-      tag='header'
-      direction='row'
-      align='center'
-      justify='between'
-      background='brand'
-      pad={{ left: 'medium', right: 'small', vertical: 'small' }}
-      elevation='medium'
-    />
-  );
-
-  if (dummy)
-    return (
-      <Provider store={store}>
-        <ReduxDummy />
-      </Provider>
-    );
+  useEffect(() => {
+    getGames();
+  }, []);
 
   return (
-    <Grommet theme={theme}>
-      <header className='App-header'>
-        <p>Testing Testing check 1, 2</p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-      <div className='App'> </div>
-    </Grommet>
+    // <Grommet theme={grommet} full>
+    <Provider store={store}>
+
+      <div className="app-container">
+        {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
+        {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
+        <PlayerPrompt />
+        {/* <Map /> */}
+        {/* <GameBoard /> */}
+        <div className="sidebar-left">
+
+          <CardHand>
+            {/* <div className="source-card-hand">
+              <SourceCard name='whatsapp' category="social" />
+              <SourceCard name='whatsapp' category="social" />
+              <SourceCard name='whatsapp' category="social" />
+              <SourceCard name='whatsapp' category="social" />
+            </div> */}
+          </CardHand>
+        </div>
+        <div className="board-container">
+          <ChaosMeter />
+          <SourceDeck />
+          <MisinformationDeck />
+          <MarkersStore />
+        </div>
+      </div>
+    </Provider>
+    // </Grommet>
   );
 }
 

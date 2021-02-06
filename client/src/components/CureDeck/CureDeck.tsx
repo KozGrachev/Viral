@@ -1,28 +1,31 @@
 import React from 'react';
 import "./CureDeck.css"
-
-export interface CureDeckProps {
-  
-  hasACureForMisinformationA: boolean,
-  hasACureForMisinformationB: boolean,
-  hasACureForMisinformationC: boolean,
-
-}
+import { DefaultRootState, useSelector } from 'react-redux'
+import { RootState } from '../../redux/gameState/store';
 
 
-export const CureDeck: React.FC<CureDeckProps> = ({  hasACureForMisinformationA
-  , hasACureForMisinformationB, hasACureForMisinformationC }: CureDeckProps) => { // SVGIcon
-// using redux instead of props for real implementation
-  //const gamestate = useSelector(state => state.gamestate) ...
 
-let noCureString = "No cure - it´s the end"
-let cureString = "u have a cure bitches!"
+
+
+
+export const CureDeck: React.FC = ():JSX.Element => { // SVGIcon
+  // using redux instead of props for real implementation
+  const gamestate = useSelector((state: RootState) => state.GameState)
+  let misinformationCommunityHasDebunked = gamestate.misinformation.community.debunked
+  let misinformationRelationsHasDebunked = gamestate.misinformation.relations.debunked
+  let misinformationSocialHasDebunked = gamestate.misinformation.social.debunked
+
+
+
+
+  let noCureString = "Not debunked yet - we're screwed"
+  let cureString = "Debunked!! bitches!"
   const CureDeck = (<>
-    <div className="misinformation-cure-deck-container A">{hasACureForMisinformationA? cureString: noCureString }</div>
-    <div className="misinformation-cure-deck-container B">{hasACureForMisinformationB? cureString: noCureString}</div>
-    <div className="misinformation-cure-deck-container C">{hasACureForMisinformationC? cureString: noCureString}</div>
-  
-  
+    <div className="misinformation-cure-deck-container A">{misinformationCommunityHasDebunked ? cureString : noCureString}</div>
+    <div className="misinformation-cure-deck-container B">{misinformationRelationsHasDebunked ? cureString : noCureString}</div>
+    <div className="misinformation-cure-deck-container C">{misinformationSocialHasDebunked ? cureString : noCureString}</div>
+
+
   </>)
 
   return (

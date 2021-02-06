@@ -8,8 +8,36 @@ import { connections } from '../../types/connections'
 export default {
   title: 'Other Player',
   component: OtherPlayer,
-  decorators: [withDesign]
+  decorators: [withDesign],
+  argTypes: {
+    isCurrent: {
+      type: 'boolean',
+      control: 'player.isCurrent'
+    },
+  },
 } as Meta;
+
+
+//* For controls --> change the props to accept indididual properties of player state
+// const makePlayerState = (isCurrent = false) => {
+//   return {
+//     name: 'Konstantin',
+//     cards: [
+//       connections[Math.floor(Math.random() * (connections.length - 1))],
+//     ],
+//     cardHandFull: false,
+//     isCurrent,
+//     pawnColor: 'fuchsia',
+//     currentSource: 'University'
+//   }
+// }
+// const Template: Story<OtherPlayerProps> = ({ isCurrent }) => {
+//   const newPlayerState = makePlayerState(isCurrent);
+//   return <OtherPlayer player={newPlayerState} />
+// }
+//* //////////////////////////////////////////////////
+
+
 
 const Template: Story<OtherPlayerProps> = (args: OtherPlayerProps) => <OtherPlayer {...args} />
 
@@ -24,7 +52,7 @@ StoryName1.args = {
       connections[Math.floor(Math.random() * (connections.length - 1))],
     ],
     cardHandFull: false,
-    isCurrent: true,
+    isCurrent: false,
     pawnColor: 'fuchsia',
     currentSource: 'University'
   },
@@ -45,7 +73,6 @@ StoryName2.args = {
     cards: [
       connections[Math.floor(Math.random() * (connections.length - 1))],
       connections[Math.floor(Math.random() * (connections.length - 1))],
-
     ],
     cardHandFull: false,
     isCurrent: true,
@@ -65,7 +92,7 @@ StoryName3.args = {
       connections[Math.floor(Math.random() * (connections.length - 1))],
     ],
     cardHandFull: false,
-    isCurrent: true,
+    isCurrent: false,
     pawnColor: 'green',
     currentSource: 'University'
   },
@@ -83,7 +110,7 @@ StoryName4.args = {
       connections[Math.floor(Math.random() * (connections.length - 1))],
     ],
     cardHandFull: false,
-    isCurrent: true,
+    isCurrent: false,
     pawnColor: 'blue',
     currentSource: 'University'
   },
@@ -104,7 +131,7 @@ StoryName5.args = {
       connections[Math.floor(Math.random() * (connections.length - 1))],
     ],
     cardHandFull: false,
-    isCurrent: true,
+    isCurrent: false,
     pawnColor: 'purple',
     currentSource: 'University'
   },
@@ -123,7 +150,7 @@ StoryName6.args = {
       connections[19],
     ],
     cardHandFull: false,
-    isCurrent: true,
+    isCurrent: false,
     pawnColor: 'fuchsia',
     currentSource: 'University'
   },

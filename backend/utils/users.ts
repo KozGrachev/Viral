@@ -2,16 +2,17 @@ export const users: IUser[] = [];
 
 export interface IUser {
   id: string,
-  username: string,
+  name: string,
   room: string
 }
 // Join user to chat
-export function userJoin (id: string, username: string, room: string): IUser {
+export function userJoin (id: string, name: string, room: string): IUser {
   const user = {
     id,
-    username,
+    name,
     room
   };
+
   users.push(user);
   return user;
 }

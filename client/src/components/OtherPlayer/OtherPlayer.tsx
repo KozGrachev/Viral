@@ -46,7 +46,7 @@ export interface OtherPlayerProps {
 
 
 export const OtherPlayer: React.FC<OtherPlayerProps> = ({ player }: OtherPlayerProps) => { // SVGIcon
-
+  
   const renderCards = (): JSX.Element[] => {
     const angle = 40;
     const numGaps = player.cards.length - 1;
@@ -71,7 +71,7 @@ export const OtherPlayer: React.FC<OtherPlayerProps> = ({ player }: OtherPlayerP
   }
   return (
     <div className={`other-player-container ${player.name}`}  >
-      <div className={`player-avatar ${player.pawnColor}`}>
+      <div className={`player-avatar ${player.pawnColor} ${player.isCurrent ? 'current' : ''}`}>
         <div className="player-hand">
           {renderCards()}
         </div>

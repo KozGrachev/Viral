@@ -10,7 +10,7 @@ export default {
   decorators: [withDesign]
 } as Meta;
 
- const Template: Story<PlayerPromptProps> = (args: PlayerPromptProps) => <PlayerPrompt {...args} />
+ const Template: Story<PlayerPromptProps> = () => <PlayerPrompt />
 
 export const Loosing = Template.bind({});
 Loosing.args = {

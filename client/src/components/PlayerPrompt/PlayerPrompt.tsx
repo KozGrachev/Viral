@@ -7,13 +7,14 @@ export interface PlayerPromptProps {
 }
 
 
-export const PlayerPrompt: React.FC<PlayerPromptProps> = ({ msg }: PlayerPromptProps) => { // SVGIcon
+export const PlayerPrompt: React.FC = () => { // SVGIcon
   // using redux instead of props for real implementation
-  //const gamestate = useSelector(state => state.gamestate) ...
+  //const gamestate = useSelector(state => state.gamestate) 
+  //const msg = gamestate.messages
 
 
-  const messages = ['']
-  messages.push(msg)
+  const messages = ['this is a test message' , 'Bratuwurst?', ' ja bitte Bratwurst', 'Donald Trump is Tupac and lives under Connors head']
+  //messages.push(msg)
   return (
     <div className="player-prompt-container" >
       {messages.map(msg => {return (
