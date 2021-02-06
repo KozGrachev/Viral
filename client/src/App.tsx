@@ -12,6 +12,7 @@ import { CureDeck } from './components/CureDeck/CureDeck';
 import { getIcon } from './helpers/iconExporter'
 import { SourceCard } from './components/SourceCard/SourceCard';
 import { CardHand } from './components/CardHand/CardHand';
+import {SourceDeck} from './components/sourceDeck/sourceDeck'
 
 function App() {
 
@@ -42,7 +43,7 @@ function App() {
           </CardHand>
         </div>
         <div className="board-container">
-
+        <SourceDeck/>
         </div>
       </div>
     </Provider>
