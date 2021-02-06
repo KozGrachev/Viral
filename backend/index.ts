@@ -25,6 +25,11 @@ let welcomeMessage = 'Welcome';
 io.on('connection', (socket) => {
   console.log('server connected');
 
+  socket.on('getGames', () => {    console.log('does it get herE?'); 
+
+    getGames('*').then(data => socket.emit('games', data));
+    
+  });
 
   socket.on('joinRoom', ({ name, room }: { name: string, room: string }) => {
 
@@ -59,9 +64,6 @@ io.on('connection', (socket) => {
   });
 
   
-  socket.on('getGames', () => {
-    getGames('*').then(data => socket.emit('games', data));
-  });
 
   // Runs when client disconnects
   socket.on('disconnect', () => {
@@ -74,7 +76,6 @@ io.on('connection', (socket) => {
     }
   });
 });
-
 
 
 httpServer.listen(PORT, () =>

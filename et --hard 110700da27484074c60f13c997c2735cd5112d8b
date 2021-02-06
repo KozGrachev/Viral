@@ -1,0 +1,267 @@
+[33mcommit d6f63130f75965438e2c46dd8b19ae39cac68f3c[m[33m ([m[1;36mHEAD -> [m[1;32mstartgame-fe-be-AS[m[33m, [m[1;31morigin/startgame-fe-be-AS[m[33m)[m
+Merge: df5cb51 76da840
+Author: Ana <anasau28@gmail.com>
+Date:   Sat Feb 6 14:26:18 2021 +0000
+
+    Merge branch 'startgame-fe-be-AS' of https://github.com/Bobik808/Viral into startgame-fe-be-AS
+
+[33mcommit df5cb51367c1ad7c3371125bb8c639175215a73c[m
+Author: Ana <anasau28@gmail.com>
+Date:   Sat Feb 6 14:16:00 2021 +0000
+
+    minor
+
+[33mcommit 76da8403e2bf495d7318b319e9968c2e910226dd[m
+Merge: 110700d 3c5f73c
+Author: Ana Sau <anasau28@gmail.com>
+Date:   Sat Feb 6 14:13:50 2021 +0000
+
+    Merge branch 'development' into startgame-fe-be-AS
+
+[33mcommit 3c5f73c1326d8a9c9875aac62bc112f9150e4bee[m
+Merge: 17aea5a 2024e82
+Author: Konstantin Grachev <kgrachev@gmail.com>
+Date:   Sat Feb 6 13:51:12 2021 +0000
+
+    Merge branch 'development' of https://github.com/Bobik808/Newsdemic into development
+
+[33mcommit 2024e827529789390ee563ac289d0097e1296982[m
+Merge: 15daedf c156cd7
+Author: Malcolm Wilkie <malcolm.wilkie29@gmail.com>
+Date:   Sat Feb 6 13:44:09 2021 +0000
+
+    Merge pull request #58 from Bobik808/MW_branch
+    
+    Mw branch
+
+[33mcommit c156cd7bc547e138684bb9a5522c28deed276e18[m[33m ([m[1;31morigin/MW_branch[m[33m)[m
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Sat Feb 6 13:35:08 2021 +0000
+
+    minor
+
+[33mcommit 110700da27484074c60f13c997c2735cd5112d8b[m
+Author: Ana <anasau28@gmail.com>
+Date:   Sat Feb 6 13:16:35 2021 +0000
+
+    feat:all games store diplayed on app is loaded
+
+[33mcommit 12cc905f871d49017357d2fc21019d0861ddcd71[m
+Author: Ana <anasau28@gmail.com>
+Date:   Sat Feb 6 12:57:54 2021 +0000
+
+    feat:all games state
+
+[33mcommit 17aea5abfc4d483e92ac911df4d8c252908ea293[m
+Author: Konstantin Grachev <kgrachev@gmail.com>
+Date:   Sat Feb 6 12:15:00 2021 +0000
+
+    feat(client): create CardHand component
+
+[33mcommit ab1d2bd41cc53b1e34c29468493fbb420ae8b3aa[m
+Merge: 5b9f3c9 15daedf
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Sat Feb 6 11:37:43 2021 +0000
+
+    Merge branch 'development' of https://github.com/Bobik808/Viral into MW_branch
+
+[33mcommit 5b9f3c92cca38e242a1d91a7d677eede3adc0633[m
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Sat Feb 6 11:09:26 2021 +0000
+
+    FIX: type changes
+
+[33mcommit 15daedfa7dbf92a87e67e2a5708d7b60f3608164[m
+Merge: b2ac9e7 2687960
+Author: Connor MacPhee <cmacphee66@gmail.com>
+Date:   Sat Feb 6 10:55:53 2021 +0000
+
+    Merge pull request #57 from Bobik808/CM_frontend_components
+    
+    feat: broken modal componant
+
+[33mcommit 26879607c6c838930d83e2ba8712f46f3c1b9902[m[33m ([m[1;31morigin/CM_frontend_components[m[33m)[m
+Author: Connor MacPhee <cmacphee66@gmail.com>
+Date:   Sat Feb 6 10:55:18 2021 +0000
+
+    feat: broken modal componant
+
+[33mcommit 9e71411e32cdd595fd67e1ae8d0e8e83ca22345c[m
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Sat Feb 6 10:41:22 2021 +0000
+
+    FEAT: sourceDeck (IN PROGRESS)
+
+[33mcommit 741f346cc0f242f6f996c64c62079ef6bdcc6287[m
+Author: Ana <anasau28@gmail.com>
+Date:   Sat Feb 6 10:26:55 2021 +0000
+
+    feat:getGames emiter and listner
+
+[33mcommit be8f72338ec623d5668c9cb152752ef3a6b7f890[m
+Merge: 9295691 b2ac9e7
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Sat Feb 6 10:06:36 2021 +0000
+
+    Merge branch 'development' of https://github.com/Bobik808/Viral into MW_branch
+
+[33mcommit b2ac9e72d2884b7e78a2dd52c30b00f985fab2e9[m
+Merge: 35d64ac bd9d59d
+Author: Connor MacPhee <cmacphee66@gmail.com>
+Date:   Sat Feb 6 10:05:27 2021 +0000
+
+    Merge pull request #56 from Bobik808/CM_frontend_components
+    
+    feat: broken modal
+
+[33mcommit bd9d59d8c40912ad8f2a565c4d6aea5c2ed003ce[m
+Author: Connor MacPhee <cmacphee66@gmail.com>
+Date:   Sat Feb 6 10:04:16 2021 +0000
+
+    feat: broken modal
+
+[33mcommit 92956914ee3314bcb010baf6a85e07271b82ed5d[m
+Merge: bac7a74 35d64ac
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Sat Feb 6 09:20:50 2021 +0000
+
+    Merge branch 'development' of https://github.com/Bobik808/Viral into MW_branch
+
+[33mcommit 35d64ac2ff1314f48bf7e534f590d214c19e9616[m
+Merge: 2bcf174 f145747
+Author: Ana Sau <anasau28@gmail.com>
+Date:   Sat Feb 6 09:14:40 2021 +0000
+
+    Merge pull request #55 from Bobik808/startgame-fe-be-AS
+    
+    fix:ts
+
+[33mcommit bac7a741a5ced3b6423a9eaf2f98a5645428e472[m
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Sat Feb 6 09:07:18 2021 +0000
+
+    FIX: tsc installed globally
+
+[33mcommit f1457478bb4c1f44f9089a736feec9a7131a0701[m
+Author: Ana <anasau28@gmail.com>
+Date:   Sat Feb 6 09:07:03 2021 +0000
+
+    fix:ts
+
+[33mcommit 9ee621ce4d4c4e11ff084dc03a6436c4686c887b[m
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Sat Feb 6 08:44:19 2021 +0000
+
+    FEAT: typecheck function
+
+[33mcommit ed7331994a82bb016dd31e9971c23616afbe1a37[m
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Sat Feb 6 08:39:35 2021 +0000
+
+    FIX: refactoring
+
+[33mcommit 4c97fd8f280ae62b944829cd84c79944fcfab55f[m
+Author: Konstantin Grachev <kgrachev@gmail.com>
+Date:   Sat Feb 6 00:56:47 2021 +0000
+
+    feat(client): install grommet types
+
+[33mcommit 69de316f3dbb269542194291bf263dbf38004476[m
+Author: Konstantin Grachev <kgrachev@gmail.com>
+Date:   Sat Feb 6 00:54:20 2021 +0000
+
+    fix(client): fix ChaosMeter and CureDeck props
+
+[33mcommit 835e9aa7a9c14291bf355edaa095000ad6cb87c8[m
+Merge: dcc62d6 1ca52c9
+Author: Konstantin Grachev <kgrachev@gmail.com>
+Date:   Fri Feb 5 22:38:19 2021 +0000
+
+    Merge branch 'development' into frontend_KG_CM
+
+[33mcommit 1ca52c946868d30dfe7a2ddf6120c0d5ada65c2a[m
+Merge: 9158c68 2bcf174
+Author: Konstantin Grachev <kgrachev@gmail.com>
+Date:   Fri Feb 5 22:34:58 2021 +0000
+
+    Merge remote-tracking branch 'origin/development' into development
+
+[33mcommit dcc62d62766ff876e4a819fb6fb152f8e38cd3de[m
+Author: Konstantin Grachev <kgrachev@gmail.com>
+Date:   Fri Feb 5 22:29:59 2021 +0000
+
+    feat(client): start SourcesParent component
+
+[33mcommit 2bcf174a815e78039ed77df59e4b4bf001d3f24d[m
+Merge: 116f2e0 9b3f834
+Author: Ana Sau <anasau28@gmail.com>
+Date:   Fri Feb 5 21:46:59 2021 +0000
+
+    Merge pull request #54 from Bobik808/FE-Logic-Integration_AS_MW
+    
+    Fe logic  socket redis integration
+
+[33mcommit 9b3f8346dd0fb8d910a6752853b973403157535d[m[33m ([m[1;31morigin/FE-Logic-Integration_AS_MW[m[33m, [m[1;32mFE-Logic-Integration_AS_MW[m[33m)[m
+Author: Ana <anasau28@gmail.com>
+Date:   Fri Feb 5 21:45:17 2021 +0000
+
+    socket io redis update to include PLayer state, get / del keys
+
+[33mcommit 523ddf742fb0711dcadce20f5a756cd081e79f73[m
+Merge: aea8a82 116f2e0
+Author: Ana <anasau28@gmail.com>
+Date:   Fri Feb 5 20:09:57 2021 +0000
+
+    bug
+
+[33mcommit aea8a821d4f9013b9faff36df56af92452316368[m
+Author: Ana <anasau28@gmail.com>
+Date:   Fri Feb 5 18:31:36 2021 +0000
+
+    fix:eslintcache
+
+[33mcommit 116f2e091f7ea46ed112237c2261cdb663945738[m
+Merge: 02a2382 9722f5a
+Author: Ana Sau <anasau28@gmail.com>
+Date:   Fri Feb 5 18:27:25 2021 +0000
+
+    Merge pull request #53 from Bobik808/FE-Logic-Integration_AS_MW
+    
+    Fe logic integration as mw
+
+[33mcommit 9722f5a4824287d9d532627b328b129c2d570d2d[m
+Author: Ana <anasau28@gmail.com>
+Date:   Fri Feb 5 18:25:42 2021 +0000
+
+    fix:docker file fix- server working
+
+[33mcommit 9158c68215db7782762b068ec0d0bb63a3fcb4ee[m
+Author: Konstantin Grachev <kgrachev@gmail.com>
+Date:   Fri Feb 5 18:18:06 2021 +0000
+
+    untrack .eslintcache
+
+[33mcommit 06c0b20e3b764b70f52381e8eddb56360499138a[m
+Author: Ana <anasau28@gmail.com>
+Date:   Fri Feb 5 18:17:40 2021 +0000
+
+    tsc and elint for backend
+
+[33mcommit f073fdef6b664bf492349b4dd3dac49d0430d27d[m
+Merge: d297482 02a2382
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Fri Feb 5 18:17:35 2021 +0000
+
+    Merge branch 'development' of https://github.com/Bobik808/Viral into MW_branch
+
+[33mcommit d297482df2e46eee2bc524a609fdb43538542254[m
+Author: Malcolm <malcolm.wilkie29@gmail.com>
+Date:   Fri Feb 5 18:14:08 2021 +0000
+
+    minor
+
+[33mcommit 02a2382689218e370ee04b79e15b2593c8e243ed[m
+Author: Konstantin Grachev <kgrachev@gmail.com>
+Date:   Fri Feb 5 18:07:01 2021 +0000
+
+    feat(client

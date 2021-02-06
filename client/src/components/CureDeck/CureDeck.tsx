@@ -17,7 +17,7 @@ export interface CureDeckProps {
 export const CureDeck: React.FC<CureDeckProps> = ({ hasACureForMisinformationA
   , hasACureForMisinformationB, hasACureForMisinformationC }: CureDeckProps) => { // SVGIcon
   // using redux instead of props for real implementation
-  const gamestate = useSelector((state: RootState) => state.GameState.connectionDeck)
+  // const gamestate = useSelector((state: RootState) => state.GameState.connectionDeck)
 
 
 

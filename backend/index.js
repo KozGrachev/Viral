@@ -40,6 +40,10 @@ var io = new socket_io_1.Server(httpServer, {
 var welcomeMessage = 'Welcome';
 io.on('connection', function (socket) {
     console.log('server connected');
+    socket.on('getGames', function () {
+        console.log('does it get herE?');
+        redis_db_1.getGames('*').then(function (data) { return socket.emit('games', data); });
+    });
     socket.on('joinRoom', function (_a) {
         var name = _a.name, room = _a.room;
         var user = users_1.userJoin(socket.id, name, room);
@@ -62,9 +66,6 @@ io.on('connection', function (socket) {
     socket.on('resumeGame', function (room) {
         welcomeMessage = 'Welcome back';
         redis_db_1.getState(room).then(function (data) { return socket.emit('updatedState', data); });
-    });
-    socket.on('getGames', function () {
-        redis_db_1.getGames('*').then(function (data) { return socket.emit('games', data); });
     });
     // Runs when client disconnects
     socket.on('disconnect', function () {

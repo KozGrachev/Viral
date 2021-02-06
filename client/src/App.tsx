@@ -5,29 +5,21 @@ import { Box, Grommet } from 'grommet';
 import './App.css';
 import './socket-io-client/socket-io-client';
 import { Provider, useSelector } from 'react-redux';
-import { RootState, store } from './redux/gameState/store';
-import { getGames } from './socket-io-client/socket-io-client';
-// import { CureDeck } from './components/CureDeck/CureDeck';
-import { CureDeck } from './components/CureDeck/CureDeck';
-import { getIcon } from './helpers/iconExporter'
+import {store } from './redux/gameState/store';
 import { SourceCard } from './components/SourceCard/SourceCard';
 import { CardHand } from './components/CardHand/CardHand';
 import { NewGameMenu } from './components/NewGameMenu/NewGameMenu'
 
 function App() {
-  const [showSidebar, setShowSidebar] = useState(false);
-
-  useEffect(() => {
-    getGames();
-  }, []);
-
+  // const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     // <Grommet theme={grommet} full>
     <Provider store={store}>
-
-      {/* <CureDeck /> */}
-
+      <div> {store.getState().allGamesStateReducer[0]}</div>
+   
+        <NewGameMenu />
+      
       <div className="app-container">
         <><div className="sidebar-left">
           <CardHand>
@@ -43,7 +35,7 @@ function App() {
           </div></>
       </div>
       {/* ultimately aternery as to whether a player exists or not */}
-      <NewGameMenu />
+
 
     </Provider>
   );
