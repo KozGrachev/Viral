@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { ClearmisinfoProps, DebunkMisinfoProps, discardCardProps, MoveActionProps, ShareCardProps } from '../redux/gameState/reduxTypes';
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const dispatch = useDispatch();
-//set up the types for the action  & the action props // set up the action/ dispatch action/ set up the reducer 
+//set up the types for the action  & the action props // set up the action/ dispatch action/ set up the reducer
 export const moveActionEvent = (props: MoveActionProps) => {
   dispatch(moveAction(props))
 }

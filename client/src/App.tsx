@@ -16,6 +16,7 @@ import {SourceDeck} from './components/sourceDeck/sourceDeck'
 import {MarkersStore} from './components/MarkersStore/MarkersStore'
 import {MisinformationDeck} from './components/MisinformationDeck/misinformationDeck'
 import {ChaosMeter} from './components/ChaosMeter/ChaosMeter'
+import SourceParent from './components/SourceParent/SourceParent';
 
 function App() {
 
@@ -36,17 +37,14 @@ function App() {
         {/* <GameBoard /> */}
         <div className="sidebar-left">
 
-          <CardHand>
-            {/* <div className="source-card-hand">
-              <SourceCard name='whatsapp' category="social" />
-              <SourceCard name='whatsapp' category="social" />
-              <SourceCard name='whatsapp' category="social" />
-              <SourceCard name='whatsapp' category="social" />
-            </div> */}
-          </CardHand>
+          <CardHand/>
         </div>
+
+        <SourceParent/>
         <div className="board-container">
-        <ChaosMeter/>
+
+
+        <ChaosMeter />
         <SourceDeck/>
         <MisinformationDeck/>
         <MarkersStore/>
