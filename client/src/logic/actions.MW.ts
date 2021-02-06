@@ -115,6 +115,18 @@ export function insertViralCards(oldState: Gamestate) {
 
 }
 
+function typeCheck(string:string){
+  if(
+    string==='social'||
+    string==='community'|| 
+    string==='relations'||
+    string==='markers_community'||
+    string==='markers_social'||
+    string==='markers_relations')
+  return true
+  else return false
+}
+
 
 //* spread level will define how many times this function is called 
 
@@ -137,35 +149,30 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
 
       while (weight > 0) {
 
-        let key = 'markers_' + source.misinfoType
+        let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
-        if ((key === `markers_community` && key2 === `community`)
-          || (key === `markers_social` && key2 === `social`)
-          || (key === `markers_relations` && key2 === `relations`)
-        ) {
-          if (source[key] === 3) {
+        // if ((key === `markers_community` && key2 === `community`)
+        //   || (key === `markers_social` && key2 === `social`)
+        //   || (key === `markers_relations` && key2 === `relations`)
+        // ) {
+          if (source[key1] === 3) {
             oldState = outbreak(source, oldState)
           }
           else {
-
-            source[key]++
+            source[key1]++
             oldState.misinformation[key2].markersLeft--
           }
-
           didLose(oldState)
-
-
-
           weight--
-        }
+        
       }
     }
     if (isViral) {
       oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length - 1])
-      oldState.misinformationDeckActive.shift()
+      oldState.misinformationDeckActive.pop()
     }
     else {
-      oldState.misinformationDeckPassive.push(oldDeck[0]) //! LOOK INTO THIS
+      oldState.misinformationDeckPassive.push(oldDeck[0])
       oldState.misinformationDeckActive.shift()
     }
     let newState = { ...oldState }
@@ -203,7 +210,6 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
 }
 
 
-
 export function dealConnectionCard(oldState: Gamestate) {
   let newCard: Card = oldState.connectionDeck[0]
 
@@ -225,7 +231,7 @@ export function dealConnectionCard(oldState: Gamestate) {
         //     sourceName: 'University',
         //     misinfoType: 'community',
         //   } 
-        //   //deleteCard(chosenCard, oldState)
+        //   deleteCard(chosenCard, oldState)
         }
       }
     }
