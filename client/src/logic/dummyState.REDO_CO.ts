@@ -110,8 +110,6 @@ export const initDummyState: Gamestate = {
     },
     {
       cardType: 'viral',
-      sourceName: null,
-      misinfoType: null,
     },
   ],
   misinformationDeckActive: [
