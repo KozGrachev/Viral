@@ -12,6 +12,23 @@ export default {
 
 const Template: Story<SourceCardProps> = (args: SourceCardProps) => <SourceCard {...args} />
 
+export const HighSchoolShareKoz = Template.bind({});
+HighSchoolShareKoz.args = {
+  name: 'high school can share with Koz',
+  category: 'community',
+  canShare: [
+    {
+      name: 'Chris',
+      id: '1234',
+    },
+    {
+      name: 'Koz',
+      id: '4567',
+    }
+  ]
+}
+
+
 export const HighSchool = Template.bind({});
 HighSchool.args = {
   name: 'high school',
@@ -156,3 +173,6 @@ TikTok.args = {
   name: 'tiktok',
   category: 'social'
 }
+
+
+

@@ -7,25 +7,14 @@ import './SourceCard.css'
 export interface SourceCardProps {
   name: string,    //! NULL TO BE REMOVED
   category: string, //! NULL TO BE REMOVED
-
+  canShare: any[]
 }
 // DON'T NEED ===> canlogon can go to the place if you have that card
 // canShare: a button that appears on each card when you are on the same location as another player
 // canchare: Player[]
 
-export const SourceCard: React.FC<SourceCardProps> = ({ name, category }: SourceCardProps) => { // SVGIcon
+export const SourceCard: React.FC<SourceCardProps> = ({ name, category, canShare }: SourceCardProps) => { // SVGIcon
   const SVGIcon = getIcon(toCamelCase(name) + 'Icon');
-
-  const canShare:any = [
-    {
-      name: 'Chris',
-      id: '1234',
-    },
-    {
-      name: 'Koz',
-      id: '4567',
-    }
-  ]
 
   const handleShareClick = (id: string) => {
     //DISPATCH ACTION
