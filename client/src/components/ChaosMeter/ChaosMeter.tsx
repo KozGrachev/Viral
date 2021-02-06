@@ -1,17 +1,14 @@
 import React from 'react';
 import './ChaosMeter.css';
+import {store} from '../../redux/gameState/store';
+export const ChaosMeter: React.FC = () => {
 
-export interface ChaosMeterProps {
-  name: string;
-}
+  const chaos=store.getState().gameStateReducer.chaosMeter
 
 
-export const ChaosMeter: React.FC<ChaosMeterProps> = ({
-  // should take the chaos value from redux store
-  name,
-}: ChaosMeterProps) => {
   return (
     <div className='progress-container'>
+      {chaos}
       <svg className='progress-circle' viewBox='0 0 64 64'>
         <circle
           className='progressbar__track'
@@ -44,3 +41,4 @@ export const ChaosMeter: React.FC<ChaosMeterProps> = ({
     </div>
   );
 };
+

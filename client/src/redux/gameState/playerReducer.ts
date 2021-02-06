@@ -6,7 +6,16 @@ import { ADD_PLAYER, PlayerStateActionTypes } from "./reduxTypes";
 
 
 
-let PlayerState: Player;
+let PlayerState: Player = {
+  name: 'Player 1',
+  id: '1234',
+  cards: [],
+  cardHandOverflow: false,
+  isCurrent: true,
+  pawnColor: 'green',
+  currentSource: 'University',
+  room: 'hello',
+}
 
 
 export function playerStateReducer(
@@ -20,3 +29,4 @@ export function playerStateReducer(
     default: return state
   }
 }
+

@@ -42,6 +42,7 @@ export interface Player {
 }
 
 export interface Source {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any, //? see: typescript index rules
   name: string;
   misinfoType: string;
