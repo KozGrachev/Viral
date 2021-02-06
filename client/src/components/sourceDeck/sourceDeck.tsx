@@ -1,5 +1,5 @@
 import React from 'react';
-import { DefaultRootState, useSelector } from 'react-redux'
+import {useSelector} from 'react-redux'
 import { RootState } from '../../redux/gameState/store';
 
 export interface sourceDeckProps {
@@ -7,14 +7,14 @@ export interface sourceDeckProps {
 }
 
 
-export const SOMECOMPONENT: React.FC<sourceDeckProps> = ({cardsLeft }: sourceDeckProps) => { 
+export const sourceDeck: React.FC<sourceDeckProps> = ({ }: sourceDeckProps) => { 
     // using redux instead of props for real implementation
 
-   //const left:cardsLeft = useSelector((state: RootState) => state.GameState.connectionDeck.length)
+   //const left= useSelector((state: RootState) => state.GameState.connectionDeck.length)
 
   return (
-    <div className="" >
-
+    <div className="" > 
+      {}
     </div>
   )
 }
