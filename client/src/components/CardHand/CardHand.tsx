@@ -7,11 +7,8 @@ import { DefaultRootState, useSelector } from 'react-redux';
 import { Gamestate, Card as SourceCardType } from '../../types/gameStateTypes';
 // import { initDummyState } from '../../logic/dummyState.REDO_CO'
 
-
-
 // const gamestate = useSelector((state: RootState) => state.GameState.connectionDeck)
 // state.player[playerIndex].cards = []
-
 
 export const CardHand: React.FC = () => { // SVGIcon
   // const cards: Card[] = useSelector((state: RootState) => state.GameState.players[0].cards)

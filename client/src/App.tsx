@@ -33,12 +33,12 @@ function App() {
         <div className="sidebar-left">
 
           <CardHand>
-            <div className="source-card-hand">
+            {/* <div className="source-card-hand">
               <SourceCard name='whatsapp' category="social" />
               <SourceCard name='whatsapp' category="social" />
               <SourceCard name='whatsapp' category="social" />
               <SourceCard name='whatsapp' category="social" />
-            </div>
+            </div> */}
           </CardHand>
         </div>
         <div className="board-container">
