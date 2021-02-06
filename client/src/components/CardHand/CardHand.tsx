@@ -38,7 +38,7 @@ export const CardHand: React.FC = () => { // SVGIcon
   const renderCards = (cardArray: SourceCardType[]) => {
     return cardArray.map(card => {
       console.log(card)
-      return <SourceCard name={card.sourceName} category={card.misinfoType} />
+      return <SourceCard name={card.sourceName} category={card.misinfoType} canShare={[]} />
     })
   }
 
