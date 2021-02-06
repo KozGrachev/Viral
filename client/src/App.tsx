@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Grommet } from 'grommet';
 import './App.css';
-
 import './socket-io-client/socket-io-client';
 import { Provider } from 'react-redux';
 import { store } from './redux/gameState/store';
