@@ -16,8 +16,11 @@ import { MisinformationDeck } from './components/MisinformationDeck/misinformati
 import { ChaosMeter } from './components/ChaosMeter/ChaosMeter'
 import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
+import { SourceParent } from './components/SourceParent/SourceParent';
 
-function App() {
+
+
+function App () {
 
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -37,16 +40,13 @@ function App() {
         {/* <GameBoard /> */}
         <div className="sidebar-left">
 
-          <CardHand>
-            {/* <div className="source-card-hand">
-              <SourceCard name='whatsapp' category="social" />
-              <SourceCard name='whatsapp' category="social" />
-              <SourceCard name='whatsapp' category="social" />
-              <SourceCard name='whatsapp' category="social" />
-            </div> */}
-          </CardHand>
+          <CardHand />
         </div>
+
+        <SourceParent />
         <div className="board-container">
+
+
           <ChaosMeter />
           <SourceDeck />
           <MisinformationDeck />
