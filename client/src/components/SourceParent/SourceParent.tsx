@@ -5,7 +5,7 @@ import { Source as SourceComponent } from '../Source/Source'
 import {Source} from '../../types/gameStateTypes'
 import { render } from '@testing-library/react';
 
-const SourceParent = () => {
+export const SourceParent = () => {
   const sources = initDummyState.sources;
 
   const renderSources = (srcArr: Source[]) => {
@@ -23,6 +23,4 @@ const SourceParent = () => {
 }
 
 
-
-export default SourceParent
 
