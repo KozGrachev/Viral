@@ -1,6 +1,7 @@
 import React from 'react';
 import './NewGameMenu.css';
 export const NewGameMenu: React.FC = () => {
+  
   return (
     <form className='form'>
       <div className='menu-container'>

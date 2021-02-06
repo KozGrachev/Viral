@@ -1,6 +1,8 @@
-import { Gamestate, Card, Source, Player, Misinformation } from '../types/gameStateTypes'
+import { Gamestate, Card,ViralCard, Source, Player, Misinformation } from '../types/gameStateTypes'
 import { didWin, viral as playViralCard, dealMisinfoCard } from './actions.MW'
 import { connections as sources } from './connections'
+import {viralCheck} from './actions.MW'
+
 
 //* START THE GAME
 //? called when start button pressed, after game initialised and player order set
@@ -59,6 +61,14 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
 
 
 export function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], recipient: Player['id'], sharedCard: Card['sourceName']): Gamestate {
+  
+  const playerIndex = oldState.players
+    .map((player) => player.id)
+    .indexOf(currentPlayerID);
+  const cardMisinfoValue = oldState.players[playerIndex].cards
+    .filter((card) => card.sourceName === sharedCard)[0].misinfoType;
+  
+  
   const newState: Gamestate =
   {
     ...oldState,
@@ -74,7 +84,7 @@ export function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], re
             cards: [...player.cards, {
               cardType: 'connection',
               sourceName: sharedCard,
-              misinfoType: null
+              misinfoType: cardMisinfoValue
             }],
           } :
           player
@@ -307,8 +317,8 @@ export function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player[
       gameLost: true
     }
   }
-  const newCard: Card = oldState.connectionDeck[0]
-  if (newCard.cardType === 'viral') {
+  const newCard: Card|ViralCard = oldState.connectionDeck[0]
+  if (viralCheck(newCard)) {
     //? does viral function remove card? should it be returned? should it also break for game checks?
     console.log('you drew a viral card!');
     return playViralCard(oldState)
@@ -327,7 +337,7 @@ export function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player[
         ),
       connectionDeck: oldState.connectionDeck.slice(1)
     };
-    console.log('player was dealt a', newCard.sourceName, 'connection card');
+    console.log('player was dealt a', newCard, 'connection card');
     return newState;
   }
 }

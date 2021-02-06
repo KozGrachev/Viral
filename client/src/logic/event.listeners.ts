@@ -20,4 +20,4 @@ export const discardCardEvent = (props: discardCardProps) => {
   dispatch(discardCardAction(props))
 }
 
-export const StartGameEvent = (props:)
+// export const StartGameEvent = (props:)
