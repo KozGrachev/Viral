@@ -19,3 +19,5 @@ export const debunkMisinfoEvent = (props: DebunkMisinfoProps) => {
 export const discardCardEvent = (props: discardCardProps) => {
   dispatch(discardCardAction(props))
 }
+
+export const StartGameEvent = (props:)
