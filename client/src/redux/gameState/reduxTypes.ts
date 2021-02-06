@@ -102,12 +102,10 @@ export interface AddPlayerAction {
 
 export interface GetAllGamesAction {
   type: typeof GET_ALL_GAMES
-  payload: GetAllGamesProps
+  payload: string[]
 }
 
-export interface GetAllGamesProps {
-  array: [string]
-}
+
 
 
 export type GameStateActionTypes =

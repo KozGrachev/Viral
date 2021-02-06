@@ -4,7 +4,6 @@ import * as dotenv from 'dotenv';
 import { store } from '../redux/gameState/store'
 import { GetAllGamesAction, updateGameState } from "../redux/gameState/gameStateActions";
 import { Gamestate } from "../types/gameStateTypes";
-import { GetAllGamesProps } from "../redux/gameState/reduxTypes";
 dotenv.config({ path: __dirname + '/.env' });
 //connection to the server
 dotenv.config({ path: __dirname + '../.env' });
@@ -50,7 +49,7 @@ export const restartGame = (name: string, room: string) => {
 export const getGames = () => {
   socket.emit('getGames')
   socket.on('games', (
-    (data: GetAllGamesProps) => {
+    (data: string[]) => {
       store.dispatch(GetAllGamesAction(data))
     }
   ))

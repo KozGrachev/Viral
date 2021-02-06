@@ -1,4 +1,4 @@
-import { ClearmisinfoProps, CLEAR_MISINFO, DebunkMisinfoProps, DEBUNK_MISINFO, discardCardProps, DISCARD_ACTION, logOnOffProps, LOG_ON_OFF, MoveActionProps, MOVE_ACTION, ShareCardProps, SHARE_CARD, UPDATE_GAME_STATE, GameStateActionTypes, PlayerStateActionTypes, ADD_PLAYER, GET_ALL_GAMES, AllGamesActionTypes, GetAllGamesProps } from './reduxTypes';
+import { ClearmisinfoProps, CLEAR_MISINFO, DebunkMisinfoProps, DEBUNK_MISINFO, discardCardProps, DISCARD_ACTION, logOnOffProps, LOG_ON_OFF, MoveActionProps, MOVE_ACTION, ShareCardProps, SHARE_CARD, UPDATE_GAME_STATE, GameStateActionTypes, PlayerStateActionTypes, ADD_PLAYER, GET_ALL_GAMES, AllGamesActionTypes } from './reduxTypes';
 import { Gamestate, } from '../../types/gameStateTypes'
 //Below are example of actions with typescript. 
 // we need to create an action for each reduced case 
@@ -68,7 +68,7 @@ export function AddPlayerAction(name: string, color: string, room: string): Play
   }
 }
 
-export function GetAllGamesAction(array: GetAllGamesProps): AllGamesActionTypes {
+export function GetAllGamesAction(array: string[]): AllGamesActionTypes {
   console.log('array', array)
   return {
     type: GET_ALL_GAMES,

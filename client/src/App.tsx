@@ -22,6 +22,7 @@ function App() {
     getGames();
   }, []);
 
+
   // eslint-disable-next-line
   const AppBar = () => (
     <Box // eslint-disable-next-line
@@ -37,9 +38,11 @@ function App() {
 
   return (
     <Provider store={store}>
-      { store.getState().allGamesStateReducer.map(game =>
-        <div style={{ textAlign: 'center' }}> {game} HI THERE </div>)
-      }
+      <div>
+        {store.getState().allGamesStateReducer.map(game =>
+          <div style={{ textAlign: 'center' }}> {game} </div>)
+        }
+      </div>
       {/* <CureDeck /> */}
     </Provider>
   );

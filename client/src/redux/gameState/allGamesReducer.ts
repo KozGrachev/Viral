@@ -7,9 +7,10 @@ export function allGamesStateReducer(
 ): string[] {
   switch (action.type) {
     case GET_ALL_GAMES: {
-    console.log(state, 'state')
-    return state = [...action.payload]
-      }
+      state=Array.from(action.payload)
+      console.log(state, 'state')
+      return state
+    }
     default: return state
   }
 }
