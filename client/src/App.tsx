@@ -15,6 +15,7 @@ import { CardHand } from './components/CardHand/CardHand';
 import {SourceDeck} from './components/sourceDeck/sourceDeck'
 import {MarkersStore} from './components/MarkersStore/MarkersStore'
 import {MisinformationDeck} from './components/MisinformationDeck/misinformationDeck'
+import {ChaosMeter} from './components/ChaosMeter/ChaosMeter'
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
           </CardHand>
         </div>
         <div className="board-container">
+        <ChaosMeter/>
         <SourceDeck/>
         <MisinformationDeck/>
         <MarkersStore/>
