@@ -1,6 +1,5 @@
 import React from 'react';
 import './ChaosMeter.css';
-
 export const ChaosMeter: React.FC = () => {
   return (
     <div className='progress-container'>
@@ -36,3 +35,4 @@ export const ChaosMeter: React.FC = () => {
     </div>
   );
 };
+
