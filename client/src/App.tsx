@@ -13,25 +13,18 @@ import { getIcon } from './helpers/iconExporter'
 import { SourceCard } from './components/SourceCard/SourceCard';
 import { CardHand } from './components/CardHand/CardHand';
 
-function App () {
+function App() {
 
   const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     getGames();
   }, []);
- 
-  const Map = getIcon('map');
-  const GameBoard = getIcon('gameBoard');
 
   return (
     // <Grommet theme={grommet} full>
     <Provider store={store}>
-      <div>
-       <!--{store.getState().allGamesStateReducer.map(game =>
-          <div style={{ textAlign: 'center' }}> {game} </div>)
-        } -->
-      </div>
+
       {/* <CureDeck /> */}
       <div className="app-container">
 
