@@ -13,6 +13,7 @@ export interface SourceCardProps {
 // canShare: a button that appears on each card when you are on the same location as another player
 // canchare: Player[]
 
+
 export const SourceCard: React.FC<SourceCardProps> = ({ name, category, canShare }: SourceCardProps) => { // SVGIcon
   const SVGIcon = getIcon(toCamelCase(name) + 'Icon');
 
