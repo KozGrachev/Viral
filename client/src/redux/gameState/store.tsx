@@ -6,10 +6,11 @@ import { playerStateReducer } from './playerReducer'
 // import {Gamestate} from '../../types/gameStateTypes'
 import { gameStateReducer } from './gameStateReducer';
 import { Gamestate, Player } from "../../types/gameStateTypes";
-
+import { allGamesStateReducer } from '../gameState/allGamesReducer'
 export const reducer = combineReducers({
   playerStateReducer,
-  gameStateReducer
+  gameStateReducer,
+  allGamesStateReducer
 })
 
 export const store = createStore(reducer);
@@ -17,5 +18,6 @@ export const store = createStore(reducer);
 // export type RootState = ReturnType<typeof reducer>
 export interface RootState {
   Player: Player
-  GameState: Gamestate
+  GameState: Gamestate,
+  AllGames: String[]
 }

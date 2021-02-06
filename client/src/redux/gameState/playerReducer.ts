@@ -14,7 +14,7 @@ let PlayerState: Player = {
   isCurrent: true,
   pawnColor: 'green',
   currentSource: 'University',
-  room: '1',
+  room: 'hello',
 }
 
 
@@ -29,3 +29,4 @@ export function playerStateReducer(
     default: return state
   }
 }
+
