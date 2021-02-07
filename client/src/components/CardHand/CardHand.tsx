@@ -4,14 +4,11 @@ import { toCamelCase } from '../../helpers/utils';
 import { SourceCard, SourceCardProps } from '../SourceCard/SourceCard';
 import { RootState, store } from '../../redux/gameState/store'
 import { DefaultRootState, useSelector } from 'react-redux';
-import { Gamestate, SourceCard as SourceCardType } from '../../types/gameStateTypes';
+import { Gamestate, Card as SourceCardType } from '../../types/gameStateTypes';
 // import { initDummyState } from '../../logic/dummyState.REDO_CO'
-
-
 
 // const gamestate = useSelector((state: RootState) => state.GameState.connectionDeck)
 // state.player[playerIndex].cards = []
-
 
 export const CardHand: React.FC = () => { // SVGIcon
   // const cards: Card[] = useSelector((state: RootState) => state.GameState.players[0].cards)
@@ -41,7 +38,7 @@ export const CardHand: React.FC = () => { // SVGIcon
   const renderCards = (cardArray: SourceCardType[]) => {
     return cardArray.map(card => {
       console.log(card)
-      return <SourceCard name={card.sourceName} category={card.misinfoType} />
+      return <SourceCard name={card.sourceName} category={card.misinfoType} canShare={[]} />
     })
   }
 

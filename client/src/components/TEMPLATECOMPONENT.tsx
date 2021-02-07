@@ -2,7 +2,7 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { SourceCard, SourceCardProps } from './SourceCard';
+// import { COMPONENT, COMPONENTPROPS } from './COMPONENTPATH';
 import { withDesign } from 'storybook-addon-designs'
 
 

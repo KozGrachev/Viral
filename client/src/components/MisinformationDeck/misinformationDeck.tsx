@@ -1,14 +1,14 @@
 import React from 'react';
 import { store } from '../../redux/gameState/store';
-export const SourceDeck: React.FC= () => { 
+export const MisinformationDeck: React.FC= () => { 
 
    //const left= useSelector((state: RootState) => state.GameState.connectionDeck.length)
-  const left = store.getState().gameStateReducer.connectionDeck.length
+  const left = store.getState().gameStateReducer.misinformationDeckActive.length
 
 
   return (
     <div className="" > 
-      Source Cards Left:{left}
+      Misinformation Cards Left:{left}
     </div>
   )
 }

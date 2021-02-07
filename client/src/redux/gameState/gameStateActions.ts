@@ -69,7 +69,6 @@ export function AddPlayerAction(name: string, color: string, room: string): Play
 }
 
 export function GetAllGamesAction(array: string[]): AllGamesActionTypes {
-  console.log('array', array)
   return {
     type: GET_ALL_GAMES,
     payload: array

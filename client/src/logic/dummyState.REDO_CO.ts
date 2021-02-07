@@ -7,8 +7,8 @@ export const initDummyState: Gamestate = {
     {
       name: 'University',
       misinfoType: 'blue',
-      markers_community: 0,
-      markers_social: 0,
+      markers_community: 1,
+      markers_social: 3,
       markers_relations: 0,
       canMove: false,
       canLogOn: false,
@@ -22,9 +22,9 @@ export const initDummyState: Gamestate = {
     {
       name: 'Gym',
       misinfoType: 'red',
-      markers_community: 0,
+      markers_community: 1,
       markers_social: 0,
-      markers_relations: 0,
+      markers_relations: 2,
       canMove: false,
       canLogOn: false,
       canLogOff: false,
@@ -37,9 +37,9 @@ export const initDummyState: Gamestate = {
     {
       name: 'Instagram',
       misinfoType: 'yellow',
-      markers_community: 0,
-      markers_social: 0,
-      markers_relations: 0,
+      markers_community: 1,
+      markers_social: 2,
+      markers_relations: 3,
       canMove: false,
       canLogOn: false,
       canLogOff: false,
@@ -110,8 +110,6 @@ export const initDummyState: Gamestate = {
     },
     {
       cardType: 'viral',
-      sourceName: null,
-      misinfoType: null,
     },
   ],
   misinformationDeckActive: [
