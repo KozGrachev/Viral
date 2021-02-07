@@ -11,7 +11,8 @@ export const UPDATE_GAME_STATE = 'UPDATE_GAME_STATE'
 export const ADD_PLAYER = 'ADD_PLAYER'
 export const GET_ALL_GAMES = 'GET_ALL_GAMES'
 export const START_GAME='START_GAME'
-export interface MoveActionProps {
+export const ADD_PLAYER_TO_GAME = 'ADD_PLAYER_TO_GAME'
+export interface MoveActionProps { 
   oldState: Gamestate,
   currentPlayerID: Player['id'],
   location: Source['name']
@@ -110,12 +111,20 @@ export interface GetAllGamesAction {
   payload: string[]
 }
 
+export interface AddPlayerToGameProps { 
+  player:Player, 
+  oldState:Gamestate
+}
+export interface AddPlayerToGameStateAction {
+  type: typeof ADD_PLAYER_TO_GAME
+  payload: AddPlayerToGameProps
+}
 
 export type GameStateActionTypes =
   MoveAction | ClearMisinfoAction | ShareCardAction | logOnOffPropsAction |
-  DebunkMisinfoAction | discardCardAction | UpdateGameStateAction | StartGameAction
+  DebunkMisinfoAction | discardCardAction | UpdateGameStateAction | StartGameAction | AddPlayerToGameStateAction
 
-export type PlayerStateActionTypes = AddPlayerAction;
+// export type PlayerStateActionTypes = AddPlayerAction;
 
-export type AllGamesActionTypes = GetAllGamesAction; 
+// export type AllGamesActionTypes = GetAllGamesAction; 
 

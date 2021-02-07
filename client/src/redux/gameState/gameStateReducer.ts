@@ -1,46 +1,56 @@
-import { CLEAR_MISINFO, DEBUNK_MISINFO, DISCARD_ACTION, GameStateActionTypes, LOG_ON_OFF, MOVE_ACTION, SHARE_CARD, UPDATE_GAME_STATE } from './reduxTypes';
+import { ADD_PLAYER_TO_GAME, CLEAR_MISINFO, DEBUNK_MISINFO, DISCARD_ACTION, GameStateActionTypes, LOG_ON_OFF, MOVE_ACTION, SHARE_CARD, START_GAME, UPDATE_GAME_STATE } from './reduxTypes';
 import { initDummyState as gameState } from '../../logic/dummyState.REDO_CO'
 import { Gamestate } from '../../types/gameStateTypes'
 import { clearMisinfo, debunkMisinfo, discardCard, logOnOff, moveAction, shareCard } from '../../logic/actions.newState_CO'
+import { addPlayerToGame, setUp } from '../../logic/actions.MW';
 //here should be a initial State of the Game
-const GameState: Gamestate = gameState; 
+const GameState: Gamestate = gameState;
 
 export function gameStateReducer(
   state = GameState,
   action: GameStateActionTypes
 ): Gamestate {
   switch (action.type) {
-    case MOVE_ACTION: {
-      const ap = action.payload;
-      return (moveAction(ap.oldState, ap.currentPlayerID, ap.location), { ...state, received: false });
-    }
-    case CLEAR_MISINFO: {
-      const ap = action.payload;
-      return (clearMisinfo(ap.oldState, ap.currentPlayerID, ap.misinfoType, ap.location), { ...state, received: false })
-    }
-    case SHARE_CARD: {
-      const ap = action.payload;
-      return (shareCard(ap.oldState, ap.currentPlayerID, ap.recipient, ap.sharedCard), { ...state, received: false });
-    }
-    case LOG_ON_OFF: {
-      const ap = action.payload;
-      return (logOnOff(ap.oldState, ap.currentPlayerID, ap.location, ap.usedCard), { ...state, received: false });
-    }
-    case DEBUNK_MISINFO: {
-      const ap = action.payload;
-      return (debunkMisinfo(ap.oldState, ap.currentPlayerID, ap.usedCards, ap.misinfoType), { ...state, received: false });
-    }
-    case DISCARD_ACTION: {
-      const ap = action.payload;
-      return (discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard), { ...state, received: false });
-    }
-    case UPDATE_GAME_STATE:
-      return {
-        ...state, ...action.payload
-      }
-    // case ADD_PLAYER_TO_GAME: {
-
+    // case MOVE_ACTION: {
+    //   const ap = action.payload;
+    //   return (moveAction(ap.oldState, ap.currentPlayerID, ap.location), { ...state, received: false });
     // }
+    // case CLEAR_MISINFO: {
+    //   const ap = action.payload;
+    //   return (clearMisinfo(ap.oldState, ap.currentPlayerID, ap.misinfoType, ap.location), { ...state, received: false })
+    // }
+    // case SHARE_CARD: {
+    //   const ap = action.payload;
+    //   return (shareCard(ap.oldState, ap.currentPlayerID, ap.recipient, ap.sharedCard), { ...state, received: false });
+    // }
+    // case LOG_ON_OFF: {
+    //   const ap = action.payload;
+    //   return (logOnOff(ap.oldState, ap.currentPlayerID, ap.location, ap.usedCard), { ...state, received: false });
+    // }
+    // case DEBUNK_MISINFO: {
+    //   const ap = action.payload;
+    //   return (debunkMisinfo(ap.oldState, ap.currentPlayerID, ap.usedCards, ap.misinfoType), { ...state, received: false });
+    // }
+    // case DISCARD_ACTION: {
+    //   const ap = action.payload;
+    //   return (discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard), { ...state, received: false });
+    // }
+    // case UPDATE_GAME_STATE:
+    //   return {
+    //     ...state, ...action.payload
+    //   }
+    // case ADD_PLAYER_TO_GAME: {
+    //   const ap = action.payload;
+    //   const newState = addPlayerToGame(ap.player, ap.oldState)
+    //   return { ...state, ...newState }
+    // }
+    case START_GAME: {
+      // const hello = setUp(action.payload)
+      const obj = {...state, spreadLevel:50}
+      console.log('console.log from reducer', obj )
+      return obj
+
+    }
     default: return state
   }
 }

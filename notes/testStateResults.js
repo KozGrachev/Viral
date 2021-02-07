@@ -1,5912 +1,5913 @@
-[{
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "crazy dave",
-  id: "5678",
-  isCurrent: false,
-  name: "Player 2",
-  pawnColor: "purple"
-}, {
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "crazy dave",
-  id: "1234",
-  isCurrent: true,
-  name: "Player 1",
-  pawnColor: "green"
-}]
-[{
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "crazy dave",
-  id: "5678",
-  isCurrent: false,
-  name: "Player 2",
-  pawnColor: "purple"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}],
-  currentSource: "crazy dave",
-  id: "1234",
-  isCurrent: true,
-  name: "Player 1",
-  pawnColor: "green"
-}]
-"inserting viral cards to connection deck"
-"dealing misinformation card", "opinionated grandpa"
-"dealing misinformation card", "asda"
-"dealing misinformation card", "intagram"
-"dealing misinformation card", "taxi"
-"dealing misinformation card", "guy at the bus stop"
-"dealing misinformation card", "evil-ex"
-"reached update possible actions..."
-"before adjacents"
-"location here is:", "crazy dave"
-"before adjacents"
-"initial state:", 
-{
-  chaosMeter: 0,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}],
-  dealHistory: 0,
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}],
-  misinformationDeckPassive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}],
-  players: [{
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "crazy dave",
-  id: "5678",
-  isCurrent: true,
-  name: "Player 2",
-  pawnColor: "purple"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}],
-  currentSource: "crazy dave",
-  id: "1234",
-  isCurrent: false,
-  name: "Player 1",
-  pawnColor: "green"
-}],
-  sources: [{
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "high school"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 2,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "taxi"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "local cult"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "pub"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "university"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "hair salon"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "gym"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 3,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "asda"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "auntie"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "mother-in-law"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "cousin"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "fran from HR"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 1,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "evil-ex"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 1,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "guy at the bus stop"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "crazy dave"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "opinionated grandpa"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "illuminati"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "youtube"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 2,
-  misinfoType: "social",
-  name: "intagram"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "facebook"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "reddit"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "twitter"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "whatsapp"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "tik-tok"
-}],
-  spreadLevel: 0,
-  turnMovesLeft: 4
-}
-"player moved to", "guy at the bus stop"
-"there are", 3, "moves left"
-"reached next move checker..."
-"next move checker condition 1"
-"reached update possible actions..."
-"before adjacents"
-"location here is:", "guy at the bus stop"
-"before adjacents"
-"after move one:", {
-  chaosMeter: 0,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}],
-  dealHistory: 0,
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}],
-  misinformationDeckPassive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}],
-  players: [{
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "guy at the bus stop",
-  id: "5678",
-  isCurrent: true,
-  name: "Player 2",
-  pawnColor: "purple"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}],
-  currentSource: "crazy dave",
-  id: "1234",
-  isCurrent: false,
-  name: "Player 1",
-  pawnColor: "green"
-}],
-  sources: [{
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "high school"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 2,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "taxi"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "local cult"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "pub"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "university"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "hair salon"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "gym"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 3,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "asda"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "auntie"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "mother-in-law"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "cousin"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "fran from HR"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 1,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "evil-ex"
-}, {
-  canClearCommunity: false,
-  canClearRelations: true,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 1,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "guy at the bus stop"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "crazy dave"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "opinionated grandpa"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "illuminati"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "youtube"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 2,
-  misinfoType: "social",
-  name: "intagram"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "facebook"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "reddit"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "twitter"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "whatsapp"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "tik-tok"
-}],
-  spreadLevel: 0,
-  turnMovesLeft: 3
-}
-"player moved to", "evil-ex"
-"there are", 2, "moves left"
-"reached next move checker..."
-"next move checker condition 1"
-"reached update possible actions..."
-"before adjacents"
-"location here is:", "evil-ex"
-"before adjacents"
-"after move two:", {
-  chaosMeter: 0,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}],
-  dealHistory: 0,
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}],
-  misinformationDeckPassive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}],
-  players: [{
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "evil-ex",
-  id: "5678",
-  isCurrent: true,
-  name: "Player 2",
-  pawnColor: "purple"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}],
-  currentSource: "crazy dave",
-  id: "1234",
-  isCurrent: false,
-  name: "Player 1",
-  pawnColor: "green"
-}],
-  sources: [{
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "high school"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 2,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "taxi"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "local cult"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "pub"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "university"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "hair salon"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "gym"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 3,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "asda"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "auntie"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "mother-in-law"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "cousin"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "fran from HR"
-}, {
-  canClearCommunity: false,
-  canClearRelations: true,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 1,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "evil-ex"
-}, {
-  canClearCommunity: false,
-  canClearRelations: true,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 1,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "guy at the bus stop"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "crazy dave"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "opinionated grandpa"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "illuminati"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "youtube"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 2,
-  misinfoType: "social",
-  name: "intagram"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "facebook"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "reddit"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "twitter"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "whatsapp"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "tik-tok"
-}],
-  spreadLevel: 0,
-  turnMovesLeft: 2
-}
-"player moved to", "fran from HR"
-"there are", 1, "moves left"
-"reached next move checker..."
-"next move checker condition 1"
-"reached update possible actions..."
-"before adjacents"
-"location here is:", "fran from HR"
-"before adjacents"
-"after move three:", {
-  chaosMeter: 0,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}],
-  dealHistory: 0,
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}],
-  misinformationDeckPassive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}],
-  players: [{
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "fran from HR",
-  id: "5678",
-  isCurrent: true,
-  name: "Player 2",
-  pawnColor: "purple"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}],
-  currentSource: "crazy dave",
-  id: "1234",
-  isCurrent: false,
-  name: "Player 1",
-  pawnColor: "green"
-}],
-  sources: [{
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "high school"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 2,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "taxi"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "local cult"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "pub"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "university"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "hair salon"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "gym"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 3,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "asda"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "auntie"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "mother-in-law"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "cousin"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "fran from HR"
-}, {
-  canClearCommunity: false,
-  canClearRelations: true,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 1,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "evil-ex"
-}, {
-  canClearCommunity: false,
-  canClearRelations: true,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 1,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "guy at the bus stop"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "crazy dave"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "opinionated grandpa"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "illuminati"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "youtube"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 2,
-  misinfoType: "social",
-  name: "intagram"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "facebook"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "reddit"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "twitter"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "whatsapp"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "tik-tok"
-}],
-  spreadLevel: 0,
-  turnMovesLeft: 1
-}
-"player moved to", "cousin"
-"there are", 0, "moves left"
-"reached next move checker..."
-"reached next move checker..."
-"after move four:", {
-  chaosMeter: 0,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}],
-  dealHistory: 0,
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}],
-  misinformationDeckPassive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}],
-  players: [{
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "cousin",
-  id: "5678",
-  isCurrent: true,
-  name: "Player 2",
-  pawnColor: "purple"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}],
-  currentSource: "crazy dave",
-  id: "1234",
-  isCurrent: false,
-  name: "Player 1",
-  pawnColor: "green"
-}],
-  sources: [{
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "high school"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 2,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "taxi"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "local cult"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "pub"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "university"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "hair salon"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "gym"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 3,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "asda"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "auntie"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "mother-in-law"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "cousin"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "fran from HR"
-}, {
-  canClearCommunity: false,
-  canClearRelations: true,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 1,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "evil-ex"
-}, {
-  canClearCommunity: false,
-  canClearRelations: true,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 1,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "guy at the bus stop"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "crazy dave"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "opinionated grandpa"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "illuminati"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "youtube"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 2,
-  misinfoType: "social",
-  name: "intagram"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "facebook"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "reddit"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "twitter"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "whatsapp"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "tik-tok"
-}],
-  spreadLevel: 0,
-  turnMovesLeft: 0
-}
+export {}
+// [{
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "crazy dave",
+//   id: "5678",
+//   isCurrent: false,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "crazy dave",
+//   id: "1234",
+//   isCurrent: true,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }]
+// [{
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "crazy dave",
+//   id: "5678",
+//   isCurrent: false,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }],
+//   currentSource: "crazy dave",
+//   id: "1234",
+//   isCurrent: true,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }]
+// "inserting viral cards to connection deck"
+// "dealing misinformation card", "opinionated grandpa"
+// "dealing misinformation card", "asda"
+// "dealing misinformation card", "intagram"
+// "dealing misinformation card", "taxi"
+// "dealing misinformation card", "guy at the bus stop"
+// "dealing misinformation card", "evil-ex"
+// "reached update possible actions..."
+// "before adjacents"
+// "location here is:", "crazy dave"
+// "before adjacents"
+// "initial state:", 
+// {
+//   chaosMeter: 0,
+//   connectionDeck: [{
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }],
+//   dealHistory: 0,
+//   gameLost: false,
+//   gameWon: false,
+//   misinformation: {
+//     community: { ... },
+//     relations: { ... },
+//     social: { ... }
+//   },
+//   misinformationDeckActive: [{
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }],
+//   misinformationDeckPassive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }],
+//   players: [{
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "crazy dave",
+//   id: "5678",
+//   isCurrent: true,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }],
+//   currentSource: "crazy dave",
+//   id: "1234",
+//   isCurrent: false,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }],
+//   sources: [{
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "high school"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 2,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "taxi"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "local cult"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "pub"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "university"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "hair salon"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "gym"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 3,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "asda"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "auntie"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "mother-in-law"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "cousin"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "fran from HR"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 1,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "evil-ex"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 1,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "guy at the bus stop"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "crazy dave"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "opinionated grandpa"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "illuminati"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "youtube"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 2,
+//   misinfoType: "social",
+//   name: "intagram"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "facebook"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "reddit"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "twitter"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "whatsapp"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "tik-tok"
+// }],
+//   spreadLevel: 0,
+//   turnMovesLeft: 4
+// }
+// "player moved to", "guy at the bus stop"
+// "there are", 3, "moves left"
+// "reached next move checker..."
+// "next move checker condition 1"
+// "reached update possible actions..."
+// "before adjacents"
+// "location here is:", "guy at the bus stop"
+// "before adjacents"
+// "after move one:", {
+//   chaosMeter: 0,
+//   connectionDeck: [{
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }],
+//   dealHistory: 0,
+//   gameLost: false,
+//   gameWon: false,
+//   misinformation: {
+//     community: { ... },
+//     relations: { ... },
+//     social: { ... }
+//   },
+//   misinformationDeckActive: [{
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }],
+//   misinformationDeckPassive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }],
+//   players: [{
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "guy at the bus stop",
+//   id: "5678",
+//   isCurrent: true,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }],
+//   currentSource: "crazy dave",
+//   id: "1234",
+//   isCurrent: false,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }],
+//   sources: [{
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "high school"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 2,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "taxi"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "local cult"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "pub"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "university"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "hair salon"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "gym"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 3,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "asda"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "auntie"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "mother-in-law"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "cousin"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "fran from HR"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 1,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "evil-ex"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: true,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 1,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "guy at the bus stop"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "crazy dave"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "opinionated grandpa"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "illuminati"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "youtube"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 2,
+//   misinfoType: "social",
+//   name: "intagram"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "facebook"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "reddit"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "twitter"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "whatsapp"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "tik-tok"
+// }],
+//   spreadLevel: 0,
+//   turnMovesLeft: 3
+// }
+// "player moved to", "evil-ex"
+// "there are", 2, "moves left"
+// "reached next move checker..."
+// "next move checker condition 1"
+// "reached update possible actions..."
+// "before adjacents"
+// "location here is:", "evil-ex"
+// "before adjacents"
+// "after move two:", {
+//   chaosMeter: 0,
+//   connectionDeck: [{
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }],
+//   dealHistory: 0,
+//   gameLost: false,
+//   gameWon: false,
+//   misinformation: {
+//     community: { ... },
+//     relations: { ... },
+//     social: { ... }
+//   },
+//   misinformationDeckActive: [{
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }],
+//   misinformationDeckPassive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }],
+//   players: [{
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "evil-ex",
+//   id: "5678",
+//   isCurrent: true,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }],
+//   currentSource: "crazy dave",
+//   id: "1234",
+//   isCurrent: false,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }],
+//   sources: [{
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "high school"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 2,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "taxi"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "local cult"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "pub"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "university"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "hair salon"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "gym"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 3,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "asda"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "auntie"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "mother-in-law"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "cousin"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "fran from HR"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: true,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 1,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "evil-ex"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: true,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 1,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "guy at the bus stop"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "crazy dave"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "opinionated grandpa"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "illuminati"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "youtube"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 2,
+//   misinfoType: "social",
+//   name: "intagram"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "facebook"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "reddit"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "twitter"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "whatsapp"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "tik-tok"
+// }],
+//   spreadLevel: 0,
+//   turnMovesLeft: 2
+// }
+// "player moved to", "fran from HR"
+// "there are", 1, "moves left"
+// "reached next move checker..."
+// "next move checker condition 1"
+// "reached update possible actions..."
+// "before adjacents"
+// "location here is:", "fran from HR"
+// "before adjacents"
+// "after move three:", {
+//   chaosMeter: 0,
+//   connectionDeck: [{
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }],
+//   dealHistory: 0,
+//   gameLost: false,
+//   gameWon: false,
+//   misinformation: {
+//     community: { ... },
+//     relations: { ... },
+//     social: { ... }
+//   },
+//   misinformationDeckActive: [{
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }],
+//   misinformationDeckPassive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }],
+//   players: [{
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "fran from HR",
+//   id: "5678",
+//   isCurrent: true,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }],
+//   currentSource: "crazy dave",
+//   id: "1234",
+//   isCurrent: false,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }],
+//   sources: [{
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "high school"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 2,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "taxi"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "local cult"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "pub"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "university"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "hair salon"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "gym"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 3,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "asda"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "auntie"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "mother-in-law"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "cousin"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "fran from HR"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: true,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 1,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "evil-ex"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: true,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 1,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "guy at the bus stop"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "crazy dave"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "opinionated grandpa"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "illuminati"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "youtube"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 2,
+//   misinfoType: "social",
+//   name: "intagram"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "facebook"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "reddit"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "twitter"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "whatsapp"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "tik-tok"
+// }],
+//   spreadLevel: 0,
+//   turnMovesLeft: 1
+// }
+// "player moved to", "cousin"
+// "there are", 0, "moves left"
+// "reached next move checker..."
+// "reached next move checker..."
+// "after move four:", {
+//   chaosMeter: 0,
+//   connectionDeck: [{
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }],
+//   dealHistory: 0,
+//   gameLost: false,
+//   gameWon: false,
+//   misinformation: {
+//     community: { ... },
+//     relations: { ... },
+//     social: { ... }
+//   },
+//   misinformationDeckActive: [{
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }],
+//   misinformationDeckPassive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }],
+//   players: [{
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "cousin",
+//   id: "5678",
+//   isCurrent: true,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }],
+//   currentSource: "crazy dave",
+//   id: "1234",
+//   isCurrent: false,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }],
+//   sources: [{
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "high school"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 2,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "taxi"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "local cult"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "pub"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "university"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "hair salon"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "gym"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 3,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "asda"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "auntie"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "mother-in-law"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "cousin"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "fran from HR"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: true,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 1,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "evil-ex"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: true,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 1,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "guy at the bus stop"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "crazy dave"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "opinionated grandpa"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "illuminati"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "youtube"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 2,
+//   misinfoType: "social",
+//   name: "intagram"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "facebook"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "reddit"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "twitter"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "whatsapp"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "tik-tok"
+// }],
+//   spreadLevel: 0,
+//   turnMovesLeft: 0
+// }
 
-[{
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "crazy dave",
-  id: "1234",
-  isCurrent: true,
-  name: "Player 1",
-  pawnColor: "green"
-}, {
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "crazy dave",
-  id: "5678",
-  isCurrent: false,
-  name: "Player 2",
-  pawnColor: "purple"
-}]
-[{
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}],
-  currentSource: "crazy dave",
-  id: "1234",
-  isCurrent: false,
-  name: "Player 1",
-  pawnColor: "green"
-}, {
-  cardHandOverflow: false,
-  cards: [],
-  currentSource: "crazy dave",
-  id: "5678",
-  isCurrent: true,
-  name: "Player 2",
-  pawnColor: "purple"
-}]
-"inserting viral cards to connection deck"
-"dealing misinformation card", "auntie"
-"dealing misinformation card", "cousin"
-"dealing misinformation card", "reddit"
-"dealing misinformation card", "fran from HR"
-"dealing misinformation card", "twitter"
-"dealing misinformation card", "illuminati"
-"reached update possible actions..."
-"before adjacents"
-"location here is:", "crazy dave"
-"before adjacents"
-"initial state:", {
-  chaosMeter: 0,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}],
-  dealHistory: 0,
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}],
-  misinformationDeckPassive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}],
-  players: [{
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}],
-  currentSource: "crazy dave",
-  id: "1234",
-  isCurrent: true,
-  name: "Player 1",
-  pawnColor: "green"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}],
-  currentSource: "crazy dave",
-  id: "5678",
-  isCurrent: false,
-  name: "Player 2",
-  pawnColor: "purple"
-}],
-  sources: [{
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "high school"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "taxi"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "local cult"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "pub"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "university"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "hair salon"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "gym"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "asda"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "auntie"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "mother-in-law"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "cousin"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 2,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "fran from HR"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "evil-ex"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: true,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "guy at the bus stop"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [[circular object Object]],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "crazy dave"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: true,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "opinionated grandpa"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 1,
-  misinfoType: "social",
-  name: "illuminati"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "youtube"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "intagram"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "facebook"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 2,
-  misinfoType: "social",
-  name: "reddit"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 1,
-  misinfoType: "social",
-  name: "twitter"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "whatsapp"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "tik-tok"
-}],
-  spreadLevel: 0,
-  turnMovesLeft: 4
-}
-"player moved to", "guy at the bus stop"
-"there are", 3, "moves left"
-"reached next move checker..."
-"next move checker condition 1"
-"reached update possible actions..."
-"before adjacents"
-"location here is:", "guy at the bus stop"
-"before adjacents"
-"after move one:", {
-  chaosMeter: 0,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}],
-  dealHistory: 0,
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}],
-  misinformationDeckPassive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}],
-  players: [{
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}],
-  currentSource: "guy at the bus stop",
-  id: "1234",
-  isCurrent: true,
-  name: "Player 1",
-  pawnColor: "green"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}],
-  currentSource: "crazy dave",
-  id: "5678",
-  isCurrent: false,
-  name: "Player 2",
-  pawnColor: "purple"
-}],
-  sources: [{
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "high school"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "taxi"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "local cult"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "pub"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "university"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "hair salon"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "gym"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "asda"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "auntie"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "mother-in-law"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "cousin"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 2,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "fran from HR"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "evil-ex"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "guy at the bus stop"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: true,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "crazy dave"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: true,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "opinionated grandpa"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 1,
-  misinfoType: "social",
-  name: "illuminati"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "youtube"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "intagram"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "facebook"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 2,
-  misinfoType: "social",
-  name: "reddit"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 1,
-  misinfoType: "social",
-  name: "twitter"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "whatsapp"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: true,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "tik-tok"
-}],
-  spreadLevel: 0,
-  turnMovesLeft: 3
-}
-"player moved to", "evil-ex"
-"there are", 2, "moves left"
-"reached next move checker..."
-"next move checker condition 1"
-"reached update possible actions..."
-"before adjacents"
-"location here is:", "evil-ex"
-"before adjacents"
-"after move two:", {
-  chaosMeter: 0,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}],
-  dealHistory: 0,
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}],
-  misinformationDeckPassive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}],
-  players: [{
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}],
-  currentSource: "evil-ex",
-  id: "1234",
-  isCurrent: true,
-  name: "Player 1",
-  pawnColor: "green"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}],
-  currentSource: "crazy dave",
-  id: "5678",
-  isCurrent: false,
-  name: "Player 2",
-  pawnColor: "purple"
-}],
-  sources: [{
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "high school"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "taxi"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "local cult"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "pub"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "university"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "hair salon"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "gym"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "asda"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "auntie"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "mother-in-law"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "cousin"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 2,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "fran from HR"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "evil-ex"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: true,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "guy at the bus stop"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: true,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "crazy dave"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: true,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "opinionated grandpa"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 1,
-  misinfoType: "social",
-  name: "illuminati"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "youtube"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "intagram"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "facebook"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 2,
-  misinfoType: "social",
-  name: "reddit"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 1,
-  misinfoType: "social",
-  name: "twitter"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "whatsapp"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "tik-tok"
-}],
-  spreadLevel: 0,
-  turnMovesLeft: 2
-}
-"player moved to", "fran from HR"
-"there are", 1, "moves left"
-"reached next move checker..."
-"next move checker condition 1"
-"reached update possible actions..."
-"before adjacents"
-"location here is:", "fran from HR"
-"before adjacents"
-"after move three:", {
-  chaosMeter: 0,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}],
-  dealHistory: 0,
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}],
-  misinformationDeckPassive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}],
-  players: [{
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}],
-  currentSource: "fran from HR",
-  id: "1234",
-  isCurrent: true,
-  name: "Player 1",
-  pawnColor: "green"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}],
-  currentSource: "crazy dave",
-  id: "5678",
-  isCurrent: false,
-  name: "Player 2",
-  pawnColor: "purple"
-}],
-  sources: [{
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "high school"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "taxi"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "local cult"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "pub"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "university"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "hair salon"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "gym"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "asda"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "auntie"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "mother-in-law"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "cousin"
-}, {
-  canClearCommunity: false,
-  canClearRelations: true,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 2,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "fran from HR"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "evil-ex"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: true,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "guy at the bus stop"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: true,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "crazy dave"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: true,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "opinionated grandpa"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 1,
-  misinfoType: "social",
-  name: "illuminati"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "youtube"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "intagram"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "facebook"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 2,
-  misinfoType: "social",
-  name: "reddit"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 1,
-  misinfoType: "social",
-  name: "twitter"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "whatsapp"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "tik-tok"
-}],
-  spreadLevel: 0,
-  turnMovesLeft: 1
-}
-"player moved to", "cousin"
-"there are", 0, "moves left"
-"reached next move checker..."
-"reached next move checker..."
-"after move four:", {
-  chaosMeter: 0,
-  connectionDeck: [{
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "asda"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "viral",
-  misinfoType: null,
-  sourceName: null
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}],
-  dealHistory: 0,
-  gameLost: false,
-  gameWon: false,
-  misinformation: {
-    community: { ... },
-    relations: { ... },
-    social: { ... }
-  },
-  misinformationDeckActive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "high school"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "tik-tok"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "whatsapp"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "evil-ex"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "youtube"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "taxi"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "intagram"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "mother-in-law"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "hair salon"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "pub"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "gym"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "local cult"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "university"
-}, {
-  cardType: "misinformation",
-  misinfoType: "community",
-  sourceName: "asda"
-}],
-  misinformationDeckPassive: [{
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "auntie"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "cousin"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "misinformation",
-  misinfoType: "relations",
-  sourceName: "fran from HR"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "twitter"
-}, {
-  cardType: "misinformation",
-  misinfoType: "social",
-  sourceName: "illuminati"
-}],
-  players: [{
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "opinionated grandpa"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "crazy dave"
-}, {
-  cardType: "connection",
-  misinfoType: "relations",
-  sourceName: "guy at the bus stop"
-}],
-  currentSource: "cousin",
-  id: "1234",
-  isCurrent: true,
-  name: "Player 1",
-  pawnColor: "green"
-}, {
-  cardHandOverflow: false,
-  cards: [{
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "facebook"
-}, {
-  cardType: "connection",
-  misinfoType: "social",
-  sourceName: "reddit"
-}, {
-  cardType: "connection",
-  misinfoType: "community",
-  sourceName: "local cult"
-}],
-  currentSource: "crazy dave",
-  id: "5678",
-  isCurrent: false,
-  name: "Player 2",
-  pawnColor: "purple"
-}],
-  sources: [{
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "high school"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "taxi"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "local cult"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "pub"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "university"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "hair salon"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "gym"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "community",
-  name: "asda"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "auntie"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "mother-in-law"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 3,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "cousin"
-}, {
-  canClearCommunity: false,
-  canClearRelations: true,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 2,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "fran from HR"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: true,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "evil-ex"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: true,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "guy at the bus stop"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: true,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "crazy dave"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: true,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "relations",
-  name: "opinionated grandpa"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 1,
-  misinfoType: "social",
-  name: "illuminati"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "youtube"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "intagram"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "facebook"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 2,
-  misinfoType: "social",
-  name: "reddit"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 1,
-  misinfoType: "social",
-  name: "twitter"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "whatsapp"
-}, {
-  canClearCommunity: false,
-  canClearRelations: false,
-  canClearSocial: false,
-  canDebunk: [],
-  canLogOff: false,
-  canLogOn: false,
-  canMove: false,
-  canShare: [],
-  markers_community: 0,
-  markers_relations: 0,
-  markers_social: 0,
-  misinfoType: "social",
-  name: "tik-tok"
-}],
-  spreadLevel: 0,
-  turnMovesLeft: 0
-}
+// [{
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "crazy dave",
+//   id: "1234",
+//   isCurrent: true,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "crazy dave",
+//   id: "5678",
+//   isCurrent: false,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }]
+// [{
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }],
+//   currentSource: "crazy dave",
+//   id: "1234",
+//   isCurrent: false,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [],
+//   currentSource: "crazy dave",
+//   id: "5678",
+//   isCurrent: true,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }]
+// "inserting viral cards to connection deck"
+// "dealing misinformation card", "auntie"
+// "dealing misinformation card", "cousin"
+// "dealing misinformation card", "reddit"
+// "dealing misinformation card", "fran from HR"
+// "dealing misinformation card", "twitter"
+// "dealing misinformation card", "illuminati"
+// "reached update possible actions..."
+// "before adjacents"
+// "location here is:", "crazy dave"
+// "before adjacents"
+// "initial state:", {
+//   chaosMeter: 0,
+//   connectionDeck: [{
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }],
+//   dealHistory: 0,
+//   gameLost: false,
+//   gameWon: false,
+//   misinformation: {
+//     community: { ... },
+//     relations: { ... },
+//     social: { ... }
+//   },
+//   misinformationDeckActive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }],
+//   misinformationDeckPassive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }],
+//   players: [{
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }],
+//   currentSource: "crazy dave",
+//   id: "1234",
+//   isCurrent: true,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }],
+//   currentSource: "crazy dave",
+//   id: "5678",
+//   isCurrent: false,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }],
+//   sources: [{
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "high school"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "taxi"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "local cult"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "pub"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "university"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "hair salon"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "gym"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "asda"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "auntie"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "mother-in-law"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "cousin"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 2,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "fran from HR"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "evil-ex"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: true,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "guy at the bus stop"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [[circular object Object]],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "crazy dave"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: true,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "opinionated grandpa"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 1,
+//   misinfoType: "social",
+//   name: "illuminati"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "youtube"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "intagram"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "facebook"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 2,
+//   misinfoType: "social",
+//   name: "reddit"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 1,
+//   misinfoType: "social",
+//   name: "twitter"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "whatsapp"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "tik-tok"
+// }],
+//   spreadLevel: 0,
+//   turnMovesLeft: 4
+// }
+// "player moved to", "guy at the bus stop"
+// "there are", 3, "moves left"
+// "reached next move checker..."
+// "next move checker condition 1"
+// "reached update possible actions..."
+// "before adjacents"
+// "location here is:", "guy at the bus stop"
+// "before adjacents"
+// "after move one:", {
+//   chaosMeter: 0,
+//   connectionDeck: [{
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }],
+//   dealHistory: 0,
+//   gameLost: false,
+//   gameWon: false,
+//   misinformation: {
+//     community: { ... },
+//     relations: { ... },
+//     social: { ... }
+//   },
+//   misinformationDeckActive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }],
+//   misinformationDeckPassive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }],
+//   players: [{
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }],
+//   currentSource: "guy at the bus stop",
+//   id: "1234",
+//   isCurrent: true,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }],
+//   currentSource: "crazy dave",
+//   id: "5678",
+//   isCurrent: false,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }],
+//   sources: [{
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "high school"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "taxi"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "local cult"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "pub"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "university"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "hair salon"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "gym"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "asda"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "auntie"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "mother-in-law"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "cousin"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 2,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "fran from HR"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "evil-ex"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "guy at the bus stop"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: true,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "crazy dave"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: true,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "opinionated grandpa"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 1,
+//   misinfoType: "social",
+//   name: "illuminati"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "youtube"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "intagram"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "facebook"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 2,
+//   misinfoType: "social",
+//   name: "reddit"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 1,
+//   misinfoType: "social",
+//   name: "twitter"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "whatsapp"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: true,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "tik-tok"
+// }],
+//   spreadLevel: 0,
+//   turnMovesLeft: 3
+// }
+// "player moved to", "evil-ex"
+// "there are", 2, "moves left"
+// "reached next move checker..."
+// "next move checker condition 1"
+// "reached update possible actions..."
+// "before adjacents"
+// "location here is:", "evil-ex"
+// "before adjacents"
+// "after move two:", {
+//   chaosMeter: 0,
+//   connectionDeck: [{
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }],
+//   dealHistory: 0,
+//   gameLost: false,
+//   gameWon: false,
+//   misinformation: {
+//     community: { ... },
+//     relations: { ... },
+//     social: { ... }
+//   },
+//   misinformationDeckActive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }],
+//   misinformationDeckPassive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }],
+//   players: [{
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }],
+//   currentSource: "evil-ex",
+//   id: "1234",
+//   isCurrent: true,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }],
+//   currentSource: "crazy dave",
+//   id: "5678",
+//   isCurrent: false,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }],
+//   sources: [{
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "high school"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "taxi"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "local cult"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "pub"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "university"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "hair salon"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "gym"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "asda"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "auntie"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "mother-in-law"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "cousin"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 2,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "fran from HR"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "evil-ex"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: true,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "guy at the bus stop"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: true,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "crazy dave"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: true,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "opinionated grandpa"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 1,
+//   misinfoType: "social",
+//   name: "illuminati"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "youtube"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "intagram"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "facebook"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 2,
+//   misinfoType: "social",
+//   name: "reddit"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 1,
+//   misinfoType: "social",
+//   name: "twitter"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "whatsapp"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "tik-tok"
+// }],
+//   spreadLevel: 0,
+//   turnMovesLeft: 2
+// }
+// "player moved to", "fran from HR"
+// "there are", 1, "moves left"
+// "reached next move checker..."
+// "next move checker condition 1"
+// "reached update possible actions..."
+// "before adjacents"
+// "location here is:", "fran from HR"
+// "before adjacents"
+// "after move three:", {
+//   chaosMeter: 0,
+//   connectionDeck: [{
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }],
+//   dealHistory: 0,
+//   gameLost: false,
+//   gameWon: false,
+//   misinformation: {
+//     community: { ... },
+//     relations: { ... },
+//     social: { ... }
+//   },
+//   misinformationDeckActive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }],
+//   misinformationDeckPassive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }],
+//   players: [{
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }],
+//   currentSource: "fran from HR",
+//   id: "1234",
+//   isCurrent: true,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }],
+//   currentSource: "crazy dave",
+//   id: "5678",
+//   isCurrent: false,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }],
+//   sources: [{
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "high school"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "taxi"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "local cult"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "pub"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "university"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "hair salon"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "gym"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "asda"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "auntie"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "mother-in-law"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "cousin"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: true,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 2,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "fran from HR"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "evil-ex"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: true,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "guy at the bus stop"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: true,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "crazy dave"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: true,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "opinionated grandpa"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 1,
+//   misinfoType: "social",
+//   name: "illuminati"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "youtube"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "intagram"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "facebook"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 2,
+//   misinfoType: "social",
+//   name: "reddit"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 1,
+//   misinfoType: "social",
+//   name: "twitter"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "whatsapp"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "tik-tok"
+// }],
+//   spreadLevel: 0,
+//   turnMovesLeft: 1
+// }
+// "player moved to", "cousin"
+// "there are", 0, "moves left"
+// "reached next move checker..."
+// "reached next move checker..."
+// "after move four:", {
+//   chaosMeter: 0,
+//   connectionDeck: [{
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "viral",
+//   misinfoType: null,
+//   sourceName: null
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }],
+//   dealHistory: 0,
+//   gameLost: false,
+//   gameWon: false,
+//   misinformation: {
+//     community: { ... },
+//     relations: { ... },
+//     social: { ... }
+//   },
+//   misinformationDeckActive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "high school"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "tik-tok"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "whatsapp"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "evil-ex"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "youtube"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "taxi"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "intagram"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "mother-in-law"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "hair salon"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "pub"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "gym"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "university"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "community",
+//   sourceName: "asda"
+// }],
+//   misinformationDeckPassive: [{
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "auntie"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "cousin"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "relations",
+//   sourceName: "fran from HR"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "twitter"
+// }, {
+//   cardType: "misinformation",
+//   misinfoType: "social",
+//   sourceName: "illuminati"
+// }],
+//   players: [{
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "opinionated grandpa"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "crazy dave"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "relations",
+//   sourceName: "guy at the bus stop"
+// }],
+//   currentSource: "cousin",
+//   id: "1234",
+//   isCurrent: true,
+//   name: "Player 1",
+//   pawnColor: "green"
+// }, {
+//   cardHandOverflow: false,
+//   cards: [{
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "facebook"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "social",
+//   sourceName: "reddit"
+// }, {
+//   cardType: "connection",
+//   misinfoType: "community",
+//   sourceName: "local cult"
+// }],
+//   currentSource: "crazy dave",
+//   id: "5678",
+//   isCurrent: false,
+//   name: "Player 2",
+//   pawnColor: "purple"
+// }],
+//   sources: [{
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "high school"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "taxi"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "local cult"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "pub"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "university"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "hair salon"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "gym"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "community",
+//   name: "asda"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "auntie"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "mother-in-law"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 3,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "cousin"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: true,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 2,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "fran from HR"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: true,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "evil-ex"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: true,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "guy at the bus stop"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: true,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "crazy dave"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: true,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "relations",
+//   name: "opinionated grandpa"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 1,
+//   misinfoType: "social",
+//   name: "illuminati"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "youtube"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "intagram"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "facebook"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 2,
+//   misinfoType: "social",
+//   name: "reddit"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 1,
+//   misinfoType: "social",
+//   name: "twitter"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "whatsapp"
+// }, {
+//   canClearCommunity: false,
+//   canClearRelations: false,
+//   canClearSocial: false,
+//   canDebunk: [],
+//   canLogOff: false,
+//   canLogOn: false,
+//   canMove: false,
+//   canShare: [],
+//   markers_community: 0,
+//   markers_relations: 0,
+//   markers_social: 0,
+//   misinfoType: "social",
+//   name: "tik-tok"
+// }],
+//   spreadLevel: 0,
+//   turnMovesLeft: 0
+// }

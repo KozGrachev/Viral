@@ -9,21 +9,21 @@ export interface SpreadLevelProps {
 }
 
 
-export const SpreadLevel: React.FC = (  ) => {
-const gameState = useSelector((state:RootState) => state.GameState)
+export const SpreadLevel: React.FC = () => {
+  // const gameState = useSelector((state:RootState) => state.GameState)
   const spreadLevelArray = [2, 2, 3, 3, 4];
-  const spreadLevel = gameState.spreadLevel;
+  // const spreadLevel = gameState.spreadLevel;
 
   let isActiveToggle = "isPassive"
 
   return (
     <div className="spread-level-container" >
-      {spreadLevelArray.map((spreadLevelCircleNumber, index) => {
+      {/* {spreadLevelArray.map((spreadLevelCircleNumber, index) => {
         (index === spreadLevel) ? isActiveToggle = "isActive" : isActiveToggle = "isPassive"
         return (
           <div className={`spread-level-circle ${isActiveToggle}`} >{spreadLevelCircleNumber}</div>
         )
-      })}
+      })} */}
     </div>
   )
 }

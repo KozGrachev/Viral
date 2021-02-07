@@ -1,59 +1,71 @@
 //based on change of state 
 import io from "socket.io-client";
 import * as dotenv from 'dotenv';
-import { playerStore, store } from '../redux/gameState/store'
-import { GetAllGamesAction, updateGameState } from "../redux/gameState/gameStateActions";
-import { Gamestate } from "../types/gameStateTypes";
+import { store } from '../redux/gameState/store'
+import { updateGameState } from "../redux/gameState/gameStateActions";
+import { Gamestate, } from "../types/gameStateTypes";
+
 dotenv.config({ path: __dirname + '/.env' });
 //connection to the server
-dotenv.config({ path: __dirname + '../.env' });
 const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 
 
+// const player = store.getState().players[0]
 
-store.subscribe(() => {
-  const newState = store.getState()
-  socket.emit('onChangeState', { newState, Player })
-})
 
-const Player = playerStore.getState()
+// // on click - 'start game' 
+// export const joinRoom = (name: string, room: string) => {
+//   socket.emit('joinRoom', { name, room });
+//   console.log(name, room)
+// }
+// if (player.name.length > 0) {
+//   const player = store.getState().players[0]
+//   joinRoom(player.name, player.room)
+// }
 
-// on click - 'start game' 
-export const joinRoom = (name: string, room: string) => {
-  socket.emit('joinRoom', { name, room });
-  console.log(name, room)
-}
+// // Message from server // welcome component 
+// // socket.on('joinConfirmation', (message: string) => {
+//   console.log(message); // display message to the screen 
+// });
 
-joinRoom(Player.name, Player.room)
-// Message from server // welcome component 
-socket.on('joinConfirmation', (message: string) => {
-  console.log(message); // display message to the screen 
-});
+//subscripion player state  
 
-//subscripion to any game state changes 
+// playerStore.subscribe(() => {
+//   const player = playerStore.getState()
+//   socket.emit('onAddPlayer', player)
+// })
 
-playerStore.subscribe(()=> {
-  const newState = playerStore.getState()
-  socket.emit('onChangeState', { newState, Player })
-})
-store.subscribe(() => {
-  const newState = store.getState()
-  socket.emit('onChangeState', { newState, Player })
-})
+// socket.on('playerJoined', (player: Player) => {
+//   const newState = store.getState()
+//   // newState.received = true;
+//   console.log(store.getState(), ' row 43 socket')
 
-//data coming from backend after game state changed
-socket.on('updatedState', (newState: Gamestate) => {
-  newState.received = true;
-  store.dispatch(updateGameState(newState))
-})
+//   store.dispatch(addPlayerToGameState(player, newState))
+// })
+
+
+// store.subscribe(() => {
+//   const newState = store.getState()
+//   const player = newState.players[0]
+//   if (!newState.received) {
+//     socket.emit('onChangeState', { newState, player })
+//   }
+// // })
+
+// //data coming from backend after game state changed
+// socket.on('updatedState', (newState: Gamestate) => {
+//   console.log('does it get herE?', newState)
+//   newState.received = true;
+//   store.dispatch(updateGameState(newState))
+// })
 
 
 
 // on click when user wants to restart game 
-export const restartGame = (name: string, room: string) => {
-  joinRoom(name, room);
-  socket.emit('resumeGame', { Player })
-}
+// export const restartGame = (name: string, room: string) => {
+//   joinRoom(name, room);
+//   socket.emit('resumeGame', room)
+// }
 
 // export const getGames = () => {
 //   socket.emit('getGames')

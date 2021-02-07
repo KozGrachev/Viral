@@ -3,12 +3,12 @@ import './ChaosMeter.css';
 import { store } from '../../redux/gameState/store';
 export const ChaosMeter: React.FC = () => {
 
-  const chaos = store.getState().chaosMeter
+  // const chaos = store.getState().chaosMeter
 
 
   return (
     <div className='progress-container'>
-      {chaos}
+      {/* {chaos} */}
       <svg className='progress-circle' viewBox='0 0 64 64'>
         <circle
           className='progressbar__track'

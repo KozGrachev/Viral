@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 // import { Notification } from 'grommet-icons';
 import './App.css';
 import './socket-io-client/socket-io-client';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { playerStore, store } from './redux/gameState/store';
 
 import { CureDeck } from './components/CureDeck/CureDeck';
@@ -18,6 +18,7 @@ import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from './components/SourceParent/SourceParent';
 import { NewGameMenu } from './components/NewGameMenu/NewGameMenu';
+import { Gamestate } from './types/gameStateTypes';
 
 
 
@@ -25,41 +26,34 @@ function App() {
 
   const [showSidebar, setShowSidebar] = useState(false);
 
-  const Player = playerStore.getState()
-
-
   return (
     // <Grommet theme={grommet} full>
     <Provider store={store}>
-          <Provider store={playerStore}>
-
-      {
-        (Player.name.length > 0) ?
-          <div className="app-container">
-            {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
-            {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
-            <PlayerPrompt />
-            {/* <Map /> */}
-            {/* <GameBoard /> */}
-            <div className="sidebar-left">
-
-              <CardHand />
-            </div>
-
-            <SourceParent />
-            <div className="board-container">
-
-
-              <ChaosMeter />
-              <SourceDeck />
-              <MisinformationDeck />
-              <MarkersStore />
-            </div>
+      {/* <Provider store={playerStore}> */}
+      {/* <div className="app-container"> */}
+        {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
+        {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
+        {/* <PlayerPrompt />
+          {/* <Map /> */}
+        {/* <GameBoard /> */}
+        {/* <div className="sidebar-left">
+            <CardHand />
           </div>
-          : <NewGameMenu />
-      }
+
+          <SourceParent />
+          <div className="board-container">  */}
+
+        {/* 
+            <ChaosMeter />
+            <SourceDeck />
+            <MisinformationDeck />
+            <MarkersStore /> */}
+        {/* </div> */}
+      {/* </div> */}
+      {/* {store.getState().players[store.getState().players.length - 1].name} */}
+      <NewGameMenu />
     </Provider>
-    </Provider>
+    // </Provider>
     //  {/* </Grommet> */}
   );
 }

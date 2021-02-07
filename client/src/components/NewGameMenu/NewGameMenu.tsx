@@ -1,16 +1,17 @@
 import React, { ButtonHTMLAttributes, ChangeEvent, DetailedHTMLProps, useState } from 'react';
 import './NewGameMenu.css';
 // import { startGameEvent, addPlayerEvent } from '../../logic/event.listeners'
-import { AddPlayerAction } from '../../redux/gameState/gameStateActions';
-import { useDispatch } from 'react-redux';
+import {  StartGameAction } from '../../redux/gameState/gameStateActions';
+import { useDispatch, useSelector } from 'react-redux';
 import { playerStore, store } from '../../redux/gameState/store';
+import { addPlayerToGame, createPlayer } from '../../logic/actions.MW';
+import { Gamestate } from '../../types/gameStateTypes';
 
 
 export const NewGameMenu: React.FC = () => {
   const [name, updateName] = useState({ name: '' })
   const dispatch = useDispatch();
 
-  console.log(playerStore.getState(), 'plaer stoe')
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault()
     if (event.target) {
@@ -22,15 +23,19 @@ export const NewGameMenu: React.FC = () => {
   }
 
 
-const addPlayer =  (event:React.MouseEvent<HTMLElement>) => {
-  event.preventDefault()
-  const color = 'blue'
+  const addPlayer = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault()
+    const color = 'blue'
     const room = 'test room'
-    console.log('name', name)
-   dispatch(AddPlayerAction(name.name, color, room))
-   
-
+    // dispatch(AddPlayerAction(name.name, color, room))
+    const player = createPlayer(name.name, color, room)
+    // const player = playerStore.getState()
+    dispatch(StartGameAction([player]))
   }
+
+  
+  const level = useSelector((state:Gamestate) => state.spreadLevel)
+  console.log(level)
 
   return (
     <form className='form' >
@@ -52,9 +57,11 @@ const addPlayer =  (event:React.MouseEvent<HTMLElement>) => {
           placeholder='1 - 4 players...'
         ></input> */}
 
-        <button className='start_game_button' type='submit' onClick= {addPlayer} >
+        <button className='start_game_button' type='submit' onClick={addPlayer} >
           Play
         </button>
+        {level}
+
       </div>
     </form>
   );

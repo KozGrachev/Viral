@@ -3,7 +3,7 @@ import cors from 'cors';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { IUser, userJoin, userLeave } from './utils/users';
-import { getState, setState, getGames } from './redis/redis-db';
+import { setState } from './redis/redis-db';
 
 import * as dotenv from 'dotenv';
 import { Gamestate } from './utils/game';
@@ -20,7 +20,7 @@ const io = new Server(httpServer, {
 
 
 
-let welcomeMessage = 'Welcome';
+const welcomeMessage = 'Welcome';
 
 io.on('connection', (socket) => {
   console.log('server connected');
@@ -44,24 +44,31 @@ io.on('connection', (socket) => {
   });
 
   socket.on('onChangeState',
-    ({ newState, Player }: { newState: Gamestate, Player: IUser }) => {
-      const user = Player;
-      socket.broadcast.to(user.room)
-        .emit('updatedState', newState);
-      //save to database
-      setState(user.room, newState);
+    ({ newState, player }: { newState: Gamestate, player: IUser }) => {
+      const user = player;
+      if (user.room) {
+        socket.broadcast.to(user.room)
+          .emit('updatedState', newState);
+        //save to database
+        setState(user.room, newState);
+      }
+
     });
 
-  socket.on('resumeGame', (room: IUser['room']) => {
-    welcomeMessage = 'Welcome back';
-    getState(room).then(data => socket.emit('updatedState', data));
+  // socket.on('resumeGame', (room: IUser['room']) => {
+  //   welcomeMessage = 'Welcome back';
+  //   getState(room).then(data => socket.emit('updatedState', data));
+  // });
+
+  socket.on('onAddPlayer', (player: IUser) => {
+
+    socket.broadcast.to(player.room).emit('playerJoined', player);
 
   });
 
-  
-  socket.on('getGames', () => {
-    getGames('*').then(data => socket.emit('games', data));
-  });
+  // socket.on('getGames', () => {
+  //   getGames('*').then(data => socket.emit('games', data));
+  // });
 
   // Runs when client disconnects
   socket.on('disconnect', () => {
@@ -74,7 +81,6 @@ io.on('connection', (socket) => {
     }
   });
 });
-
 
 
 httpServer.listen(PORT, () =>

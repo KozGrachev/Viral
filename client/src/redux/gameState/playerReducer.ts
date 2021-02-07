@@ -2,8 +2,8 @@
 
 import { createPlayer } from "../../logic/actions.MW";
 import { Player } from "../../types/gameStateTypes";
-import { ADD_PLAYER, PlayerStateActionTypes } from "./reduxTypes";
-import _ from 'lodash'; 
+// import { ADD_PLAYER, PlayerStateActionTypes } from "./reduxTypes";
+import _ from 'lodash';
 
 
 let PlayerState: Player = {
@@ -18,17 +18,17 @@ let PlayerState: Player = {
 }
 
 
-export function playerStateReducer(
-  state = PlayerState,
-  action: PlayerStateActionTypes
-): Player {
-  switch (action.type) {
-    case ADD_PLAYER: {
-      const player = createPlayer(action.payload.name, action.payload.color, action.payload.room)
-      const newPlayer =_.cloneDeep(player)
-      return{ ...state, ...newPlayer}
-    }
-    default: return state
-  }
-}
+// export function playerStateReducer(
+//   state = PlayerState,
+//   action: PlayerStateActionTypes
+// ): Player {
+//   switch (action.type) {
+//     case ADD_PLAYER: {
+//       const player = createPlayer(action.payload.name, action.payload.color, action.payload.room)
+//       const newPlayer =_.cloneDeep(player)
+//       return{ ...state, ...newPlayer}
+//     }
+//     default: return state
+//   }
+// }
 
