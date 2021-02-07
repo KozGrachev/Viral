@@ -1,9 +1,11 @@
-import { CLEAR_MISINFO, DEBUNK_MISINFO, DISCARD_ACTION, GameStateActionTypes, LOG_ON_OFF, MOVE_ACTION, SHARE_CARD, UPDATE_GAME_STATE } from './reduxTypes';
+import { ADD_PLAYER_TO_GAME, CLEAR_MISINFO, DEBUNK_MISINFO, DISCARD_ACTION, GameStateActionTypes, LOG_ON_OFF, MOVE_ACTION, SHARE_CARD, START_GAME, UPDATE_GAME_STATE } from './reduxTypes';
 import { initDummyState as gameState } from '../../logic/dummyState.REDO_CO'
+import { initialState } from './initialState'
 import { Gamestate } from '../../types/gameStateTypes'
 import { clearMisinfo, debunkMisinfo, discardCard, logOnOff, moveAction, shareCard } from '../../logic/actions.newState_CO'
+import { addPlayerToGame, setUp } from '../../logic/actions.MW';
 //here should be a initial State of the Game
-const GameState: Gamestate = gameState; 
+const GameState: Gamestate = initialState;
 
 export function gameStateReducer(
   state = GameState,
@@ -36,8 +38,20 @@ export function gameStateReducer(
     }
     case UPDATE_GAME_STATE:
       return {
-        ...state, spreadLevel:3
+        ...state, spreadLevel: 3
       }
+
+    case ADD_PLAYER_TO_GAME: {
+      const ap = action.payload;
+      const newState = addPlayerToGame(ap.player, ap.oldState)
+      return { ...state, ...newState }
+    }
+    case START_GAME: {
+      const initialState = setUp(action.payload)
+      const obj = { ...state, ...initialState }
+      return obj
+
+    }
     default: return state
   }
 }
