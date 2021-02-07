@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import './socket-io-client/socket-io-client';
 import { Provider } from 'react-redux';
-import { store } from './redux/gameState/store';
-import { getGames } from './socket-io-client/socket-io-client';
+import { playerStore, store } from './redux/gameState/store';
+
 import { CureDeck } from './components/CureDeck/CureDeck';
 import { getIcon } from './helpers/iconExporter'
 import { SourceCard } from './components/SourceCard/SourceCard';
@@ -25,12 +25,14 @@ function App() {
 
   const [showSidebar, setShowSidebar] = useState(false);
 
-  const Player = store.getState().playerStateReducer
+  const Player = playerStore.getState()
 
 
   return (
     // <Grommet theme={grommet} full>
     <Provider store={store}>
+          <Provider store={playerStore}>
+
       {
         (Player.name.length > 0) ?
           <div className="app-container">
@@ -57,7 +59,8 @@ function App() {
           : <NewGameMenu />
       }
     </Provider>
-    // </Grommet>
+    </Provider>
+    //  {/* </Grommet> */}
   );
 }
 

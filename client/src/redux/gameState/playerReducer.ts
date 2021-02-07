@@ -25,8 +25,8 @@ export function playerStateReducer(
   switch (action.type) {
     case ADD_PLAYER: {
       const player = createPlayer(action.payload.name, action.payload.color, action.payload.room)
-
-      return _.cloneDeep(player)
+      const newPlayer =_.cloneDeep(player)
+      return{ ...state, ...newPlayer}
     }
     default: return state
   }

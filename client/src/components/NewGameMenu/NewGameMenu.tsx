@@ -3,14 +3,14 @@ import './NewGameMenu.css';
 // import { startGameEvent, addPlayerEvent } from '../../logic/event.listeners'
 import { AddPlayerAction } from '../../redux/gameState/gameStateActions';
 import { useDispatch } from 'react-redux';
-import { store } from '../../redux/gameState/store';
+import { playerStore, store } from '../../redux/gameState/store';
 
 
 export const NewGameMenu: React.FC = () => {
   const [name, updateName] = useState({ name: '' })
   const dispatch = useDispatch();
 
-
+  console.log(playerStore.getState(), 'plaer stoe')
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault()
     if (event.target) {
@@ -28,6 +28,7 @@ const addPlayer =  (event:React.MouseEvent<HTMLElement>) => {
     const room = 'test room'
     console.log('name', name)
    dispatch(AddPlayerAction(name.name, color, room))
+   
 
   }
 

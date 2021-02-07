@@ -38,6 +38,9 @@ export function gameStateReducer(
       return {
         ...state, ...action.payload
       }
+    // case ADD_PLAYER_TO_GAME: {
+
+    // }
     default: return state
   }
 }
