@@ -10,6 +10,7 @@ export const DISCARD_ACTION = 'DISCARD_ACTION'
 export const UPDATE_GAME_STATE = 'UPDATE_GAME_STATE'
 export const ADD_PLAYER = 'ADD_PLAYER'
 export const GET_ALL_GAMES = 'GET_ALL_GAMES'
+export const START_GAME='START_GAME'
 export interface MoveActionProps {
   oldState: Gamestate,
   currentPlayerID: Player['id'],
@@ -99,6 +100,10 @@ export interface AddPlayerAction {
 }
 
 
+export interface StartGameAction {
+  type: typeof START_GAME
+  payload: Player[]
+}
 
 export interface GetAllGamesAction {
   type: typeof GET_ALL_GAMES
@@ -108,7 +113,7 @@ export interface GetAllGamesAction {
 
 export type GameStateActionTypes =
   MoveAction | ClearMisinfoAction | ShareCardAction | logOnOffPropsAction |
-  DebunkMisinfoAction | discardCardAction | UpdateGameStateAction
+  DebunkMisinfoAction | discardCardAction | UpdateGameStateAction | StartGameAction
 
 export type PlayerStateActionTypes = AddPlayerAction;
 

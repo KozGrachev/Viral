@@ -11,6 +11,7 @@ const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 
 
 const Player = store.getState().playerStateReducer
+console.log(Player)
 
 // on click - 'start game' 
 export const joinRoom = (name: string, room: string) => {
@@ -23,7 +24,6 @@ joinRoom(Player.name, Player.room)
 socket.on('joinConfirmation', (message: string) => {
   console.log(message); // display message to the screen 
 });
-
 
 //subscripion to any game state changes 
 

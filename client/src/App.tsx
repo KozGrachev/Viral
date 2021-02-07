@@ -17,42 +17,45 @@ import { ChaosMeter } from './components/ChaosMeter/ChaosMeter'
 import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from './components/SourceParent/SourceParent';
+import { NewGameMenu } from './components/NewGameMenu/NewGameMenu';
 
 
 
-function App () {
+function App() {
 
   const [showSidebar, setShowSidebar] = useState(false);
 
-  useEffect(() => {
-    getGames();
-  }, []);
+  const Player = store.getState().playerStateReducer
+
 
   return (
     // <Grommet theme={grommet} full>
     <Provider store={store}>
+      {
+        (Player.name.length > 0) ?
+          <div className="app-container">
+            {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
+            {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
+            <PlayerPrompt />
+            {/* <Map /> */}
+            {/* <GameBoard /> */}
+            <div className="sidebar-left">
 
-      <div className="app-container">
-        {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
-        {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
-        <PlayerPrompt />
-        {/* <Map /> */}
-        {/* <GameBoard /> */}
-        <div className="sidebar-left">
+              <CardHand />
+            </div>
 
-          <CardHand />
-        </div>
-
-        <SourceParent />
-        <div className="board-container">
+            <SourceParent />
+            <div className="board-container">
 
 
-          <ChaosMeter />
-          <SourceDeck />
-          <MisinformationDeck />
-          <MarkersStore />
-        </div>
-      </div>
+              <ChaosMeter />
+              <SourceDeck />
+              <MisinformationDeck />
+              <MarkersStore />
+            </div>
+          </div>
+          : <NewGameMenu />
+      }
     </Provider>
     // </Grommet>
   );

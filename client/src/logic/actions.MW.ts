@@ -265,7 +265,6 @@ export function createPlayer(name: string, color: string, room: string) {
     room: room
   }
   return player
-
 }
 
 export function addPlayerToGame(player: Player, oldState: Gamestate) {
