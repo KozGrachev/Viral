@@ -9,8 +9,8 @@ export const toPascalCase = (str: string): string =>
 
 export const toKebabCase = (str: string): string => {
   const words = str.match(/[A-Z]{2,}(?=[A-Z][a-z0-9]*|\b)|[A-Z]?[a-z0-9]*|[A-Z]|[0-9]+/g);
-  return words
+  return words ? words
     .filter(Boolean)
     .map(x => x.toLowerCase())
-    .join('-') ?? '';
+    .join('-') : '';
   }
