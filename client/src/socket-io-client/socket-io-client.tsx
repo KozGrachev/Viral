@@ -28,7 +28,9 @@ socket.on('joinConfirmation', (message: string) => {
 
 store.subscribe(() => {
   const newState = store.getState().gameStateReducer
-  socket.emit('onChangeState', { newState, Player })
+  if (!newState.received && newState) {
+    socket.emit('onChangeState', { newState, Player })
+  }
 })
 
 //data coming from backend after game state changed
@@ -37,7 +39,9 @@ socket.on('updatedState', (newState: Gamestate) => {
   store.dispatch(updateGameState(newState))
 })
 
-
+export const getGame = (room: string) => {
+  socket.emit('retriveGame', room)
+}
 
 // on click when user wants to restart game 
 export const restartGame = (name: string, room: string) => {

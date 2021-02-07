@@ -32,6 +32,7 @@ export const NewGameMenu: React.FC = () => {
     event.preventDefault()
     const color = 'blue'
     dispatch(AddPlayerAction(input.name, input.color, input.room))
+    
   }
 
   const rooms = useSelector((state: RootState) => state.allGamesStateReducer)

@@ -58,10 +58,17 @@ io.on('connection', (socket) => {
 
   });
 
+  socket.on('retriveGame', (room: IUser['room']) => {
+    getState(room).then(data =>socket.emit('updatedState', data));
   
+  });
+
+
   socket.on('getGames', () => {
     getGames('*').then(data => socket.emit('games', data));
   });
+
+
 
   // Runs when client disconnects
   socket.on('disconnect', () => {

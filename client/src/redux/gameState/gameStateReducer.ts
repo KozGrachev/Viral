@@ -44,6 +44,7 @@ export function gameStateReducer(
     case ADD_PLAYER_TO_GAME: {
       const ap = action.payload;
       const newState = addPlayerToGame(ap.player, ap.oldState)
+      console.log(newState, 'new state from add player reducer ')
       return { ...state, ...newState }
     }
     case START_GAME: {
