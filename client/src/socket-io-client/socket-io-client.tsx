@@ -18,7 +18,6 @@ export const joinRoom = (name: string, room: string) => {
   console.log(name, room)
 }
 
-joinRoom(Player.name, Player.room)
 // Message from server // welcome component 
 socket.on('joinConfirmation', (message: string) => {
   console.log(message); // display message to the screen 

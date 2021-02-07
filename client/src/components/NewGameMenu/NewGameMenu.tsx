@@ -9,7 +9,7 @@ import { Console } from 'console';
 
 
 export const NewGameMenu: React.FC = () => {
-  const [name, updateName] = useState({ name: '', color:'', room: '' })
+  const [input, updateName] = useState({ name: '', color: '', room: '' })
   // const [Room, updateRoom] = useState('')
   const dispatch = useDispatch();
   const [option, updateOption] = useState(true)
@@ -24,7 +24,6 @@ export const NewGameMenu: React.FC = () => {
     }
 
   }
-  console.log(name)
 
 
   const player = useSelector((state: RootState) => state.playerStateReducer)
@@ -32,7 +31,7 @@ export const NewGameMenu: React.FC = () => {
   const addPlayer = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     const color = 'blue'
-    dispatch(AddPlayerAction(name.name, name.color, name.room))
+    dispatch(AddPlayerAction(input.name, input.color, input.room))
   }
 
   const rooms = useSelector((state: RootState) => state.allGamesStateReducer)
@@ -52,7 +51,7 @@ export const NewGameMenu: React.FC = () => {
         <input
           type='text'
           name='name'
-          value={name.name}
+          value={input.name}
           placeholder='player name...'
           onChange={handleChange}
         ></input>
@@ -60,18 +59,18 @@ export const NewGameMenu: React.FC = () => {
         <input
           type='text'
           name='color'
-          value={name.color}
+          value={input.color}
           placeholder='color'
-          onChange = {handleChange}
+          onChange={handleChange}
         >
         </input>
 
         <input
           type='text'
           name='room'
-          value={name.room}
+          value={input.room}
           placeholder='room name'
-          onChange = {handleChange}
+          onChange={handleChange}
 
         ></input>
         <input
@@ -96,7 +95,6 @@ export const NewGameMenu: React.FC = () => {
         <button className='start_game_button' type='submit' onClick={addPlayer} >
           Play
         </button>
-        {player.name}
       </div>
     </form>
   );
