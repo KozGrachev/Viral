@@ -17,7 +17,7 @@ export const store = createStore(reducer);
 
 // export type RootState = ReturnType<typeof reducer>
 export interface RootState {
-  Player: Player
-  GameState: Gamestate,
-  AllGames: String[]
+  playerStateReducer: Player
+  gameStateReducer: Gamestate,
+  allGamesStateReducer: String[]
 }

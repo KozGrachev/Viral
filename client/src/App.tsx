@@ -33,8 +33,8 @@ function App () {
     <Provider store={store}>
 
       <div className="app-container">
-        {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
-        {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
+        <CureDeck /> {/* finished! just needs an initial state from redux */}
+        <SpreadLevel/> {/* finished! Just needs an initial state from redux */}
         <PlayerPrompt />
         {/* <Map /> */}
         {/* <GameBoard /> */}
