@@ -36,7 +36,7 @@ export function gameStateReducer(
     }
     case UPDATE_GAME_STATE:
       return {
-        ...state, ...action.payload
+        ...state, spreadLevel:3
       }
     default: return state
   }

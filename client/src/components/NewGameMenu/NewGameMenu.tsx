@@ -1,29 +1,63 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes, ChangeEvent, DetailedHTMLProps, useState } from 'react';
 import './NewGameMenu.css';
+// import { startGameEvent, addPlayerEvent } from '../../logic/event.listeners'
+import { AddPlayerAction, updateGameState } from '../../redux/gameState/gameStateActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, store } from '../../redux/gameState/store';
+
+
 export const NewGameMenu: React.FC = () => {
+  const [name, updateName] = useState({ name: '' })
+  const dispatch = useDispatch();
+
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    event.preventDefault()
+    if (event.target) {
+      updateName(state => ({
+        ...state,
+        name: event.target.value
+      }))
+    }
+  }
+
+
+const state = useSelector((state:RootState) => state.gameStateReducer)
+const level =state.spreadLevel
+
+const addPlayer =  (event:React.MouseEvent<HTMLElement>) => {
+  event.preventDefault()
+  const color = 'blue'
+    const room = 'test room'
+    console.log('name', name)
+   dispatch(updateGameState(state))
+  }
+
   return (
-    <form className='form'>
+    <form className='form' >
       <div className='menu-container'>
         <div className='title-container'>
           <h3>Welcome</h3>
         </div>
         <input
           type='text'
-          name='player name'
+          name='player-name'
+          value={name.name}
           placeholder='player name...'
+          onChange={handleChange}
         ></input>
 
-        <input
+        {/* <input
           type='text'
           name='number of players'
           placeholder='1 - 4 players...'
-        ></input>
+        ></input> */}
 
-        <button className='start_game_button' type='submit'>
+        <button className='start_game_button' type='submit' onClick= {addPlayer} >
           Play
         </button>
+        {level}
       </div>
     </form>
   );
 };
-

@@ -17,8 +17,7 @@ import { ChaosMeter } from './components/ChaosMeter/ChaosMeter'
 import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from './components/SourceParent/SourceParent';
-
-
+import { NewGameMenu } from './components/NewGameMenu/NewGameMenu'
 
 function App () {
 
@@ -53,6 +52,7 @@ function App () {
           <MarkersStore />
         </div>
       </div>
+      <NewGameMenu/>
     </Provider>
     // </Grommet>
   );
