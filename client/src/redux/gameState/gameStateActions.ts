@@ -83,9 +83,9 @@ export function StartGameAction(players: Player[]): GameStateActionTypes {
   }
 }
 
-export function addPlayerToGameState (player:Player, oldState:Gamestate):GameStateActionTypes { 
+export function addPlayerToGameState (player:Player):GameStateActionTypes { 
   return { 
     type:ADD_PLAYER_TO_GAME, 
-    payload:{player, oldState}
+    payload:{player}
   }
 }

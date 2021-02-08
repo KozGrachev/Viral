@@ -37,16 +37,16 @@ export function gameStateReducer(
       return (discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard), { ...state, received: false });
     }
     case UPDATE_GAME_STATE:
-      console.log(action.payload, 'action payload update state')
       return {
         ...state, ...action.payload
       }
 
     case ADD_PLAYER_TO_GAME: {
       const ap = action.payload;
-      const newState = addPlayerToGame(ap.player, ap.oldState)
+      console.log('state before add player', state)
+      const newState = addPlayerToGame(ap.player, state)
       console.log(newState, 'new state from add player reducer ')
-      return { ...state, ...newState }
+      return newState
     }
     case START_GAME: {
       const initialState = setUp(action.payload)

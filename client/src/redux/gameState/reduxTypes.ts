@@ -113,7 +113,6 @@ export interface GetAllGamesAction {
 
 export interface AddPlayerToGameProps { 
   player:Player, 
-  oldState:Gamestate
 }
 export interface AddPlayerToGameStateAction {
   type: typeof ADD_PLAYER_TO_GAME
