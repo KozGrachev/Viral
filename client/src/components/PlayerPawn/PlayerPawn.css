@@ -31,3 +31,11 @@
 .orange {
   background-color: orange;
 }
+
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat()
+}
+
+

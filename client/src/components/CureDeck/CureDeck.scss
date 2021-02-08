@@ -1,14 +1,16 @@
 .cure-deck-container {
+  position: absolute;
   display: flex;
   height:150px;
   width: 300px;
   border:2px solid ;
   justify-content: space-evenly;
   align-items: center;
-
+  right: 0;
+  bottom: 0;
 }
 
-.misinformation-cure-deck-container {
+.debunk-indicator {
   flex-basis: 30%;
   height:90%;
   border:2px solid ;
@@ -17,14 +19,14 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  
-  
+
+
 
 }
 
 .A{
   background-color: aquamarine;
-  
+
 }
 
 .B{
