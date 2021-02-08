@@ -20,7 +20,7 @@ import { SourceParent } from './components/SourceParent/SourceParent';
 import { ChaosMeterGrommet } from './components/ChaosMeter_Grommet/ChaosMeter_Grommet'
 import { OtherPlayer } from './components/OtherPlayer/OtherPlayer';
 import { connections } from './types/connections'
-
+import {map} from './assets/allIcons/game-board-without-sources.svg';
 
 function App () {
 
@@ -29,6 +29,8 @@ function App () {
   useEffect(() => {
     getGames();
   }, []);
+
+  const MapSVG = getIcon('gameBoardWithoutSources');
 
   const fakePlayer1 = {
     name: 'Konstantin',
@@ -56,7 +58,9 @@ function App () {
           <div className="board-container">
 
             <div id="game-board">
-              <div id="map"></div>
+              <div id="map-container">
+                <MapSVG />
+              </div>
               <SourceParent />
             </div>
             {/* <ChaosMeter />

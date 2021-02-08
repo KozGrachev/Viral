@@ -68,19 +68,24 @@ body {
 }
 
 #game-board {
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: pink; 
 }
 
-#map {
-  width: 100%;
-  height: 100%;
+#map-container {
   position: absolute;
-  background: url(/assets/allIcons/game-board-withoult-sources.svg);
-  background-size: cover;
-}
 
+  // width: 100%;
+  // height: 100%;
+  // border: 3px solid red;
+  // // top: -10%;
+  // background: url(/assets/allIcons/game-board-without-sources.svg);
+  // background-size: 100% auto;
+  // background-repeat: no-repeat;
+  // background-position: 50% 42%;
+}
 
 #source-parent-grid-container {
   width: 100%;
@@ -94,6 +99,7 @@ body {
   grid-template-rows: 29% 15% 9% 7% 40%;
   position: absolute;
 }
+
 
 // Community sources
 
