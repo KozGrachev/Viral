@@ -7,8 +7,8 @@ export const ChaosMeterGrommet = () => {
 
   const chaos=useSelector((state:RootState)=>state.gameStateReducer.chaosMeter)
   return (
-    <>
-    <div>{chaos}</div>
+    
+    
     <Grommet >
       <Box
         align="end"
@@ -39,6 +39,6 @@ export const ChaosMeterGrommet = () => {
         </Stack>
       </Box>
     </Grommet>
-    </>
+    
   );
 };
