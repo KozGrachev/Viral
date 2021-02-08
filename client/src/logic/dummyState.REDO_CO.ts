@@ -151,6 +151,21 @@ export const initDummyState: Gamestate = {
       sourceName: 'Instagram',
       misinfoType: 'yellow',
     },
+    {
+      cardType: 'misinformation',
+      sourceName: 'Instagram',
+      misinfoType: 'yellow',
+    },
+    {
+      cardType: 'misinformation',
+      sourceName: 'Instagram',
+      misinfoType: 'yellow',
+    },
+    {
+      cardType: 'misinformation',
+      sourceName: 'Instagram',
+      misinfoType: 'yellow',
+    },
   ],
   misinformationDeckPassive: [],
   turnMovesLeft: 4,
