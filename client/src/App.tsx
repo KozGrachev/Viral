@@ -18,6 +18,8 @@ import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from './components/SourceParent/SourceParent';
 import { ChaosMeterGrommet } from './components/ChaosMeter_Grommet/ChaosMeter_Grommet'
+import { OtherPlayer } from './components/OtherPlayer/OtherPlayer';
+import { connections } from './types/connections'
 
 
 function App () {
@@ -27,6 +29,18 @@ function App () {
   useEffect(() => {
     getGames();
   }, []);
+
+  const fakePlayer1 = {
+    name: 'Konstantin',
+    // id: '5678',
+    cards: [
+      connections[Math.floor(Math.random() * (connections.length - 1))],
+    ],
+    cardHandFull: false,
+    isCurrent: false,
+    pawnColor: 'fuchsia',
+    currentSource: 'University'
+  }
 
   return (
     // <Grommet theme={grommet} full>
@@ -48,7 +62,8 @@ function App () {
             <SourceDeck />
             <MisinformationDeck />
             <MarkersStore />
-            <ChaosMeterGrommet/>
+            <ChaosMeterGrommet />
+            <OtherPlayer player={fakePlayer1} />
           </div>
         </div>
       </div>
