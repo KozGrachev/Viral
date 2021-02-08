@@ -59,7 +59,7 @@ export const initDummyState: Gamestate = {
       isCurrent: true,
       pawnColor: 'green',
       currentSource: 'University',
-      room:'1',
+      room: '1',
     },
     {
       name: 'Player 2',
@@ -69,7 +69,7 @@ export const initDummyState: Gamestate = {
       isCurrent: true,
       pawnColor: 'purple',
       currentSource: 'University',
-      room:'1',
+      room: '1',
 
     },
   ],
@@ -135,4 +135,5 @@ export const initDummyState: Gamestate = {
   gameWon: false,
   gameLost: false,
   received: false,
+  gameOn: true
 }

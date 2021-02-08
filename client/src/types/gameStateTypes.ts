@@ -28,6 +28,7 @@ export interface Gamestate {
   gameWon: boolean;
   gameLost: boolean;
   received: boolean;
+  gameOn:boolean
 }
 
 export interface Player {

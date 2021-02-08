@@ -19,7 +19,7 @@
   margin: 5px 0;
 }
 
-input {
+input, option, select {
   margin-bottom: 15px;
   height: 18px;
   border-radius: 5px;
