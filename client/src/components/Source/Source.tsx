@@ -1,11 +1,12 @@
 import React from 'react';
-import {Source} from '../../types/objects.REDO'
+import {Player, Source} from '../../types/objects.REDO'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase } from '../../helpers/utils';
 import './Source.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { clearMisinfoAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
+import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
 
 
 export interface SourceProps {
@@ -34,7 +35,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
     if (num > 0 && canBeCleared) {
       //get the clearable icon
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
-      //wrap it with 
+      //wrap it with  button to make it clickable
       return (<button onClick={()=>clearMisinformationbyOne(category)}><ClearableIcon/></button>)
       
     }
@@ -44,9 +45,21 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
       return <Icon   />;
     }
   }
+
+
+
+
   const clearMisinformationbyOne = (misinfoType:string) => {
     //throws a logic error !!!
     dispatch(clearMisinfoAction({oldState:gamestate , currentPlayerID: currentPlayer.id, misinfoType, location:source.name }))
+  }
+
+
+  const getPlayerPawns = (players:Player[]) => {
+
+    return players.map(player => <PlayerPawn key={player.name} player={player }/>)
+
+
   }
 
   const Iconnn = getIcon('markerRelations3');
@@ -64,6 +77,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
         {getMarker('social', markers_social, canClearSocial)}
         {getMarker('relations', markers_relations, canClearRelations)}
       </div>
+      {canShare.length > 0 ?  getPlayerPawns(canShare):null}
     </div>
   )
 }

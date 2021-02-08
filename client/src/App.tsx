@@ -32,7 +32,7 @@ function App () {
 
   const fakePlayer1 = {
     name: 'Konstantin',
-    // id: '5678',
+     id: '5678',
     cards: [
       connections[Math.floor(Math.random() * (connections.length - 1))],
     ],
@@ -62,7 +62,7 @@ function App () {
             <MisinformationDeck />
             <MarkersStore />
             <ChaosMeterGrommet />
-            <OtherPlayer player={fakePlayer1} />
+            <OtherPlayer  />
           </div>
         </div>
       </div>
