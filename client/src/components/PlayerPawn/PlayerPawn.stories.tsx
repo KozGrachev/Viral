@@ -1,20 +1,20 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { PlayerPawn } from './PlayerPawn';
-import { withDesign } from 'storybook-addon-designs';
+// import { Story, Meta } from '@storybook/react/types-6-0';
+// import { PlayerPawn } from './PlayerPawn';
+// import { withDesign } from 'storybook-addon-designs';
 
-export default {
-  title: 'Player Pawn',
-  component: PlayerPawn,
-  decorators: [withDesign],
-} as Meta;
+// export default {
+//   title: 'Player Pawn',
+//   component: PlayerPawn,
+//   decorators: [withDesign],
+// } as Meta;
 
-const Template: Story = (args) => (
-  <PlayerPawn {...args} />
-);
+// const Template: Story = (args) => (
+//   <PlayerPawn {...args} />
+// );
 
-export const Player = Template.bind({});
-Player.args = {
-  colour: '',
-};
+// export const Player = Template.bind({});
+// Player.args = {
+//   colour: '',
+// };

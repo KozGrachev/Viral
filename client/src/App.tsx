@@ -62,7 +62,7 @@ function App () {
             <MisinformationDeck />
             <MarkersStore />
             <ChaosMeterGrommet />
-            <OtherPlayer player={fakePlayer1} />
+            <OtherPlayer />
           </div>
         </div>
       </div>
