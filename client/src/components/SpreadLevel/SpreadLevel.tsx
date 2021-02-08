@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/gameState/store';
 import "./SpreadLevel.css"
 
 export interface SpreadLevelProps {
@@ -7,10 +9,12 @@ export interface SpreadLevelProps {
 }
 
 
-export const SpreadLevel: React.FC<SpreadLevelProps> = ({ spreadLevel }: SpreadLevelProps) => { // SVGIcon
+export const SpreadLevel: React.FC = (  ) => {
+const gameState = useSelector((state:RootState) => state.GameState)
   const spreadLevelArray = [2, 2, 3, 3, 4];
+  const spreadLevel = gameState.spreadLevel;
+
   let isActiveToggle = "isPassive"
-  console.log(spreadLevel)
 
   return (
     <div className="spread-level-container" >
