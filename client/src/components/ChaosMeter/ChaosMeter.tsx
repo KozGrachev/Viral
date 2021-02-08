@@ -1,5 +1,5 @@
 import React from 'react';
-import './ChaosMeter.css';
+import './ChaosMeter.scss';
 import {useSelector} from 'react-redux'
 import { RootState} from '../../redux/gameState/store';
 export const ChaosMeter: React.FC = () => {
@@ -7,13 +7,13 @@ export const ChaosMeter: React.FC = () => {
   const chaos=useSelector((state:RootState)=>state.gameStateReducer.chaosMeter)
 
   return (
-    <>
+    <div className="chaos-meter-container">
       {chaos}
-      <svg width='250' height='250'>
+      <svg  width='250' height='250'>
         <circle className='track' r='100' cx='125' cy='125'></circle>
         <circle className='progress' r='100' cx='125' cy='125'></circle>
       </svg>
-    </>
+    </div>
   );
 };
 

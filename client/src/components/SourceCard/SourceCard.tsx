@@ -1,7 +1,7 @@
 import React from 'react';
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toPascalCase } from '../../helpers/utils'
-import './SourceCard.css'
+import './SourceCard.scss'
 import { shareCardEvent } from '../../logic/event.listeners';
 import { ShareCardProps } from '../../redux/gameState/reduxTypes'
 

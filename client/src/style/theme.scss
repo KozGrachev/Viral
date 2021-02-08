@@ -1,0 +1,7 @@
+@import './variables.scss';
+
+@mixin glass-panel {
+  border: $panel-border;
+  background: $panel-background_translucent;
+  border-radius: 20px;
+}
