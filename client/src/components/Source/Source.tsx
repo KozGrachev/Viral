@@ -57,7 +57,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
 
   const getPlayerPawns = (players:Player[]) => {
 
-    return players.map(player => <PlayerPawn key={player.name} player={player }/>)
+    return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor }/>)
 
 
   }

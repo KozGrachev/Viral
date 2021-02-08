@@ -83,7 +83,11 @@ export const initDummyState: Gamestate = {
     {
       name: 'Player 2',
       id: '5678',
-      cards: [],
+      cards: [{
+        cardType: 'connection',
+        sourceName: 'Instagram',
+        misinfoType: 'yellow',
+      },],
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'purple',
