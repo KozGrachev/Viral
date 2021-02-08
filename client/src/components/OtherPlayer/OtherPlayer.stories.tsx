@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { OtherPlayer, OtherPlayerProps } from './OtherPlayer';
+import { OtherPlayer} from './OtherPlayer';
 import { withDesign } from 'storybook-addon-designs'
 import { connections } from '../../types/connections'
 // import { Connection } from '../../../../logic/objects.REDO'
@@ -39,7 +39,7 @@ export default {
 
 
 
-const Template: Story<OtherPlayerProps> = (args: OtherPlayerProps) => <OtherPlayer {...args} />
+const Template: Story = (args) => <OtherPlayer {...args} />
 
 console.log('CONNECTION::::', connections[0]);
 
