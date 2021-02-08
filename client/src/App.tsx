@@ -50,6 +50,7 @@ function App () {
         <div className="app-container">
           {/* <Map /> */}
           {/* <GameBoard /> */}
+            <SourceParent />
           <div className="sidebar-left">
             <CardHand />
             <PlayerPrompt />
@@ -57,7 +58,6 @@ function App () {
           <div className="board-container">
           <CureDeck /> 
           <SpreadLevel/> 
-            <SourceParent />
             <ChaosMeter />
             <SourceDeck />
             <MisinformationDeck />

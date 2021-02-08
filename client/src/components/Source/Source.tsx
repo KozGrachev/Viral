@@ -3,6 +3,9 @@ import {Source} from '../../types/objects.REDO'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase } from '../../helpers/utils';
 import './Source.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { clearMisinfoAction } from '../../redux/gameState/gameStateActions';
+import { RootState } from '../../redux/gameState/store';
 
 
 export interface SourceProps {
@@ -11,7 +14,11 @@ export interface SourceProps {
 
 
 export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) => { // SVGIcon
-  
+  const dispatch = useDispatch()
+  const gamestate = useSelector((state: RootState) => state.gameStateReducer)
+  const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
+  console.log('gamestate from source : ', gamestate)
+  console.log('currentPlayer from source : ' , currentPlayer)
   
   let { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
@@ -22,13 +29,24 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
     = getIcon(toCamelCase(name) + 'Icon');
 
 
-  const getMarker = (category: string, num: number,) => {
-    //additonal svgs 
+  const getMarker = (category: string, num: number , canBeCleared:boolean) => {
+    //add a different icon if canBeCleared
+    if (num > 0 && canBeCleared) {
+      //get the clearable icon
+      const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
+      //wrap it with 
+      return (<button onClick={()=>clearMisinformationbyOne(category)}><ClearableIcon/></button>)
+      
+    }
     if (num > 0) {
       console.log(toCamelCase(`marker ${category} ${num}`))
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
-      return <Icon  />;
+      return <Icon   />;
     }
+  }
+
+  const clearMisinformationbyOne = (misinfoType:string) => {
+    dispatch(clearMisinfoAction({oldState:gamestate , currentPlayerID: currentPlayer.id, misinfoType, location:source.name }))
   }
 
   const Iconnn = getIcon('markerRelations3');
@@ -42,9 +60,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
     <div className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
       <SVGIconSource />
       <div className="markersContainer">
-        {getMarker('community', markers_community)} 
-        {getMarker('social', markers_social)}
-        {getMarker('relations', markers_relations)}
+        {getMarker('community', markers_community , canClearCommunity)} 
+        {getMarker('social', markers_social, canClearSocial)}
+        {getMarker('relations', markers_relations, canClearRelations)}
       </div>
     </div>
   )
