@@ -48,8 +48,6 @@ function App () {
 
       <div className="app-outer-wrapper">
         <div className="app-container">
-          {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
-          {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
           {/* <Map /> */}
           {/* <GameBoard /> */}
           <div className="sidebar-left">
@@ -57,6 +55,8 @@ function App () {
             <PlayerPrompt />
           </div>
           <div className="board-container">
+          <CureDeck /> 
+          <SpreadLevel/> 
             <SourceParent />
             <ChaosMeter />
             <SourceDeck />

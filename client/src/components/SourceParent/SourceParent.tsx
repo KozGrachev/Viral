@@ -8,13 +8,16 @@ import {useSelector} from 'react-redux'
 import {RootState} from '../../redux/gameState/store'
 
 export const SourceParent = () => {
-  //const sources = initDummyState.sources;
-  const sources=useSelector((state:RootState)=>state.gameStateReducer.sources)
+  // const sources = initDummyState.sources;
+  const sources = useSelector((state: RootState) => state.gameStateReducer.sources);
+
+
+  // use the 
 
   const renderSources = (srcArr: Source[]) => {
     return srcArr.map(source => {
       //! GET source.markers_community etc and plug into props of SourceComponent
-      return <SourceComponent name={source.name} markersCommunity={3} markersRelations={1}  markersSocial={2} />
+      return <SourceComponent name={source.name} markersCommunity={3} markersRelations={1}  markersSocial={2} canMoveTo={source.canMove} />
     })
   }
 
