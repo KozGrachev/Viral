@@ -17,7 +17,7 @@
 
 .progressbar__thumb {
   fill: transparent;
-  stroke: red;
+  stroke: rgba(255, 0, 0, 0.568);
   stroke-width: 3px;
   stroke-dasharray: calc(30 * 2 * 3.141593);
   stroke-linecap: unset;
@@ -29,7 +29,7 @@
 }
 
 .progressbar__thumb--track-1 {
-  stroke: red;
+  stroke: rgba(255, 0, 0, 0.568);
   animation-duration: 1.6s;
 }
 
@@ -40,13 +40,13 @@
 }
 
 .progressbar__thumb--track-2 {
-  stroke: red;
+  stroke: rgba(255, 0, 0, 0.568);
   animation-duration: 1.2s;
   animation-delay: 0.4s;
 }
 
 @keyframes progress {
   to {
-    stroke-dasharray: 100;
+    stroke-dasharray: 180;
   }
 }

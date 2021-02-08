@@ -23,7 +23,7 @@ export const ChaosMeter: React.FC = () => {
           cy='50%'
           r='30px'
         ></circle>
-        <circle
+        {/* <circle
           className='progressbar__thumb
           progressbar__thumb--track-2'
           cx='50%'
@@ -36,7 +36,7 @@ export const ChaosMeter: React.FC = () => {
           cx='50%'
           cy='50%'
           r='30px'
-        ></circle>
+        ></circle> */}
       </svg>
     </div>
   );

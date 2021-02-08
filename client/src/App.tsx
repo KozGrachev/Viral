@@ -16,7 +16,7 @@ import { MisinformationDeck } from './components/MisinformationDeck/misinformati
 import { ChaosMeter } from './components/ChaosMeter/ChaosMeter'
 import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
 import { SourceParent } from './components/SourceParent/SourceParent';
-
+import { ChaosMeterGrommet } from './components/ChaosMeter_Grommet/ChaosMeter_Grommet'
 
 
 function App () {
@@ -28,29 +28,29 @@ function App () {
   }, []);
 
   return (
-    <Grommet  full>
-    <Provider store={store}>
+    <Grommet full>
+      <Provider store={store}>
 
-      <div className="app-outer-wrapper">
-        <div className="app-container">
-          {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
-          {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
-          {/* <Map /> */}
-          {/* <GameBoard /> */}
-          <div className="sidebar-left">
-            <CardHand />
-          </div>
-          <div className="board-container">
-            <SourceParent />
-            <ChaosMeter />
-            <SourceDeck />
-            <MisinformationDeck />
-            <MarkersStore />
+        <div className="app-outer-wrapper">
+          <div className="app-container">
+            {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
+            {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
+            {/* <Map /> */}
+            {/* <GameBoard /> */}
+            <div className="sidebar-left">
+              <CardHand />
+            </div>
+            <div className="board-container">
+              <ChaosMeterGrommet />
+              <SourceParent />
+              <SourceDeck />
+              <MisinformationDeck />
+              <MarkersStore />
+            </div>
           </div>
         </div>
-      </div>
-    </Provider>
-  </Grommet>
+      </Provider>
+    </Grommet>
   );
 }
 
