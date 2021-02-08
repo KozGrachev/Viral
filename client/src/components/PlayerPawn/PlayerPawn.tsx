@@ -4,6 +4,8 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import './PlayerPawn.css';
 import { withDesign } from 'storybook-addon-designs';
+import { useSelector } from 'react-redux';
+// import {RootState} from '../../redux/gameState/store'
 
 export interface PlayerPawnProps {
   player: string;

@@ -4,9 +4,12 @@ import { initDummyState } from '../../logic/dummyState.REDO_CO';
 import { Source as SourceComponent } from '../Source/Source'
 import {Source} from '../../types/gameStateTypes'
 import { render } from '@testing-library/react';
+import {useSelector} from 'react-redux'
+import {RootState} from '../../redux/gameState/store'
 
 export const SourceParent = () => {
-  const sources = initDummyState.sources;
+  //const sources = initDummyState.sources;
+  const sources=useSelector((state:RootState)=>state.gameStateReducer.sources)
 
   const renderSources = (srcArr: Source[]) => {
     return srcArr.map(source => {
