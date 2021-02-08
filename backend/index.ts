@@ -89,8 +89,8 @@ io.on('connection', (socket) => {
       getState(user.room).then(game => {
         const newPlayers = game?.players.filter(player => player.name !== user.name);
         const data = { ...game, players: newPlayers };
-        console.log(game, 'row 86');
-        setState(user.room,);
+        console.log(data);
+        setState(user.room, data);
         socket.emit('updatedState', data);
         socket.broadcast.to(user.room).emit('updatedState', data);
 

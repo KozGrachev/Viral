@@ -38,7 +38,6 @@ export function userJoin (id: string, name: string, room: string): IUser {
   users?.push(user);
   console.log(users, 'users'); 
 
-
   setUser('users', users);  return user;
 }
 

@@ -94,8 +94,8 @@ io.on('connection', function (socket) {
             redis_db_1.getState(user.room).then(function (game) {
               var newPlayers = game === null || game === void 0 ? void 0 : game.players.filter(function (player) { return player.name !== user.name; });
               var data = __assign(__assign({}, game), { players: newPlayers });
-              console.log(game, 'row 86');
-              redis_db_1.setState(user.room);
+              console.log(data);
+              redis_db_1.setState(user.room, data);
               socket.emit('updatedState', data);
               socket.broadcast.to(user.room).emit('updatedState', data);
               if (user) {
