@@ -2,7 +2,7 @@ import React from 'react';
 
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase } from '../../helpers/utils';
-import './Source.css'
+import './Source.scss'
 
 
 export interface SourceProps {
@@ -15,9 +15,9 @@ export interface SourceProps {
 
 
 export const Source: React.FC<SourceProps> = ({ name, markersCommunity, markersSocial, markersRelations, canMoveTo }: SourceProps) => { // SVGIcon
-  
-  
-  
+
+
+
   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>> = getIcon(toCamelCase(name) + 'Icon');
 
@@ -35,7 +35,7 @@ export const Source: React.FC<SourceProps> = ({ name, markersCommunity, markersS
   return (
     <div className={`source-container ${name} ${canMoveTo ? 'can-move-to' : ''}`} >
       <SVGIconSource />
-      <div className="markersContainer">
+      <div className="markers-container">
         {getMarker('community', markersCommunity)}
         {getMarker('social', markersSocial)}
         {getMarker('relations', markersRelations)}

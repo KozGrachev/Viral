@@ -1,6 +1,9 @@
 .source-container {
-  height: 30px;
-  width: 30px;
+  position:relative;
+  margin: 50px;
+  height:70px;
+  width: 70px;
+  border: 3px solid rgb(0, 247, 255);
 }
 
 .social {
@@ -16,9 +19,11 @@
 }
 
 .markers-container {
-  width: 100px;
-  height: 100px;
+  position: absolute;
+  width: 50px;
+  // height: 100px;
   display: flex;
+  border: 3px solid rgb(255, 0, 200);
 }
 
 .source-container.can-move-to {
@@ -26,16 +31,16 @@
 }
 
 .can-log-on {
-  /* 
+  /*
   can go to a specific place
-  on the source-container 
+  on the source-container
   */
 }
 
 .can-log-off {
-  /* 
+  /*
   can go to any place
-  on the source-container 
+  on the source-container
   */
 }
 

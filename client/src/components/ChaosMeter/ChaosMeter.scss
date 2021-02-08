@@ -1,20 +1,31 @@
+@import '../../style/variables.scss';
+
 .chaos-meter-container {
+  margin: $hud-margin;
   position: absolute;
-  // left: 500px;
-  border: 3px solid green;
+  right: 0;
+  top: 0;
 }
 
 .track {
-  stroke: lightgray;
+  stroke: rgba(211, 211, 211, 0);
   fill: none;
 }
 
 .progress {
   fill: none;
-  stroke: tomato;
+  stroke: rgb(255, 81, 0);
   stroke-width: 10px;
   stroke-dasharray: 630;
   stroke-dashoffset: 0;
+}
+
+.chaos-label{
+  position: absolute;
+  // display: flex;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .progress p {

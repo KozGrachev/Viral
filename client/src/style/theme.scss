@@ -5,3 +5,29 @@
   background: $panel-background_translucent;
   border-radius: 20px;
 }
+
+
+@mixin purple {
+  background-color: #9B5DE5;
+  color: white
+}
+
+@mixin green {
+  background-color: #00F5D4;
+  color: black
+}
+
+@mixin fuchsia {
+  background-color: #F15BB5;
+  color: white
+}
+
+@mixin blue {
+  background-color: #00BBF9;
+  color: white
+}
+
+@mixin yellow {
+  background-color: #FEE440;
+  color: black;
+}

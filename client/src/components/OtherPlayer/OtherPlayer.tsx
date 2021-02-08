@@ -3,7 +3,7 @@ import { Player } from '../../types/gameStateTypes';
 import { getIcon } from '../../helpers/iconExporter';
 import { toCamelCase } from '../../helpers/utils';
 import { v4 as uuidv4 } from 'uuid';
-import './OtherPlayer.css'
+import './OtherPlayer.scss'
 // import { connections } from '../../../../logic/connections'
 import { Connection } from '../../types/objects.REDO'
 
@@ -46,7 +46,7 @@ export interface OtherPlayerProps {
 
 
 export const OtherPlayer: React.FC<OtherPlayerProps> = ({ player }: OtherPlayerProps) => { // SVGIcon
-  
+
   const renderCards = (): JSX.Element[] => {
     const angle = 40;
     const numGaps = player.cards.length - 1;

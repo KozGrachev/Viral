@@ -1,17 +1,21 @@
 import React from 'react';
 import './ChaosMeter.scss';
-import {useSelector} from 'react-redux'
-import { RootState} from '../../redux/gameState/store';
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/gameState/store';
 export const ChaosMeter: React.FC = () => {
   //const chaos = store.getState().gameStateReducer.chaosMeter;
-  const chaos=useSelector((state:RootState)=>state.gameStateReducer.chaosMeter)
+  const chaos = useSelector((state: RootState) => state.gameStateReducer.chaosMeter)
 
   return (
     <div className="chaos-meter-container">
-      {chaos}
-      <svg  width='250' height='250'>
-        <circle className='track' r='100' cx='125' cy='125'></circle>
-        <circle className='progress' r='100' cx='125' cy='125'></circle>
+      <div className="chaos-label">
+        <p>
+          {chaos}/4
+        </p>
+      </div>
+      <svg width='150' height='150'>
+        <circle className='track' r='70' cx='75' cy='75'></circle>
+        <circle className='progress' r='70' cx='75' cy='75'></circle>
       </svg>
     </div>
   );
