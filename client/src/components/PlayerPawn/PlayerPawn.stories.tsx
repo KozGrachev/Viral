@@ -10,12 +10,10 @@ export default {
   decorators: [withDesign],
 } as Meta;
 
-const Template: Story<PlayerPawnProps> = (args: PlayerPawnProps) => (
-  <PlayerPawn {...args} />
-);
+const Template: Story<PlayerPawnProps> = (args: PlayerPawnProps) => <PlayerPawn {...args} />;
 
 export const Player = Template.bind({});
 Player.args = {
-  player: 'Player Pawn',
-  color:'green'
+  player:'Malcolm',
+  color:'pink'
 };
