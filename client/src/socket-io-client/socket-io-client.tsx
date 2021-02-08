@@ -15,7 +15,6 @@ const Player = store.getState().playerStateReducer
 // on click - 'start game' 
 export const joinRoom = (player: typeof Player) => {
   socket.emit('joinRoom', player);
-  console.log(player.name, player.room)
 }
 
 // Message from server // welcome component 

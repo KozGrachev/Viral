@@ -83,13 +83,10 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('disconnect works');
     const user = userLeave(socket.id);
-    console.log(user, 'user'); user && console.log(getState(user!.room).then(data => data));
-
     user &&
       getState(user.room).then(game => {
         const newPlayers = game?.players.filter(player => player.name !== user.name);
         const data = { ...game, players: newPlayers };
-        console.log(data);
         setState(user.room, data);
         socket.emit('updatedState', data);
         socket.broadcast.to(user.room).emit('updatedState', data);
