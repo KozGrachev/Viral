@@ -1,49 +1,41 @@
-.container {
-  display: flex;
-}
-
 .player_pawn {
-  height: 100px;
-  width: 100px;
-  background-color: red;
+  height: 30px;
+  width: 30px;
+  background-color: none;
   border-radius: 50%;
-}
-.player_pawn_2 {
-  height: 100px;
-  width: 100px;
-  background-color: yellow;
-  border-radius: 50%;
-}
-.player_pawn_3 {
-  height: 100px;
-  width: 100px;
-  background-color: Blue;
-  border-radius: 50%;
-}
-.player_pawn_4 {
-  height: 100px;
-  width: 100px;
-  background-color: Green;
-  border-radius: 50%;
+  border: solid;
+  border-color: black;
+  border-width: 2px;
 }
 
-.player_pawn p {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 100px;
+.blue {
+  background-color: blue;
 }
-.player_pawn_2 p {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 100px;
+
+.green {
+  background-color: green;
 }
-.player_pawn_3 p {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 100px;
+
+.yellow {
+  background-color: yellow;
 }
-.player_pawn_4 p {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 100px;
+
+.pink {
+  background-color: pink;
 }
+
+.red {
+  background-color: tomato;
+}
+
+.orange {
+  background-color: orange;
+}
+
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat()
+}
+
+

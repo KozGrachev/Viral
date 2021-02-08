@@ -45,11 +45,8 @@ function App () {
   return (
     // <Grommet theme={grommet} full>
     <Provider store={store}>
-
       <div className="app-outer-wrapper">
         <div className="app-container">
-          {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
-          {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
           {/* <Map /> */}
           {/* <GameBoard /> */}
           <div className="sidebar-left">
@@ -57,21 +54,23 @@ function App () {
             <PlayerPrompt />
           </div>
           <div className="board-container">
+
             <div id="game-board">
               <div id="map"></div>
               <SourceParent />
             </div>
             {/* <ChaosMeter />
+
             <SourceDeck />
             <MisinformationDeck />
             <MarkersStore />
             <ChaosMeterGrommet />
-            <OtherPlayer player={fakePlayer1} /> */}
+            <OtherPlayer />
+            // {/* </Grommet> */ }
+            </div>
           </div>
         </div>
-      </div>
-    </Provider>
-    // {/* </Grommet> */ }
+      </Provider>
   );
 }
 
