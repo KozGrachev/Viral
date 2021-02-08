@@ -7,7 +7,7 @@ function userJoin (id, name, room) {
   var user = {
     id: id,
     name: name,
-    room: room
+    room: room,
   };
   exports.users.push(user);
   return user;

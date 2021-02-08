@@ -40,31 +40,38 @@ var io = new socket_io_1.Server(httpServer, {
 var welcomeMessage = 'Welcome';
 io.on('connection', function (socket) {
   console.log('server connected');
-  socket.on('joinRoom', function (_a) {
-    var name = _a.name, room = _a.room;
-    var user = users_1.userJoin(socket.id, name, room);
+  socket.on('joinRoom', function (player) {
+    var user = users_1.userJoin(socket.id, player.name, player.room);
     socket.join(user.room);
     // Welcome current user
-    socket.emit('joinConfirmation', welcomeMessage + ' ' + name + ', you can start playing now.');
+    socket.emit('joinConfirmation', welcomeMessage + ' ' + player.name + ', you can start playing now.');
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
-      .emit('joinConfirmation', name + ' has joined the game');
+      .emit('joinConfirmation', player.name + ' has joined the game');
   });
   socket.on('onChangeState', function (_a) {
     var newState = _a.newState, Player = _a.Player;
+    console.log('set state', newState);
     var user = Player;
+    redis_db_1.setState(user.room, newState);
     socket.broadcast.to(user.room)
       .emit('updatedState', newState);
     //save to database
-    redis_db_1.setState(user.room, newState);
   });
-  socket.on('resumeGame', function (room) {
-    welcomeMessage = 'Welcome back';
-    redis_db_1.getState(room).then(function (data) { return socket.emit('updatedState', data); });
-  });
-  socket.on('retriveGame', function (room) {
-    redis_db_1.getState(room).then(function (data) { return socket.emit('updatedState', data); });
+  // socket.on('resumeGame', (room: IUser['room']) => {
+  //   welcomeMessage = 'Welcome back';
+  //   getState(room).then(data => socket.emit('updatedState', data));
+  // });
+  socket.on('retriveGame', function (player) {
+    console.log('players,', player);
+    redis_db_1.getState(player.room).then(function (data) {
+      data === null || data === void 0 ? void 0 : data.players.push(player);
+      redis_db_1.setState(player.room, data);
+      socket.emit('updatedState', data);
+      socket.broadcast.to(player.room).emit('updatedState', data);
+    });
+    // data?.players.push(player).socket.emit('updatedState', data));
   });
   socket.on('getGames', function () {
     redis_db_1.getGames('*').then(function (data) { return socket.emit('games', data); });

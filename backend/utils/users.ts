@@ -1,19 +1,34 @@
 export const users: IUser[] = [];
 
 export interface IUser {
-  id: string,
-  name: string,
-  room: string
+  name: string;
+  id: string;
+  cards?: Card[];
+  cardHandOverflow?: boolean;
+  isCurrent?: boolean;
+  pawnColor?: string;
+  currentSource?: string;
+  room: string;
 }
+
+export interface Card {
+
+  cardType: string; //? 'connection', 'minformation' or 'viral'
+  sourceName: string;
+  misinfoType: string;
+}
+
+
 // Join user to chat
 export function userJoin (id: string, name: string, room: string): IUser {
   const user = {
     id,
     name,
-    room
+    room,
+
   };
 
-  users.push(user);
+  users.push (user);
   return user;
 }
 

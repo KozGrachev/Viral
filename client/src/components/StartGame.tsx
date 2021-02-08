@@ -29,13 +29,13 @@ export const StartGame: React.FC = (): JSX.Element => {
   const allRooms = useSelector((state: RootState) => state.allGamesStateReducer)
   const [stateRendered, updateStateRendered] = useState(false)
   // let gameOn: boolean = false;
- const state = useSelector((state:RootState) => state.gameStateReducer)
+  const state = useSelector((state: RootState) => state.gameStateReducer)
 
   const startGame = (player: Player) => {
     if (!stateRendered) {
-      joinRoom(player.name, player.room)
+      joinRoom(player)
       if (allRooms.filter(room => room === player.room).length > 0) {
-        getGame(player.room);
+        getGame(player);
         updateStateRendered(true)
       } else {
         dispatch(StartGameAction([player]))
@@ -43,7 +43,6 @@ export const StartGame: React.FC = (): JSX.Element => {
       }
     }
   }
-
 
   // const addPlayer = () => { 
   //   dispatch(addPlayerToGameState(player, gamestate))
@@ -61,9 +60,9 @@ export const StartGame: React.FC = (): JSX.Element => {
            {startGame(player)}
               </h1>
               :
-              (stateRendered && store.getState().gameStateReducer.gameOn) &&
+              (stateRendered && state.gameOn) &&
               <div className="app-container">
-                <CureDeck />
+                {/* <CureDeck />
                 <SpreadLevel />
                 <PlayerPrompt />
 
@@ -74,10 +73,10 @@ export const StartGame: React.FC = (): JSX.Element => {
                 <div className="board-container">
                   <ChaosMeter />
                   <SourceDeck />
-                  <MisinformationDeck />
+                  <MisinformationDeck /> */}
                   <MarkersStore />
-                </div>
-                {state.sources.length}
+                {/* </div> */}
+               ---- {state.players[0].name} -----
               </div>)
       }
     </div>
