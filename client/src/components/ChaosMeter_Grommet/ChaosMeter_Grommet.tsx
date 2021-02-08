@@ -13,6 +13,8 @@ export const ChaosMeterGrommet = () => {
   //   setValue(value < 100 ? value + 8 : 20);
   // }, 2000);
 
+
+
   // useEffect(
   //   () => () => {
   //     clearTimeout(timer.current);
@@ -38,15 +40,17 @@ export const ChaosMeterGrommet = () => {
             thickness="small"
           />
           <Box direction="row" align="center" pad={{ bottom: 'xsmall' }}>
-            <Text size="small">Chaos</Text>
-            <Text size="xlarge" weight="bold">
-              {meterValue < 25 ? '0/4'
-                : meterValue < 50 ? '1/4'
-                  : meterValue < 75 ? '2/4'
-                    : meterValue < 100 ? '3/4'
-                      : 'DEATH'
-              }
-            </Text>
+            <div className="meter-label">
+              <Text size="small">Chaos</Text>
+              <Text size="xlarge" weight="bold">
+                {meterValue < 25 ? '0/4'
+                  : meterValue < 50 ? '1/4'
+                    : meterValue < 75 ? '2/4'
+                      : meterValue < 100 ? '3/4'
+                        : 'DEATH'
+                }
+              </Text>
+            </div>
           </Box>
         </Stack>
       </Box>
