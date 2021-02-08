@@ -10,9 +10,9 @@ export interface SpreadLevelProps {
 
 
 export const SpreadLevel: React.FC = (  ) => {
-const gameState = useSelector((state:RootState) => state.GameState)
+const gameState = useSelector((state:RootState) => state.gameStateReducer)
   const spreadLevelArray = [2, 2, 3, 3, 4];
-  const spreadLevel = gameState.spreadLevel;
+  let spreadLevel = gameState.spreadLevel;
 
   let isActiveToggle = "isPassive"
 

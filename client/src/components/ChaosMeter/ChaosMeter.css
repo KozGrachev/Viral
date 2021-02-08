@@ -17,6 +17,6 @@
 
 @keyframes progress {
   to {
-    stroke-dasharray: 100;
+    stroke-dasharray: 180;
   }
 }

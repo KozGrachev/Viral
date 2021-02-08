@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import { Box, Button, Grommet, Card, CardHeader, CardBody, CardFooter, Meter } from 'grommet';
+import { Box, Button, Grommet, Card, CardHeader, CardBody, CardFooter, Meter } from 'grommet';
 // import { Notification } from 'grommet-icons';
-import './App.css';
+import './App.scss';
 import './socket-io-client/socket-io-client';
 import { Provider } from 'react-redux';
 import { store } from './redux/gameState/store';
@@ -17,7 +17,7 @@ import { ChaosMeter } from './components/ChaosMeter/ChaosMeter'
 import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from './components/SourceParent/SourceParent';
-
+import { ChaosMeterGrommet } from './components/ChaosMeter_Grommet/ChaosMeter_Grommet'
 
 
 function App () {
@@ -33,8 +33,8 @@ function App () {
     <Provider store={store}>
 
       <div className="app-container">
-        {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
-        {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
+        <CureDeck /> {/* finished! just needs an initial state from redux */}
+        <SpreadLevel/> {/* finished! Just needs an initial state from redux */}
         <PlayerPrompt />
         {/* <Map /> */}
         {/* <GameBoard /> */}
@@ -54,7 +54,7 @@ function App () {
         </div>
       </div>
     </Provider>
-    // </Grommet>
+    // {/* </Grommet> */ }
   );
 }
 
