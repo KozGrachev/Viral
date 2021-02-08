@@ -32,7 +32,7 @@ function App () {
 
   const fakePlayer1 = {
     name: 'Konstantin',
-    // id: '5678',
+     id: '5678',
     cards: [
       connections[Math.floor(Math.random() * (connections.length - 1))],
     ],
@@ -47,16 +47,16 @@ function App () {
     <Provider store={store}>
       <div className="app-outer-wrapper">
         <div className="app-container">
-          {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
-          {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
           {/* <Map /> */}
           {/* <GameBoard /> */}
+            <SourceParent />
           <div className="sidebar-left">
             <CardHand />
             <PlayerPrompt />
           </div>
           <div className="board-container">
-            <SourceParent />
+          <CureDeck /> 
+          <SpreadLevel/> 
             <ChaosMeter />
             <SourceDeck />
             <MisinformationDeck />

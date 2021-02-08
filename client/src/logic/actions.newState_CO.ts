@@ -33,6 +33,7 @@ export function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], l
 
 export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'], misinfoType: Misinformation['name'], location: Source['name']): Gamestate {
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
+  console.log('old state in clearmisinfo', oldState)
   let noOfMarkers: number = 1;
   if (oldState.misinformation[misinfoType].debunked) {
     noOfMarkers = oldState.sources[sourceIndex][`markers_${misinfoType}`]
@@ -56,6 +57,10 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
   };
   console.log('player cleared', noOfMarkers, misinfoType);
   console.log('there are', newState.turnMovesLeft, 'moves left')
+  console.log('new state in clearmisinfo', newState)
+  //switch it back to return nextMoveChecker(newState, currentPlayerID); unless u wanna see the world burn
+
+  // return newState
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -161,6 +166,7 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
   const location: Player['currentSource'] = oldState.players[playerIndex].currentSource;
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
   //* move check
+  console.log('location from updatePossible', location)
   const adjacents: string[] = sources.filter((source) => source.name === location)[0].connections;
   //* clear checks
   const clearCommunityMisinfo: boolean = oldState.sources[sourceIndex].markers_community > 0;
