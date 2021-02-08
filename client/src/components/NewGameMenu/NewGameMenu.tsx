@@ -26,16 +26,12 @@ export const NewGameMenu: React.FC = () => {
   }
 
 
-  const player = useSelector((state: RootState) => state.playerStateReducer)
 
   const addPlayer = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
-    const color = 'blue'
     dispatch(AddPlayerAction(input.name, input.color, input.room))
     
   }
-
-  const rooms = useSelector((state: RootState) => state.allGamesStateReducer)
 
 
   // const selectRoom = (e: React.ChangeEvent<HTMLSelectElement>) => {

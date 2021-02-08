@@ -2,7 +2,7 @@
 import io from "socket.io-client";
 import * as dotenv from 'dotenv';
 import { store } from '../redux/gameState/store'
-import { GetAllGamesAction, updateGameState } from "../redux/gameState/gameStateActions";
+import {GetAllGamesAction, updateGameState } from "../redux/gameState/gameStateActions";
 import { Gamestate } from "../types/gameStateTypes";
 dotenv.config({ path: __dirname + '/.env' });
 //connection to the server
@@ -21,8 +21,8 @@ export const joinRoom = (name: string, room: string) => {
 // Message from server // welcome component 
 socket.on('joinConfirmation', (message: string) => {
   console.log(message); // display message to the screen 
-});
 
+});
 
 //subscripion to any game state changes 
 
@@ -35,11 +35,13 @@ store.subscribe(() => {
 
 //data coming from backend after game state changed
 socket.on('updatedState', (newState: Gamestate) => {
+  console.log('newstate', newState)
   newState.received = true;
   store.dispatch(updateGameState(newState))
 })
 
 export const getGame = (room: string) => {
+  
   socket.emit('retriveGame', room)
 }
 

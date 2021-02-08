@@ -37,8 +37,9 @@ export function gameStateReducer(
       return (discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard), { ...state, received: false });
     }
     case UPDATE_GAME_STATE:
+      console.log(action.payload, 'action payload update state')
       return {
-        ...state, spreadLevel: 3
+        ...state, ...action.payload
       }
 
     case ADD_PLAYER_TO_GAME: {
@@ -49,7 +50,8 @@ export function gameStateReducer(
     }
     case START_GAME: {
       const initialState = setUp(action.payload)
-      const obj = { ...state, ...initialState }
+      console.log('it gets here')
+      const obj = { ...state, ...initialState, gameOn:true }
       return obj
 
     }

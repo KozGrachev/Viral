@@ -1,7 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
-
-
 
 import React, { useEffect, useState } from 'react';
 // import { Box, Button, Grommet, Card, CardHeader, CardBody, CardFooter, Meter } from 'grommet';
@@ -23,6 +19,7 @@ import { SourceParent } from '../components/SourceParent/SourceParent';
 import { NewGameMenu } from '../components/NewGameMenu/NewGameMenu'
 import { addPlayerToGameState, StartGameAction } from '../redux/gameState/gameStateActions';
 import { Gamestate, Player } from '../types/gameStateTypes';
+import { UpdateGameStateAction } from '../redux/gameState/reduxTypes';
 
 export const StartGame: React.FC = (): JSX.Element => {
 
@@ -31,52 +28,59 @@ export const StartGame: React.FC = (): JSX.Element => {
   const player = useSelector((state: RootState) => state.playerStateReducer)
   const allRooms = useSelector((state: RootState) => state.allGamesStateReducer)
   const [stateRendered, updateStateRendered] = useState(false)
+  // let gameOn: boolean = false;
+ const state = useSelector((state:RootState) => state.gameStateReducer)
 
   const startGame = (player: Player) => {
-    joinRoom(player.name, player.room)
-
-    if (allRooms.filter(room => room === player.room).length > 0) {
-      getGame(player.room);
-      updateStateRendered(true)
-    } else {
-      dispatch(StartGameAction([player]))
-      updateStateRendered(true)
+    if (!stateRendered) {
+      joinRoom(player.name, player.room)
+      if (allRooms.filter(room => room === player.room).length > 0) {
+        getGame(player.room);
+        updateStateRendered(true)
+      } else {
+        dispatch(StartGameAction([player]))
+        updateStateRendered(true)
+      }
     }
   }
+
 
   // const addPlayer = () => { 
   //   dispatch(addPlayerToGameState(player, gamestate))
   // }
 
   return (
-    <div className="app-container">
-      {(player.name.length > 1) ?
-        <div>
-          {startGame(player)}
-          <CureDeck /> {/* finished! just needs an initial state from redux */}
-          <SpreadLevel /> {/* finished! Just needs an initial state from redux */}
-          <PlayerPrompt />
-          {/* <Map /> */}
-          {/* <GameBoard /> */}
-          <div className="sidebar-left">
-            Number of players:
-            {store.getState().gameStateReducer.players.length}
-            <h1> hello {player.name} we have
-            <br />
-              {store.getState().gameStateReducer.sources.length} sources now
-            </h1>
-            <CardHand />
-          </div>
-          <SourceParent />
-          <div className="board-container">
-            <ChaosMeter />
-            <SourceDeck />
-            <MisinformationDeck />
-            <MarkersStore />
-          </div>
-        </div>
-        : <NewGameMenu />
+    <div>
+      {
+        (player.name.length < 1) ?
+          <NewGameMenu />
+          : (
+            (!stateRendered) ?
+              <h1>
+                game loading ...
+           {startGame(player)}
+              </h1>
+              :
+              (stateRendered && store.getState().gameStateReducer.gameOn) &&
+              <div className="app-container">
+                <CureDeck />
+                <SpreadLevel />
+                <PlayerPrompt />
+
+                <div className="sidebar-left">
+                  <CardHand />
+                </div>
+                <SourceParent />
+                <div className="board-container">
+                  <ChaosMeter />
+                  <SourceDeck />
+                  <MisinformationDeck />
+                  <MarkersStore />
+                </div>
+                {state.sources.length}
+              </div>)
       }
     </div>
+
   )
 }

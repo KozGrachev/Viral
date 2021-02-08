@@ -70,4 +70,5 @@ export const initialState: Gamestate = {
   gameWon: false,
   gameLost: false,
   received: false,
+  gameOn:false
 }
