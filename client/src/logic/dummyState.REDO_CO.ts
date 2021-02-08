@@ -5,11 +5,11 @@ import { Gamestate, Card, Source, Player, Misinformation, Connection } from '../
 export const initDummyState: Gamestate = {
   sources: [
     {
-      name: 'University',
+      name: 'university',
       misinfoType: 'community',
       markers_community: 1,
-      markers_social: 3,
-      markers_relations: 0,
+      markers_social: 1,
+      markers_relations: 1,
       canMove: true,
       canLogOn: false,
       canLogOff: false,
@@ -20,11 +20,11 @@ export const initDummyState: Gamestate = {
       canDebunk: [],
     },
     {
-      name: 'Gym',
+      name: 'hair salon',
       misinfoType: 'social',
-      markers_community: 1,
-      markers_social: 0,
-      markers_relations: 2,
+      markers_community: 3,
+      markers_social: 3,
+      markers_relations: 3,
       canMove: false,
       canLogOn: false,
       canLogOff: false,
@@ -35,10 +35,10 @@ export const initDummyState: Gamestate = {
       canDebunk: [],
     },
     {
-      name: 'Instagram',
+      name: 'pub',
       misinfoType: 'relations',
-      markers_community: 1,
-      markers_social: 2,
+      markers_community: 3,
+      markers_social: 3,
       markers_relations: 3,
       canMove: true,
       canLogOn: false,
@@ -58,7 +58,7 @@ export const initDummyState: Gamestate = {
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'green',
-      currentSource: 'University',
+      currentSource: 'pub',
       room:'1',
     },
     {
@@ -68,7 +68,7 @@ export const initDummyState: Gamestate = {
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'purple',
-      currentSource: 'University',
+      currentSource: 'pub',
       room:'1',
 
     },

@@ -44,8 +44,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
       return <Icon   />;
     }
   }
-
   const clearMisinformationbyOne = (misinfoType:string) => {
+    //throws a logic error !!!
     dispatch(clearMisinfoAction({oldState:gamestate , currentPlayerID: currentPlayer.id, misinfoType, location:source.name }))
   }
 
