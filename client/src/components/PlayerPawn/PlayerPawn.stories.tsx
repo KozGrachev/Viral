@@ -16,5 +16,5 @@ const Template: Story<PlayerPawnProps> = (args: PlayerPawnProps) => (
 
 export const Player = Template.bind({});
 Player.args = {
-  title: 'Player Pawn',
+  colour: '',
 };

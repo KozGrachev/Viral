@@ -7,20 +7,16 @@ import { withDesign } from 'storybook-addon-designs';
 
 export interface PlayerPawnProps {
   player: string;
-  color: string;
+  colour: string;
 }
 
 export const PlayerPawn: React.FC<PlayerPawnProps> = ({
   player,
-  color,
+  colour,
 }: PlayerPawnProps) => {
-  // SVGIcon
-
   return (
     <div className='container'>
-      <div className='player_pawn'>
-        <p>Connor</p>
-      </div>
+      <div className={`player_pawn ${colour}`}></div>
     </div>
   );
 };
