@@ -16,6 +16,5 @@ const Template: Story = (args) => (
 
 export const Player = Template.bind({});
 Player.args = {
-  player:"Malcolm",
-  color:'pink'
+  colour: '',
 };

@@ -4,20 +4,21 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import './PlayerPawn.css';
 import { withDesign } from 'storybook-addon-designs';
-import {useSelector} from 'react-redux'
-import {RootState} from '../../redux/gameState/store'
+import { useSelector } from 'react-redux';
+// import {RootState} from '../../redux/gameState/store'
 
+export interface PlayerPawnProps {
+  player: string;
+  colour: string;
+}
 
-export const PlayerPawn: React.FC = () => {
-  // SVGIcon
-
-  const color=useSelector((state:RootState)=>state.playerStateReducer.pawnColor)
-
+export const PlayerPawn: React.FC<PlayerPawnProps> = ({
+  player,
+  colour,
+}: PlayerPawnProps) => {
   return (
     <div className='container'>
-      <div className='player_pawn'>
-        <p>Connor</p>
-      </div>
+      <div className={`player_pawn ${colour}`}></div>
     </div>
   );
 };

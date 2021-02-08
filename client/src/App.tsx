@@ -18,7 +18,9 @@ import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from './components/SourceParent/SourceParent';
 import { ChaosMeterGrommet } from './components/ChaosMeter_Grommet/ChaosMeter_Grommet'
-import {OtherPlayer} from './components/OtherPlayer/OtherPlayer'
+import { OtherPlayer } from './components/OtherPlayer/OtherPlayer';
+import { connections } from './types/connections'
+
 
 function App () {
 
@@ -28,30 +30,40 @@ function App () {
     getGames();
   }, []);
 
+  const fakePlayer1 = {
+    name: 'Konstantin',
+    // id: '5678',
+    cards: [
+      connections[Math.floor(Math.random() * (connections.length - 1))],
+    ],
+    cardHandFull: false,
+    isCurrent: false,
+    pawnColor: 'fuchsia',
+    currentSource: 'University'
+  }
+
   return (
     // <Grommet theme={grommet} full>
     <Provider store={store}>
-
-      <div className="app-container">
-        <CureDeck /> {/* finished! just needs an initial state from redux */}
-        <SpreadLevel/> {/* finished! Just needs an initial state from redux */}
-        <PlayerPrompt />
-        {/* <Map /> */}
-        {/* <GameBoard /> */}
-        <div className="sidebar-left">
-
-          <CardHand />
-        </div>
-
-        <SourceParent />
-        <div className="board-container">
-
-
-          <ChaosMeterGrommet />
-          <SourceDeck />
-          <MisinformationDeck />
-          <MarkersStore />
-          <OtherPlayer/>
+      <div className="app-outer-wrapper">
+        <div className="app-container">
+          {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
+          {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
+          {/* <Map /> */}
+          {/* <GameBoard /> */}
+          <div className="sidebar-left">
+            <CardHand />
+            <PlayerPrompt />
+          </div>
+          <div className="board-container">
+            <SourceParent />
+            <ChaosMeter />
+            <SourceDeck />
+            <MisinformationDeck />
+            <MarkersStore />
+            <ChaosMeterGrommet />
+            <OtherPlayer player={fakePlayer1} />
+          </div>
         </div>
       </div>
     </Provider>

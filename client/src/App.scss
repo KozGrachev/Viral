@@ -50,6 +50,7 @@ body {
 
 .board-container {
   /* box-sizing: ; */
+  display: flex;
   grid-area: gameboard;
   margin-left: 20px;
   width: auto;
