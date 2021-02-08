@@ -4,7 +4,7 @@ import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase } from '../../helpers/utils';
 import './Source.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { clearMisinfoAction } from '../../redux/gameState/gameStateActions';
+import { clearMisinfoAction, debunkMisinfoAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
 
@@ -18,19 +18,32 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
   const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
-  console.log('gamestate from source : ', gamestate)
-  console.log('currentPlayer from source : ' , currentPlayer)
   
   let { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
     canClearRelations, canClearSocial, canShare, canDebunk } = source;
+  
+  
+  
 
   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
 
+  
+  
+  
+  
 
-  const getMarker = (category: string, num: number , canBeCleared:boolean) => {
+  const getMarker = (category: string, num: number, canBeCleared: boolean , canDebunk:string[]) => {
+    // if (num > 0 && canDebunk.includes(category)) {
+    //   //get the debunable icon
+    //   const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
+    //   //wrap it with  button to make it clickable
+    //   return (<button onClick={() => debunkMisinforamtion(category)}><ClearableIcon /></button>)
+      
+    // }
+    
     //add a different icon if canBeCleared
     if (num > 0 && canBeCleared) {
       //get the clearable icon
@@ -44,7 +57,15 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
       return <Icon   />;
     }
-  }
+    }
+    
+  // const debunkMisinforamtion = (category:string) => {
+      
+  //   dispatch(debunkMisinfoAction({
+  //     oldState: gamestate, currentPlayerID: currentPlayer.id,
+  //   misinfoType:category, usedCards:}))
+      
+  //   } 
 
 
 
@@ -55,7 +76,10 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
   }
 
 
-  const getPlayerPawns = (players:Player[]) => {
+  const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
+
+    if (currentPlayer.currentSource===source.name)players.push(currentPlayer)
+    
 
     return players.map(player => <PlayerPawn key={player.name} player={player }/>)
 
@@ -73,11 +97,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
     <div className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
       <SVGIconSource />
       <div className="markersContainer">
-        {getMarker('community', markers_community , canClearCommunity)} 
-        {getMarker('social', markers_social, canClearSocial)}
-        {getMarker('relations', markers_relations, canClearRelations)}
+        {getMarker('community', markers_community , canClearCommunity , canDebunk)} 
+        {getMarker('social', markers_social, canClearSocial, canDebunk)}
+        {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
       </div>
-      {canShare.length > 0 ?  getPlayerPawns(canShare):null}
+      {canShare.length > 0 ?  getPlayerPawns(canShare , currentPlayer):null}
     </div>
   )
 }
