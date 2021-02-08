@@ -19,7 +19,7 @@ export const SourceParent = () => {
   }
 
   return (
-    <div id="map">
+    <div id="source-parent-grid-container">
       {renderSources(sources)}
     </div>
   )

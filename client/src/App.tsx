@@ -58,14 +58,15 @@ function App () {
           </div>
           <div className="board-container">
             <div id="game-board">
+              <div id="map"></div>
               <SourceParent />
             </div>
-            <ChaosMeter />
+            {/* <ChaosMeter />
             <SourceDeck />
             <MisinformationDeck />
             <MarkersStore />
             <ChaosMeterGrommet />
-            <OtherPlayer player={fakePlayer1} />
+            <OtherPlayer player={fakePlayer1} /> */}
           </div>
         </div>
       </div>

@@ -50,43 +50,43 @@ body {
 
 .board-container {
   /* box-sizing: ; */
-  display: flex;
+  position: relative;
   grid-area: gameboard;
   margin-left: 20px;
   width: auto;
-  height: 100%;
-  // border: 2px solid green;
+  width: 70%;
   border: 2px solid rgba(255, 255, 255, 0.288);
   background: rgba(255, 255, 255, 0.473);
-
   border-radius: 30px;
 }
 
 #game-board {
-  width: 1200px;
-  height: 1200px;
+  width: 100%;
+  height: 100%;
   background-color: pink; 
 }
 
 #map {
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  background: url(/assets/allIcons/game-board.svg);
-  background-color: lightgoldenrodyellow;
+  position: absolute;
+  background: url(/assets/allIcons/game-board-withoult-sources.svg);
   background-size: cover;
+}
+
+
+#source-parent-grid-container {
+  width: 100%;
+  height: 100%;
+  // overflow: hidden;
+  // background: url(/assets/allIcons/game-board-withoult-sources.svg);
+  // background-color: lightgoldenrodyellow;
+  // background-size: cover;
   display: grid;
   grid-template-columns: 22% 19% 13% 6% 13% 7% 7% 13%;
   grid-template-rows: 29% 15% 9% 7% 40%;
   position: relative;
 }
-
-// .grid-cell {
-//   position: relative;
-// }
-
-// .source-container {
-//   position: absolute;
 
 // Community sources
 
