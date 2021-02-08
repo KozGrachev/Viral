@@ -31,14 +31,14 @@ export const Source: React.FC<SourceProps> = ({ name, markersCommunity, markersS
   const Iconnn = getIcon('markerRelations3');
 
   return (
-    <div className={`source-container ${toKebabCase(name)}`} >
-      <SVGIconSource />
-      <div className="markersContainer">
-        {getMarker('community', markersCommunity)}
-        {getMarker('social', markersSocial)}
-        {getMarker('relations', markersRelations)}
+      <div className={`source-container ${toKebabCase(name)}`} >
+        <SVGIconSource />
+        <div className="markersContainer">
+          {getMarker('community', markersCommunity)}
+          {getMarker('social', markersSocial)}
+          {getMarker('relations', markersRelations)}
+        </div>
       </div>
-    </div>
   )
 }
 

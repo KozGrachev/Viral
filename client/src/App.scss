@@ -76,22 +76,131 @@ body {
   background-color: lightgoldenrodyellow;
   background-size: cover;
   display: grid;
-  grid-template-columns: 22fr 41fr 54fr 60fr 73fr 80fr 87fr;
-  grid-template-rows: 29fr 44fr 53fr 60fr;
+  grid-template-columns: 22% 19% 13% 6% 13% 7% 7% 13%;
+  grid-template-rows: 29% 15% 9% 7% 40%;
+  position: relative;
 }
+
+// .grid-cell {
+//   position: relative;
+// }
+
+// .source-container {
+//   position: absolute;
+
+// Community sources
 
 .university {
   grid-area: 3/1/4/2;
+  position: absolute;
+  left: 58%;
+  top: 70%;
+}
+
+.local-cult {
+  grid-area: 1/2/2/3;
+  position: absolute;
+  left: 55%;
+  top: 80%;
+}
+
+.high-school {
+  grid-area: 2/2/3/3;
+  position: absolute;
+  left: 23%;
+  top: 42%;
+}
+
+.pub {
+  grid-area: 3/2/4/3;
+  position: absolute;
+  left: 28%;
+  top: 50%;
+}
+
+.taxi {
+  grid-area: 4/2/5/3;
+  position: absolute;
+  left: 75%;
+  top: 0%;
+}
+
+.asda {
+  grid-area: 2/3/3/4;
+  position: absolute;
+  left: 75%;
+  top: 67%;
 }
 
 .gym {
-  grid-area: 3/3/4/5;
+  grid-area: 3/3/4/4;
+  position: absolute;
+  left: 18%;
+  top: 15%;
+}
+
+.hair-salon {
+  grid-area: 4/3/5/4;
+  position: absolute;
+  left: 65%;
+  top: 30%;
 }
 
 .instagram {
-  grid-area: 3/6/4/7;
+  grid-area: 3/5/4/6;
+  position: absolute;
+  left: 65%;
+  top: 40%;
 }
 
+.facebook {
+  grid-area: 4/5/5/6;
+  position: absolute;
+  left: 65%;
+  top: 22%;
+}
+
+.youtube {
+  grid-area: 3/6/4/7;
+  position: absolute;
+  left: 35%;
+  top: 40%;
+}
+
+.twitter {
+  grid-area: 5/6/6/7;
+  position: absolute;
+  left: 35%;
+  top: 3.5%;
+}
+
+.illuminatify {
+  grid-area: 3/7/4/8;
+  position: absolute;
+  left: 35%;
+  top: 40%;
+}
+
+.reddit {
+  grid-area: 4/7/5/8;
+  position: absolute;
+  left: 35%;
+  top: 22%;
+}
+
+.whatsapp {
+  grid-area: 3/8/4/9;
+  position: absolute;
+  left: 20%;
+  top: 40%;
+}
+
+.tiktok {
+  grid-area: 5/8/6/9;
+  position: absolute;
+  left: 20%;
+  top: 3.5%;
+}
 
 
 
