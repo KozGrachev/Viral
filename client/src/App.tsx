@@ -18,7 +18,7 @@ import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from './components/SourceParent/SourceParent';
 import { ChaosMeterGrommet } from './components/ChaosMeter_Grommet/ChaosMeter_Grommet'
-
+import {OtherPlayer} from './components/OtherPlayer/OtherPlayer'
 
 function App () {
 
@@ -51,6 +51,7 @@ function App () {
           <SourceDeck />
           <MisinformationDeck />
           <MarkersStore />
+          <OtherPlayer/>
         </div>
       </div>
     </Provider>
