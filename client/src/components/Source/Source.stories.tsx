@@ -1,73 +1,80 @@
 import React from 'react';
+/*
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Source, SourceProps } from './Source';
+import { SourceComponent, SourceProps } from './Source';
 import { withDesign } from 'storybook-addon-designs'
 
 export default {
   title: 'Source',
-  component: Source,
+  component: SourceComponent,
   decorators: [withDesign]
 } as Meta;
 
-const Template: Story<SourceProps> = (args: SourceProps) => <Source {...args} />
+const Template: Story<SourceProps> = (args: SourceProps) => <SourceComponent {...args} />
 
 
 
 export const HighSchool = Template.bind({});
 HighSchool.args = {
-  name: 'high school',
-  markersCommunity: 3,
-  markersRelations: 1,
-  markersSocial: 2
+  source: {
+    name: 'high school',
+    markers_community: 3,
+    markers_relations: 1,
+    markers_social: 2
+  }
 }
 
 
 export const Taxi = Template.bind({});
-Taxi.args = {
+Taxi.args ={source: {
   name: 'taxi',
-  markersCommunity: 3,
-  markersRelations: 1,
-  markersSocial: 2
+  markers_community: 3,
+  markers_relations: 1,
+  markers_social: 2
 }
 
 export const LocalCult = Template.bind({});
-LocalCult.args = {
-  name: 'local cult',
-  markersCommunity: 3,
-  markersRelations: 1,
-  markersSocial: 2
-}
+  LocalCult.args = {
+    source: {
+      name: 'local cult',
+      markers_community: 3,
+      markers_relations: 1,
+      markers_social: 2
+    }
+  }
 
 export const Pub = Template.bind({});
-Pub.args = {
-  name: 'pub',
-  markersCommunity: 3,
-  markersRelations: 1,
-  markersSocial: 2
-}
+  Pub.args = {
+    source: {
+      name: 'pub',
+      markers_community: 3,
+      markers_relations: 1,
+      markers_social: 2
+    }
+  }
 
 export const University = Template.bind({});
-University.args = {
+University.args ={source: {
   name: 'university',
-  markersCommunity: 3,
-  markersRelations: 1,
-  markersSocial: 2
+  markers_community: 3,
+  markers_relations: 1,}
+  markers_social: 2
 }
 
 export const HairSalon = Template.bind({});
-HairSalon.args = {
+HairSalon.args ={source: {
   name: 'hair salon',
-  markersCommunity: 3,
-  markersRelations: 1,
+  markers_community: 3,
+  markersRelations: 1,}
   markersSocial: 2
 }
 
 // export const Gym = Template.bind({});
-// Gym.args = {
+// Gym.args ={source: {
 //   name: 'gym',
 //   category: 'community'
-// }
+// }}
 
 // export const ASDA = Template.bind({});
 // ASDA.args = {
@@ -170,3 +177,4 @@ HairSalon.args = {
 //   name: 'tiktok',
 //   category: 'social'
 // }
+ */

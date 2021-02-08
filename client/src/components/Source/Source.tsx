@@ -1,44 +1,50 @@
 import React from 'react';
-
+import {Source} from '../../types/objects.REDO'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase } from '../../helpers/utils';
 import './Source.css'
 
 
 export interface SourceProps {
-  name: string,
-  markersCommunity: number,
-  markersSocial: number,
-  markersRelations: number,
-  canMoveTo: boolean
+  source: Source;
 }
 
 
-export const Source: React.FC<SourceProps> = ({ name, markersCommunity, markersSocial, markersRelations, canMoveTo }: SourceProps) => { // SVGIcon
+export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) => { // SVGIcon
   
   
-  
+  let { name, markers_community, markers_social, markers_relations,
+    canMove, canLogOff, canLogOn, canClearCommunity,
+    canClearRelations, canClearSocial, canShare, canDebunk } = source;
+
   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
-  const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>> = getIcon(toCamelCase(name) + 'Icon');
+  const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+    = getIcon(toCamelCase(name) + 'Icon');
 
 
-  const getMarker = (category: string, num: number) => {
+  const getMarker = (category: string, num: number,) => {
+    //additonal svgs 
     if (num > 0) {
       console.log(toCamelCase(`marker ${category} ${num}`))
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
-      return <Icon />;
+      return <Icon  />;
     }
   }
 
   const Iconnn = getIcon('markerRelations3');
 
+  //adding the right class names
+   let canMoveClassName = canMove ? 'can-move-to' : ''
+  let canLogOffClassName = canLogOff ? 'can-log-off' : ''
+  let canLogOnClassName = canLogOn ? 'can-log-on' : ''
+
   return (
-    <div className={`source-container ${name} ${canMoveTo ? 'can-move-to' : ''}`} >
+    <div className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
       <SVGIconSource />
       <div className="markersContainer">
-        {getMarker('community', markersCommunity)}
-        {getMarker('social', markersSocial)}
-        {getMarker('relations', markersRelations)}
+        {getMarker('community', markers_community)} 
+        {getMarker('social', markers_social)}
+        {getMarker('relations', markers_relations)}
       </div>
     </div>
   )
