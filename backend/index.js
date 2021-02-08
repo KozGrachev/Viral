@@ -63,6 +63,7 @@ io.on('connection', function (socket) {
   });
   socket.on('onChangeState', function (_a) {
     var newState = _a.newState, Player = _a.Player;
+    console.log('NEWSTATE: ', newState, 'CONSOLE FROM ONCGANGE');
     var user = Player;
     redis_db_1.setState(user.room, newState);
     socket.broadcast.to(user.room)
@@ -74,9 +75,12 @@ io.on('connection', function (socket) {
   //   getState(room).then(data => socket.emit('updatedState', data));
   // });
   socket.on('retriveGame', function (player) {
-    player && redis_db_1.getState(player.room).then(function (data) {
+    console.log('RETRIBE GAME player', player);
+    redis_db_1.getState(player.room).then(function (data) {
+      console.log(data, 'data from db');
       data === null || data === void 0 ? void 0 : data.players.push(player);
-      redis_db_1.setState(player.room, data);
+      data && redis_db_1.setState(player.room, data);
+      console.log('retrive data sent back after user added -players', data === null || data === void 0 ? void 0 : data.players);
       socket.emit('updatedState', data);
       socket.broadcast.to(player.room).emit('updatedState', data);
     });
@@ -88,13 +92,11 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function () {
     console.log('disconnect works');
     var user = users_1.userLeave(socket.id);
-    console.log(user, 'user');
-    user && console.log(redis_db_1.getState(user.room).then(function (data) { return data; }));
+    console.log('from the disconnect', user === null || user === void 0 ? void 0 : user.room);
     user &&
             redis_db_1.getState(user.room).then(function (game) {
               var newPlayers = game === null || game === void 0 ? void 0 : game.players.filter(function (player) { return player.name !== user.name; });
               var data = __assign(__assign({}, game), { players: newPlayers });
-              console.log(data);
               redis_db_1.setState(user.room, data);
               socket.emit('updatedState', data);
               socket.broadcast.to(user.room).emit('updatedState', data);
