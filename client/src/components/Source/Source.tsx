@@ -46,7 +46,7 @@ export const Source: React.FC<SourceProps> = ({ name, markersCommunity, markersS
   const Iconnn = getIcon('markerRelations3');
 
   return (
-    <div className={`source-container ${name}  `} >
+    <div className={`source-container ${name}`} >
       <SVGIconSource />
       <div className="markersContainer">
         {getMarker('community', markersCommunity)}
