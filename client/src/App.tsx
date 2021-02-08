@@ -57,7 +57,9 @@ function App () {
             <PlayerPrompt />
           </div>
           <div className="board-container">
-            <SourceParent />
+            <div id="game-board">
+              <SourceParent />
+            </div>
             <ChaosMeter />
             <SourceDeck />
             <MisinformationDeck />

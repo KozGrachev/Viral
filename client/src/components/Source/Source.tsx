@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { getIcon } from '../../helpers/iconExporter'
-import { toCamelCase } from '../../helpers/utils';
+import { toCamelCase, toKebabCase } from '../../helpers/utils';
 
 
 export interface SourceProps {
@@ -31,7 +31,7 @@ export const Source: React.FC<SourceProps> = ({ name, markersCommunity, markersS
   const Iconnn = getIcon('markerRelations3');
 
   return (
-    <div className={`source-container ${name}`} >
+    <div className={`source-container ${toKebabCase(name)}`} >
       <SVGIconSource />
       <div className="markersContainer">
         {getMarker('community', markersCommunity)}

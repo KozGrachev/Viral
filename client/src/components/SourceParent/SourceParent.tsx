@@ -19,7 +19,7 @@ export const SourceParent = () => {
   }
 
   return (
-    <div>grid-column: 2/span 4;
+    <div id="map">
       {renderSources(sources)}
     </div>
   )

@@ -62,8 +62,35 @@ body {
   border-radius: 30px;
 }
 
+#game-board {
+  width: 1200px;
+  height: 1200px;
+  background-color: pink; 
+}
 
+#map {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: url(/assets/allIcons/game-board.svg);
+  background-color: lightgoldenrodyellow;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 22fr 41fr 54fr 60fr 73fr 80fr 87fr;
+  grid-template-rows: 29fr 44fr 53fr 60fr;
+}
 
+.university {
+  grid-area: 3/1/4/2;
+}
+
+.gym {
+  grid-area: 3/3/4/5;
+}
+
+.instagram {
+  grid-area: 3/6/4/7;
+}
 
 
 
