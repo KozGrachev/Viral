@@ -21,15 +21,6 @@ export const PlayerPawn: React.FC<PlayerPawnProps> = ({
       <div className='player_pawn'>
         <p>Connor</p>
       </div>
-      <div className='player_pawn_2'>
-        <p>Connor</p>
-      </div>
-      <div className='player_pawn_3'>
-        <p>Connor</p>
-      </div>
-      <div className='player_pawn_4'>
-        <p>Connor</p>
-      </div>
     </div>
   );
 };
