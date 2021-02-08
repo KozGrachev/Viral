@@ -1,17 +1,15 @@
 import React from 'react';
 import "./CureDeck.css"
-import { DefaultRootState, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/gameState/store';
 
 
 
 
-
-
-export const CureDeck: React.FC = ():JSX.Element => { // SVGIcon
-  // using redux instead of props for real implementation
+export const CureDeck: React.FC = ():JSX.Element => { 
+  
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
-  console.log('gamestate from curedeck' , gamestate)
+  
   let misinformationCommunityHasDebunked = gamestate.misinformation.community.debunked
   let misinformationRelationsHasDebunked = gamestate.misinformation.relations.debunked
   let misinformationSocialHasDebunked = gamestate.misinformation.social.debunked
