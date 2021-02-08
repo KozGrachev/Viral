@@ -14,3 +14,9 @@
 .progress p {
   justify-content: center;
 }
+
+@keyframes progress {
+  to {
+    stroke-dasharray: 100;
+  }
+}

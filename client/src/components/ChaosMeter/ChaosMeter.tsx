@@ -1,7 +1,9 @@
 import React from 'react';
 import './ChaosMeter.css';
-
+import { store } from '../../redux/gameState/store';
 export const ChaosMeter: React.FC = () => {
+  const chaos = store.getState().gameStateReducer.chaosMeter;
+
   return (
     <>
       <svg width='250' height='250'>

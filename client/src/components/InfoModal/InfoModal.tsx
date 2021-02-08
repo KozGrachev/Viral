@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import './InfoModal.css';
 
-export interface InfoModalProps {
-  title: string;
-  isOpen: boolean;
-  onClose: () => void;
-}
 
-export const InfoModal: React.FC<InfoModalProps> = ({
-  title,
-  isOpen,
-}: InfoModalProps) => {
+export const InfoModal: React.FC = () => {
+
+  const onClose = () => {
+
+  };
+
   return (
     <div className='modal_container'>
       <div className='modal_header'>

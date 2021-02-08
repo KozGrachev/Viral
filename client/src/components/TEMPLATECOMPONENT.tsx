@@ -4,6 +4,9 @@ import React from 'react';
 // import { Story, Meta } from '@storybook/react/types-6-0';
 // import { SourceCard, SourceCardProps } from './SourceCard';
 // import { withDesign } from 'storybook-addon-designs'
+import { Story, Meta } from '@storybook/react/types-6-0';
+// import { COMPONENT, COMPONENTPROPS } from './COMPONENTPATH';
+import { withDesign } from 'storybook-addon-designs';
 
 // export interface SOMECOMPONENTProps {
 
