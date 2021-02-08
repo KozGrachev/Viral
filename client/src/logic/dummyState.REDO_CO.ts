@@ -1,6 +1,6 @@
 // this initial state presumes 2 players, 3 locations (one for each color), 3 connection and 3 misinfo cards, and 1 viral card.
 
-import { Gamestate, Card, Source, Player, Misinformation, Connection } from '../types/gameStateTypes'
+ import { Gamestate, Card, Source, Player, Misinformation, Connection } from '../types/gameStateTypes'
 
 export const initDummyState: Gamestate = {
   sources: [

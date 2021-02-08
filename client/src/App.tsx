@@ -45,7 +45,6 @@ function App () {
   return (
     // <Grommet theme={grommet} full>
     <Provider store={store}>
-
       <div className="app-outer-wrapper">
         <div className="app-container">
           {/* <Map /> */}
