@@ -2,6 +2,8 @@ import React from 'react';
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toPascalCase } from '../../helpers/utils'
 import './SourceCard.css'
+import { shareCardEvent } from '../../logic/event.listeners';
+import { ShareCardProps } from '../../redux/gameState/reduxTypes'
 
 //! issue with "Card" interface beings used for both Source/connection & "Viral" cards, which have name type "null" - possible change types/logic later
 export interface SourceCardProps {
@@ -15,6 +17,9 @@ export interface SourceCardProps {
 
 
 export const SourceCard: React.FC<SourceCardProps> = ({ name, category, canShare }: SourceCardProps) => { // SVGIcon
+
+  const currentState = {}
+
   const SVGIcon = getIcon(toCamelCase(name) + 'Icon');
 
   const handleShareClick = (id: string) => {
@@ -22,15 +27,23 @@ export const SourceCard: React.FC<SourceCardProps> = ({ name, category, canShare
     console.log(`SHARING CARD ${name} WITH ${id}`);
   }
 
-  const renderShareButtons = (shareWith: {name:string, id:string}[]) => {
-    return shareWith.map(player => <button onClick={() => handleShareClick(player.id)}>{ player.name}</button>)
+
+  const renderShareButtons = (shareWith: { name: string, id: string }[]) => {
+    return shareWith.map(player => <button onClick={() => handleShareClick(player.id)
+
+      // shareCardEvent({
+      //   oldState: currentState,
+      //   currentPlayerID: ,
+      //   recipient: player.id,
+      //   sharedCard: name
+      // })
+    }>{player.name}</button>)
   }
   return (
     <div className={`source-card-container ${category}`} >
       <SVGIcon name={name} className="card-icon" />
       <div className="name-container" >
         <p className="title">{toPascalCase(name)}</p>
-        <p className="title">test test</p>
         {renderShareButtons(canShare)}
       </div>
     </div>
