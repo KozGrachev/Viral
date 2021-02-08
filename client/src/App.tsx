@@ -15,6 +15,7 @@ import { MarkersStore } from './components/MarkersStore/MarkersStore'
 import { MisinformationDeck } from './components/MisinformationDeck/misinformationDeck'
 import { ChaosMeter } from './components/ChaosMeter/ChaosMeter'
 import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
+import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from './components/SourceParent/SourceParent';
 import { ChaosMeterGrommet } from './components/ChaosMeter_Grommet/ChaosMeter_Grommet'
 
@@ -28,29 +29,32 @@ function App () {
   }, []);
 
   return (
-    <Grommet full>
-      <Provider store={store}>
+    // <Grommet theme={grommet} full>
+    <Provider store={store}>
 
-        <div className="app-outer-wrapper">
-          <div className="app-container">
-            {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
-            {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
-            {/* <Map /> */}
-            {/* <GameBoard /> */}
-            <div className="sidebar-left">
-              <CardHand />
-            </div>
-            <div className="board-container">
-              <ChaosMeterGrommet />
-              <SourceParent />
-              <SourceDeck />
-              <MisinformationDeck />
-              <MarkersStore />
-            </div>
-          </div>
+      <div className="app-container">
+        {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
+        {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
+        <PlayerPrompt />
+        {/* <Map /> */}
+        {/* <GameBoard /> */}
+        <div className="sidebar-left">
+
+          <CardHand />
         </div>
-      </Provider>
-    </Grommet>
+
+        <SourceParent />
+        <div className="board-container">
+
+
+          <ChaosMeter />
+          <SourceDeck />
+          <MisinformationDeck />
+          <MarkersStore />
+        </div>
+      </div>
+    </Provider>
+    // {/* </Grommet> */ }
   );
 }
 

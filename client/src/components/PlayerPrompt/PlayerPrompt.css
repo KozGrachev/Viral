@@ -1,0 +1,12 @@
+.player-prompt-container {
+  display: flex;
+  height:150px;
+  width: 300px;
+  border:2px solid ;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  overflow: scroll;
+
+}
+
