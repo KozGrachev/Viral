@@ -14,9 +14,6 @@ export const CureDeck: React.FC = ():JSX.Element => {
   let misinformationRelationsHasDebunked = gamestate.misinformation.relations.debunked
   let misinformationSocialHasDebunked = gamestate.misinformation.social.debunked
 
-
-
-
   let noCureString = "Not debunked yet - we're screwed"
   let cureString = "Debunked!! bitches!"
   const CureDeck = (<>
