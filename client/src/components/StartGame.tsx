@@ -76,7 +76,9 @@ export const StartGame: React.FC = (): JSX.Element => {
                   <MisinformationDeck /> */}
                   <MarkersStore />
                 {/* </div> */}
+               ---- {state.players[state.players.length-1].name} -----
                ---- {state.players[0].name} -----
+
               </div>)
       }
     </div>

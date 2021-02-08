@@ -1,4 +1,15 @@
 'use strict';
+var __assign = (this && this.__assign) || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+        t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
   Object.defineProperty(o, k2, { enumerable: true, get: function () { return m[k]; } });
@@ -52,7 +63,6 @@ io.on('connection', function (socket) {
   });
   socket.on('onChangeState', function (_a) {
     var newState = _a.newState, Player = _a.Player;
-    console.log('set state', newState);
     var user = Player;
     redis_db_1.setState(user.room, newState);
     socket.broadcast.to(user.room)
@@ -64,14 +74,12 @@ io.on('connection', function (socket) {
   //   getState(room).then(data => socket.emit('updatedState', data));
   // });
   socket.on('retriveGame', function (player) {
-    console.log('players,', player);
-    redis_db_1.getState(player.room).then(function (data) {
+    player && redis_db_1.getState(player.room).then(function (data) {
       data === null || data === void 0 ? void 0 : data.players.push(player);
       redis_db_1.setState(player.room, data);
       socket.emit('updatedState', data);
       socket.broadcast.to(player.room).emit('updatedState', data);
     });
-    // data?.players.push(player).socket.emit('updatedState', data));
   });
   socket.on('getGames', function () {
     redis_db_1.getGames('*').then(function (data) { return socket.emit('games', data); });
@@ -80,9 +88,20 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function () {
     console.log('disconnect works');
     var user = users_1.userLeave(socket.id);
-    if (user) {
-      io.to(user.room).emit('userLeft', user.name + ' has left the game');
-    }
+    console.log(user, 'user');
+    user && console.log(redis_db_1.getState(user.room).then(function (data) { return data; }));
+    user &&
+            redis_db_1.getState(user.room).then(function (game) {
+              var newPlayers = game === null || game === void 0 ? void 0 : game.players.filter(function (player) { return player.name !== user.name; });
+              var data = __assign(__assign({}, game), { players: newPlayers });
+              console.log(game, 'row 86');
+              redis_db_1.setState(user.room);
+              socket.emit('updatedState', data);
+              socket.broadcast.to(user.room).emit('updatedState', data);
+              if (user) {
+                io.to(user.room).emit('userLeft', user.name + ' has left the game');
+              }
+            });
   });
 });
 httpServer.listen(PORT, function () {

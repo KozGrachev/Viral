@@ -20,12 +20,7 @@ export const joinRoom = (player: typeof Player) => {
 
 // Message from server // welcome component 
 socket.on('joinConfirmation', (message: string) => {
-  // const Player =store.getState().playerStateReducer
   console.log(message); // display message to the screen 
-  // if (store.getState().gameStateReducer.players.filter(player => player.name===Player.name).length<1)
-  // store.dispatch(addPlayerToGameState(Player))
-  // const newGame = store.getState().gameStateReducer
-  // socket.emit('onChangeState', {newGame, Player })
 
 });
 
@@ -40,7 +35,6 @@ store.subscribe(() => {
 
 // const addPlayer = (player: typeof Player) => {
 //   socket.emit('addPlayerToGame', player)
-
 // }
 
 
@@ -52,15 +46,15 @@ socket.on('updatedState', (newState: Gamestate) => {
 })
 
 export const getGame = (player: typeof Player) => {
-  socket.emit('retriveGame', player)
+  player && socket.emit('retriveGame', player)
 
 }
 
-// on click when user wants to restart game 
-export const restartGame = (player:typeof Player) => {
-  joinRoom(player);
-  socket.emit('resumeGame', { Player })
-}
+// // on click when user wants to restart game 
+// export const restartGame = (player:typeof Player) => {
+//   joinRoom(player);
+//   socket.emit('resumeGame', { Player })
+// }
 
 export const getGames = () => {
   socket.emit('getGames')

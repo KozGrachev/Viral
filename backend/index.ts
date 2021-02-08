@@ -45,7 +45,6 @@ io.on('connection', (socket) => {
 
   socket.on('onChangeState',
     ({ newState, Player }: { newState: Gamestate, Player: IUser }) => {
-      console.log('set state', newState);
       const user = Player;
       setState(user.room, newState);
       socket.broadcast.to(user.room)
@@ -61,15 +60,15 @@ io.on('connection', (socket) => {
   // });
 
   socket.on('retriveGame', (player: Player) => {
-    console.log('players,', player);
-    getState(player.room).then(data => {
+
+    player && getState(player.room).then(data => {
       data?.players.push(player);
       setState(player.room, data);
+
       socket.emit('updatedState', data);
       socket.broadcast.to(player.room).emit('updatedState', data);
 
     });
-    // data?.players.push(player).socket.emit('updatedState', data));
 
   });
 
@@ -84,15 +83,26 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('disconnect works');
     const user = userLeave(socket.id);
+    console.log(user, 'user'); user && console.log(getState(user!.room).then(data => data));
 
-    if (user) {
-      io.to(user.room).emit(
-        'userLeft', `${user.name} has left the game`);
-    }
+    user &&
+      getState(user.room).then(game => {
+        const newPlayers = game?.players.filter(player => player.name !== user.name);
+        const data = { ...game, players: newPlayers };
+        console.log(game, 'row 86');
+        setState(user.room,);
+        socket.emit('updatedState', data);
+        socket.broadcast.to(user.room).emit('updatedState', data);
+
+        if (user) {
+          io.to(user.room).emit(
+            'userLeft', `${user.name} has left the game`);
+        }
+
+      });
   });
+
 });
-
-
 
 httpServer.listen(PORT, () =>
   console.log(`Server is listening on port ${PORT}`)

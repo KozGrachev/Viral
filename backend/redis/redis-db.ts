@@ -2,7 +2,7 @@ import { promisify } from 'util';
 import redis from 'redis';
 import dotenv from 'dotenv';
 import { Gamestate } from '../utils/game';
-import { IUser } from '../utils/users';
+import { IUser, Socket } from '../utils/users';
 
 dotenv.config({ path: __dirname + '../.env' });
 
@@ -38,13 +38,33 @@ export const setState = (room: IUser['room'], state?: Gamestate): void => {
 
 };
 
-export const getState = async (room: IUser['room']): Promise<Gamestate | undefined> => {
 
-  const json = await redisGetAsync(room);
+export const setUser = (users:string, usersArray:Socket[] | undefined): void => {
+
+  const json = JSON.stringify(usersArray);
+  client.set(users, json);
+
+};
+
+export const getUsers = async (): Promise<Socket[] | undefined> => {
+  const json = await redisGetAsync('users');
   if (json) {
     const state = JSON.parse(json);
     return state;
   }
+
+};
+
+
+export const getState = async (room: IUser['room']): Promise<Gamestate | undefined> => {
+  if (!room) return;
+  const json = await redisGetAsync(room);
+  if (json) {
+    const state = JSON.parse(json);
+    return state;
+
+  }
+
 };
 
 // get all games saved room:Game list returns as an array of strings 
