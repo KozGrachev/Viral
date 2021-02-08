@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/gameState/store';
-import "./SpreadLevel.css"
+import "./SpreadLevel.scss"
 
 export interface SpreadLevelProps {
   spreadLevel: number

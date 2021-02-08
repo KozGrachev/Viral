@@ -55,8 +55,9 @@ function App () {
             <PlayerPrompt />
           </div>
           <div className="board-container">
-          <CureDeck /> 
-          <SpreadLevel/> 
+          <CureDeck />
+          <SpreadLevel/>
+            <SourceParent />
             <ChaosMeter />
             <SourceDeck />
             <MisinformationDeck />

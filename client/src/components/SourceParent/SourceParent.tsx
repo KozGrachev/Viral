@@ -5,14 +5,15 @@ import { SourceComponent  } from '../Source/Source'
 import {Source} from '../../types/gameStateTypes'
 import { render } from '@testing-library/react';
 import {useSelector} from 'react-redux'
-import {RootState} from '../../redux/gameState/store'
+import { RootState } from '../../redux/gameState/store'
+import './SourceParent.scss'
 
 export const SourceParent = () => {
   // const sources = initDummyState.sources;
   const sources = useSelector((state: RootState) => state.gameStateReducer.sources);
 
 
-  // use the 
+  // use the
 
   const renderSources = (srcArr: Source[]) => {
     
@@ -23,7 +24,7 @@ export const SourceParent = () => {
   }
 
   return (
-    <div>
+    <div id="source-parent-grid-container">
       {renderSources(sources)}
     </div>
   )
