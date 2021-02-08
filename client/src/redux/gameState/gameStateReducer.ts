@@ -4,6 +4,7 @@ import { initialState } from './initialState'
 import { Gamestate } from '../../types/gameStateTypes'
 import { clearMisinfo, debunkMisinfo, discardCard, logOnOff, moveAction, shareCard } from '../../logic/actions.newState_CO'
 import { addPlayerToGame, setUp } from '../../logic/actions.MW';
+import { Console } from 'console';
 //here should be a initial State of the Game
 const GameState: Gamestate = initialState;
 
@@ -50,8 +51,9 @@ export function gameStateReducer(
     }
     case START_GAME: {
       const initialState = setUp(action.payload)
-      console.log('it gets here')
-      const obj = { ...state, ...initialState, gameOn:true }
+      console.log('it gets here - START GAME REDUCER')
+      const obj = {...state, ...initialState, gameOn:true, received:false }
+      console.log('obj - AFTER UPDATE', obj)
       return obj
 
     }

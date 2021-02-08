@@ -31,7 +31,7 @@ const redisKEYSAsync = promisify(client.KEYS).bind(client);
 // const redisDelAsync = promisify(client.del).bind(client);
 
 
-export const setState = (room: IUser['room'], state: unknown): void => {
+export const setState = (room: IUser['room'], state: Gamestate): void => {
 
   const json = JSON.stringify(state);
   client.set(room, json);

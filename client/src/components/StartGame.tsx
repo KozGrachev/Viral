@@ -73,15 +73,15 @@ export const StartGame: React.FC = (): JSX.Element => {
                 <div className="board-container">
                   <ChaosMeter />
                   <SourceDeck />
-                  <MisinformationDeck /> */}
+                  <MisinformationDeck />
                   <MarkersStore />
-                {/* </div> */}
-               ---- {state.players[state.players.length-1].name} -----
-               ---- {state.players[0].name} -----
+                  </div> */}
+               Just a check---- {state.players[state.players.length - 1].name} -----
+               Just a check ---- {state.players[0].name} -----
 
               </div>)
       }
     </div>
 
-  )
-}
+          )
+      }
