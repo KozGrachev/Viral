@@ -4,23 +4,21 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import './PlayerPawn.css';
 import { withDesign } from 'storybook-addon-designs';
+import { useSelector } from 'react-redux';
+// import {RootState} from '../../redux/gameState/store'
 
 export interface PlayerPawnProps {
   player: string;
-  color: string;
+  colour: string;
 }
 
 export const PlayerPawn: React.FC<PlayerPawnProps> = ({
   player,
-  color,
+  colour,
 }: PlayerPawnProps) => {
-  // SVGIcon
-
   return (
     <div className='container'>
-      <div className='player_pawn'>
-        <p>Connor</p>
-      </div>
+      <div className={`player_pawn ${colour}`}></div>
     </div>
   );
 };

@@ -8,10 +8,23 @@ import { Provider } from 'react-redux';
 import { store } from './redux/gameState/store';
 
 import { StartGame } from './components/StartGame'
+import { connections } from './logic/connections';
 
 
 function App() {
 
+
+  const fakePlayer1 = {
+    name: 'Konstantin',
+    // id: '5678',
+    cards: [
+      connections[Math.floor(Math.random() * (connections.length - 1))],
+    ],
+    cardHandFull: false,
+    isCurrent: false,
+    pawnColor: 'fuchsia',
+    currentSource: 'University'
+  }
 
   return (
     // <Grommet theme={grommet} full>
