@@ -17,7 +17,6 @@ export const PlayerPawn: React.FC<PlayerPawnProps> = ({player, color}: PlayerPaw
   // SVGIcon
 
 
-
   // const color=useSelector((state:RootState)=>state.playerStateReducer.pawnColor)
 
   return (

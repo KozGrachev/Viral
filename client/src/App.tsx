@@ -48,16 +48,15 @@ function App () {
 
       <div className="app-outer-wrapper">
         <div className="app-container">
+          {/* <Map /> */}
+          {/* <GameBoard /> */}
           <div className="sidebar-left">
             <CardHand />
             <PlayerPrompt />
           </div>
           <div className="board-container">
-            <CureDeck /> {/* finished! just needs an initial state from redux */}
-            {/* <Map />
-            <GameBoard /> */}
-            
-            <SpreadLevel /> {/* finished! Just needs an initial state from redux */}
+          <CureDeck />
+          <SpreadLevel/>
             <SourceParent />
             <ChaosMeter />
             <SourceDeck />

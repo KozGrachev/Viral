@@ -2,6 +2,7 @@ import React from 'react';
 
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase } from '../../helpers/utils';
+import './Source.css'
 
 
 export interface SourceProps {
@@ -9,10 +10,11 @@ export interface SourceProps {
   markersCommunity: number,
   markersSocial: number,
   markersRelations: number,
+  canMoveTo: boolean
 }
 
 
-export const Source: React.FC<SourceProps> = ({ name, markersCommunity, markersSocial, markersRelations }: SourceProps) => { // SVGIcon
+export const Source: React.FC<SourceProps> = ({ name, markersCommunity, markersSocial, markersRelations, canMoveTo }: SourceProps) => { // SVGIcon
   
   
   
@@ -31,7 +33,7 @@ export const Source: React.FC<SourceProps> = ({ name, markersCommunity, markersS
   const Iconnn = getIcon('markerRelations3');
 
   return (
-    <div className={`source-container ${name}`} >
+    <div className={`source-container ${name} ${canMoveTo ? 'can-move-to' : ''}`} >
       <SVGIconSource />
       <div className="markersContainer">
         {getMarker('community', markersCommunity)}
