@@ -32,25 +32,24 @@ function App () {
     // <Grommet theme={grommet} full>
     <Provider store={store}>
 
-      <div className="app-container">
-        {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
-        {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
-        <PlayerPrompt />
-        {/* <Map /> */}
-        {/* <GameBoard /> */}
-        <div className="sidebar-left">
-
-          <CardHand />
-        </div>
-
-        <SourceParent />
-        <div className="board-container">
-
-
-          <ChaosMeter />
-          <SourceDeck />
-          <MisinformationDeck />
-          <MarkersStore />
+      <div className="app-outer-wrapper">
+        <div className="app-container">
+          {/* <CureDeck /> */} {/* finished! just needs an initial state from redux */}
+          {/* <SpreadLevel/> */} {/* finished! Just needs an initial state from redux */}
+          {/* <Map /> */}
+          {/* <GameBoard /> */}
+          <div className="sidebar-left">
+            <CardHand />
+            <PlayerPrompt />
+          </div>
+          <div className="board-container">
+            <SourceParent />
+            <ChaosMeter />
+            <SourceDeck />
+            <MisinformationDeck />
+            <MarkersStore />
+            <ChaosMeterGrommet/>
+          </div>
         </div>
       </div>
     </Provider>
