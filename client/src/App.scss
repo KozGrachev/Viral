@@ -146,6 +146,8 @@ body {
   top: 30%;
 }
 
+// Social sources
+
 .instagram {
   grid-area: 3/5/4/6;
   position: absolute;
@@ -200,6 +202,64 @@ body {
   position: absolute;
   left: 20%;
   top: 3.5%;
+}
+
+// Relations sources
+
+.uncle-eugene {
+  grid-area: 1/3/2/4;
+  position: absolute;
+  left: 20%;
+  top: 65%;
+}
+
+.cousin {
+  grid-area: 1/5/2/6;
+  position: absolute;
+  left: 30%;
+  top: 61%;
+}
+
+.fran-from-hr {
+  grid-area: 1/6/2/7;
+  position: absolute;
+  left: 0%;
+  top: 87%;
+}
+
+.evil-ex {
+  grid-area: 1/8/2/9;
+  position: absolute;
+  left: 8%;
+  top: 58%;
+}
+
+.opinionated-grandpa {
+  grid-area: 2/4/3/5;
+  position: absolute;
+  left: 15%;
+  top: 3.5%;
+}
+
+.crazy-dave {
+  grid-area: 2/5/3/6;
+  position: absolute;
+  left: 43%;
+  top: 37%;
+}
+
+.guy-at-the-bus-stop {
+  grid-area: 2/7/3/8;
+  position: absolute;
+  left: 0%;
+  top: 47%;
+}
+
+.mother-in-law {
+  grid-area: 2/8/3/9;
+  position: absolute;
+  left: 10%;
+  top: 10%;
 }
 
 
