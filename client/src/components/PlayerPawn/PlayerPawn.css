@@ -47,3 +47,11 @@
   vertical-align: middle;
   line-height: 100px;
 }
+
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat()
+}
+
+
