@@ -47,7 +47,7 @@ function App () {
         <div className="board-container">
 
 
-          <ChaosMeter />
+          <ChaosMeterGrommet />
           <SourceDeck />
           <MisinformationDeck />
           <MarkersStore />
