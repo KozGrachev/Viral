@@ -1,14 +1,13 @@
 import React from 'react';
-import { store } from '../../redux/gameState/store';
+import {useSelector} from 'react-redux'
+import { RootState } from '../../redux/gameState/store';
 
 
 export const MarkersStore: React.FC= () => { 
 
-   //const left= useSelector((state: RootState) => state.GameState.connectionDeck.length)
-  const communityLeft = store.getState().gameStateReducer.misinformation.community.markersLeft
-  const relationsLeft = store.getState().gameStateReducer.misinformation.relations.markersLeft
-  const socialLeft = store.getState().gameStateReducer.misinformation.social.markersLeft
-
+  const communityLeft= useSelector((state: RootState) => state.gameStateReducer.misinformation.community.markersLeft)
+  const relationsLeft= useSelector((state: RootState) => state.gameStateReducer.misinformation.relations.markersLeft)
+  const socialLeft= useSelector((state: RootState) => state.gameStateReducer.misinformation.social.markersLeft)
 
   return (
     <div className="" > 

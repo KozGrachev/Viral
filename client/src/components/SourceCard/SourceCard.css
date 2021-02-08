@@ -1,10 +1,11 @@
 .name-container p {
   font-size: 17px;
   margin: 0;
+  font-weight: 700;
 }
 
 .name-container {
-  /* justify-self: start; */
+  justify-self: start;
   margin: 10px;
 }
 
@@ -15,15 +16,16 @@
 
 .source-card-container {
   /* position: relative; */
-  margin-top: 10px;
+  margin-bottom: 10px;
   display: grid;
   align-items: center;
   justify-items: center;
   grid-template-columns: 70px auto;
   /* width: 100%; */
   height: 70px;
-  border: 3px solid rgb(212, 212, 212);
+  border: 2px solid rgba(255, 255, 255, 0.288);
   border-radius: 20px;
+  background: rgba(255, 255, 255, 0.473);
   transform: scale(1);
   transition:
     transform 200ms ease-in-out;

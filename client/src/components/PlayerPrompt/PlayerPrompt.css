@@ -1,7 +1,7 @@
 .player-prompt-container {
   display: flex;
   height:150px;
-  width: 300px;
+  width: 100%;
   border:2px solid ;
   flex-direction: column;
   justify-content: flex-start;
