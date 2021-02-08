@@ -61,7 +61,7 @@ io.on('connection', (socket) => {
   // });
 
   socket.on('retriveGame', (player: Player) => {
-    console.log('RETRIBE GAME player', player);
+    // console.log('RETRIBE GAME player', player);
     getState(player.room).then(data => {
       // console.log(data, 'data from db');
       data?.players.push(player);
