@@ -16,6 +16,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, store } from '../../redux/gameState/store';
 import { Player } from '../../types/gameStateTypes';
+import { PlayerPawn, PlayerPawnProps } from '../PlayerPawn/PlayerPawn';
 // import PlayerPawn from '../PlayerPawn/PlayerPawn'
 import { Console } from 'console';
 
@@ -51,6 +52,7 @@ export const NewGameMenu: React.FC = () => {
         <div className='title-container'>
           <h3>Welcome</h3>
         </div>
+
         <input
           type='text'
           name='name'
