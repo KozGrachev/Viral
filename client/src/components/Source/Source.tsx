@@ -33,8 +33,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
 
-console.log('source MOVABLE', source.name, canMove)
-  console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+//console.log('source MOVABLE', source.name, canMove)
+  //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
@@ -80,14 +80,14 @@ console.log('source MOVABLE', source.name, canMove)
 
 
   const clearMisinformationbyOne = (misinfoType: string) => {
-    //throws a logic error !!!
+    console.log('CLEAN ME')
     dispatch(clearMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, misinfoType, location: source.name }))
   }
 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
 
-    if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
+    //if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
 
 
     if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
@@ -96,7 +96,7 @@ console.log('source MOVABLE', source.name, canMove)
   }
 
   const changePlayersCurrentSource = () => {
-   console.log('CLICK')
+   //console.log('CLICK')
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
   }
 
@@ -120,7 +120,7 @@ console.log('source MOVABLE', source.name, canMove)
 
     
 
-      <div onClick={changePlayersCurrentSource} className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
+      <div onClick={changePlayersCurrentSource} className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
         <SVGIconSource />
         <div className="markersContainer">
           {getMarker('community', markers_community, canClearCommunity, canDebunk)}

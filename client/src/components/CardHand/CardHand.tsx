@@ -25,8 +25,8 @@ export const CardHand: React.FC = () => {
   //       misinfoType: 'relations',
   //     },
   //   ]
-  console.log('PLAYER CARDS')
-  console.log(cards)
+  //console.log('PLAYER CARDS')
+  //console.log(cards)
   const renderCards = (cardArray: SourceCardType[]) => {
     return cardArray.map(card => {
       console.log(card)
