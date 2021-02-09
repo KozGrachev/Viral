@@ -299,6 +299,7 @@ export function setUp(players: Player[]) {
   const gameWon = false;
   const gameLost = false;
   const received = false;
+  const gameOn =true; 
 
 
   let state = {
@@ -314,7 +315,8 @@ export function setUp(players: Player[]) {
     turnMovesLeft,
     gameWon,
     gameLost,
-    received
+    received, 
+    gameOn
   }
 
   if (state.players.length > 2) cards = 2;

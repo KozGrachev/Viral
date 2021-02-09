@@ -7,14 +7,14 @@ import { ADD_PLAYER, PlayerStateActionTypes } from "./reduxTypes";
 
 
 let PlayerState: Player = {
-  name: 'Player 1',
-  id: '1234',
+  name: '',
+  id: '',
   cards: [],
   cardHandOverflow: false,
   isCurrent: true,
-  pawnColor: 'green',
-  currentSource: 'University',
-  room: 'hello',
+  pawnColor: '',
+  currentSource: '',
+  room: '',
 }
 
 

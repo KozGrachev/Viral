@@ -1,5 +1,5 @@
 import React from 'react';
-import "./PlayerPrompt.css"
+import "./PlayerPrompt.scss"
 
 export interface PlayerPromptProps {
   msg: string
@@ -9,7 +9,7 @@ export interface PlayerPromptProps {
 
 export const PlayerPrompt: React.FC = () => { // SVGIcon
   // using redux instead of props for real implementation
-  //const gamestate = useSelector(state => state.gamestate) 
+  //const gamestate = useSelector(state => state.gamestate)
   //const msg = gamestate.messages
 
 

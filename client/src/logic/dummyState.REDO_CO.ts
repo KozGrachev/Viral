@@ -78,8 +78,13 @@ export const initDummyState: Gamestate = {
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'green',
+<<<<<<< HEAD
       currentSource: 'pub',
       room:'1',
+=======
+      currentSource: 'University',
+      room: '1',
+>>>>>>> afe228564de474c303b7f9c5bcbb96593c7ae842
     },
     {
       name: 'Player 2',
@@ -88,8 +93,13 @@ export const initDummyState: Gamestate = {
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'purple',
+<<<<<<< HEAD
       currentSource: 'pub',
       room:'1',
+=======
+      currentSource: 'University',
+      room: '1',
+>>>>>>> afe228564de474c303b7f9c5bcbb96593c7ae842
 
     },
   ],
@@ -155,4 +165,5 @@ export const initDummyState: Gamestate = {
   gameWon: false,
   gameLost: false,
   received: false,
+  gameOn: true
 }

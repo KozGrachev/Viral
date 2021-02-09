@@ -2,14 +2,14 @@ import React from 'react';
 import { getIcon } from '../../helpers/iconExporter';
 import { toCamelCase } from '../../helpers/utils';
 import { v4 as uuidv4 } from 'uuid';
-import './OtherPlayer.css'
+import './OtherPlayer.scss'
 import { RootState } from '../../redux/gameState/store'
 import { useSelector } from 'react-redux';
 import { Player } from '../../types/gameStateTypes';
 
 
 export const OtherPlayer: React.FC = () => {
-  
+
   const myName=useSelector((state: RootState) => state.playerStateReducer.name)
   console.log(myName)
   const playerState= useSelector((state: RootState) => state.gameStateReducer.players)

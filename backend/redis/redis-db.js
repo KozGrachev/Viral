@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getGames = exports.getState = exports.setState = void 0;
+exports.getGames = exports.getState = exports.getUsers = exports.setUser = exports.setState = void 0;
 var util_1 = require("util");
 var redis_1 = __importDefault(require("redis"));
 var dotenv_1 = __importDefault(require("dotenv"));
@@ -66,11 +66,35 @@ var setState = function (room, state) {
     client.set(room, json);
 };
 exports.setState = setState;
+var setUser = function (users, usersArray) {
+    var json = JSON.stringify(usersArray);
+    client.set(users, json);
+};
+exports.setUser = setUser;
+var getUsers = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var json, state;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, redisGetAsync('users')];
+            case 1:
+                json = _a.sent();
+                if (json) {
+                    state = JSON.parse(json);
+                    return [2 /*return*/, state];
+                }
+                return [2 /*return*/];
+        }
+    });
+}); };
+exports.getUsers = getUsers;
 var getState = function (room) { return __awaiter(void 0, void 0, void 0, function () {
     var json, state;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, redisGetAsync(room)];
+            case 0:
+                if (!room)
+                    return [2 /*return*/];
+                return [4 /*yield*/, redisGetAsync(room)];
             case 1:
                 json = _a.sent();
                 if (json) {
