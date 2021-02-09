@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { initDummyState } from '../../logic/dummyState.REDO_CO';
+//import { initDummyState } from '../../logic/dummyState.REDO_CO';
 import { SourceComponent  } from '../Source/Source'
 import {Source} from '../../types/gameStateTypes'
 import { render } from '@testing-library/react';
