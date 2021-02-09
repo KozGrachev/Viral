@@ -151,7 +151,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
                 canMove ? 
                   changePlayersCurrentSource :
                   unclickableMessage} 
-        className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType}`} >
+        className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType}`} >
         <SVGIconSource />
         <div className="markersContainer">
           {getMarker('community', markers_community, canClearCommunity, canDebunk)}
