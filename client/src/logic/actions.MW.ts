@@ -132,6 +132,7 @@ function typeCheck(string:string){
 //* spread level will define how many times this function is called 
 
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
+  
   let oldDeck: Card[] = oldState.misinformationDeckActive
   console.log(oldDeck)
   let drawSource: string
@@ -229,6 +230,7 @@ export function viralCheck(object:any): object is ViralCard{
 }
 
 export function dealConnectionCard(oldState: Gamestate) {
+  didLose(oldState)
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
   
   if (newCard.cardType==='viral') {

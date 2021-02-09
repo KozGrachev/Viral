@@ -14,7 +14,7 @@ export const ChaosMeter: React.FC = () => {
           <circle cx="70" cy="70" r="70"></circle>
         </svg>
         <div className="number">
-          <h2>75<span>%</span></h2>
+          <h2>{chaos*25}<span>%</span></h2>
         </div>
       </div>
     </div>
