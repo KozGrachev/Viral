@@ -2,7 +2,7 @@ import React from 'react';
 import {Player, Source} from '../../types/objects.REDO'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase } from '../../helpers/utils';
-import './Source.css'
+import './Source.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { clearMisinfoAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
