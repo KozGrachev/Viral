@@ -15,28 +15,34 @@ export function gameStateReducer(
   switch (action.type) {
     case MOVE_ACTION: {
       const ap = action.payload;
-      return (moveAction(ap.oldState, ap.currentPlayerID, ap.location), { ...state, received: false });
+      const newstate = moveAction(ap.oldState, ap.currentPlayerID, ap.location)
+      return { ...state, ...newstate, received: false };
     }
     case CLEAR_MISINFO: {
       const ap = action.payload;
-      return (clearMisinfo(ap.oldState, ap.currentPlayerID, ap.misinfoType, ap.location), { ...state, received: false })
+      const newstate = clearMisinfo(ap.oldState, ap.currentPlayerID, ap.misinfoType, ap.location)
+      return { ...state, ...newstate, received: false }
     }
     case SHARE_CARD: {
       const ap = action.payload;
-      return (shareCard(ap.oldState, ap.currentPlayerID, ap.recipient, ap.sharedCard), { ...state, received: false });
+      const newstate = shareCard(ap.oldState, ap.currentPlayerID, ap.recipient, ap.sharedCard)
+      return { ...state, ...newstate, received: false };
     }
     case LOG_ON_OFF: {
       const ap = action.payload;
-      return (logOnOff(ap.oldState, ap.currentPlayerID, ap.location, ap.usedCard), { ...state, received: false });
+      const newstate = logOnOff(ap.oldState, ap.currentPlayerID, ap.location, ap.usedCard)
+      return { ...state, ...newstate, received: false };
     }
     case DEBUNK_MISINFO: {
       const ap = action.payload;
-      return (debunkMisinfo(ap.oldState, ap.currentPlayerID, ap.usedCards, ap.misinfoType), { ...state, received: false });
+      const newstate = debunkMisinfo(ap.oldState, ap.currentPlayerID, ap.usedCards, ap.misinfoType)
+      return { ...state, ...newstate, received: false };
     }
-    case DISCARD_ACTION: {
-      const ap = action.payload;
-      return (discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard), { ...state, received: false });
-    }
+    // case DISCARD_ACTION: {
+    //   const ap = action.payload;
+    //   const newstate = debunkMisinfo(ap.oldState, ap.currentPlayerID, ap.usedCards, ap.misinfoType)
+    //   return (discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard), { ...state, received: false });
+    // }
     case UPDATE_GAME_STATE:
       return {
         ...state, ...action.payload
@@ -52,7 +58,7 @@ export function gameStateReducer(
     case START_GAME: {
       const initialState = setUp(action.payload)
       console.log('it gets here - START GAME REDUCER')
-      const obj = {...state, ...initialState, gameOn:true, received:false }
+      const obj = { ...state, ...initialState, gameOn: true, received: false }
       console.log('obj - AFTER UPDATE', obj)
       return obj
 
