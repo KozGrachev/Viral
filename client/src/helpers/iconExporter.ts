@@ -40,7 +40,7 @@ import { ReactComponent as markerRelations3 } from '../assets/allIcons/marker-re
 import { ReactComponent as map } from '../assets/allIcons/map.svg'
 import { ReactComponent as gameBoard } from '../assets/allIcons/game-board.svg'
 import { ReactComponent as gameBoardWithoutSources } from '../assets/allIcons/game-board-without-sources.svg'
-
+import { ReactComponent as hexagonPlayerPawn } from '../assets/hexagon-player-pawn.svg'
 
 
 // interface svgsMap {
@@ -86,6 +86,7 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   map,
   gameBoard,
   gameBoardWithoutSources,
+  hexagonPlayerPawn,
 }
 
 
