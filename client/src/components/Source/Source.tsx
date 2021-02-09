@@ -22,6 +22,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
   const array = useSelector((state: RootState) => state.gameStateReducer.players.filter(player=>player.isCurrent===true))
+  //console.log('CURRENT PLAYER', array)
   const currentPlayer=array[0]
   const allPlayers=useSelector((state: RootState) => state.gameStateReducer.players)
   //console.log('gamestate from source : ', gamestate)
@@ -34,12 +35,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     canMove, canLogOff, canLogOn, canClearCommunity,
     canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
-<<<<<<< HEAD
-
-// console.log('source MOVABLE', source.name, canMove)
-//   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
-=======
->>>>>>> a445faf240f8ef15953d3c55a5813e09d03e8bab
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
@@ -78,9 +73,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   }
 
-
-
-
   const clearMisinformationbyOne = (misinfoType: string) => {
     //throws a logic error !!!
     dispatch(clearMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, misinfoType, location: source.name }))
@@ -88,13 +80,14 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
+    let test:Player[]=[];
     for(const player of allPlayers){
-    if (player.currentSource === source.name&& !players.includes(player)) {
-      players.push(currentPlayer)
-     
+      if (player.currentSource === source.name&& !test.includes(player)) {
+        test.push(currentPlayer)
+      }
     }
-  }
-    if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
+    //console.log(players)
+    if (test.length > 0) return test.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
     else return null
 
   }
