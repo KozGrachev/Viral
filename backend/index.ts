@@ -6,7 +6,7 @@ import { IUser, userJoin, userLeave } from './utils/users';
 import { getState, setState, getGames } from './redis/redis-db';
 
 import * as dotenv from 'dotenv';
-import { Gamestate } from './utils/game';
+import { Gamestate, Player } from './utils/game';
 
 dotenv.config({ path: __dirname + '/.env' });
 const app = express();
@@ -20,62 +20,84 @@ const io = new Server(httpServer, {
 
 
 
-let welcomeMessage = 'Welcome';
+const welcomeMessage = 'Welcome';
 
 io.on('connection', (socket) => {
   console.log('server connected');
 
 
-  socket.on('joinRoom', ({ name, room }: { name: string, room: string }) => {
+  socket.on('joinRoom', (player: Player) => {
 
-    const user = userJoin(socket.id, name, room);
+    const user = userJoin(socket.id, player.name, player.room);
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit('joinConfirmation', `${welcomeMessage} ${name}, you can start playing now.`);
+    socket.emit('joinConfirmation', `${welcomeMessage} ${player.name}, you can start playing now.`);
 
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
       .emit(
         'joinConfirmation',
-        `${name} has joined the game`);
+        `${player.name} has joined the game`);
 
   });
 
   socket.on('onChangeState',
     ({ newState, Player }: { newState: Gamestate, Player: IUser }) => {
+      // console.log('NEWSTATE: ', newState, 'CONSOLE FROM ONCGANGE');
       const user = Player;
+      setState(user.room, newState);
       socket.broadcast.to(user.room)
         .emit('updatedState', newState);
       //save to database
-      setState(user.room, newState);
+
     });
 
-  socket.on('resumeGame', (room: IUser['room']) => {
-    welcomeMessage = 'Welcome back';
-    getState(room).then(data => socket.emit('updatedState', data));
+  socket.on('retriveGame', (player: Player) => {
+    // console.log('RETRIBE GAME player', player);
+    getState(player.room).then(data => {
+      // console.log(data, 'data from db');
+      data?.players.push(player);
+      data && setState(player.room, data);
+      // console.log('retrive data sent back after user added -players', data?.players);
+      socket.emit('updatedState', data);
+      socket.broadcast.to(player.room).emit('updatedState', data);
+
+    });
 
   });
 
-  
+
   socket.on('getGames', () => {
     getGames('*').then(data => socket.emit('games', data));
   });
+
+
 
   // Runs when client disconnects
   socket.on('disconnect', () => {
     console.log('disconnect works');
     const user = userLeave(socket.id);
+    // console.log('from the disconnect', user?.room);
+    user &&
+      getState(user.room).then(game => {
+        const newPlayers = game?.players.filter(player => player.name !== user.name);
+        const data = { ...game, players: newPlayers };
+        if (data) {
+          setState(user.room, data);
+          socket.emit('updatedState', data);
+          socket.broadcast.to(user.room).emit('updatedState', data);
+        }
+        if (user) {
+          io.to(user.room).emit(
+            'userLeft', `${user.name} has left the game`);
+        }
 
-    if (user) {
-      io.to(user.room).emit(
-        'userLeft', `${user.name} has left the game`);
-    }
+      });
   });
+
 });
-
-
 
 httpServer.listen(PORT, () =>
   console.log(`Server is listening on port ${PORT}`)
