@@ -1,7 +1,8 @@
 import { Gamestate, Card,ViralCard, Source, Player, Misinformation } from '../types/gameStateTypes'
-import { didWin, viral as playViralCard, dealMisinfoCard } from './actions.MW'
+import { didWin, viral as playViralCard, dealMisinfoCard,dealConnectionCard } from './actions.MW'
 import { connections as sources } from './connections'
 import {viralCheck} from './actions.MW'
+import { MisinformationDeck } from '../components/MisinformationDeck/misinformationDeck';
 
 
 //* START THE GAME
@@ -33,6 +34,7 @@ export function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], l
 
 export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'], misinfoType: Misinformation['name'], location: Source['name']): Gamestate {
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
+  console.log('old state in clearmisinfo', oldState)
   let noOfMarkers: number = 1;
   if (oldState.misinformation[misinfoType].debunked) {
     noOfMarkers = oldState.sources[sourceIndex][`markers_${misinfoType}`]
@@ -49,13 +51,17 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
       ...oldState.misinformation,
       [misinfoType]: {
         ...oldState.misinformation[misinfoType],
-        markersLeft: oldState.misinformation[misinfoType].markersLeft + noOfMarkers
+        markersLeft: oldState.misinformation[misinfoType].markersLeft - noOfMarkers
       }
     },
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
   console.log('player cleared', noOfMarkers, misinfoType);
   console.log('there are', newState.turnMovesLeft, 'moves left')
+  console.log('new state in clearmisinfo', newState)
+  //switch it back to return nextMoveChecker(newState, currentPlayerID); unless u wanna see the world burn
+
+  // return newState
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -161,6 +167,7 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
   const location: Player['currentSource'] = oldState.players[playerIndex].currentSource;
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
   //* move check
+  console.log('location from updatePossible', location)
   const adjacents: string[] = sources.filter((source) => source.name === location)[0].connections;
   //* clear checks
   const clearCommunityMisinfo: boolean = oldState.sources[sourceIndex].markers_community > 0;
@@ -254,9 +261,10 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
     .map((player) => player.id)
     .indexOf(currentPlayerID);
   let cardsLeft = noOfCards;
+  
   let newState: Gamestate = oldState;
   while (cardsLeft > 0) {
-    newState = dealConnectionCard(oldState, currentPlayerID);
+    newState = dealConnectionCard(oldState);
     if (newState.players[playerIndex].cards.length > 6) {
       console.log('your hand is full, you need to discard a card');
       return {
@@ -277,6 +285,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   let misinfoCardNo = [2, 2, 3, 4][newState.spreadLevel];
   while (misinfoCardNo > 0) {
     newState = dealMisinfoCard(newState, 1, false)!
+    misinfoCardNo--
   }
   //change current player turn
   //? anything else needs resetting?
@@ -308,39 +317,40 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
 }
 
 
-export function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
-  //* if no cards left then game is lost
-  if (oldState.connectionDeck.length === 0) {
-    console.log('no more connections... you lost!');
-    return {
-      ...oldState,
-      gameLost: true
-    }
-  }
-  const newCard: Card|ViralCard = oldState.connectionDeck[0]
-  if (viralCheck(newCard)) {
-    //? does viral function remove card? should it be returned? should it also break for game checks?
-    console.log('you drew a viral card!');
-    return playViralCard(oldState)
-  }
-  else {
-    const newState: Gamestate =
-    {
-      ...oldState,
-      players: oldState.players
-        .map((player) => player.id === currentPlayerID ?
-          {
-            ...player,
-            cards: [...player.cards, newCard],
-          } :
-          player
-        ),
-      connectionDeck: oldState.connectionDeck.slice(1)
-    };
-    console.log('player was dealt a', newCard, 'connection card');
-    return newState;
-  }
-}
+// export function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+//   //* if no cards left then game is lost
+//   if (oldState.connectionDeck.length === 0) {
+//     console.log('no more connections... you lost!');
+//     return {
+//       ...oldState,
+//       gameLost: true
+//     }
+//   }
+//   const newCard: Card|ViralCard = oldState.connectionDeck[0]
+//   console.log('NEWCARD' , newCard)
+//   if (viralCheck(newCard)) {
+//     //? does viral function remove card? should it be returned? should it also break for game checks?
+//     console.log('you drew a viral card!');
+//     return playViralCard(oldState)
+//   }
+//   else {
+//     const newState: Gamestate =
+//     {
+//       ...oldState,
+//       players: oldState.players
+//         .map((player) => player.id === currentPlayerID ?
+//           {
+//             ...player,
+//             cards: [...player.cards, newCard],
+//           } :
+//           player
+//         ),
+//       connectionDeck: oldState.connectionDeck.slice(1)
+//     };
+//     console.log('player was dealt a', newCard, 'connection card');
+//     return newState;
+//   }
+// }
 
 
 export function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {

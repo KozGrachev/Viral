@@ -16,7 +16,7 @@ function App() {
 
   const fakePlayer1 = {
     name: 'Konstantin',
-    // id: '5678',
+     id: '5678',
     cards: [
       connections[Math.floor(Math.random() * (connections.length - 1))],
     ],
@@ -27,11 +27,12 @@ function App() {
   }
 
   return (
-    // <Grommet theme={grommet} full>
+
     <Provider store={store}>
+
       <StartGame />
     </Provider >
-    // </Grommet>
+    
   );
 }
 

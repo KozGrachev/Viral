@@ -17,7 +17,6 @@ export function shuffle(array: any[]) {
   return array;
 }
 
-
 export function didWin(state: Gamestate) {
   if (state.misinformation.community.debunked === true &&
     state.misinformation.social.debunked === true &&
@@ -92,7 +91,7 @@ export function playerOrder(oldState: Gamestate) { //! where to put this?
 
 
 export function insertViralCards(oldState: Gamestate) {
-  console.log('inserting viral cards to connection deck')
+  //console.log('inserting viral cards to connection deck')
   let oldDeck = oldState.connectionDeck
 
   const viral1: ViralCard = { cardType: "viral"}
@@ -134,15 +133,15 @@ function typeCheck(string:string){
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
 
   let oldDeck: Card[] = oldState.misinformationDeckActive
-  let drawSource: string | null
-
+  let drawSource: string
   if (isViral) {
     drawSource = oldDeck[oldDeck.length - 1].sourceName
   }
   else {
+    
     drawSource = oldDeck[0].sourceName
   }
-  console.log('dealing misinformation card', drawSource)
+  //console.log('dealing misinformation card', drawSource)
 
   for (const source of oldState.sources) {
 
@@ -182,7 +181,7 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
 }
 
 export function outbreak(outbreak_source: Source, oldState: Gamestate) {
-  console.log('outbreak!! chaos meter increases')
+  //console.log('outbreak!! chaos meter increases')
   oldState.chaosMeter++
   let connections!: string[];
   for (const source of sources) {
@@ -205,41 +204,43 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
       }
     }
   }
-  console.log('outbreak on', outbreak_source)
+  //console.log('outbreak on', outbreak_source)
   let newState = { ...oldState }
   return newState
 }
 
 
 export function viralCheck(object:any): object is ViralCard{
-  return true
+  return false
 }
 
 export function dealConnectionCard(oldState: Gamestate) {
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
-
-  console.log('dealing connection card', newCard)
   
-  if (viralCheck(newCard)) {
+  if (newCard.cardType==='viral') {
+    console.log('viral')
     oldState = viral(oldState)
     oldState.connectionDeck.shift()
   }
   else {
+    console.log('hello')
     for (const player of oldState.players) {
       if (player.isCurrent) {
-        console.log('dealing connection card', newCard)
+        if(!viralCheck(newCard)){
         player.cards.push(newCard)
         oldState.connectionDeck.shift()
         }
       }
+      }
     }
   
+  console.log(oldState.players)
   let newState = { ...oldState }
   return newState
 }
 
 export function viral(oldState: Gamestate) {
-  console.log('viral card!!!')
+  //console.log('viral card!!!')
   oldState = dealMisinfoCard(oldState, 3, true)!
 
   oldState.spreadLevel++
@@ -323,7 +324,7 @@ export function setUp(players: Player[]) {
   else cards = 3
 
   for (let i = 0; i < state.players.length; i++) { //* deal connection cards to players before inserting viral cards
-    console.log(state.players)
+    //console.log(state.players)
     if (state.players.length > 2) cards = 2;
     else cards = 3
     while (cards > 0) {

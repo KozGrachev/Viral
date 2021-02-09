@@ -20,9 +20,11 @@ export function gameStateReducer(
     }
     case CLEAR_MISINFO: {
       const ap = action.payload;
-      const newstate = clearMisinfo(ap.oldState, ap.currentPlayerID, ap.misinfoType, ap.location)
-      return { ...state, ...newstate, received: false }
+      // return {...clearMisinfo(ap.oldState, ap.currentPlayerID, ap.misinfoType, ap.location),  ...state, received: false }}
+      const newState = { ...state, received: false }
+      return { ...newState, ...clearMisinfo(ap.oldState, ap.currentPlayerID, ap.misinfoType, ap.location) }
     }
+    
     case SHARE_CARD: {
       const ap = action.payload;
       const newstate = shareCard(ap.oldState, ap.currentPlayerID, ap.recipient, ap.sharedCard)
