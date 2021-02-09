@@ -62,7 +62,7 @@ export const StartGame: React.FC = (): JSX.Element => {
               :
               (stateRendered && state.gameOn) &&
               <div className="app-container">
-                {/* <CureDeck />
+                <CureDeck />
                 <SpreadLevel />
                 <PlayerPrompt />
 
@@ -75,7 +75,7 @@ export const StartGame: React.FC = (): JSX.Element => {
                   <SourceDeck />
                   <MisinformationDeck />
                   <MarkersStore />
-                  </div> */}
+                </div>
                Just a check---- {state.players[state.players.length - 1].name} -----
                Just a check ---- {state.players[0].name} -----
 
@@ -83,5 +83,5 @@ export const StartGame: React.FC = (): JSX.Element => {
       }
     </div>
 
-          )
-      }
+  )
+}
