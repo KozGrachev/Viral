@@ -78,28 +78,27 @@ export const initDummyState: Gamestate = {
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'green',
-<<<<<<< HEAD
+
       currentSource: 'pub',
       room:'1',
-=======
-      currentSource: 'University',
-      room: '1',
->>>>>>> afe228564de474c303b7f9c5bcbb96593c7ae842
+     
+     
+
     },
     {
       name: 'Player 2',
       id: '5678',
-      cards: [],
+      cards: [{
+        cardType: 'connection',
+        sourceName: 'Instagram',
+        misinfoType: 'yellow',
+      },],
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'purple',
-<<<<<<< HEAD
-      currentSource: 'pub',
-      room:'1',
-=======
       currentSource: 'University',
       room: '1',
->>>>>>> afe228564de474c303b7f9c5bcbb96593c7ae842
+    
 
     },
   ],
@@ -152,6 +151,21 @@ export const initDummyState: Gamestate = {
       cardType: 'misinformation',
       sourceName: 'Gym',
       misinfoType: 'red',
+    },
+    {
+      cardType: 'misinformation',
+      sourceName: 'Instagram',
+      misinfoType: 'yellow',
+    },
+    {
+      cardType: 'misinformation',
+      sourceName: 'Instagram',
+      misinfoType: 'yellow',
+    },
+    {
+      cardType: 'misinformation',
+      sourceName: 'Instagram',
+      misinfoType: 'yellow',
     },
     {
       cardType: 'misinformation',

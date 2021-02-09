@@ -11,7 +11,6 @@ import { Player } from '../../types/gameStateTypes';
 export const OtherPlayer: React.FC = () => {
 
   const myName=useSelector((state: RootState) => state.playerStateReducer.name)
-  console.log(myName)
   const playerState= useSelector((state: RootState) => state.gameStateReducer.players)
   const otherPlayerState=playerState.filter((player)=>player.name!==myName)
   const first=otherPlayerState[0]

@@ -27,37 +27,12 @@ function App() {
   }
 
   return (
-    // <Grommet theme={grommet} full>
+
     <Provider store={store}>
-<<<<<<< HEAD
-      <div className="app-outer-wrapper">
-        <div className="app-container">
-          {/* <Map /> */}
-          {/* <GameBoard /> */}
-            <SourceParent />
-          <div className="sidebar-left">
-            <CardHand />
-            <PlayerPrompt />
-          </div>
-          <div className="board-container">
-          <CureDeck /> 
-          <SpreadLevel/> 
-            <ChaosMeter />
-            <SourceDeck />
-            <MisinformationDeck />
-            <MarkersStore />
-            <ChaosMeterGrommet />
-            <OtherPlayer  />
-          </div>
-        </div>
-      </div>
-    </Provider>
-    // {/* </Grommet> */ }
-=======
+
       <StartGame />
     </Provider >
-    // </Grommet>
->>>>>>> afe228564de474c303b7f9c5bcbb96593c7ae842
+  
   );
 }
 

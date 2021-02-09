@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Player, Source} from '../../types/objects.REDO'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase } from '../../helpers/utils';
-import './Source.css'
+import './Source.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { clearMisinfoAction, debunkMisinfoAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
@@ -85,7 +85,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
     
 
-    return players.map(player => <PlayerPawn key={player.name} player={player} />)
+    return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor }/>)
 
 
   }
