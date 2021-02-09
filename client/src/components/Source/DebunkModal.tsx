@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/gameState/store';
 import { SourceCard } from '../SourceCard/SourceCard';
 import ReactDOM from 'react-dom';
+import { Card } from '../../types/gameStateTypes';
+import ReactModal from 'react-modal';
 
 const customStyles = {
   content: {
@@ -19,48 +21,128 @@ const customStyles = {
 
 interface ModalProps {
   modalIsOpen: boolean,
-  setIsOpen: Function,
+  closeModal: Function,
   setselectedDebunkCards: Function
 }
 
-export function ModalComponent({ modalIsOpen, setIsOpen, setselectedDebunkCards }: ModalProps) {
-  const currentPlayerCards = useSelector((state: RootState) => state.playerStateReducer.cards)
+interface CardWithId extends Card {
+  id: string
 
-  const gameState = useSelector((state: RootState) => state.gameStateReducer)
+}
+
+export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards, }: ModalProps) {
+  const playerId = useSelector((state: RootState) => state.playerStateReducer.id)
+
+  const players = useSelector((state: RootState) => state.gameStateReducer.players)
+
+  const [pickedCards, setpickedCards] = useState<CardWithId[]>([])
+
+
+  let playerCards = players.find(player => player.id === playerId)?.cards
 
 
 
 
-  const fakeCards = ['Card 1', 'Card 2', 'Card 3']
+  console.log('FUCK ALL THESE LOGS _ -----------------!!!!!playerCards ', playerId, players)
+
+  const fakeCards: Card[] = [{ cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" },
+  { cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" },
+  { cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" }]
+
+  const fakeCardsWithIdInit: CardWithId[] = fakeCards.map((card) => {
+    (card as CardWithId).id = uid()
+    return card
+  }) as CardWithId[]
+
+  const [fakeCardsWithId, setfakeCardsWithId] = useState(fakeCardsWithIdInit)
 
 
   var subtitle: any;
 
+  useEffect(() => {
+    console.log('pickedCards from UseEffect', pickedCards)
+
+  }, [pickedCards])
 
 
-  function openModal() {
-    setIsOpen(true);
+  function uid(rounds: number = 1) {
+    let uid = '';
+    while (rounds > 0) {
+      uid += Math.random().toString(32).substring(2, 10);
+      rounds -= 1;
+    }
+    return uid;
   }
+
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
   }
 
-  function closeModal() {
-    setIsOpen(false);
+  function sendcloseModal(e: any) {
+    e.preventDefault()
+    console.log('Close Modal')
+
+    const pickedCardsAsCard: Card[] = pickedCards.map((cardWithId) => {
+      const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType }
+      return card
+    }) as Card[]
+
+    setselectedDebunkCards(pickedCardsAsCard)
+    closeModal()
+  }
+
+  const clickOnCard = (e: React.MouseEvent<HTMLElement>, fakeCard: CardWithId) => {
+    console.log(e.target);
+    let div = e.target as HTMLInputElement;
+
+    if (!div.classList.contains('selected')) {
+      div.classList.add('selected')
+      setpickedCards(prev => [...prev, fakeCard])
+
+    } else {
+      div.classList.remove('selected')
+
+      const filtered = pickedCards.filter(card => card.id !== fakeCard.id)
+
+      console.log('filtered cards ', filtered)
+      setpickedCards(filtered)
+    }
+
+
+
+
+
   }
 
   return (
     <div>
-      <Modal
+
+      <ReactModal
+        ariaHideApp={false}
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
+        onRequestClose={sendcloseModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        {fakeCards.map(card => <div>{card}</div>)}
-      </Modal>
+
+        {pickedCards.map((pickedCard, index) => <div style={{ height: 50, borderWidth: 'solid' }} key={index}
+          onClick={(e) => clickOnCard(e, pickedCard)}>
+          <SourceCard name={pickedCard.sourceName} category={pickedCard.cardType} canShare={[]} />
+
+        </div>)}
+
+        <div style={{ border: "1px solid black" }}></div>
+
+
+        {fakeCardsWithId.map((fakeCard, index) => <div style={{ height: 50, borderWidth: 'solid' }} key={index}
+          onClick={(e) => clickOnCard(e, fakeCard)}>
+          <SourceCard name={fakeCard.sourceName} category={fakeCard.cardType} canShare={[]} />
+
+        </div>)}
+        <button onClick={sendcloseModal}>Send</button>
+      </ReactModal>
     </div>
   );
 }
