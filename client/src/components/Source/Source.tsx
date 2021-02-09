@@ -24,22 +24,22 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedDebunkCards, setselectedDebunkCards] = useState([])
-  
+
   let { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
     canClearRelations, canClearSocial, canShare, canDebunk } = source;
-  
-  
-  
+
+
+
 
   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
 
-  
-  
-  
-  
+
+
+
+
 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
     if (num > 0 && canDebunk.includes(category)) {
@@ -47,16 +47,16 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
       return (<button onClick={() => debunkMisinforamtion(category)}><ClearableIcon /></button>)
-      
+
     }
-    
+
     //add a different icon if canBeCleared
     if (num > 0 && canBeCleared) {
       //get the clearable icon
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
       return (<button onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></button>)
-      
+
     }
     if (num > 0) {
       console.log(toCamelCase(`marker ${category} ${num}`))
@@ -64,13 +64,13 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
       return <Icon />;
     }
   }
-    
+
   const debunkMisinforamtion = (category: string) => {
-      
+
     // dispatch(debunkMisinfoAction({
     //   oldState: gamestate, currentPlayerID: currentPlayer.id,
     // misinfoType:category, usedCards:}))
-      
+
   }
 
 
@@ -85,7 +85,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
 
     if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
-    
+
 
     if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor }/>)
 
@@ -105,8 +105,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   return (
 
 
-    
-    <div className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
+
+    <div className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} onClick={(e)=> console.log('CLICKEDDDDDDDDDD', e.target)} >
       <SVGIconSource />
       <div className="markersContainer">
         {getMarker('community', markers_community, canClearCommunity, canDebunk)}

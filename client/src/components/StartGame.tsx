@@ -76,8 +76,8 @@ export const StartGame: React.FC = (): JSX.Element => {
                   <div className="board-container">
 
                     <div id="game-board">
-                      {/* <MapSVG className="map-svg"/> */}
                       <SourceParent />
+                      {/* <MapSVG className="map-svg"/> */}
                     </div>
 
                     <ChaosMeter />

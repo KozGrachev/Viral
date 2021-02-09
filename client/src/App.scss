@@ -29,6 +29,7 @@ body {
 .app-outer-wrapper {
   border: $panel-border;
   background: rgba(255, 255, 255, 0.096);
+  // height: 100vh;
 }
 
 .app-container {
@@ -36,18 +37,31 @@ body {
   position:relative;
   grid-template-columns: 20% auto;
   grid-template-areas: "sidebar gameboard";
+  margin: 20px 0;
+
+
   height: 90vmin;
   width:150vmin;
-  // height: $app-height;
+
+  // height: min(100vh, auto);
+  width:150vmin;
+
+
+
+
+  height: $app-height;
   // width: $app-width;
-  margin: 20px;
+
+
+
+
   // padding: 20px;
   // border-radius: 30px;
   // border: 3px solid rgb(21, 255, 0);
   // max-width: calc(100% - 40px);
   // max-height: calc();
-  // left: 50%;
-  // transform: translateX(-50%);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 
