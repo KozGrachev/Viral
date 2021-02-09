@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { 'default': mod };
 };
 Object.defineProperty(exports, '__esModule', { value: true });
-exports.getState = exports.setState = void 0;
+exports.getGames = exports.getState = exports.getUsers = exports.setUser = exports.setState = void 0;
 var util_1 = require('util');
 var redis_1 = __importDefault(require('redis'));
 var dotenv_1 = __importDefault(require('dotenv'));
@@ -59,16 +59,42 @@ client.on('ready', function () {
 });
 // eslint-disable-next-line @typescript-eslint/no-unused-vars 
 var redisGetAsync = util_1.promisify(client.get).bind(client);
+var redisKEYSAsync = util_1.promisify(client.KEYS).bind(client);
+// const redisDelAsync = promisify(client.del).bind(client);
 var setState = function (room, state) {
   var json = JSON.stringify(state);
   client.set(room, json);
 };
 exports.setState = setState;
+var setUser = function (users, usersArray) {
+  var json = JSON.stringify(usersArray);
+  client.set(users, json);
+};
+exports.setUser = setUser;
+var getUsers = function () { return __awaiter(void 0, void 0, void 0, function () {
+  var json, state;
+  return __generator(this, function (_a) {
+    switch (_a.label) {
+    case 0: return [4 /*yield*/, redisGetAsync('users')];
+    case 1:
+      json = _a.sent();
+      if (json) {
+        state = JSON.parse(json);
+        return [2 /*return*/, state];
+      }
+      return [2 /*return*/];
+    }
+  });
+}); };
+exports.getUsers = getUsers;
 var getState = function (room) { return __awaiter(void 0, void 0, void 0, function () {
   var json, state;
   return __generator(this, function (_a) {
     switch (_a.label) {
-    case 0: return [4 /*yield*/, redisGetAsync(room)];
+    case 0:
+      if (!room)
+        return [2 /*return*/];
+      return [4 /*yield*/, redisGetAsync(room)];
     case 1:
       json = _a.sent();
       if (json) {
@@ -80,3 +106,22 @@ var getState = function (room) { return __awaiter(void 0, void 0, void 0, functi
   });
 }); };
 exports.getState = getState;
+// get all games saved room:Game list returns as an array of strings 
+var getGames = function (patern) { return __awaiter(void 0, void 0, void 0, function () {
+  var games;
+  return __generator(this, function (_a) {
+    switch (_a.label) {
+    case 0: return [4 /*yield*/, redisKEYSAsync(patern)];
+    case 1:
+      games = _a.sent();
+      if (games)
+        return [2 /*return*/, games];
+      return [2 /*return*/];
+    }
+  });
+}); };
+exports.getGames = getGames;
+// export const deleteGame = async (room: string): Promise<string> => {
+//   await redisDelAsync(room).then(data => data);
+//   return `${room} successfully deleted`;
+// };

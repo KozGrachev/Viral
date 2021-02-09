@@ -1,0 +1,41 @@
+.player_pawn {
+  height: 30px;
+  width: 30px;
+  background-color: none;
+  border-radius: 50%;
+  border: solid;
+  border-color: black;
+  border-width: 2px;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.pink {
+  background-color: pink;
+}
+
+.red {
+  background-color: tomato;
+}
+
+.orange {
+  background-color: orange;
+}
+
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat()
+}
+
+

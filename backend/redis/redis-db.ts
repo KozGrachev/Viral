@@ -1,8 +1,8 @@
 import { promisify } from 'util';
 import redis from 'redis';
 import dotenv from 'dotenv';
-import { GameState } from '../utils/game';
-import { IUser } from '../utils/users';
+import { Gamestate } from '../utils/game';
+import { IUser, Socket } from '../utils/users';
 
 dotenv.config({ path: __dirname + '../.env' });
 
@@ -27,20 +27,55 @@ client.on('ready', () => {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars 
 const redisGetAsync = promisify(client.get).bind(client);
+const redisKEYSAsync = promisify(client.KEYS).bind(client);
+// const redisDelAsync = promisify(client.del).bind(client);
 
-export const setState = (room: IUser['room'], state: GameState): void => {
+
+export const setState = (room: IUser['room'], state: Gamestate): void => {
 
   const json = JSON.stringify(state);
   client.set(room, json);
 
 };
 
-export const getState = async (room: IUser['room']): Promise<GameState | undefined> => {
 
-  const json = await redisGetAsync(room);
+export const setUser = (users:string, usersArray:Socket[] | undefined): void => {
+
+  const json = JSON.stringify(usersArray);
+  client.set(users, json);
+
+};
+
+export const getUsers = async (): Promise<Socket[] | undefined> => {
+  const json = await redisGetAsync('users');
   if (json) {
     const state = JSON.parse(json);
     return state;
   }
+
 };
 
+
+export const getState = async (room: IUser['room']): Promise<Gamestate | undefined> => {
+  if (!room) return;
+  const json = await redisGetAsync(room);
+  if (json) {
+    const state = JSON.parse(json);
+    return state;
+
+  }
+
+};
+
+// get all games saved room:Game list returns as an array of strings 
+export const getGames = async (patern: string): Promise<string[] | undefined> => {
+
+  const games = await redisKEYSAsync(patern);
+  if (games) return games;
+
+};
+
+// export const deleteGame = async (room: string): Promise<string> => {
+//   await redisDelAsync(room).then(data => data);
+//   return `${room} successfully deleted`;
+// };

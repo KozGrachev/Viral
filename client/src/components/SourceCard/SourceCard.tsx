@@ -1,18 +1,50 @@
 import React from 'react';
-import Source from '../Source/Source'
+import { getIcon } from '../../helpers/iconExporter'
+import { toCamelCase, toPascalCase } from '../../helpers/utils'
+import './SourceCard.scss'
+import { shareCardEvent } from '../../logic/event.listeners';
+import { ShareCardProps } from '../../redux/gameState/reduxTypes'
 
+//! issue with "Card" interface beings used for both Source/connection & "Viral" cards, which have name type "null" - possible change types/logic later
 export interface SourceCardProps {
-  sourceName: 'string',
-
+  name: string,    //! NULL TO BE REMOVED
+  category: string, //! NULL TO BE REMOVED
+  canShare: any[]
 }
+// DON'T NEED ===> canlogon can go to the place if you have that card
+// canShare: a button that appears on each card when you are on the same location as another player
+// canchare: Player[]
 
 
-export const Source: React.FC<SourceCardProps> = ({ sourceName }: SourceCardProps) => { // SVGIcon
+export const SourceCard: React.FC<SourceCardProps> = ({ name, category, canShare }: SourceCardProps) => { // SVGIcon
 
+  const currentState = {}
+
+  const SVGIcon = getIcon(toCamelCase(name) + 'Icon');
+
+  const handleShareClick = (id: string) => {
+    //DISPATCH ACTION
+    console.log(`SHARING CARD ${name} WITH ${id}`);
+  }
+
+
+  const renderShareButtons = (shareWith: { name: string, id: string }[]) => {
+    return shareWith.map(player => <button onClick={() => handleShareClick(player.id)
+
+      // shareCardEvent({
+      //   oldState: currentState,
+      //   currentPlayerID: ,
+      //   recipient: player.id,
+      //   sharedCard: name
+      // })
+    }>{player.name}</button>)
+  }
   return (
-    <div className="source-card-container" >
-      <Source name={sourceName}  />
-      <div className="name" >
+    <div className={`source-card-container ${category}`} >
+      <SVGIcon name={name} className="card-icon" />
+      <div className="name-container" >
+        <p className="title">{toPascalCase(name)}</p>
+        {renderShareButtons(canShare)}
       </div>
     </div>
   )

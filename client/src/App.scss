@@ -1,0 +1,335 @@
+@import './style/variables.scss';
+
+$app-height: calc(100vh - 40px);
+$app-width: calc((100vh - 40px) * 1.8);
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: 'Comfortaa',
+    cursive; */
+  /* color: red; */
+}
+
+body {
+  // height: 100vh;
+  background-image: url(./assets/allIcons/map.svg);
+  background-size: cover;
+  background-position: center;
+  // overflow: hidden;
+  backdrop-filter: blur(50px);
+}
+
+.app-outer-wrapper {
+  border: $panel-border;
+  background: rgba(255, 255, 255, 0.096);
+  // height: 100vh;
+}
+
+.app-container {
+  display: grid;
+  position: relative;
+  grid-template-columns: auto 80%;
+  grid-template-areas: 'sidebar gameboard';
+  margin: 20px 0;
+
+  height: 90vmin;
+  width: 150vmin;
+
+  // height: min(100vh, auto);
+  width: 150vmin;
+
+  height: $app-height;
+  // width: $app-width;
+
+  // padding: 20px;
+  // border-radius: 30px;
+  // border: 3px solid rgb(21, 255, 0);
+  // max-width: calc(100% - 40px);
+  // max-height: calc();
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sidebar-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-area: sidebar;
+  width: 100%;
+  height: 100%;
+  // border: 3px solid red;
+  border-radius: 30px;
+}
+
+@media (min-aspect-ratio: 7/5) {
+  .board-container {
+    background-color: black;
+    // border:5px solid blue;
+  }
+}
+
+.board-container {
+  /* box-sizing: ; */
+  // width:100%;
+  width: auto;
+  height: 100%;
+  position: relative;
+  grid-area: gameboard;
+  margin-left: 20px;
+
+  // border: 2px solid green;
+  // border: $panel-border;
+  background: $panel-background_translucent;
+  border-radius: 30px;
+  overflow: hidden;
+  // transform: scale(calc(100vw/100vh));
+}
+
+#game-board {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  // background-color: pink;
+  background: url(./assets/allIcons/game-board-slice-with-sources.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  // background-size: cover;
+  background-position: 0 10%;
+}
+
+#map-svg {
+  position: absolute;
+
+  width: 100%;
+  // height: 100%;
+  // border: 3px solid red;
+  // // top: -10%;
+  // background-size: 100% auto;
+  // background-repeat: no-repeat;
+  // background-position: 50% 42%;
+}
+
+.map-svg {
+  // position: ;
+  width: 100%;
+}
+
+#source-parent-grid-container {
+  width: 100%;
+  height: 100%;
+  // overflow: hidden;
+  // background: url(/assets/allIcons/game-board-withoult-sources.svg);
+  // background-color: lightgoldenrodyellow;
+  // background-size: cover;
+  // border: 3px solid red;
+  display: grid;
+  grid-template-columns: repeat(14, 14fr);
+  grid-template-rows: repeat(10, 10fr);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Community sources
+
+.university {
+  grid-area: 8/2/9/3;
+  position: absolute;
+  left: 58%;
+  top: 70%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+.local-cult {
+  grid-area: 4/5/5/6;
+  position: absolute;
+  left: 55%;
+  top: 80%;
+
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.high-school {
+  grid-area: 6/4/7/5;
+  position: absolute;
+  left: 40%;
+  top: 42%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.pub {
+  grid-area: 8/5/9/6;
+  position: absolute;
+  left: 28%;
+  top: 50%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.taxi {
+  grid-area: 9/6/10/7;
+  position: absolute;
+  left: 75%;
+  top: 0%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.asda {
+  grid-area: 6/8/7/9;
+  position: absolute;
+  left: 75%;
+  top: 67%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.gym {
+  grid-area: 7/7/8/8;
+  position: absolute;
+  left: 18%;
+  top: 15%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.hair-salon {
+  grid-area: 9/8/10/9;
+  position: absolute;
+  left: 65%;
+  top: 30%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+// Social sources
+
+.instagram {
+  grid-area: 8/10/9/11;
+  position: absolute;
+  left: 60%;
+  top: 11%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+.facebook {
+  grid-area: 9/10/10/11;
+  position: absolute;
+  left: 61%;
+  top: 16%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+.youtube {
+  grid-area: 8/11/9/12;
+  position: absolute;
+  left: 57%;
+  top: 9%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+.twitter {
+  grid-area: 10/11/11/12;
+  position: absolute;
+  left: 61%;
+  top: 18%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+.illuminatify {
+  grid-area: 8/12/9/13;
+  position: absolute;
+  left: 61%;
+  top: 9%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+.reddit {
+  grid-area: 9/12/10/13;
+  position: absolute;
+  left: 60%;
+  top: 10%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.whatsapp {
+  grid-area: 9/13/10/14;
+  position: absolute;
+  left: 60%;
+  top: 13%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+.tiktok {
+  grid-area: 10/13/11/14;
+  position: absolute;
+  left: 61%;
+  top: 17%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+// Relations sources
+
+.uncle-eugene {
+  grid-area: 3/7/4/8;
+  position: absolute;
+  left: 20%;
+  top: 65%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+.cousin {
+  grid-area: 3/10/4/11;
+  position: absolute;
+  left: 30%;
+  top: 61%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+.fran-from-hr {
+  grid-area: 4/11/5/12;
+  position: absolute;
+  left: 0%;
+  top: 87%;
+  // border: 0.3px solid rgb(255, 0, 255);
+}
+
+.evil-ex {
+  grid-area: 3/13/4/14;
+  position: absolute;
+  left: 8%;
+  top: 58%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.opinionated-grandpa {
+  grid-area: 5/8/6/9;
+  position: absolute;
+  left: 66%;
+  top: 22%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.crazy-dave {
+  grid-area: 6/10/7/11;
+  position: absolute;
+  left: 43%;
+  top: 37%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.guy-at-the-bus-stop {
+  grid-area: 6/12/7/13;
+  position: absolute;
+  left: 0%;
+  top: 47%;
+  border: 0.3px solid rgb(255, 0, 255);
+}
+
+.mother-in-law {
+  grid-area: 5/13/6/14;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  border: 0.3px solid rgb(255, 0, 255);
+}

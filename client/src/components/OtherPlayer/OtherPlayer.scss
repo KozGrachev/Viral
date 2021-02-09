@@ -1,0 +1,99 @@
+@import '../../style/variables.scss';
+@import '../../style/theme.scss';
+
+.other-player-container {
+  margin: $hud-margin;
+  position: absolute;
+  bottom: 0;
+  border: 1px dashed rgb(255, 89, 47);
+  height: 200px;
+  display: flex;
+  width: auto;
+  align-items: center;
+}
+
+.purple {
+  @include purple;
+}
+
+.green {
+  @include green;
+}
+
+.fuchsia {
+  @include fuchsia;
+}
+
+.blue {
+  @include blue;
+}
+
+.yellow {
+  @include yellow;
+}
+
+.current {
+  border: 3px solid #00ff1a;
+  /* border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, #00C853, #B2FF59); */
+  /* background-clip: padding-box; */
+  /* !importanté */
+  /* border: solid $border transparent; */
+  /* !importanté */
+}
+
+.player-avatar {
+  font-weight: 700;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  /* top: 50%; */
+  width: 100px;
+  height: 100px;
+}
+
+.player-hand {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%); */
+  /* transform-origin: center; */
+  /* border: 1px dashed greenyellow; */
+}
+
+.displace {
+  width: 120px;
+  /* height: 100px; */
+  left: 50%;
+  top: 50%;
+  transform-origin: left;
+  position: absolute;
+  /* border: 1px dashed red; */
+}
+
+.other-player-card {
+  /* border: 1px dashed rgb(92, 47, 255); */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+
+  /* transform: translate(140%, -50%); */
+  /* transform-origin:center; */
+}
+
+.other-player-card svg {
+  width: 40px;
+  height: 40px;
+  transform: scale(1);
+  transition: transform 200ms ease-in-out;
+}
+
+.other-player-card svg:hover {
+  transform: scale(1.2);
+}

@@ -1,0 +1,55 @@
+@import '../../style/variables.scss';
+
+$source-icon-size: $width-ratio * 0.7;
+
+.source-container {
+  position: relative;
+  height: $source-icon-size;
+  width: $source-icon-size;
+  // border: 3px solid rgb(0, 247, 255);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .markers-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    // height: 100px;
+    display: flex;
+    // border: 3px solid rgb(255, 0, 200);
+  }
+}
+#markers-container .social {
+  transform: scale(0.1);
+}
+
+#source-parent-grid-container .social {
+  transform: scale(1.4);
+}
+
+.social {
+  background-color: 'blue';
+}
+
+.community {
+  background-color: 'red';
+}
+
+.relations {
+  background-color: 'yellow';
+}
+
+.source-container.can-move-to {
+  border: 3px solid yellow;
+}
+
+.source-container.can-log-on {
+  border: 3px solid blue;
+}
+
+.source-container.can-log-off {
+  border: 3px solid green;
+}

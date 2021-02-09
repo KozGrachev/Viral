@@ -1,0 +1,22 @@
+@import '../../style/theme';
+
+.player-prompt-container {
+  @include scroll-panel;
+  height:150px;
+  width: 100%;
+
+  /* align-items: center; */
+
+}
+
+.player-prompt-container::-webkit-scrollbar{
+  display: none;
+}
+
+.single-message {
+  @include glass-panel;
+  margin-bottom: 10px;
+  font-size: 15px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.623);
+}

@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && nodemon index.js",
+    "start": "nodemon index.js",
     "lint": "eslint */*.{js,ts,tsx} && eslint *.{js,ts,tsx}",
-    "lintfix": "eslint ./*.{js,ts,tsx} --fix && eslint */*.{js,ts,tsx} --fix" 
+    "lintfix": "eslint ./*.{js,ts,tsx} --fix && eslint */*.{js,ts,tsx} --fix", 
+    "docker": "docker-compose up -d"
   },
   "keywords": [],
   "author": "",

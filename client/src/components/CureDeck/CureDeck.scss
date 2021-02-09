@@ -1,0 +1,38 @@
+.cure-deck-container {
+  position: absolute;
+  display: flex;
+  height:150px;
+  width: 300px;
+  border:2px solid ;
+  justify-content: space-evenly;
+  align-items: center;
+  right: 0;
+  bottom: 0;
+}
+
+.debunk-indicator {
+  flex-basis: 30%;
+  height:90%;
+  border:2px solid ;
+  margin: 2px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+
+
+}
+
+.A{
+  background-color: aquamarine;
+
+}
+
+.B{
+  background-color: tomato;
+}
+
+.C{
+  background-color: yellow;
+}
