@@ -21,6 +21,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
   const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
+  //console.log('gamestate from source : ', gamestate)
+  //console.log('currentPlayer from source : ' , currentPlayer)
 
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedDebunkCards, setselectedDebunkCards] = useState([])
@@ -33,6 +35,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 console.log('source MOVABLE', source.name, canMove)
   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+  //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
 
@@ -59,7 +62,7 @@ console.log('source MOVABLE', source.name, canMove)
 
     }
     if (num > 0) {
-      console.log(toCamelCase(`marker ${category} ${num}`))
+      //console.log(toCamelCase(`marker ${category} ${num}`))
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
       return <Icon />;
     }
