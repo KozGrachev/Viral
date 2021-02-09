@@ -144,17 +144,9 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
   
   
   for (const source of oldState.sources) {
-<<<<<<< HEAD
-  
     if (source.name === drawSource) {
 
       while (weight > 0) {
-        
-=======
-    if (source.name === drawSource) {
-
-      while (weight > 0) {
->>>>>>> 63825ae12c6ef0d731c8b80e2456c4ab27e5cd63
         let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
 
@@ -164,7 +156,6 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
             oldState = outbreak(source, oldState)
           }
           else {
-            
             source[key1]++
             oldState.misinformation[key2].markersLeft--
           }

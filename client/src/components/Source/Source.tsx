@@ -21,7 +21,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
-  const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
+  const array = useSelector((state: RootState) => state.gameStateReducer.players.filter(player=>player.isCurrent===true))
+  const currentPlayer=array[0]
+  const allPlayers=useSelector((state: RootState) => state.gameStateReducer.players)
   //console.log('gamestate from source : ', gamestate)
   //console.log('currentPlayer from source : ' , currentPlayer)
 
@@ -33,14 +35,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
 
-<<<<<<< HEAD
 // console.log('source MOVABLE', source.name, canMove)
 //   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
-=======
-
-// console.log('source MOVABLE', source.name, canMove)
-  // console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
->>>>>>> 63825ae12c6ef0d731c8b80e2456c4ab27e5cd63
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
@@ -89,11 +85,14 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
-    //console.log(currentPlayer.currentSource)
-    if (currentPlayer.currentSource === source.name&& !players.includes(currentPlayer)) players.push(currentPlayer)
-    
+    for(const player of allPlayers){
+    if (player.currentSource === source.name&& !players.includes(player)) {
+      players.push(currentPlayer)
+     
+    }
+  }
     if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
-
+    else return null
 
   }
 
