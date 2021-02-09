@@ -17,9 +17,10 @@ import { SpreadLevel } from '../components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from '../components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from '../components/SourceParent/SourceParent';
 import { NewGameMenu } from '../components/NewGameMenu/NewGameMenu'
-import { addPlayerToGameState, StartGameAction } from '../redux/gameState/gameStateActions';
+import { addPlayerToGameState, DealCardsToNewPlayerAction, StartGameAction } from '../redux/gameState/gameStateActions';
 import { Gamestate, Player } from '../types/gameStateTypes';
 import { UpdateGameStateAction } from '../redux/gameState/reduxTypes';
+import { GameOn } from './GameOn';
 
 
 
@@ -31,13 +32,12 @@ export const StartGame: React.FC = (): JSX.Element => {
   const allRooms = useSelector((state: RootState) => state.allGamesStateReducer)
   const [stateRendered, updateStateRendered] = useState(false)
   // let gameOn: boolean = false;
-  const state = useSelector((state: RootState) => state.gameStateReducer)
+  let state = useSelector((state: RootState) => state.gameStateReducer)
 
   const startGame = (player: Player) => {
     if (!stateRendered) {
       joinRoom(player)
       if (allRooms.filter(room => room === player.room).length > 0) {
-        
         getGame(player);
         updateStateRendered(true)
       } else {
@@ -65,32 +65,7 @@ export const StartGame: React.FC = (): JSX.Element => {
           {startGame(player)}
               </h1>
               :
-              (stateRendered && state.gameOn) &&
-              <div className="app-outer-wrapper">
-                <div className="app-container">
-                  {/* <Map /> */}
-                  {/* <GameBoard /> */}
-                  <div className="sidebar-left">
-                    <CardHand />
-                    <PlayerPrompt />
-                  </div>
-                  <div className="board-container">
-
-                    <div id="game-board">
-                      {/* <MapSVG className="map-svg"/> */}
-                      <SourceParent />
-                    </div>
-
-                    <ChaosMeter />
-            <SourceDeck />
-            <MisinformationDeck />
-            <MarkersStore />
-            {/* <ChaosMeterGrommet /> */}
-            {/* <OtherPlayer /> */}
-            {/* </Grommet> */ }
-                  </div>
-                </div>
-              </div>
+              <GameOn rendered={stateRendered} />
           )
       }
     </div>

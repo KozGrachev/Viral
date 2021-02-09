@@ -2,11 +2,9 @@
 import io from "socket.io-client";
 import * as dotenv from 'dotenv';
 import { store } from '../redux/gameState/store'
-import { addPlayerToGameState, GetAllGamesAction, updateGameState } from "../redux/gameState/gameStateActions";
+import { GetAllGamesAction, updateGameState } from "../redux/gameState/gameStateActions";
 import { Gamestate } from "../types/gameStateTypes";
 import { Play } from "grommet-icons";
-dotenv.config({ path: __dirname + '/.env' });
-//connection to the server
 dotenv.config({ path: __dirname + '../.env' });
 const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
 
@@ -53,12 +51,6 @@ export const getGame = (player: typeof Player) => {
   player && socket.emit('retriveGame', player)
 
 }
-
-// // on click when user wants to restart game 
-// export const restartGame = (player:typeof Player) => {
-//   joinRoom(player);
-//   socket.emit('resumeGame', { Player })
-// }
 
 export const getGames = () => {
   socket.emit('getGames')

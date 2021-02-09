@@ -7,7 +7,8 @@ import { Card as SourceCardType } from '../../types/gameStateTypes';
 
 export const CardHand: React.FC = () => {
 
-   const cards = useSelector((state: RootState) => state.playerStateReducer.cards)
+  const Player = useSelector((state: RootState) => state.playerStateReducer)
+  const cards = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.id === Player.id)[0].cards)
   // const cards: SourceCardType[] = [
   //     {
   //       cardType: 'connection',
@@ -28,6 +29,9 @@ export const CardHand: React.FC = () => {
   // console.log('PLAYER CARDS')
   // console.log(cards)
   const renderCards = (cardArray: SourceCardType[]) => {
+
+
+
     return cardArray.map(card => {
       // console.log(card)
       return <SourceCard name={card.sourceName} category={card.misinfoType} canShare={[]} />

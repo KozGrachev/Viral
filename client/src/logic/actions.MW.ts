@@ -279,19 +279,45 @@ export function addPlayerToGame(player: Player, oldState: Gamestate) {
 
 
 
-export function dealCardsToNewPlayer(state: Gamestate) {
-  let cards;
-  for (let i = 0; i < state.players.length; i++) { //* deal connection cards to players before inserting viral cards
-    //console.log(state.players)
-    if (state.players.length > 3) cards = 3;
-    else cards = 3
-    while (cards > 0) {
-      state = dealConnectionCard(state)
-      cards--
-    }
-  }
+export function dealConnectionCard2(player: Player, oldState: Gamestate) {
+  let newCard: Card | ViralCard = oldState.connectionDeck[0]
 
+  if (newCard.cardType === 'viral') {
+    // console.log('viral')
+    oldState = viral(oldState)
+    oldState.connectionDeck.shift()
+  }
+  else {
+    // console.log('hello')
+
+    for (const Player of oldState.players) {
+      // console.log('state before loop', oldState)
+      if (Player.id === player.id) {
+        if (!viralCheck(newCard)) {
+          Player.cards.push(newCard)
+          oldState.connectionDeck.shift()
+        }
+        // console.log('STATE AFTER LOOP', oldState)
+
+      }
+    }
+    let state = { ...oldState };
+    return state;
+  }
 }
+export function dealCardsToNewPlayer(player: Player, state: Gamestate) {
+  // console.log('does it get here - 305 malcolm ')
+  let updatedState: any;
+  let cards = 3
+  while (cards > 0) {
+    // console.log('inside the loop', cards)
+    updatedState = dealConnectionCard2(player, state)
+    cards--
+  }
+  console.log('UPDATE STATE - CARDS', updatedState)
+  return { ...updatedState }
+}
+
 export function setUp(players: Player[]) {
 
   let cards;
@@ -335,13 +361,12 @@ export function setUp(players: Player[]) {
     gameOn
   }
 
-  if (state.players.length > 2) cards = 3;
+  if (state.players.length > 0) cards = 3;
   else cards = 3
 
   for (let i = 0; i < state.players.length; i++) { //* deal connection cards to players before inserting viral cards
     //console.log(state.players)
-    if (state.players.length > 3) cards = 3;
-    else cards = 3
+
     while (cards > 0) {
       state = dealConnectionCard(state)
       cards--
