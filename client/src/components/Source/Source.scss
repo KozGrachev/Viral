@@ -1,6 +1,6 @@
 @import '../../style/variables.scss';
 
-$source-icon-size: $width-ratio*0.7;
+$source-icon-size: $width-ratio * 0.7;
 
 .source-container {
   position: relative;
@@ -22,6 +22,13 @@ $source-icon-size: $width-ratio*0.7;
     // border: 3px solid rgb(255, 0, 200);
   }
 }
+#markers-container .social {
+  transform: scale(0.1);
+}
+
+#source-parent-grid-container .social {
+  transform: scale(1.4);
+}
 
 .social {
   background-color: 'blue';
@@ -41,7 +48,6 @@ $source-icon-size: $width-ratio*0.7;
   background-color: 'yellow';
 }
 
-
 .source-container.can-move-to {
   border: 3px solid yellow;
 }
@@ -52,5 +58,4 @@ $source-icon-size: $width-ratio*0.7;
 
 .source-container.can-log-off {
   border: 3px solid green;
-
 }
