@@ -8,6 +8,17 @@
   }
 }
 
+.colors-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; 
+  width: 100%;
+  align-content: center;
+  height: 20px;
+}
+
+
+
 .form {
   /* display: flex; */
 
@@ -39,18 +50,7 @@ input, option, select {
 }
 
 
-.colors-container {
-  margin-bottom: 15px;
-  height: 18px;
-  border-radius: 5px;
-  padding: 15px 10px;
-  border: 1px solid #ddd;
-  font-size: 1em;
-  font-weight: 500;
-  display: flex;
-  width: 100%;
-}
-
+  
 
 .title-container {
   /* justify-self: center; */
@@ -70,3 +70,27 @@ input, option, select {
   width: 30%;
 }
 
+
+.colors-container {
+  margin: 5px;
+  height: 50px;
+  border-radius: 5px;
+  padding: 10px 10px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  font-weight: 500;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+
+#icon { 
+  margin:5px; 
+  padding: 10px 10px;
+  flex:1;
+  height: 50px;
+  justify-content: row;
+  align-self: center; 
+  text-align: center;
+}

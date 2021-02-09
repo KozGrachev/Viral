@@ -15,8 +15,12 @@ export const NewGameMenu: React.FC = () => {
   const dispatch = useDispatch();
   const [option, updateOption] = useState(true)
 
-  const FireIcon = getIcon('fire');
+  const FirePawn = getIcon('firePawn');
   const HexagonPawn = getIcon('hexagonPlayerPawn');
+  const FlowerPawn = getIcon('flowerPawn');
+  const RombPawn = getIcon('rombPawn')
+  const SunPawn = getIcon('sunPawn')
+  const SquarePawn = getIcon('squarePawn')
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault()
@@ -76,12 +80,20 @@ export const NewGameMenu: React.FC = () => {
         ></input>
 
         <div className='colors-container' >
-          <button id="search-button">
-            <FireIcon />
-          </button>
-          <button>
-            <HexagonPawn className="hex-pawn" />
-          </button>
+
+          <FirePawn id="icon" />
+
+          <HexagonPawn className="hex-pawn" id="icon" />
+
+          <FlowerPawn id="icon" />
+
+          <RombPawn id="icon" />
+
+          <SunPawn id="icon" onClick={() => {
+            console.log('hi?')
+          }} />
+
+          <SquarePawn id="icon" />
 
         </div>
         {/* <input
