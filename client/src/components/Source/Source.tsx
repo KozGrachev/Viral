@@ -104,6 +104,12 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard:  source.name }))
   }
 
+  const logoffToNewSource = () => {
+    // get card of location user moving from
+    const spentCard = '';
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard:  source.name }))
+  }
+
   const renderIcon = () => {
     if (canMove) return <button onClick={() => changePlayersCurrentSource()}> <SVGIconSource /> </button>
     return null
@@ -138,12 +144,14 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
       <div 
         onClick={
           // logic to render different click events from source
-          canLogOn ? 
-            logonToNewSource : 
-            canMove ? 
-              changePlayersCurrentSource :
-              unclickableMessage} 
-        className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
+          canLogOff ?
+            logoffToNewSource :
+              canLogOn ? 
+                logonToNewSource : 
+                canMove ? 
+                  changePlayersCurrentSource :
+                  unclickableMessage} 
+        className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType}`} >
         <SVGIconSource />
         <div className="markersContainer">
           {getMarker('community', markers_community, canClearCommunity, canDebunk)}
