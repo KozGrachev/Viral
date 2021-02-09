@@ -33,14 +33,14 @@ export const Source: React.FC<SourceProps> = ({ name, markersCommunity, markersS
   const Iconnn = getIcon('markerRelations3');
 
   return (
-      <div className={`source-container ${toKebabCase(name)} ${canMoveTo ? 'can-move-to' : ''}`} >
+    <div className={`source-container ${toKebabCase(name)} ${canMoveTo ? 'can-move-to' : ''}`} >
       <SVGIconSource />
       <div className="markers-container">
         {getMarker('community', markersCommunity)}
         {getMarker('social', markersSocial)}
         {getMarker('relations', markersRelations)}
       </div>
-      </div>
+    </div>
   )
 }
 

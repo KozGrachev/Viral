@@ -1,6 +1,10 @@
 @import './style/variables.scss';
 
 
+
+$app-height: calc(100vh - 40px);
+$app-width: calc((100vh - 40px) * 1.8);
+
 *,
 *:before,
 *:after {
@@ -29,13 +33,21 @@ body {
 
 .app-container {
   display: grid;
-  grid-template-columns: 200px auto;
+  position:relative;
+  grid-template-columns: 20% auto;
   grid-template-areas: "sidebar gameboard";
-  height: calc(100vh - 40px);
+  height: 90vmin;
+  width:150vmin;
+  // height: $app-height;
+  // width: $app-width;
   margin: 20px;
   // padding: 20px;
   // border-radius: 30px;
   // border: 3px solid rgb(21, 255, 0);
+  // max-width: calc(100% - 40px);
+  // max-height: calc();
+  // left: 50%;
+  // transform: translateX(-50%);
 }
 
 
@@ -51,40 +63,57 @@ body {
   border-radius: 30px;
 }
 
+@media (min-aspect-ratio: 7/5) {
+  .board-container {
+    background-color: black;
+    // border:5px solid blue;
+  }
+}
 
 .board-container {
   /* box-sizing: ; */
-
+  // width:100%;
+  width: auto;
+  height: 100%;
   position: relative;
   grid-area: gameboard;
   margin-left: 20px;
-  width: auto;
 
-  height: 100%;
   // border: 2px solid green;
-  border: $panel-border;
+  // border: $panel-border;
   background: $panel-background_translucent;
   border-radius: 30px;
+  overflow: hidden;
+  // transform: scale(calc(100vw/100vh));
 }
 
 #game-board {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: pink; 
+  // background-color: pink;
+  background: url(./assets/allIcons/game-board-slice-with-sources.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  // background-size: cover;
+  background-position: 0 10%;
 }
 
-#map-container {
+#map-svg {
   position: absolute;
 
-  // width: 100%;
+  width: 100%;
   // height: 100%;
   // border: 3px solid red;
   // // top: -10%;
-  // background: url(/assets/allIcons/game-board-without-sources.svg);
   // background-size: 100% auto;
   // background-repeat: no-repeat;
   // background-position: 50% 42%;
+}
+
+.map-svg {
+  // position: ;
+  width: 100%;
 }
 
 #source-parent-grid-container {
@@ -94,10 +123,14 @@ body {
   // background: url(/assets/allIcons/game-board-withoult-sources.svg);
   // background-color: lightgoldenrodyellow;
   // background-size: cover;
+  // border: 3px solid red;
   display: grid;
-  grid-template-columns: 22% 19% 13% 6% 13% 7% 7% 13%;
-  grid-template-rows: 29% 15% 9% 7% 40%;
+  grid-template-columns: repeat(13, 7.7%);
+  grid-template-rows: repeat(10, 10%);
   position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 
 
@@ -274,5 +307,3 @@ body {
   left: 10%;
   top: 10%;
 }
-
-
