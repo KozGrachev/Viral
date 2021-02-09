@@ -7,8 +7,8 @@ import { clearMisinfo, debunkMisinfo, discardCard, logOnOff, moveAction, shareCa
 import { addPlayerToGame, setUp } from '../../logic/actions.MW';
 import { Console } from 'console';
 //here should be a initial State of the Game
-// const GameState: Gamestate = initialState;
-const GameState: Gamestate = gameState;
+const GameState: Gamestate = initialState;
+// const GameState: Gamestate = gameState;
 
 export function gameStateReducer(
   state = GameState,

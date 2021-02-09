@@ -1,4 +1,5 @@
 import { Gamestate, Card,ViralCard, Source, Player } from '../types/gameStateTypes'
+import {startGame} from './actions.newState_CO'
 import { connections as sources } from './connections'
 
 //! HELPER HELPERS
@@ -131,7 +132,6 @@ function typeCheck(string:string){
 //* spread level will define how many times this function is called 
 
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
-
   let oldDeck: Card[] = oldState.misinformationDeckActive
   let drawSource: string
   if (isViral) {
@@ -141,14 +141,13 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
     
     drawSource = oldDeck[0].sourceName
   }
-  //console.log('dealing misinformation card', drawSource)
-
+  
   for (const source of oldState.sources) {
-
+    console.log('source name', source.name) //! always high school
     if (source.name === drawSource) {
 
       while (weight > 0) {
-
+        console.log('WHILE LOOP',weight)
         let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
 
@@ -158,6 +157,7 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
             oldState = outbreak(source, oldState)
           }
           else {
+            console.log('HELLO ANA')
             source[key1]++
             oldState.misinformation[key2].markersLeft--
           }
@@ -165,18 +165,18 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
           weight--
         }
       }
+    
+      if (isViral) {
+        oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length - 1])
+        oldState.misinformationDeckActive.pop()
+      }
+      else {
+        oldState.misinformationDeckPassive.push(oldDeck[0])
+        oldState.misinformationDeckActive.shift()
+      }
+      let newState = { ...oldState }
+      return newState
     }
-
-    if (isViral) {
-      oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length - 1])
-      oldState.misinformationDeckActive.pop()
-    }
-    else {
-      oldState.misinformationDeckPassive.push(oldDeck[0])
-      oldState.misinformationDeckActive.shift()
-    }
-    let newState = { ...oldState }
-    return newState
   }
 }
 
@@ -345,6 +345,11 @@ export function setUp(players: Player[]) {
     index++
     misinfo--
   }
+
+  //! UPDATE POSSIBLE ACTIONS
+  console.log('BEFORE',updateState.sources)
+  updateState=startGame(updateState)
+  console.log('AFTER',updateState.sources)
 
   let newState = { ...updateState }
   return newState

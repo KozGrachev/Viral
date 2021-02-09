@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import {Player, Source} from '../../types/objects.REDO'
+import { Player, Source } from '../../types/objects.REDO'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { clearMisinfoAction, debunkMisinfoAction } from '../../redux/gameState/gameStateActions';
+import { clearMisinfoAction, debunkMisinfoAction, moveAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
 import { ModalComponent } from './DebunkModal';
@@ -21,6 +21,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
   const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
+  //console.log('gamestate from source : ', gamestate)
+  //console.log('currentPlayer from source : ' , currentPlayer)
 
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedDebunkCards, setselectedDebunkCards] = useState([])
@@ -31,8 +33,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
 
-
+console.log('source MOVABLE', source.name, canMove)
   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+  //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
 
@@ -59,7 +62,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
     }
     if (num > 0) {
-      console.log(toCamelCase(`marker ${category} ${num}`))
+      //console.log(toCamelCase(`marker ${category} ${num}`))
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
       return <Icon />;
     }
@@ -87,8 +90,19 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
 
 
-    if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor }/>)
+    if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
 
+
+  }
+
+  const changePlayersCurrentSource = () => {
+    console.log('CLICK')
+    dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
+  }
+
+  const renderIcon = () => {
+    if (canMove) return <button onClick={() => changePlayersCurrentSource()}> <SVGIconSource /> </button>
+    return null
 
   }
 
@@ -106,15 +120,16 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
 
-    <div className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} onClick={(e)=> console.log('CLICKEDDDDDDDDDD', e.target)} >
-      <SVGIconSource />
-      <div className="markers-container">
-        {getMarker('community', markers_community, canClearCommunity, canDebunk)}
-        {getMarker('social', markers_social, canClearSocial, canDebunk)}
-        {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
+      <div onClick={changePlayersCurrentSource} className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
+        <SVGIconSource />
+        <div className="markersContainer">
+          {getMarker('community', markers_community, canClearCommunity, canDebunk)}
+          {getMarker('social', markers_social, canClearSocial, canDebunk)}
+          {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
+        </div>
+        {getPlayerPawns(canShare, currentPlayer)}
       </div>
-      { getPlayerPawns(canShare, currentPlayer) }
-    </div>
+
   )
 
 
