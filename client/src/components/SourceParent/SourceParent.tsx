@@ -19,6 +19,8 @@ export const SourceParent = () => {
     
     return srcArr.map(source => {
       //! GET source.markers_community etc and plug into props of SourceComponent
+
+
       return <SourceComponent source={source} key={source.name}/>
     })
   }

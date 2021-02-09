@@ -16,7 +16,7 @@ function App () {
 
       <StartGame />
     </Provider >
-
+  
   );
 }
 

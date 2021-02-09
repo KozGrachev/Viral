@@ -1,3 +1,4 @@
+import { initDummyState } from './../../logic/dummyState.REDO_CO';
 import { ADD_PLAYER_TO_GAME, CLEAR_MISINFO, DEBUNK_MISINFO, DISCARD_ACTION, GameStateActionTypes, LOG_ON_OFF, MOVE_ACTION, SHARE_CARD, START_GAME, UPDATE_GAME_STATE } from './reduxTypes';
 import { initDummyState as gameState } from '../../logic/dummyState.REDO_CO'
 import { initialState } from './initialState'
@@ -6,7 +7,8 @@ import { clearMisinfo, debunkMisinfo, discardCard, logOnOff, moveAction, shareCa
 import { addPlayerToGame, setUp } from '../../logic/actions.MW';
 import { Console } from 'console';
 //here should be a initial State of the Game
-const GameState: Gamestate = initialState;
+// const GameState: Gamestate = initialState;
+const GameState: Gamestate = gameState;
 
 export function gameStateReducer(
   state = GameState,
@@ -24,7 +26,7 @@ export function gameStateReducer(
       const newState = { ...state, received: false }
       return { ...newState, ...clearMisinfo(ap.oldState, ap.currentPlayerID, ap.misinfoType, ap.location) }
     }
-    
+
     case SHARE_CARD: {
       const ap = action.payload;
       const newstate = shareCard(ap.oldState, ap.currentPlayerID, ap.recipient, ap.sharedCard)
@@ -40,11 +42,12 @@ export function gameStateReducer(
       const newstate = debunkMisinfo(ap.oldState, ap.currentPlayerID, ap.usedCards, ap.misinfoType)
       return { ...state, ...newstate, received: false };
     }
-    // case DISCARD_ACTION: {
-    //   const ap = action.payload;
-    //   const newstate = debunkMisinfo(ap.oldState, ap.currentPlayerID, ap.usedCards, ap.misinfoType)
-    //   return (discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard), { ...state, received: false });
-    // }
+    case DISCARD_ACTION: {
+      const ap = action.payload;
+      const newstate = discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard)
+      return { ...state, ...newstate, received: false };
+    }
+
     case UPDATE_GAME_STATE:
       return {
         ...state, ...action.payload
