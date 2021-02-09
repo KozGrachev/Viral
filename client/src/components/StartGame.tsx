@@ -44,7 +44,9 @@ export const StartGame: React.FC = (): JSX.Element => {
     }
   }
 
-  // const addPlayer = () => { 
+
+  const MapSVG = getIcon('map');
+  // const addPlayer = () => {
   //   dispatch(addPlayerToGameState(player, gamestate))
   // }
 
@@ -57,27 +59,29 @@ export const StartGame: React.FC = (): JSX.Element => {
             (!stateRendered) ?
               <h1>
                 game loading ...
-           {startGame(player)}
+          {startGame(player)}
               </h1>
               :
               (stateRendered && state.gameOn) &&
-              <div className="app-container">
-                <CureDeck />
-                <SpreadLevel />
-                <PlayerPrompt />
+              <div className="app-outer-wrapper">
+                <div className="app-container">
+                  <CureDeck />
+                  <SpreadLevel />
+                  <PlayerPrompt />
 
-                <div className="sidebar-left">
-                  <CardHand />
+                  <div className="sidebar-left">
+                    <CardHand />
+                  </div>
+                  <SourceParent />
+                  <div className="board-container">
+                    <ChaosMeter />
+                    <SourceDeck />
+                    <MisinformationDeck />
+                    <MarkersStore />
+                  </div>
                 </div>
-                <SourceParent />
-                <div className="board-container">
-                  <ChaosMeter />
-                  <SourceDeck />
-                  <MisinformationDeck />
-                  <MarkersStore />
-                </div>
-               Just a check---- {state.players[state.players.length - 1].name} -----
-               Just a check ---- {state.players[0].name} -----
+              Just a check---- {state.players[state.players.length - 1].name} -----
+              Just a check ---- {state.players[0].name} -----
 
               </div>)
       }
