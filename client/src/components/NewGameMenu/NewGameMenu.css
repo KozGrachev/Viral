@@ -19,7 +19,9 @@
   margin: 5px 0;
 }
 
-input, option, select {
+input,
+option,
+select {
   margin-bottom: 15px;
   height: 18px;
   border-radius: 5px;
@@ -48,4 +50,3 @@ input, option, select {
   margin: 15px auto;
   width: 30%;
 }
-
