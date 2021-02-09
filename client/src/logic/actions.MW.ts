@@ -133,21 +133,22 @@ function typeCheck(string:string){
 
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
   let oldDeck: Card[] = oldState.misinformationDeckActive
+  console.log(oldDeck)
   let drawSource: string
   if (isViral) {
     drawSource = oldDeck[oldDeck.length - 1].sourceName
   }
   else {
-    
     drawSource = oldDeck[0].sourceName
   }
   
+  
   for (const source of oldState.sources) {
-    console.log('source name', source.name) //! always high school
+  
     if (source.name === drawSource) {
 
       while (weight > 0) {
-        console.log('WHILE LOOP',weight)
+        
         let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
 
@@ -157,7 +158,7 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
             oldState = outbreak(source, oldState)
           }
           else {
-            console.log('HELLO ANA')
+            
             source[key1]++
             oldState.misinformation[key2].markersLeft--
           }

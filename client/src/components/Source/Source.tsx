@@ -82,10 +82,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
-
-    if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
-
-
+    //console.log(currentPlayer.currentSource)
+    if (currentPlayer.currentSource === source.name&& !players.includes(currentPlayer)) players.push(currentPlayer)
+    
     if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
 
 
