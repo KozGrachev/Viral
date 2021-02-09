@@ -34,9 +34,12 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     canMove, canLogOff, canLogOn, canClearCommunity,
     canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
+<<<<<<< HEAD
 
 // console.log('source MOVABLE', source.name, canMove)
 //   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+=======
+>>>>>>> a445faf240f8ef15953d3c55a5813e09d03e8bab
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
@@ -97,7 +100,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const changePlayersCurrentSource = () => {
-    //console.log('CLICK')
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
   }
 
