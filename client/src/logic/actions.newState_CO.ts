@@ -57,7 +57,7 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
   console.log('player cleared', noOfMarkers, misinfoType);
-  console.log(`%c player cleared ${noOfMarkers} ${misinfoType} markers`,`background-color: lightgray; color: green; padding: 10px`);
+  console.log(`%c player cleared ${noOfMarkers} ${misinfoType} markers`,`background-color: lightsalmon; color: green; padding: 10px`);
   console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }

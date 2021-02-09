@@ -106,9 +106,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const logoffToNewSource = () => {
-    // get card of location user moving from
-    const spentCard = '';
-    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard:  source.name }))
+    const spentCard = gamestate.players.filter(player => player.id === currentPlayer.id)[0].currentSource;
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard: spentCard }))
   }
 
   const renderIcon = () => {

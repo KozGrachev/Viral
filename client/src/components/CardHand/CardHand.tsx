@@ -24,8 +24,3 @@ export const CardHand: React.FC = () => {
     </div>
   )
 }
-
-
-  // push dummy card to hand //! UNDO
-
-
