@@ -73,7 +73,8 @@ export const initDummyState: Gamestate = {
     {
       name: 'Player 1',
       id: '1234',
-      cards: [],
+      cards: [ 
+      ],
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'green',

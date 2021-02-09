@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Player, Source} from '../../types/objects.REDO'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase } from '../../helpers/utils';
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearMisinfoAction, debunkMisinfoAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
+import { ModalComponent } from './DebunkModal';
 
 
 export interface SourceProps {
@@ -14,10 +15,13 @@ export interface SourceProps {
 }
 
 
-export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) => { // SVGIcon
+export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) => { // SVGIcon
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
   const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
+
+  const [modalIsOpen, setIsOpen] = useState(false)
+  const [selectedDebunkCards, setselectedDebunkCards] = useState([])
   
   let { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
@@ -35,53 +39,53 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
   
   
 
-  const getMarker = (category: string, num: number, canBeCleared: boolean , canDebunk:string[]) => {
-    // if (num > 0 && canDebunk.includes(category)) {
-    //   //get the debunable icon
-    //   const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
-    //   //wrap it with  button to make it clickable
-    //   return (<button onClick={() => debunkMisinforamtion(category)}><ClearableIcon /></button>)
+  const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
+    if (num > 0 && canDebunk.includes(category)) {
+      //get the debunable icon
+      const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
+      //wrap it with  button to make it clickable
+      return (<button onClick={() => debunkMisinforamtion(category)}><ClearableIcon /></button>)
       
-    // }
+    }
     
     //add a different icon if canBeCleared
     if (num > 0 && canBeCleared) {
       //get the clearable icon
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
-      return (<button onClick={()=>clearMisinformationbyOne(category)}><ClearableIcon/></button>)
+      return (<button onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></button>)
       
     }
     if (num > 0) {
       console.log(toCamelCase(`marker ${category} ${num}`))
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
-      return <Icon   />;
+      return <Icon />;
     }
-    }
+  }
     
-  // const debunkMisinforamtion = (category:string) => {
+  const debunkMisinforamtion = (category: string) => {
       
-  //   dispatch(debunkMisinfoAction({
-  //     oldState: gamestate, currentPlayerID: currentPlayer.id,
-  //   misinfoType:category, usedCards:}))
+    // dispatch(debunkMisinfoAction({
+    //   oldState: gamestate, currentPlayerID: currentPlayer.id,
+    // misinfoType:category, usedCards:}))
       
-  //   } 
+  }
 
 
 
 
-  const clearMisinformationbyOne = (misinfoType:string) => {
+  const clearMisinformationbyOne = (misinfoType: string) => {
     //throws a logic error !!!
-    dispatch(clearMisinfoAction({oldState:gamestate , currentPlayerID: currentPlayer.id, misinfoType, location:source.name }))
+    dispatch(clearMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, misinfoType, location: source.name }))
   }
 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
 
-    if (currentPlayer.currentSource===source.name)players.push(currentPlayer)
+    if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
     
 
-    return players.map(player => <PlayerPawn key={player.name} player={player }/>)
+    return players.map(player => <PlayerPawn key={player.name} player={player} />)
 
 
   }
@@ -89,21 +93,30 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
   const Iconnn = getIcon('markerRelations3');
 
   //adding the right class names
-   let canMoveClassName = canMove ? 'can-move-to' : ''
+  let canMoveClassName = canMove ? 'can-move-to' : ''
   let canLogOffClassName = canLogOff ? 'can-log-off' : ''
   let canLogOnClassName = canLogOn ? 'can-log-on' : ''
 
+  if (modalIsOpen) return <ModalComponent modalIsOpen={modalIsOpen}
+    setIsOpen={setIsOpen} setselectedDebunkCards={setselectedDebunkCards} />;
+
   return (
+
+
+    
     <div className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
       <SVGIconSource />
       <div className="markersContainer">
-        {getMarker('community', markers_community , canClearCommunity , canDebunk)} 
+        {getMarker('community', markers_community, canClearCommunity, canDebunk)}
         {getMarker('social', markers_social, canClearSocial, canDebunk)}
         {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
       </div>
-      {canShare.length > 0 ?  getPlayerPawns(canShare , currentPlayer):null}
+      {canShare.length > 0 ? getPlayerPawns(canShare, currentPlayer) : null}
     </div>
   )
+
+
+
 }
 
 // highlighted to show canMove, canLogon (single source which), canLogoff
