@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Player, Source } from '../../types/objects.REDO'
+import { Player, Source } from '../../types/gameStateTypes'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { clearMisinfoAction, debunkMisinfoAction, moveAction } from '../../redux/gameState/gameStateActions';
+import { clearMisinfoAction, debunkMisinfoAction, moveAction, logOnOffAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
 import { ModalComponent } from './DebunkModal';
+import { logOnOff } from '../../logic/actions.newState_CO';
 
 
 export interface SourceProps {
@@ -20,7 +21,10 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
-  const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
+  const array = useSelector((state: RootState) => state.gameStateReducer.players.filter(player=>player.isCurrent===true))
+  //console.log('CURRENT PLAYER', array)
+  const currentPlayer=array[0]
+  const allPlayers=useSelector((state: RootState) => state.gameStateReducer.players)
   //console.log('gamestate from source : ', gamestate)
   //console.log('currentPlayer from source : ' , currentPlayer)
 
@@ -29,19 +33,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   let { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
-    canClearRelations, canClearSocial, canShare, canDebunk } = source;
+    canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
-
-
-  // console.log('source MOVABLE', source.name, canMove)
-  //   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
-
-
-
-
 
 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
@@ -58,6 +54,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
       //get the clearable icon
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
+      
       return (<button onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></button>)
 
     }
@@ -76,9 +73,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   }
 
-
-
-
   const clearMisinformationbyOne = (misinfoType: string) => {
     //throws a logic error !!!
     dispatch(clearMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, misinfoType, location: source.name }))
@@ -86,18 +80,29 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
-
-    if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
-
-
-    if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
-
+    let test:Player[]=[];
+    for(const player of allPlayers){
+      if (player.currentSource === source.name&& !test.includes(player)) {
+        test.push(currentPlayer)
+      }
+    }
+    //console.log(players)
+    if (test.length > 0) return test.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
+    else return null
 
   }
 
   const changePlayersCurrentSource = () => {
-    //  console.log('CLICK')
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
+  }
+
+  const logonToNewSource = () => {
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard:  source.name }))
+  }
+
+  const logoffToNewSource = () => {
+    const spentCard = gamestate.players.filter(player => player.id === currentPlayer.id)[0].currentSource;
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard: spentCard }))
   }
 
   const renderIcon = () => {
@@ -106,7 +111,16 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   }
 
-  const Iconnn = getIcon('markerRelations3');
+  const renderAsLogOn = () => {
+    if (canLogOn) return <button onClick={() => changePlayersCurrentSource()}> <SVGIconSource /> </button>
+    return null
+
+  }
+
+  function unclickableMessage() {
+    console.log(`%c you can't do anything at ${source.name}`,`background-color: red; color: white; padding: 10px`)
+    return null;
+  }
 
   //adding the right class names
   let canMoveClassName = canMove ? 'can-move-to' : ''
@@ -116,40 +130,38 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   if (modalIsOpen) return <ModalComponent modalIsOpen={modalIsOpen}
     setIsOpen={setIsOpen} setselectedDebunkCards={setselectedDebunkCards} />;
 
+
+  // console.log('community',markers_community,name)
+  // console.log('relations',markers_relations,name)
+  // console.log('social',markers_social,name)
+
   return (
 
 
 
-    <div onClick={changePlayersCurrentSource} className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
-      <SVGIconSource />
-      <div className="markersContainer">
-        {getMarker('community', markers_community, canClearCommunity, canDebunk)}
-        {getMarker('social', markers_social, canClearSocial, canDebunk)}
-        {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
+      <div
+        onClick={
+          // logic to render different click events from source
+          canLogOff ?
+            logoffToNewSource :
+              canLogOn ?
+                logonToNewSource :
+                canMove ?
+                  changePlayersCurrentSource :
+                  unclickableMessage}
+        className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType}`} >
+
+        <SVGIconSource />
+        <div className={`markers-container ${misinfoType}`}>
+          {getMarker('community', markers_community, canClearCommunity, canDebunk)}
+          {getMarker('social', markers_social, canClearSocial, canDebunk)}
+          {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
+        </div>
+        {getPlayerPawns(canShare, currentPlayer)}
       </div>
-      {getPlayerPawns(canShare, currentPlayer)}
-    </div>
 
   )
 
 
 
 }
-
-// highlighted to show canMove, canLogon (single source which), canLogoff
-
-// 3 markers & can clear?
-
-// pawn <-- use otherPlayer, (canShare in otherPlayer)
-
-// canMove: white transparent overlay (AWAY LOCATION)
-// canLogon: blue border? (AWAY LOCATION)
-// canLogoff: green border? (AWAY LOCATION)
-// canLogon and Logoff: split blue/green border (AWAY LOCATION)
-
-// with social marker: red dot on corner w/ number 1,2,3 (BOTH CURRENT & AWAY)
-//    canClear that marker: slow flashing (CURRENT LOCATION)
-// with community marker: yellow triangle on corner w/ number 1,2,3 (BOTH CURRENT & AWAY)
-//    canClear that marker: slow flashing (CURRENT LOCATION)
-// with relations marker: blue square on corner w/ number 1,2,3 (BOTH CURRENT & AWAY)
-//    canClear that marker: slow flashing (CURRENT LOCATION)

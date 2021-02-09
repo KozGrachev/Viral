@@ -3,30 +3,16 @@ import { SourceCard, } from '../SourceCard/SourceCard';
 import { RootState } from '../../redux/gameState/store'
 import { useSelector } from 'react-redux';
 import { Card as SourceCardType } from '../../types/gameStateTypes';
+import './CardHand.scss'
 
 
 export const CardHand: React.FC = () => {
 
-   const cards = useSelector((state: RootState) => state.playerStateReducer.cards)
-  // const cards: SourceCardType[] = [
-  //     {
-  //       cardType: 'connection',
-  //       sourceName: 'high school',
-  //       misinfoType: 'community',
-  //     },
-  //     {
-  //       cardType: 'connection',
-  //       sourceName: 'tiktok',
-  //       misinfoType: 'social',
-  //     },
-  //     {
-  //       cardType: 'connection',
-  //       sourceName: 'fran from hr',
-  //       misinfoType: 'relations',
-  //     },
-  //   ]
-  // console.log('PLAYER CARDS')
-  // console.log(cards)
+
+  const Player = useSelector((state: RootState) => state.playerStateReducer);
+  const cards = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.id === Player.id)[0].cards);
+  console.log(`%c REMAINING PLAYER CARDS`,`background-color: lightgray; color: indigo; padding: 10px`);
+
   const renderCards = (cardArray: SourceCardType[]) => {
     return cardArray.map(card => {
       // console.log(card)
@@ -40,8 +26,3 @@ export const CardHand: React.FC = () => {
     </div>
   )
 }
-
-
-  // push dummy card to hand //! UNDO
-
-

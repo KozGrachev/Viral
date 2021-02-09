@@ -6,6 +6,16 @@
   border-radius: 20px;
 }
 
+@mixin scroll-panel {
+  @include glass-panel();
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  // justify-content: flex-start;
+}
 
 @mixin purple {
   background-color: #9B5DE5;

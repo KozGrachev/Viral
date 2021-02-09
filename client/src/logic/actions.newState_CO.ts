@@ -1,5 +1,5 @@
 import { Gamestate, Card,ViralCard, Source, Player, Misinformation } from '../types/gameStateTypes'
-import { didWin, viral as playViralCard, dealMisinfoCard,dealConnectionCard } from './actions.MW'
+import { didWin, viral as playViralCard, dealMisinfoCard,dealConnectionCard, didLose, setUp } from './actions.MW'
 import { connections as sources } from './connections'
 import {viralCheck} from './actions.MW'
 import { MisinformationDeck } from '../components/MisinformationDeck/misinformationDeck';
@@ -26,8 +26,8 @@ export function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], l
       ),
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
-  console.log('player moved to', location);
-  console.log('there are', newState.turnMovesLeft, 'moves left')
+  console.log(`%c player moved to ${location}`,`background-color: green; color: white; padding: 10px`);
+  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -57,11 +57,8 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
   console.log('player cleared', noOfMarkers, misinfoType);
-  console.log('there are', newState.turnMovesLeft, 'moves left')
-  console.log('new state in clearmisinfo', newState)
-  //switch it back to return nextMoveChecker(newState, currentPlayerID); unless u wanna see the world burn
-
-  // return newState
+  console.log(`%c player cleared ${noOfMarkers} ${misinfoType} markers`,`background-color: lightsalmon; color: green; padding: 10px`);
+  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -98,7 +95,7 @@ export function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], re
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
   console.log('player shared', sharedCard, 'with player', recipient);
-  console.log('there are', newState.turnMovesLeft, 'moves left')
+  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -118,8 +115,8 @@ export function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], loc
       ),
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
-  console.log('player flew to', location, 'using the', usedCard, 'card');
-  console.log('there are', newState.turnMovesLeft, 'moves left')
+  console.log(`%c player flew to ${location} using the ${usedCard} card`,`background-color: cyan; color: black; padding: 10px`);
+  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -146,14 +143,14 @@ export function debunkMisinfo(oldState: Gamestate, currentPlayerID: Player['id']
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
   if (didWin(newState)) {
-    console.log('congratulations, you debunked all the misinformation and won')
+    console.log(`%c CONGRATULATIONS! You debunked all the misinformation in the world and won. Good for you.`,`background-color: chartreuse; color: indianred; padding: 10px; font-weight: bold`);
     return {
       ...newState,
       gameWon: true,
     }
   } else {
     console.log('player debunked', misinfoType);
-    console.log('there are', newState.turnMovesLeft, 'moves left')
+    console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
     return nextMoveChecker(newState, currentPlayerID)
   }
 }
@@ -167,7 +164,6 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
   const location: Player['currentSource'] = oldState.players[playerIndex].currentSource;
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
   //* move check
-  console.log('location from updatePossible', location)
   const adjacents: string[] = sources.filter((source) => source.name === location)[0].connections;
   //* clear checks
   const clearCommunityMisinfo: boolean = oldState.sources[sourceIndex].markers_community > 0;
@@ -241,8 +237,8 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
         {
           ...source,
           canMove: adjacents.includes(source.name),
-          canLogOn: logonPossible.includes(source.name),
-          canLogOff: logoffPossible,
+          canLogOn: logonPossible.includes(source.name) && !adjacents.includes(source.name),
+          canLogOff: logoffPossible && !adjacents.includes(source.name),
           canClearCommunity: false,
           canClearSocial: false,
           canClearRelations: false,
@@ -265,6 +261,13 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   let newState: Gamestate = oldState;
   while (cardsLeft > 0) {
     newState = dealConnectionCard(oldState);
+    // check here for losing
+    if (didLose(newState)){
+      console.log(`%c there are no more cards in the deck, so...`,`color: darkred; padding:10px`);
+      console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
+      console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
+      setUp(newState.players);
+    }
     if (newState.players[playerIndex].cards.length > 6) {
       console.log('your hand is full, you need to discard a card');
       return {
@@ -285,6 +288,13 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   let misinfoCardNo = [2, 2, 3, 4][newState.spreadLevel];
   while (misinfoCardNo > 0) {
     newState = dealMisinfoCard(newState, 1, false)!
+    // check if lose (run out of misinfo)
+    if (didLose(newState)){
+      console.log(`%c there are no more misinfo cards in the deck, so...`,`color: darkred; padding:10px`);
+      console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
+      console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
+      setUp(newState.players);
+    }
     misinfoCardNo--
   }
   //change current player turn
@@ -295,6 +305,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
 //* HELPERS
 
 export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  if(oldState.players.length>1){
   const playerIndex: number = oldState.players.map((player) => player.id).indexOf(currentPlayerID);
   const nextPlayerIndex: number = playerIndex === oldState.players.length - 1 ?
     0 :
@@ -311,9 +322,14 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
       ),
     // reset number of moves
     turnMovesLeft: 4,
-  };
-  console.log('next players turn!')
+  };console.log(`%c NEXT PLAYERS TURN`,`background-color: lightgreen; color: black; padding: 10px`);
   return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
+}
+  const newState= {
+    ...oldState,
+    turnMovesLeft: 4,
+  };
+  return updatePossibleActions(newState,currentPlayerID)
 }
 
 

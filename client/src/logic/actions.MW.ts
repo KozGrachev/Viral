@@ -133,21 +133,23 @@ function typeCheck(string: string) {
 
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
   let oldDeck: Card[] = oldState.misinformationDeckActive
+  console.log(oldDeck)
   let drawSource: string
   if (isViral) {
     drawSource = oldDeck[oldDeck.length - 1].sourceName
   }
   else {
-
     drawSource = oldDeck[0].sourceName
   }
-
+  
+  
   for (const source of oldState.sources) {
-    // console.log('source name', source.name) //! always high school
+  
     if (source.name === drawSource) {
 
       while (weight > 0) {
-        // console.log('WHILE LOOP',weight)
+        
+
         let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
 
@@ -157,7 +159,6 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
             oldState = outbreak(source, oldState)
           }
           else {
-            // console.log('HELLO ANA')
             source[key1]++
             oldState.misinformation[key2].markersLeft--
           }
@@ -181,8 +182,15 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
 }
 
 export function outbreak(outbreak_source: Source, oldState: Gamestate) {
-  //console.log('outbreak!! chaos meter increases')
+  console.log(`%c OUTBREAK!! chaos meter increases`,`background-color: orange; color: maroon; padding:10px`);
   oldState.chaosMeter++
+  // check if lose (chaos meter )
+  if (didLose(oldState)){
+    console.log(`%c Chaos reigns!, the chaos meter is too high, so...`,`color: darkred; padding:10px`);
+    console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
+    console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
+    setUp(oldState.players);
+  }
   let connections!: string[];
   for (const source of sources) {
     if (source.name === outbreak_source.name) {
@@ -199,12 +207,18 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
           }
           else {
             source[key]++
+            // check if lose (no more misinfo)
+            if (didLose(oldState)){
+              console.log(`%c all the misinfo markers are gone, so...`,`color: darkred; padding:10px`);
+              console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
+              console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
+              setUp(oldState.players);
+            }
           }
 
       }
     }
   }
-  //console.log('outbreak on', outbreak_source)
   let newState = { ...oldState }
   return newState
 }
@@ -223,7 +237,6 @@ export function dealConnectionCard(oldState: Gamestate) {
     oldState.connectionDeck.shift()
   }
   else {
-    // console.log('hello')
     for (const player of oldState.players) {
       if (player.isCurrent) {
         if (!viralCheck(newCard)) {
@@ -240,9 +253,7 @@ export function dealConnectionCard(oldState: Gamestate) {
 }
 
 export function viral(oldState: Gamestate) {
-  //console.log('viral card!!!')
   oldState = dealMisinfoCard(oldState, 3, true)!
-
   oldState.spreadLevel++
   //* shuffle passive misinfo deck and put on top of active misinfo deck
   oldState.misinformationDeckActive = [...shuffle(oldState.misinformationDeckPassive), ...oldState.misinformationDeckActive]
