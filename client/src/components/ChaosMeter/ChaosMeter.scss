@@ -3,25 +3,28 @@
 
 .rings {
   position: relative;
-  // display: flex;
-  // flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   // margin-left: 490px;
-  
+  border: 1px solid green;
 }
 
-.percent1,
-.percent2,
-svg,
-circle {
-  width: 200px;
-  height: 200px;
+.percent1, svg, circle {
+  width: 150px;
+  height: 150px;
+  // border: 1px solid green;
 }
 
 circle {
   position: absolute;
   fill: none;
   stroke-width: 10;
-  transform: translate(10px, 10px);
+  left: 50%;
+  top: 50%;
+  // transform: translate(-50%, -50%);
+  // transform-origin: center;
+  // transform: translate(10px, 10px) rotate(-90deg);
   stroke-dasharray: 440;
   stroke-linecap: round;
 }
@@ -39,6 +42,7 @@ circle:nth-child(1) {
 }
 
 .number {
+  border: 1px solid green;
   position: absolute;
   // bottom: 190px;
   // right: -50px;
@@ -52,9 +56,6 @@ h2 {
 span {
   font-size: 24px;
   opacity: .7;
-}
-
-.percent1 span {
   color: gold;
 }
 
