@@ -24,7 +24,7 @@ export function gameStateReducer(
       const newState = { ...state, received: false }
       return { ...newState, ...clearMisinfo(ap.oldState, ap.currentPlayerID, ap.misinfoType, ap.location) }
     }
-    
+
     case SHARE_CARD: {
       const ap = action.payload;
       const newstate = shareCard(ap.oldState, ap.currentPlayerID, ap.recipient, ap.sharedCard)
@@ -40,11 +40,12 @@ export function gameStateReducer(
       const newstate = debunkMisinfo(ap.oldState, ap.currentPlayerID, ap.usedCards, ap.misinfoType)
       return { ...state, ...newstate, received: false };
     }
-    // case DISCARD_ACTION: {
-    //   const ap = action.payload;
-    //   const newstate = debunkMisinfo(ap.oldState, ap.currentPlayerID, ap.usedCards, ap.misinfoType)
-    //   return (discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard), { ...state, received: false });
-    // }
+    case DISCARD_ACTION: {
+      const ap = action.payload;
+      const newstate = discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard)
+      return { ...state, ...newstate, received: false };
+    }
+
     case UPDATE_GAME_STATE:
       return {
         ...state, ...action.payload
