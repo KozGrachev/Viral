@@ -144,11 +144,17 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
   
   
   for (const source of oldState.sources) {
+<<<<<<< HEAD
   
     if (source.name === drawSource) {
 
       while (weight > 0) {
         
+=======
+    if (source.name === drawSource) {
+
+      while (weight > 0) {
+>>>>>>> 63825ae12c6ef0d731c8b80e2456c4ab27e5cd63
         let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
 
@@ -219,12 +225,11 @@ export function dealConnectionCard(oldState: Gamestate) {
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
   
   if (newCard.cardType==='viral') {
-    console.log('viral')
+    console.log(`%c IT'S GONE VIRAL!`,`background-color: red; color: black; padding: 10px; font-weight: bold`);
     oldState = viral(oldState)
     oldState.connectionDeck.shift()
   }
   else {
-    console.log('hello')
     for (const player of oldState.players) {
       if (player.isCurrent) {
         if(!viralCheck(newCard)){

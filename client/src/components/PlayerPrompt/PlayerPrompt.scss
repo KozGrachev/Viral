@@ -1,17 +1,12 @@
 @import '../../style/theme';
 
 .player-prompt-container {
-  @include glass-panel;
-  padding: 10px;
-  display: flex;
+  @include scroll-panel;
   height:150px;
   width: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
+
   /* align-items: center; */
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+
 }
 
 .player-prompt-container::-webkit-scrollbar{

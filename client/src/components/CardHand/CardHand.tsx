@@ -3,6 +3,7 @@ import { SourceCard, } from '../SourceCard/SourceCard';
 import { RootState } from '../../redux/gameState/store'
 import { useSelector } from 'react-redux';
 import { Card as SourceCardType } from '../../types/gameStateTypes';
+import './CardHand.scss'
 
 
 export const CardHand: React.FC = () => {
