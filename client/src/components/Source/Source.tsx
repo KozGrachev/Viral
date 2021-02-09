@@ -4,10 +4,11 @@ import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { clearMisinfoAction, debunkMisinfoAction, moveAction } from '../../redux/gameState/gameStateActions';
+import { clearMisinfoAction, debunkMisinfoAction, moveAction, logOnOffAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
 import { ModalComponent } from './DebunkModal';
+import { logOnOff } from '../../logic/actions.newState_CO';
 
 
 export interface SourceProps {
@@ -29,11 +30,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   let { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
-    canClearRelations, canClearSocial, canShare, canDebunk } = source;
+    canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
-
-// console.log('source MOVABLE', source.name, canMove)
-//   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
@@ -91,8 +89,18 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const changePlayersCurrentSource = () => {
-    //console.log('CLICK')
+
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
+  }
+
+  const logonToNewSource = () => {
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard:  source.name }))
+  }
+
+  const logoffToNewSource = () => {
+    // get card of location user moving from
+    const spentCard = '';
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard:  source.name }))
   }
 
   const renderIcon = () => {
@@ -101,7 +109,16 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   }
 
-  const Iconnn = getIcon('markerRelations3');
+  const renderAsLogOn = () => {
+    if (canLogOn) return <button onClick={() => changePlayersCurrentSource()}> <SVGIconSource /> </button>
+    return null
+
+  }
+
+  function unclickableMessage() {
+    console.log(`%c you can't do anything at ${source.name}`,`background-color: red; color: white; padding: 10px`)
+    return null;
+  }
 
   //adding the right class names
   let canMoveClassName = canMove ? 'can-move-to' : ''
@@ -120,9 +137,20 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
 
-      <div onClick={changePlayersCurrentSource} className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
+      <div
+        onClick={
+          // logic to render different click events from source
+          canLogOff ?
+            logoffToNewSource :
+              canLogOn ?
+                logonToNewSource :
+                canMove ?
+                  changePlayersCurrentSource :
+                  unclickableMessage}
+        className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType}`} >
+
         <SVGIconSource />
-        <div className="markersContainer">
+        <div className={`markers-container ${misinfoType}`}>
           {getMarker('community', markers_community, canClearCommunity, canDebunk)}
           {getMarker('social', markers_social, canClearSocial, canDebunk)}
           {getMarker('relations', markers_relations, canClearRelations, canDebunk)}

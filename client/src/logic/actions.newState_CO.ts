@@ -26,8 +26,8 @@ export function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], l
       ),
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
-  console.log('player moved to', location);
-  console.log('there are', newState.turnMovesLeft, 'moves left')
+  console.log(`%c player moved to ${location}`,`background-color: green; color: white; padding: 10px`);
+  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -57,11 +57,8 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
   console.log('player cleared', noOfMarkers, misinfoType);
-  console.log('there are', newState.turnMovesLeft, 'moves left')
-  console.log('new state in clearmisinfo', newState)
-  //switch it back to return nextMoveChecker(newState, currentPlayerID); unless u wanna see the world burn
-
-  // return newState
+  console.log(`%c player cleared ${noOfMarkers} ${misinfoType} markers`,`background-color: lightgray; color: green; padding: 10px`);
+  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -98,7 +95,7 @@ export function shareCard(oldState: Gamestate, currentPlayerID: Player['id'], re
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
   console.log('player shared', sharedCard, 'with player', recipient);
-  console.log('there are', newState.turnMovesLeft, 'moves left')
+  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -118,8 +115,8 @@ export function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], loc
       ),
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
-  console.log('player flew to', location, 'using the', usedCard, 'card');
-  console.log('there are', newState.turnMovesLeft, 'moves left')
+  console.log(`%c player flew to ${location} using the ${usedCard} card`,`background-color: cyan; color: black; padding: 10px`);
+  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -153,7 +150,7 @@ export function debunkMisinfo(oldState: Gamestate, currentPlayerID: Player['id']
     }
   } else {
     console.log('player debunked', misinfoType);
-    console.log('there are', newState.turnMovesLeft, 'moves left')
+    console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
     return nextMoveChecker(newState, currentPlayerID)
   }
 }
@@ -167,7 +164,6 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
   const location: Player['currentSource'] = oldState.players[playerIndex].currentSource;
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
   //* move check
-  console.log('location from updatePossible', location)
   const adjacents: string[] = sources.filter((source) => source.name === location)[0].connections;
   //* clear checks
   const clearCommunityMisinfo: boolean = oldState.sources[sourceIndex].markers_community > 0;
@@ -241,8 +237,8 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
         {
           ...source,
           canMove: adjacents.includes(source.name),
-          canLogOn: logonPossible.includes(source.name),
-          canLogOff: logoffPossible,
+          canLogOn: logonPossible.includes(source.name) && !adjacents.includes(source.name),
+          canLogOff: logoffPossible && !adjacents.includes(source.name),
           canClearCommunity: false,
           canClearSocial: false,
           canClearRelations: false,
@@ -311,8 +307,7 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
       ),
     // reset number of moves
     turnMovesLeft: 4,
-  };
-  console.log('next players turn!')
+  };console.log(`%c NEXT PLAYERS TURN`,`background-color: lightgreen; color: black; padding: 10px`);
   return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
 }
 
