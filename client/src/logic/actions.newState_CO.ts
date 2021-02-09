@@ -1,5 +1,5 @@
 import { Gamestate, Card,ViralCard, Source, Player, Misinformation } from '../types/gameStateTypes'
-import { didWin, viral as playViralCard, dealMisinfoCard,dealConnectionCard } from './actions.MW'
+import { didWin, viral as playViralCard, dealMisinfoCard,dealConnectionCard, didLose, setUp } from './actions.MW'
 import { connections as sources } from './connections'
 import {viralCheck} from './actions.MW'
 import { MisinformationDeck } from '../components/MisinformationDeck/misinformationDeck';
@@ -57,7 +57,7 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
   console.log('player cleared', noOfMarkers, misinfoType);
-  console.log(`%c player cleared ${noOfMarkers} ${misinfoType} markers`,`background-color: lightgray; color: green; padding: 10px`);
+  console.log(`%c player cleared ${noOfMarkers} ${misinfoType} markers`,`background-color: lightsalmon; color: green; padding: 10px`);
   console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
@@ -143,7 +143,7 @@ export function debunkMisinfo(oldState: Gamestate, currentPlayerID: Player['id']
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
   if (didWin(newState)) {
-    console.log('congratulations, you debunked all the misinformation and won')
+    console.log(`%c CONGRATULATIONS! You debunked all the misinformation in the world and won. Good for you.`,`background-color: chartreuse; color: indianred; padding: 10px; font-weight: bold`);
     return {
       ...newState,
       gameWon: true,
@@ -261,6 +261,13 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   let newState: Gamestate = oldState;
   while (cardsLeft > 0) {
     newState = dealConnectionCard(oldState);
+    // check here for losing
+    if (didLose(newState)){
+      console.log(`%c there are no more cards in the deck, so...`,`color: darkred; padding:10px`);
+      console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
+      console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
+      setUp(newState.players);
+    }
     if (newState.players[playerIndex].cards.length > 6) {
       console.log('your hand is full, you need to discard a card');
       return {
@@ -281,6 +288,13 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   let misinfoCardNo = [2, 2, 3, 4][newState.spreadLevel];
   while (misinfoCardNo > 0) {
     newState = dealMisinfoCard(newState, 1, false)!
+    // check if lose (run out of misinfo)
+    if (didLose(newState)){
+      console.log(`%c there are no more misinfo cards in the deck, so...`,`color: darkred; padding:10px`);
+      console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
+      console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
+      setUp(newState.players);
+    }
     misinfoCardNo--
   }
   //change current player turn
@@ -291,6 +305,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
 //* HELPERS
 
 export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  if(oldState.players.length>1){
   const playerIndex: number = oldState.players.map((player) => player.id).indexOf(currentPlayerID);
   const nextPlayerIndex: number = playerIndex === oldState.players.length - 1 ?
     0 :
@@ -309,6 +324,12 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
     turnMovesLeft: 4,
   };console.log(`%c NEXT PLAYERS TURN`,`background-color: lightgreen; color: black; padding: 10px`);
   return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
+}
+  const newState= {
+    ...oldState,
+    turnMovesLeft: 4,
+  };
+  return updatePossibleActions(newState,currentPlayerID)
 }
 
 
