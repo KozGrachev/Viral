@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Player, Source } from '../../types/objects.REDO'
+import { Player, Source } from '../../types/gameStateTypes'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss'
@@ -87,7 +87,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
 
-    //if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
+    if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
 
 
     if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
