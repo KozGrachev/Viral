@@ -88,9 +88,9 @@ export const initDummyState: Gamestate = {
       canMove: false,
       canLogOn: false,
       canLogOff: false,
-      canClearCommunity: false,
-      canClearSocial: false,
-      canClearRelations: false,
+      canClearCommunity: true,
+      canClearSocial: true,
+      canClearRelations: true,
       canShare: [],
       canDebunk: [],
     },
@@ -100,7 +100,7 @@ export const initDummyState: Gamestate = {
       markers_community: 1,
       markers_social: 3,
       markers_relations: 0,
-      canMove: false,
+      canMove: true,
       canLogOn: false,
       canLogOff: false,
       canClearCommunity: false,
@@ -403,12 +403,16 @@ export const initDummyState: Gamestate = {
     {
       name: 'Player 1',
       id: '1234',
-      cards: [],
+      cards: [ 
+      ],
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'green',
+
       currentSource: 'pub',
       room:'1',
+     
+     
 
     },
     {
@@ -422,8 +426,9 @@ export const initDummyState: Gamestate = {
       cardHandOverflow: false,
       isCurrent: true,
       pawnColor: 'purple',
-      currentSource: 'pub',
-      room:'1',
+      currentSource: 'University',
+      room: '1',
+    
 
     },
   ],
@@ -504,5 +509,5 @@ export const initDummyState: Gamestate = {
   gameWon: false,
   gameLost: false,
   received: false,
-  gameOn: true
+  gameOn:true
 }
