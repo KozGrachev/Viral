@@ -106,8 +106,6 @@ console.log('source MOVABLE', source.name, canMove)
 
   }
 
-  const Iconnn = getIcon('markerRelations3');
-
   //adding the right class names
   let canMoveClassName = canMove ? 'can-move-to' : ''
   let canLogOffClassName = canLogOff ? 'can-log-off' : ''
@@ -122,7 +120,7 @@ console.log('source MOVABLE', source.name, canMove)
 
       <div onClick={changePlayersCurrentSource} className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
         <SVGIconSource />
-        <div className="markersContainer">
+        <div className="markers-container">
           {getMarker('community', markers_community, canClearCommunity, canDebunk)}
           {getMarker('social', markers_social, canClearSocial, canDebunk)}
           {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
