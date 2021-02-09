@@ -1,4 +1,5 @@
 import { Gamestate, Card,ViralCard, Source, Player } from '../types/gameStateTypes'
+import {startGame} from './actions.newState_CO'
 import { connections as sources } from './connections'
 
 //! HELPER HELPERS
@@ -344,6 +345,11 @@ export function setUp(players: Player[]) {
     index++
     misinfo--
   }
+
+  //! UPDATE POSSIBLE ACTIONS
+  console.log('BEFORE',updateState.sources)
+  updateState=startGame(updateState)
+  console.log('AFTER',updateState.sources)
 
   let newState = { ...updateState }
   return newState
