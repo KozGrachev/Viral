@@ -33,8 +33,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
 
-console.log('source MOVABLE', source.name, canMove)
-  console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+  // console.log('source MOVABLE', source.name, canMove)
+  //   console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
@@ -96,7 +96,7 @@ console.log('source MOVABLE', source.name, canMove)
   }
 
   const changePlayersCurrentSource = () => {
-   console.log('CLICK')
+    //  console.log('CLICK')
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
   }
 
@@ -118,18 +118,18 @@ console.log('source MOVABLE', source.name, canMove)
 
   return (
 
-    
 
-      <div onClick={changePlayersCurrentSource} className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
-        <SVGIconSource />
-        <div className="markersContainer">
-          {getMarker('community', markers_community, canClearCommunity, canDebunk)}
-          {getMarker('social', markers_social, canClearSocial, canDebunk)}
-          {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
-        </div>
-        {getPlayerPawns(canShare, currentPlayer)}
+
+    <div onClick={changePlayersCurrentSource} className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
+      <SVGIconSource />
+      <div className="markersContainer">
+        {getMarker('community', markers_community, canClearCommunity, canDebunk)}
+        {getMarker('social', markers_social, canClearSocial, canDebunk)}
+        {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
       </div>
-    
+      {getPlayerPawns(canShare, currentPlayer)}
+    </div>
+
   )
 
 

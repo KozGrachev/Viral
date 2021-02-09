@@ -37,6 +37,7 @@ export const StartGame: React.FC = (): JSX.Element => {
     if (!stateRendered) {
       joinRoom(player)
       if (allRooms.filter(room => room === player.room).length > 0) {
+        
         getGame(player);
         updateStateRendered(true)
       } else {

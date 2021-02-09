@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv';
 import { store } from '../redux/gameState/store'
 import { addPlayerToGameState, GetAllGamesAction, updateGameState } from "../redux/gameState/gameStateActions";
 import { Gamestate } from "../types/gameStateTypes";
+import { Play } from "grommet-icons";
 dotenv.config({ path: __dirname + '/.env' });
 //connection to the server
 dotenv.config({ path: __dirname + '../.env' });
@@ -28,7 +29,8 @@ socket.on('joinConfirmation', (message: string) => {
 store.subscribe(() => {
   const newState = store.getState().gameStateReducer
   const Player = store.getState().playerStateReducer
-  console.log(newState, 'NEW STATE FROM SUBSCRIVE ')
+  console.log(newState, 'NEW STATE FROM SUBSCRIBE ')
+  console.log(Player, 'PLAYER')
   if (!newState.received && Player && newState.gameOn) {
     socket.emit('onChangeState', { newState, Player })
   }
@@ -47,6 +49,7 @@ socket.on('updatedState', (newState: Gamestate) => {
 })
 
 export const getGame = (player: typeof Player) => {
+  console.log(player, 'PLAYER ON GET GAME - WILL BE ADDED HERE')
   player && socket.emit('retriveGame', player)
 
 }

@@ -55,16 +55,16 @@ export function gameStateReducer(
 
     case ADD_PLAYER_TO_GAME: {
       const ap = action.payload;
-      console.log('state before add player', state)
+      // console.log('state before add player', state)
       const newState = addPlayerToGame(ap.player, state)
-      console.log(newState, 'new state from add player reducer ')
+      // console.log(newState, 'new state from add player reducer ')
       return newState
     }
     case START_GAME: {
       const initialState = setUp(action.payload)
-      console.log('it gets here - START GAME REDUCER')
+      // console.log('it gets here - START GAME REDUCER')
       const obj = { ...state, ...initialState, gameOn: true, received: false }
-      console.log('obj - AFTER UPDATE', obj)
+      // console.log('obj - AFTER UPDATE', obj)
       return obj
 
     }
