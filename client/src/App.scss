@@ -35,7 +35,7 @@ body {
 .app-container {
   display: grid;
   position:relative;
-  grid-template-columns: 20% auto;
+  grid-template-columns: auto 80%;
   grid-template-areas: "sidebar gameboard";
   margin: 20px 0;
 

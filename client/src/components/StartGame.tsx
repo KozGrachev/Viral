@@ -82,13 +82,16 @@ export const StartGame: React.FC = (): JSX.Element => {
                     </div>
 
                     <ChaosMeter />
-            <SourceDeck />
-            <MisinformationDeck />
-            <MarkersStore />
-            {/* <ChaosMeterGrommet /> */}
-            <OtherPlayer />
-            {/* </Grommet> */ }
+                    <SourceDeck />
+                    <MisinformationDeck />
+                    <MarkersStore />
+                    {/* <ChaosMeterGrommet /> */}
+                    <OtherPlayer />
+                    {/* </Grommet> */}
                   </div>
+                  {/* <div className="side-bar-right"> */}
+
+                  {/* </div> */}
                 </div>
               </div>
           )
