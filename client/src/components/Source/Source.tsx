@@ -30,7 +30,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   let { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
-    canClearRelations, canClearSocial, canShare, canDebunk } = source;
+    canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
 
 
@@ -97,6 +97,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const changePlayersCurrentSource = () => {
+
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
   }
 
@@ -127,8 +128,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     return null;
   }
 
-  const Iconnn = getIcon('markerRelations3');
-
   //adding the right class names
   let canMoveClassName = canMove ? 'can-move-to' : ''
   let canLogOffClassName = canLogOff ? 'can-log-off' : ''
@@ -139,28 +138,29 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   return (
 
-    
 
-      <div 
+
+      <div
         onClick={
           // logic to render different click events from source
           canLogOff ?
             logoffToNewSource :
-              canLogOn ? 
-                logonToNewSource : 
-                canMove ? 
+              canLogOn ?
+                logonToNewSource :
+                canMove ?
                   changePlayersCurrentSource :
-                  unclickableMessage} 
+                  unclickableMessage}
         className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType}`} >
+
         <SVGIconSource />
-        <div className="markersContainer">
+        <div className={`markers-container ${misinfoType}`}>
           {getMarker('community', markers_community, canClearCommunity, canDebunk)}
           {getMarker('social', markers_social, canClearSocial, canDebunk)}
           {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
         </div>
         {getPlayerPawns(canShare, currentPlayer)}
       </div>
-    
+
   )
 
 
