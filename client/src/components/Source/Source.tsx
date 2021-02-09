@@ -106,9 +106,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
 
-    <div className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} onClick={(e)=> console.log('CLICKEDDDDDDDDDD', e.target)} >
+    <div className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} onClick={(e)=> console.log('CLICKEDDDDDDDDDD', e.target)} >
       <SVGIconSource />
-      <div className="markersContainer">
+      <div className="markers-container">
         {getMarker('community', markers_community, canClearCommunity, canDebunk)}
         {getMarker('social', markers_social, canClearSocial, canDebunk)}
         {getMarker('relations', markers_relations, canClearRelations, canDebunk)}

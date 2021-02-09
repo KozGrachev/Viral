@@ -1,5 +1,4 @@
 import { Connection } from '../types/gameStateTypes'
-
 export const connections: Connection[] = [
   {
     name: 'high school',
@@ -33,7 +32,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'gym',
-    connections: ['intagram', 'ASDA', 'pub', 'hair salon'],
+    connections: ['intagram', 'asda', 'pub', 'hair salon'],
     category: 'community',
   },
   {
@@ -42,7 +41,7 @@ export const connections: Connection[] = [
     category: 'community',
   },
   {
-    name: 'auntie',
+    name: 'uncle eugene',
     connections: [
       'local cult',
       'opinionated grandpa',
@@ -58,7 +57,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'cousin',
-    connections: ['mother-in-law', 'evil-ex', 'fran from HR'],
+    connections: ['mother-in-law', 'evil-ex', 'fran from hr'],
     category: 'relations',
   },
   {
@@ -71,7 +70,7 @@ export const connections: Connection[] = [
     connections: [
       'mother-in-law',
       'cousin',
-      'fran from HR',
+      'fran from hr',
       'guy at the bus stop',
     ],
     category: 'relations',
@@ -86,39 +85,39 @@ export const connections: Connection[] = [
     connections: [
       'guy at the bus stop',
       'opinionated grandpa',
-      'ASDA',
-      'illuminati',
+      'asda',
+      'illuminatify',
     ],
     category: 'relations',
   },
   {
     name: 'opinionated grandpa',
-    connections: ['crazy dave', 'auntie', 'ASDA'],
+    connections: ['crazy dave', 'auntie', 'asda'],
     category: 'relations',
   },
   {
-    name: 'illuminati',
+    name: 'illuminatify',
     connections: ['crazy dave', 'whatsapp', 'youtube'],
     category: 'social',
   },
   {
     name: 'youtube',
-    connections: ['illuminati', 'ASDA', 'intagram'],
+    connections: ['illuminatify', 'asda', 'instagram'],
     category: 'social',
   },
   {
-    name: 'intagram',
+    name: 'instagram',
     connections: ['youtube', 'gym', 'facebook', 'reddit'],
     category: 'social',
   },
   {
     name: 'facebook',
-    connections: ['intagram', 'hair salon', 'reddit'],
+    connections: ['instagram', 'hair salon', 'reddit'],
     category: 'social',
   },
   {
     name: 'reddit',
-    connections: ['intagram', 'facebook', 'whatsapp', 'twitter'],
+    connections: ['instagram', 'facebook', 'whatsapp', 'twitter'],
     category: 'social',
   },
   {
@@ -128,11 +127,11 @@ export const connections: Connection[] = [
   },
   {
     name: 'whatsapp',
-    connections: ['reddit', 'illuminati', 'tik-tok', 'twitter'],
+    connections: ['reddit', 'illuminatify', 'tik-tok', 'twitter'],
     category: 'social',
   },
   {
-    name: 'tik-tok',
+    name: 'tiktok',
     connections: ['whatsapp'],
     category: 'social',
   },

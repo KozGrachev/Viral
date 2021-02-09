@@ -21,7 +21,7 @@ body {
   background-image: url(./assets/allIcons/map.svg);
   background-size: cover;
   background-position: center;
-  overflow: hidden;
+  // overflow: hidden;
   backdrop-filter: blur(50px);
 
 }
@@ -45,7 +45,6 @@ body {
 
   // height: min(100vh, auto);
   width:150vmin;
-
 
 
 
@@ -139,8 +138,8 @@ body {
   // background-size: cover;
   // border: 3px solid red;
   display: grid;
-  grid-template-columns: repeat(13, 7.7%);
-  grid-template-rows: repeat(10, 10%);
+  grid-template-columns: repeat(14, 14fr);
+  grid-template-rows: repeat(10, 10fr);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -151,17 +150,21 @@ body {
 // Community sources
 
 .university {
-  grid-area: 3/1/4/2;
+  grid-area: 8/2/9/3;
   position: absolute;
   left: 58%;
   top: 70%;
+  border: 3px solid rgb(255, 0, 255);
+
 }
 
 .local-cult {
-  grid-area: 1/2/2/3;
+  grid-area: 5/4/6/5;
   position: absolute;
   left: 55%;
   top: 80%;
+
+  border: 3px solid rgb(255, 0, 255);
 }
 
 .high-school {
@@ -169,6 +172,8 @@ body {
   position: absolute;
   left: 23%;
   top: 42%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .pub {
@@ -176,6 +181,8 @@ body {
   position: absolute;
   left: 28%;
   top: 50%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .taxi {
@@ -183,20 +190,26 @@ body {
   position: absolute;
   left: 75%;
   top: 0%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .asda {
-  grid-area: 2/3/3/4;
+  grid-area: 6/8/7/9;
   position: absolute;
   left: 75%;
   top: 67%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .gym {
-  grid-area: 3/3/4/4;
+  grid-area: 7/7/8/8;
   position: absolute;
   left: 18%;
   top: 15%;
+  border: 3px solid rgb(255, 0, 255);
+
 }
 
 .hair-salon {
@@ -204,6 +217,8 @@ body {
   position: absolute;
   left: 65%;
   top: 30%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 // Social sources
@@ -213,6 +228,8 @@ body {
   position: absolute;
   left: 65%;
   top: 40%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .facebook {
@@ -220,6 +237,8 @@ body {
   position: absolute;
   left: 65%;
   top: 22%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .youtube {
@@ -227,6 +246,8 @@ body {
   position: absolute;
   left: 35%;
   top: 40%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .twitter {
@@ -234,6 +255,8 @@ body {
   position: absolute;
   left: 35%;
   top: 3.5%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .illuminatify {
@@ -241,6 +264,8 @@ body {
   position: absolute;
   left: 35%;
   top: 40%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .reddit {
@@ -248,6 +273,8 @@ body {
   position: absolute;
   left: 35%;
   top: 22%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .whatsapp {
@@ -255,6 +282,8 @@ body {
   position: absolute;
   left: 20%;
   top: 40%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .tiktok {
@@ -262,6 +291,8 @@ body {
   position: absolute;
   left: 20%;
   top: 3.5%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 // Relations sources
@@ -271,6 +302,8 @@ body {
   position: absolute;
   left: 20%;
   top: 65%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .cousin {
@@ -278,6 +311,8 @@ body {
   position: absolute;
   left: 30%;
   top: 61%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .fran-from-hr {
@@ -285,6 +320,8 @@ body {
   position: absolute;
   left: 0%;
   top: 87%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .evil-ex {
@@ -292,6 +329,8 @@ body {
   position: absolute;
   left: 8%;
   top: 58%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .opinionated-grandpa {
@@ -299,6 +338,8 @@ body {
   position: absolute;
   left: 15%;
   top: 3.5%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .crazy-dave {
@@ -306,6 +347,8 @@ body {
   position: absolute;
   left: 43%;
   top: 37%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .guy-at-the-bus-stop {
@@ -313,6 +356,8 @@ body {
   position: absolute;
   left: 0%;
   top: 47%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
 
 .mother-in-law {
@@ -320,4 +365,6 @@ body {
   position: absolute;
   left: 10%;
   top: 10%;
+    border: 3px solid rgb(255, 0, 255);
+
 }
