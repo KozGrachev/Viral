@@ -143,11 +143,9 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
   }
   
   for (const source of oldState.sources) {
-    console.log('source name', source.name) //! always high school
     if (source.name === drawSource) {
 
       while (weight > 0) {
-        console.log('WHILE LOOP',weight)
         let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
 
@@ -157,7 +155,6 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
             oldState = outbreak(source, oldState)
           }
           else {
-            console.log('HELLO ANA')
             source[key1]++
             oldState.misinformation[key2].markersLeft--
           }
@@ -218,12 +215,11 @@ export function dealConnectionCard(oldState: Gamestate) {
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
   
   if (newCard.cardType==='viral') {
-    console.log('viral')
+    console.log(`%c IT'S GONE VIRAL!`,`background-color: red; color: black; padding: 10px; font-weight: bold`);
     oldState = viral(oldState)
     oldState.connectionDeck.shift()
   }
   else {
-    console.log('hello')
     for (const player of oldState.players) {
       if (player.isCurrent) {
         if(!viralCheck(newCard)){
