@@ -49,7 +49,7 @@ io.on('connection', (socket) => {
       
       const user = Player;
       setState(user.room, newState);
-      console.log('nestate from the backend after cards update', newState )
+      console.log('nestate from the backend after cards update', newState );
       socket.broadcast.to(user.room)
         .emit('updatedState', newState);
       //save to database

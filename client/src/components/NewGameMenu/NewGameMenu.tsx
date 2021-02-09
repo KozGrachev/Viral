@@ -26,8 +26,8 @@ export const NewGameMenu: React.FC = () => {
   }
 
 
-  let player = useSelector((state:RootState) => state.playerStateReducer)
-  let state  = useSelector((state:RootState) => state.gameStateReducer)
+  let player = useSelector((state: RootState) => state.playerStateReducer)
+  let state = useSelector((state: RootState) => state.gameStateReducer)
 
   const addPlayer = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()

@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-//import { initDummyState } from './../../logic/dummyState.REDO_CO';
-import { ADD_PLAYER_TO_GAME, CLEAR_MISINFO, DEBUNK_MISINFO, DISCARD_ACTION, GameStateActionTypes, LOG_ON_OFF, MOVE_ACTION, SHARE_CARD, START_GAME, UPDATE_GAME_STATE } from './reduxTypes';
-//import { initDummyState as gameState } from '../../logic/dummyState.REDO_CO'
-=======
-import { initDummyState } from './../../logic/dummyState.REDO_CO';
 import { ADD_PLAYER_TO_GAME, CLEAR_MISINFO, DEAL_CARDS, DEBUNK_MISINFO, DISCARD_ACTION, GameStateActionTypes, LOG_ON_OFF, MOVE_ACTION, SHARE_CARD, START_GAME, UPDATE_GAME_STATE } from './reduxTypes';
-import { initDummyState as gameState } from '../../logic/dummyState.REDO_CO'
->>>>>>> player-cards_AS
 import { initialState } from './initialState'
 import { Gamestate } from '../../types/gameStateTypes'
 import { clearMisinfo, debunkMisinfo, discardCard, logOnOff, moveAction, shareCard } from '../../logic/actions.newState_CO'
