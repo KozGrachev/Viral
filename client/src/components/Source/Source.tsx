@@ -118,7 +118,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   return (
 
-    
 
       <div onClick={changePlayersCurrentSource} className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
         <SVGIconSource />
@@ -129,7 +128,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
         </div>
         {getPlayerPawns(canShare, currentPlayer)}
       </div>
-    
+
   )
 
 

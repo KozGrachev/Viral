@@ -20,6 +20,7 @@ import { NewGameMenu } from '../components/NewGameMenu/NewGameMenu'
 import { addPlayerToGameState, StartGameAction } from '../redux/gameState/gameStateActions';
 import { Gamestate, Player } from '../types/gameStateTypes';
 import { UpdateGameStateAction } from '../redux/gameState/reduxTypes';
+import { OtherPlayer } from './OtherPlayer/OtherPlayer';
 
 
 
@@ -76,8 +77,8 @@ export const StartGame: React.FC = (): JSX.Element => {
                   <div className="board-container">
 
                     <div id="game-board">
-                      {/* <MapSVG className="map-svg"/> */}
                       <SourceParent />
+                      {/* <MapSVG className="map-svg"/> */}
                     </div>
 
                     <ChaosMeter />
@@ -85,7 +86,7 @@ export const StartGame: React.FC = (): JSX.Element => {
             <MisinformationDeck />
             <MarkersStore />
             {/* <ChaosMeterGrommet /> */}
-            {/* <OtherPlayer /> */}
+            <OtherPlayer />
             {/* </Grommet> */ }
                   </div>
                 </div>
