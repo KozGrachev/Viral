@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Player, Source } from '../../types/objects.REDO'
+import { Player, Source } from '../../types/gameStateTypes'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss'
@@ -21,7 +21,10 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
-  const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
+  const array = useSelector((state: RootState) => state.gameStateReducer.players.filter(player=>player.isCurrent===true))
+  //console.log('CURRENT PLAYER', array)
+  const currentPlayer=array[0]
+  const allPlayers=useSelector((state: RootState) => state.gameStateReducer.players)
   //console.log('gamestate from source : ', gamestate)
   //console.log('currentPlayer from source : ' , currentPlayer)
 
@@ -32,17 +35,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     canMove, canLogOff, canLogOn, canClearCommunity,
     canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
-
-
-// console.log('source MOVABLE', source.name, canMove)
-  // console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
-
-
-
-
 
 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
@@ -59,6 +54,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
       //get the clearable icon
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
+      
       return (<button onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></button>)
 
     }
@@ -77,9 +73,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   }
 
-
-
-
   const clearMisinformationbyOne = (misinfoType: string) => {
     //throws a logic error !!!
     dispatch(clearMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, misinfoType, location: source.name }))
@@ -87,17 +80,19 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
-
-    if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
-
-
-    if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
-
+    let test:Player[]=[];
+    for(const player of allPlayers){
+      if (player.currentSource === source.name&& !test.includes(player)) {
+        test.push(currentPlayer)
+      }
+    }
+    //console.log(players)
+    if (test.length > 0) return test.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
+    else return null
 
   }
 
   const changePlayersCurrentSource = () => {
-
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
   }
 
@@ -135,6 +130,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   if (modalIsOpen) return <ModalComponent modalIsOpen={modalIsOpen}
     setIsOpen={setIsOpen} setselectedDebunkCards={setselectedDebunkCards} />;
 
+
+  // console.log('community',markers_community,name)
+  // console.log('relations',markers_relations,name)
+  // console.log('social',markers_social,name)
+
   return (
 
 
@@ -165,21 +165,3 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
 }
-
-// highlighted to show canMove, canLogon (single source which), canLogoff
-
-// 3 markers & can clear?
-
-// pawn <-- use otherPlayer, (canShare in otherPlayer)
-
-// canMove: white transparent overlay (AWAY LOCATION)
-// canLogon: blue border? (AWAY LOCATION)
-// canLogoff: green border? (AWAY LOCATION)
-// canLogon and Logoff: split blue/green border (AWAY LOCATION)
-
-// with social marker: red dot on corner w/ number 1,2,3 (BOTH CURRENT & AWAY)
-//    canClear that marker: slow flashing (CURRENT LOCATION)
-// with community marker: yellow triangle on corner w/ number 1,2,3 (BOTH CURRENT & AWAY)
-//    canClear that marker: slow flashing (CURRENT LOCATION)
-// with relations marker: blue square on corner w/ number 1,2,3 (BOTH CURRENT & AWAY)
-//    canClear that marker: slow flashing (CURRENT LOCATION)

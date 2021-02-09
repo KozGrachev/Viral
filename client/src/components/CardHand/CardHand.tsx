@@ -8,9 +8,11 @@ import './CardHand.scss'
 
 export const CardHand: React.FC = () => {
 
+
   const Player = useSelector((state: RootState) => state.playerStateReducer);
   const cards = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.id === Player.id)[0].cards);
   console.log(`%c REMAINING PLAYER CARDS`,`background-color: lightgray; color: indigo; padding: 10px`);
+
   const renderCards = (cardArray: SourceCardType[]) => {
     return cardArray.map(card => {
       console.log(card)

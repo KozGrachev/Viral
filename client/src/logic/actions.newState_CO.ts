@@ -305,6 +305,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
 //* HELPERS
 
 export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
+  if(oldState.players.length>1){
   const playerIndex: number = oldState.players.map((player) => player.id).indexOf(currentPlayerID);
   const nextPlayerIndex: number = playerIndex === oldState.players.length - 1 ?
     0 :
@@ -323,6 +324,12 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
     turnMovesLeft: 4,
   };console.log(`%c NEXT PLAYERS TURN`,`background-color: lightgreen; color: black; padding: 10px`);
   return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
+}
+  const newState= {
+    ...oldState,
+    turnMovesLeft: 4,
+  };
+  return updatePossibleActions(newState,currentPlayerID)
 }
 
 

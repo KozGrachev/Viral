@@ -133,19 +133,23 @@ function typeCheck(string:string){
 
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
   let oldDeck: Card[] = oldState.misinformationDeckActive
+  console.log(oldDeck)
   let drawSource: string
   if (isViral) {
     drawSource = oldDeck[oldDeck.length - 1].sourceName
   }
   else {
-    
     drawSource = oldDeck[0].sourceName
   }
   
+  
   for (const source of oldState.sources) {
+  
     if (source.name === drawSource) {
 
       while (weight > 0) {
+        
+
         let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
 

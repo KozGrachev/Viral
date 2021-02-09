@@ -1,5 +1,4 @@
-import {Connection} from './objects.REDO'
-
+import { Connection } from '../types/gameStateTypes'
 export const connections: Connection[] = [
   {
     name: 'high school',
@@ -33,7 +32,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'gym',
-    connections: ['instagram', 'asda', 'pub', 'hair salon'],
+    connections: ['intagram', 'asda', 'pub', 'hair salon'],
     category: 'community',
   },
   {
@@ -53,17 +52,17 @@ export const connections: Connection[] = [
   },
   {
     name: 'mother-in-law',
-    connections: ['auntie', 'evil ex', 'cousin'],
+    connections: ['auntie', 'evil-ex', 'cousin'],
     category: 'relations',
   },
   {
     name: 'cousin',
-    connections: ['mother-in-law', 'evil ex', 'fran from hr'],
+    connections: ['mother-in-law', 'evil-ex', 'fran from hr'],
     category: 'relations',
   },
   {
     name: 'fran from hr',
-    connections: ['cousin', 'evil ex'],
+    connections: ['cousin', 'evil-ex'],
     category: 'relations',
   },
   {
@@ -78,7 +77,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'guy at the bus stop',
-    connections: ['auntie', 'evil ex', 'crazy dave'],
+    connections: ['auntie', 'evil-ex', 'crazy dave'],
     category: 'relations',
   },
   {
@@ -128,7 +127,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'whatsapp',
-    connections: ['reddit', 'illuminatify', 'tiktok', 'twitter'],
+    connections: ['reddit', 'illuminatify', 'tik-tok', 'twitter'],
     category: 'social',
   },
   {
