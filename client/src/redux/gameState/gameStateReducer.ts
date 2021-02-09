@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 //import { initDummyState } from './../../logic/dummyState.REDO_CO';
 import { ADD_PLAYER_TO_GAME, CLEAR_MISINFO, DEBUNK_MISINFO, DISCARD_ACTION, GameStateActionTypes, LOG_ON_OFF, MOVE_ACTION, SHARE_CARD, START_GAME, UPDATE_GAME_STATE } from './reduxTypes';
 //import { initDummyState as gameState } from '../../logic/dummyState.REDO_CO'
+=======
+import { initDummyState } from './../../logic/dummyState.REDO_CO';
+import { ADD_PLAYER_TO_GAME, CLEAR_MISINFO, DEAL_CARDS, DEBUNK_MISINFO, DISCARD_ACTION, GameStateActionTypes, LOG_ON_OFF, MOVE_ACTION, SHARE_CARD, START_GAME, UPDATE_GAME_STATE } from './reduxTypes';
+import { initDummyState as gameState } from '../../logic/dummyState.REDO_CO'
+>>>>>>> player-cards_AS
 import { initialState } from './initialState'
 import { Gamestate } from '../../types/gameStateTypes'
 import { clearMisinfo, debunkMisinfo, discardCard, logOnOff, moveAction, shareCard } from '../../logic/actions.newState_CO'
-import { addPlayerToGame, setUp } from '../../logic/actions.MW';
+import { addPlayerToGame, dealCardsToNewPlayer, setUp } from '../../logic/actions.MW';
 import { Console } from 'console';
 //here should be a initial State of the Game
 const GameState: Gamestate = initialState;
@@ -53,12 +59,13 @@ export function gameStateReducer(
         ...state, ...action.payload
       }
 
-    case ADD_PLAYER_TO_GAME: {
+    case DEAL_CARDS: {
       const ap = action.payload;
-      // console.log('state before add player', state)
-      const newState = addPlayerToGame(ap.player, state)
-      // console.log(newState, 'new state from add player reducer ')
-      return newState
+      const newstate = dealCardsToNewPlayer(ap.player, ap.state)
+      console.log(
+        'reducer - deal cards', newstate
+      )
+      return { ...newstate, received: false }
     }
     case START_GAME: {
       const initialState = setUp(action.payload)

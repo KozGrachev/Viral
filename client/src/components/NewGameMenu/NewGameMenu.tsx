@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes, ChangeEvent, DetailedHTMLProps, useState } from 'react';
 import './NewGameMenu.css';
 // import { startGameEvent, addPlayerEvent } from '../../logic/event.listeners'
-import { AddPlayerAction, addPlayerToGameState, StartGameAction, updateGameState } from '../../redux/gameState/gameStateActions';
+import { AddPlayerAction, addPlayerToGameState, DealCardsToNewPlayerAction, StartGameAction, updateGameState } from '../../redux/gameState/gameStateActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, store } from '../../redux/gameState/store';
 import { Player } from '../../types/gameStateTypes';
@@ -26,12 +26,18 @@ export const NewGameMenu: React.FC = () => {
   }
 
 
+  let player = useSelector((state:RootState) => state.playerStateReducer)
+  let state  = useSelector((state:RootState) => state.gameStateReducer)
 
   const addPlayer = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     dispatch(AddPlayerAction(input.name, input.color, input.room))
-    
   }
+
+
+
+
+
 
 
   // const selectRoom = (e: React.ChangeEvent<HTMLSelectElement>) => {
