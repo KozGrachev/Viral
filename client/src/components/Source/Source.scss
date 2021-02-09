@@ -4,7 +4,6 @@ $source-icon-size: $width-ratio*0.7;
 
 .source-container {
   position: relative;
-  margin: 50px;
   height: $source-icon-size;
   width: $source-icon-size;
   // border: 3px solid rgb(0, 247, 255);
@@ -47,4 +46,5 @@ $source-icon-size: $width-ratio*0.7;
 
 .source-container.can-log-off {
   border: 3px solid green;
+
 }

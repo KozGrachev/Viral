@@ -97,6 +97,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const changePlayersCurrentSource = () => {
+
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
   }
 
@@ -139,7 +140,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   return (
 
-    
+
 
       <div 
         onClick={
@@ -152,6 +153,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
                   changePlayersCurrentSource :
                   unclickableMessage} 
         className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType}`} >
+
         <SVGIconSource />
         <div className="markersContainer">
           {getMarker('community', markers_community, canClearCommunity, canDebunk)}
@@ -160,7 +162,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
         </div>
         {getPlayerPawns(canShare, currentPlayer)}
       </div>
-    
+
   )
 
 
