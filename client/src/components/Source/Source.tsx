@@ -97,7 +97,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const changePlayersCurrentSource = () => {
-   console.log('CLICK')
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
   }
 
@@ -117,6 +116,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   }
 
+  function unclickableMessage() {
+    console.log(`%c you can't do anything at ${source.name}`,`background-color: red; color: white; padding: 10px`)
+    return null;
+  }
+
   const Iconnn = getIcon('markerRelations3');
 
   //adding the right class names
@@ -131,7 +135,15 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
     
 
-      <div onClick={changePlayersCurrentSource} className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
+      <div 
+        onClick={
+          // logic to render different click events from source
+          canLogOn ? 
+            logonToNewSource : 
+            canMove ? 
+              changePlayersCurrentSource :
+              unclickableMessage} 
+        className={`source-container ${name} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName}`} >
         <SVGIconSource />
         <div className="markersContainer">
           {getMarker('community', markers_community, canClearCommunity, canDebunk)}
