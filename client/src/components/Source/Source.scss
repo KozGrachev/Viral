@@ -41,21 +41,10 @@ $source-icon-size: $width-ratio*0.7;
   border: 3px solid yellow;
 }
 
-.can-log-on {
-  /*
-  can go to a specific place
-  on the source-container
-  */
+.source-container.can-log-on {
+  border: 3px solid blue;
 }
 
-.can-log-off {
-  /*
-  can go to any place
-  on the source-container
-  */
-  
-}
-
-.can-share-with {
-  /* on the playerPawn */
+.source-container.can-log-off {
+  border: 3px solid green;
 }

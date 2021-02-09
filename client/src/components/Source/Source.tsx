@@ -4,10 +4,11 @@ import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { clearMisinfoAction, debunkMisinfoAction, moveAction } from '../../redux/gameState/gameStateActions';
+import { clearMisinfoAction, debunkMisinfoAction, moveAction, logOnOffAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
 import { ModalComponent } from './DebunkModal';
+import { logOnOff } from '../../logic/actions.newState_CO';
 
 
 export interface SourceProps {
@@ -33,8 +34,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
 
-console.log('source MOVABLE', source.name, canMove)
-  console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+// console.log('source MOVABLE', source.name, canMove)
+  // console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
@@ -100,8 +101,18 @@ console.log('source MOVABLE', source.name, canMove)
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
   }
 
+  const logonToNewSource = () => {
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard:  source.name }))
+  }
+
   const renderIcon = () => {
     if (canMove) return <button onClick={() => changePlayersCurrentSource()}> <SVGIconSource /> </button>
+    return null
+
+  }
+
+  const renderAsLogOn = () => {
+    if (canLogOn) return <button onClick={() => changePlayersCurrentSource()}> <SVGIconSource /> </button>
     return null
 
   }

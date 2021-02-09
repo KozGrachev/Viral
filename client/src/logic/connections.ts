@@ -42,7 +42,7 @@ export const connections: Connection[] = [
     category: 'community',
   },
   {
-    name: 'auntie',
+    name: 'uncle eugene',
     connections: [
       'local cult',
       'opinionated grandpa',
@@ -132,7 +132,7 @@ export const connections: Connection[] = [
     category: 'social',
   },
   {
-    name: 'tik-tok',
+    name: 'tiktok',
     connections: ['whatsapp'],
     category: 'social',
   },

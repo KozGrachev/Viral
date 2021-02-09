@@ -167,7 +167,6 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
   const location: Player['currentSource'] = oldState.players[playerIndex].currentSource;
   const sourceIndex: number = oldState.sources.map((source) => source.name).indexOf(location);
   //* move check
-  console.log('location from updatePossible', location)
   const adjacents: string[] = sources.filter((source) => source.name === location)[0].connections;
   //* clear checks
   const clearCommunityMisinfo: boolean = oldState.sources[sourceIndex].markers_community > 0;
@@ -241,8 +240,8 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
         {
           ...source,
           canMove: adjacents.includes(source.name),
-          canLogOn: logonPossible.includes(source.name),
-          canLogOff: logoffPossible,
+          canLogOn: logonPossible.includes(source.name) && !adjacents.includes(source.name),
+          canLogOff: logoffPossible && !adjacents.includes(source.name),
           canClearCommunity: false,
           canClearSocial: false,
           canClearRelations: false,
