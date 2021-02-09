@@ -18,14 +18,14 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
   const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
-  console.log('gamestate from source : ', gamestate)
-  console.log('currentPlayer from source : ' , currentPlayer)
+  //console.log('gamestate from source : ', gamestate)
+  //console.log('currentPlayer from source : ' , currentPlayer)
 
   let { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
     canClearRelations, canClearSocial, canShare, canDebunk } = source;
 
-  console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+  //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
 
@@ -40,7 +40,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source}: SourceProps) =
 
     }
     if (num > 0) {
-      console.log(toCamelCase(`marker ${category} ${num}`))
+      //console.log(toCamelCase(`marker ${category} ${num}`))
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
       return <Icon   />;
     }
