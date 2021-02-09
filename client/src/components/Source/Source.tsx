@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Player, Source } from '../../types/objects.REDO'
+import { Player, Source } from '../../types/gameStateTypes'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss'
