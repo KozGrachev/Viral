@@ -311,7 +311,11 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
   };console.log(`%c NEXT PLAYERS TURN`,`background-color: lightgreen; color: black; padding: 10px`);
   return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
 }
-  return updatePossibleActions(oldState,currentPlayerID)
+  const newState= {
+    ...oldState,
+    turnMovesLeft: 4,
+  };
+  return updatePossibleActions(newState,currentPlayerID)
 }
 
 

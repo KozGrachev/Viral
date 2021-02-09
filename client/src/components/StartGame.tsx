@@ -22,7 +22,8 @@ import { Gamestate, Player } from '../types/gameStateTypes';
 import { UpdateGameStateAction } from '../redux/gameState/reduxTypes';
 import { OtherPlayer } from './OtherPlayer/OtherPlayer';
 import {ChaosMeterGrommet} from './ChaosMeter_Grommet/ChaosMeter_Grommet'
-
+import {GameOver} from './GameOver/gameOver'
+import {Winner} from './YouWon/youWon'
 
 
 export const StartGame: React.FC = (): JSX.Element => {
@@ -55,8 +56,12 @@ export const StartGame: React.FC = (): JSX.Element => {
   // }
 
   return (
+    
     <div>
-      {
+      {state.gameWon?
+        <Winner/>:
+      state.gameLost?
+        <GameOver/>:
         (player.name.length < 1) ?
           <NewGameMenu />
           : (
