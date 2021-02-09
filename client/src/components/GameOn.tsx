@@ -65,8 +65,6 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             {/* <Map /> */}
             {/* <GameBoard /> */}
             <div className="sidebar-left">
-              {/* {state.players[0].name && console.log(state.players[0].cards)} */}
-              {/* {state.players && state.players[0]} */}
               {(checkCards(state) === true) ?
                 <button onClick={getCards}> get cards </button>
                 :
@@ -80,7 +78,6 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                 {/* <MapSVG className="map-svg"/> */}
                 <SourceParent />
               </div>
-
               <ChaosMeter />
               <SourceDeck />
               <MisinformationDeck />

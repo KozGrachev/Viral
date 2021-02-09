@@ -27,8 +27,8 @@ socket.on('joinConfirmation', (message: string) => {
 store.subscribe(() => {
   const newState = store.getState().gameStateReducer
   const Player = store.getState().playerStateReducer
-  console.log(newState, 'NEW STATE FROM SUBSCRIBE ')
-  console.log(Player, 'PLAYER')
+  // console.log(newState, 'NEW STATE FROM SUBSCRIBE ')
+  // console.log(Player, 'PLAYER')
   if (!newState.received && Player && newState.gameOn) {
     socket.emit('onChangeState', { newState, Player })
   }
@@ -41,13 +41,13 @@ store.subscribe(() => {
 
 //data coming from backend after game state changed
 socket.on('updatedState', (newState: Gamestate) => {
-  console.log('newstate from client ', newState)
+  // console.log('newstate from client ', newState)
   newState.received = true;
   store.dispatch(updateGameState(newState))
 })
 
 export const getGame = (player: typeof Player) => {
-  console.log(player, 'PLAYER ON GET GAME - WILL BE ADDED HERE')
+  // console.log(player, 'PLAYER ON GET GAME - WILL BE ADDED HERE')
   player && socket.emit('retriveGame', player)
 
 }
