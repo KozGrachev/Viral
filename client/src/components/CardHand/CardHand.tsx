@@ -14,8 +14,11 @@ export const CardHand: React.FC = () => {
   console.log(`%c REMAINING PLAYER CARDS`,`background-color: lightgray; color: indigo; padding: 10px`);
 
   const renderCards = (cardArray: SourceCardType[]) => {
+
+
+
     return cardArray.map(card => {
-      console.log(card)
+      // console.log(card)
       return <SourceCard name={card.sourceName} category={card.misinfoType} canShare={[]} />
     })
   }

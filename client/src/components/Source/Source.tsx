@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Player, Source } from '../../types/gameStateTypes'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
@@ -35,6 +35,19 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     canMove, canLogOff, canLogOn, canClearCommunity,
     canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
+
+  
+  useEffect(() => {
+    console.log('close modal from source tsx useEffect---------', modalIsOpen)
+    
+  }, [modalIsOpen])
+  useEffect(() => {
+    console.log('close modal from source tsx useEffect seleceted debunked cards---------', selectedDebunkCards)
+    
+  }, [selectedDebunkCards])
+
+console.log('source MOVABLE', source.name, canMove)
+  console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
@@ -42,10 +55,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
     if (num > 0 && canDebunk.includes(category)) {
+      
       //get the debunable icon
-      const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
+      const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
-      return (<button onClick={() => debunkMisinforamtion(category)}><ClearableIcon /></button>)
+      return (<button onClick={() => debunkMisinforamtion(category)}><DebunkableIcon /></button>)
 
     }
 
@@ -67,9 +81,24 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const debunkMisinforamtion = (category: string) => {
 
-    // dispatch(debunkMisinfoAction({
-    //   oldState: gamestate, currentPlayerID: currentPlayer.id,
-    // misinfoType:category, usedCards:}))
+    //showModal
+    setIsOpen(true)
+
+    setTimeout(async () => {
+      try {
+      
+        // Wait user to confirm !
+        dispatch(debunkMisinfoAction({
+          oldState: gamestate, currentPlayerID: currentPlayer.id,
+        misinfoType:category, usedCards: selectedDebunkCards}))
+        
+        // this line below is executed only after user click on OK
+        alert("OK");
+      } catch (err) {
+        alert("CANCEL");
+      }
+    }, 7000);
+
 
   }
 
@@ -126,16 +155,22 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   let canMoveClassName = canMove ? 'can-move-to' : ''
   let canLogOffClassName = canLogOff ? 'can-log-off' : ''
   let canLogOnClassName = canLogOn ? 'can-log-on' : ''
-
-  if (modalIsOpen) return <ModalComponent modalIsOpen={modalIsOpen}
-    setIsOpen={setIsOpen} setselectedDebunkCards={setselectedDebunkCards} />;
+  let canDebunkClassName = canDebunk ? 'can-debunk' : ''
 
 
-  // console.log('community',markers_community,name)
-  // console.log('relations',markers_relations,name)
-  // console.log('social',markers_social,name)
+  const closeModal = () => {
+    console.log('close modal from source tsx---------')
+    setIsOpen(false)
 
+    
+    
+  } 
+
+  
+  
   return (
+<>
+    {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} />: null}
 
 
 
@@ -159,6 +194,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
         </div>
         {getPlayerPawns(canShare, currentPlayer)}
       </div>
+      </>
 
   )
 

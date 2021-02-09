@@ -12,6 +12,7 @@ export const ADD_PLAYER = 'ADD_PLAYER'
 export const GET_ALL_GAMES = 'GET_ALL_GAMES'
 export const START_GAME='START_GAME'
 export const ADD_PLAYER_TO_GAME = 'ADD_PLAYER_TO_GAME'
+export const DEAL_CARDS ='DEAL_CARDS' 
 export interface MoveActionProps { 
   oldState: Gamestate,
   currentPlayerID: Player['id'],
@@ -119,9 +120,19 @@ export interface AddPlayerToGameStateAction {
   payload: AddPlayerToGameProps
 }
 
+export interface dealCardsProp { 
+  player:Player
+  state:Gamestate
+
+}
+export interface DealCardsToNewPlayerAction  { 
+  type:typeof DEAL_CARDS
+  payload:dealCardsProp
+}
+
 export type GameStateActionTypes =
   MoveAction | ClearMisinfoAction | ShareCardAction | logOnOffPropsAction |
-  DebunkMisinfoAction | discardCardAction | UpdateGameStateAction | StartGameAction | AddPlayerToGameStateAction
+  DebunkMisinfoAction | discardCardAction | UpdateGameStateAction | StartGameAction | AddPlayerToGameStateAction | DealCardsToNewPlayerAction
 
 export type PlayerStateActionTypes = AddPlayerAction;
 
