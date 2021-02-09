@@ -6,13 +6,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState, store } from '../../redux/gameState/store';
 import { Player } from '../../types/gameStateTypes';
 import { Console } from 'console';
-
+import { getIcon } from '../../helpers/iconExporter'
 
 export const NewGameMenu: React.FC = () => {
   const [input, updateName] = useState({ name: '', color: '', room: '' })
   // const [Room, updateRoom] = useState('')
   const dispatch = useDispatch();
   const [option, updateOption] = useState(true)
+
+  const FireIcon = getIcon('fire');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault()
@@ -35,11 +37,6 @@ export const NewGameMenu: React.FC = () => {
   }
 
 
-
-
-
-
-
   // const selectRoom = (e: React.ChangeEvent<HTMLSelectElement>) => {
   //   console.log(e.target.value);
   //   updateRoom(e.target.value);
@@ -55,32 +52,38 @@ export const NewGameMenu: React.FC = () => {
           type='text'
           name='name'
           value={input.name}
-          placeholder='player name...'
+          placeholder=' player name '
           onChange={handleChange}
         ></input>
 
-        <input
+        {/* <input
           type='text'
           name='color'
           value={input.color}
           placeholder='color'
           onChange={handleChange}
         >
-        </input>
-
+        </input> */}
         <input
           type='text'
           name='room'
           value={input.room}
-          placeholder='room name'
+          placeholder='room '
           onChange={handleChange}
 
         ></input>
-        <input
+
+        <div className='colors-container' >
+          <button id="search-button">
+            <FireIcon />
+          </button>
+
+        </div>
+        {/* <input
           type='text'
           name='number of players'
           placeholder='1 - 4 players...'
-        ></input>
+        ></input> */}
         {/* 
         <select
           placeholder='select room'
@@ -98,7 +101,7 @@ export const NewGameMenu: React.FC = () => {
         <button className='start_game_button' type='submit' onClick={addPlayer} >
           Play
         </button>
-      </div>
-    </form>
+      </div >
+    </form >
   );
 };
