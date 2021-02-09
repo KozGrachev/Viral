@@ -11,12 +11,14 @@ import { StartGame } from './components/StartGame'
 import { connections } from './logic/connections';
 
 
-function App() {
+function App () {
+
+
 
 
   const fakePlayer1 = {
     name: 'Konstantin',
-     id: '5678',
+    id: '5678',
     cards: [
       connections[Math.floor(Math.random() * (connections.length - 1))],
     ],

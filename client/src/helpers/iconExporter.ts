@@ -39,6 +39,7 @@ import { ReactComponent as markerRelations3 } from '../assets/allIcons/marker-re
 
 import { ReactComponent as map } from '../assets/allIcons/map.svg'
 import { ReactComponent as gameBoard } from '../assets/allIcons/game-board.svg'
+import { ReactComponent as gameBoardWithoutSources } from '../assets/allIcons/game-board-without-sources.svg'
 
 
 
@@ -84,6 +85,7 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   markerRelations3,
   map,
   gameBoard,
+  gameBoardWithoutSources,
 }
 
 
@@ -95,20 +97,3 @@ export const getIcon = (name: string): React.FunctionComponent<React.SVGProps<SV
   // return svgs['youtubeIcon'];
   return svgs[name] ?? svgs.markerSocial3;  //? if the left hand side is undefined or null, return the right hand side
 }
-
-
-
-const one = 1234;
-const two = 2345;
-const three = 3456;
-
-
-const nums: Record<string, number> = {
-  one, two, three
-}
-
-const getNums = (name: string): number => {
-  return nums[name];
-}
-
-console.log(getNums('two'));

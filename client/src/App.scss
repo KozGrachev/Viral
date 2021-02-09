@@ -1,6 +1,10 @@
 @import './style/variables.scss';
 
 
+
+$app-height: calc(100vh - 40px);
+$app-width: calc((100vh - 40px) * 1.8);
+
 *,
 *:before,
 *:after {
@@ -29,13 +33,21 @@ body {
 
 .app-container {
   display: grid;
-  grid-template-columns: 200px auto;
+  position:relative;
+  grid-template-columns: 20% auto;
   grid-template-areas: "sidebar gameboard";
-  height: calc(100vh - 40px);
+  height: 90vmin;
+  width:150vmin;
+  // height: $app-height;
+  // width: $app-width;
   margin: 20px;
   // padding: 20px;
   // border-radius: 30px;
   // border: 3px solid rgb(21, 255, 0);
+  // max-width: calc(100% - 40px);
+  // max-height: calc();
+  // left: 50%;
+  // transform: translateX(-50%);
 }
 
 
@@ -51,23 +63,247 @@ body {
   border-radius: 30px;
 }
 
+@media (min-aspect-ratio: 7/5) {
+  .board-container {
+    background-color: black;
+    // border:5px solid blue;
+  }
+}
 
 .board-container {
   /* box-sizing: ; */
-  // display: flex;
+  // width:100%;
+  width: auto;
+  height: 100%;
   position: relative;
   grid-area: gameboard;
   margin-left: 20px;
-  width: auto;
-  height: 100%;
+
   // border: 2px solid green;
-  border: $panel-border;
+  // border: $panel-border;
   background: $panel-background_translucent;
   border-radius: 30px;
+  overflow: hidden;
+  // transform: scale(calc(100vw/100vh));
+}
+
+#game-board {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  // background-color: pink;
+  background: url(./assets/allIcons/game-board-slice-with-sources.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  // background-size: cover;
+  background-position: 0 10%;
+}
+
+#map-svg {
+  position: absolute;
+
+  width: 100%;
+  // height: 100%;
+  // border: 3px solid red;
+  // // top: -10%;
+  // background-size: 100% auto;
+  // background-repeat: no-repeat;
+  // background-position: 50% 42%;
+}
+
+.map-svg {
+  // position: ;
+  width: 100%;
+}
+
+#source-parent-grid-container {
+  width: 100%;
+  height: 100%;
+  // overflow: hidden;
+  // background: url(/assets/allIcons/game-board-withoult-sources.svg);
+  // background-color: lightgoldenrodyellow;
+  // background-size: cover;
+  // border: 3px solid red;
+  display: grid;
+  grid-template-columns: repeat(13, 7.7%);
+  grid-template-rows: repeat(10, 10%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 
 
+// Community sources
 
+.university {
+  grid-area: 3/1/4/2;
+  position: absolute;
+  left: 58%;
+  top: 70%;
+}
 
+.local-cult {
+  grid-area: 1/2/2/3;
+  position: absolute;
+  left: 55%;
+  top: 80%;
+}
 
+.high-school {
+  grid-area: 2/2/3/3;
+  position: absolute;
+  left: 23%;
+  top: 42%;
+}
 
+.pub {
+  grid-area: 3/2/4/3;
+  position: absolute;
+  left: 28%;
+  top: 50%;
+}
+
+.taxi {
+  grid-area: 4/2/5/3;
+  position: absolute;
+  left: 75%;
+  top: 0%;
+}
+
+.asda {
+  grid-area: 2/3/3/4;
+  position: absolute;
+  left: 75%;
+  top: 67%;
+}
+
+.gym {
+  grid-area: 3/3/4/4;
+  position: absolute;
+  left: 18%;
+  top: 15%;
+}
+
+.hair-salon {
+  grid-area: 4/3/5/4;
+  position: absolute;
+  left: 65%;
+  top: 30%;
+}
+
+// Social sources
+
+.instagram {
+  grid-area: 3/5/4/6;
+  position: absolute;
+  left: 65%;
+  top: 40%;
+}
+
+.facebook {
+  grid-area: 4/5/5/6;
+  position: absolute;
+  left: 65%;
+  top: 22%;
+}
+
+.youtube {
+  grid-area: 3/6/4/7;
+  position: absolute;
+  left: 35%;
+  top: 40%;
+}
+
+.twitter {
+  grid-area: 5/6/6/7;
+  position: absolute;
+  left: 35%;
+  top: 3.5%;
+}
+
+.illuminatify {
+  grid-area: 3/7/4/8;
+  position: absolute;
+  left: 35%;
+  top: 40%;
+}
+
+.reddit {
+  grid-area: 4/7/5/8;
+  position: absolute;
+  left: 35%;
+  top: 22%;
+}
+
+.whatsapp {
+  grid-area: 3/8/4/9;
+  position: absolute;
+  left: 20%;
+  top: 40%;
+}
+
+.tiktok {
+  grid-area: 5/8/6/9;
+  position: absolute;
+  left: 20%;
+  top: 3.5%;
+}
+
+// Relations sources
+
+.uncle-eugene {
+  grid-area: 1/3/2/4;
+  position: absolute;
+  left: 20%;
+  top: 65%;
+}
+
+.cousin {
+  grid-area: 1/5/2/6;
+  position: absolute;
+  left: 30%;
+  top: 61%;
+}
+
+.fran-from-hr {
+  grid-area: 1/6/2/7;
+  position: absolute;
+  left: 0%;
+  top: 87%;
+}
+
+.evil-ex {
+  grid-area: 1/8/2/9;
+  position: absolute;
+  left: 8%;
+  top: 58%;
+}
+
+.opinionated-grandpa {
+  grid-area: 2/4/3/5;
+  position: absolute;
+  left: 15%;
+  top: 3.5%;
+}
+
+.crazy-dave {
+  grid-area: 2/5/3/6;
+  position: absolute;
+  left: 43%;
+  top: 37%;
+}
+
+.guy-at-the-bus-stop {
+  grid-area: 2/7/3/8;
+  position: absolute;
+  left: 0%;
+  top: 47%;
+}
+
+.mother-in-law {
+  grid-area: 2/8/3/9;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+}

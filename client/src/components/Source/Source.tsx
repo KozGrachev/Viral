@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Player, Source} from '../../types/objects.REDO'
 import { getIcon } from '../../helpers/iconExporter'
-import { toCamelCase } from '../../helpers/utils';
+import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { clearMisinfoAction, debunkMisinfoAction } from '../../redux/gameState/gameStateActions';
