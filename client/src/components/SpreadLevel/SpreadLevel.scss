@@ -1,34 +1,38 @@
-$spread-level-indicator-width: 300px;
+
+@import '../../style/variables.scss';
+$sl-circle-size-small: 20px;
+$sl-circle-size-large: 50px;
 
 .spread-level-container {
-  position: absolute;
-  height: 150px;
-  width: 300px;
-  background-color: white;
-  display: flex;
-  justify-content: space-evenly;
+  // margin: $hud-margin;
+
+  // position: absolute;
+  height: 50px;
+  width: 100%;
+  justify-items: center;
   align-items: center;
   display: grid;
-  grid-auto-columns: repeat(5, auto);
+  grid-template-columns: repeat(5, auto);
+  border: 1px solid grey;
 }
 
 .spread-level-circle {
-  font-size: larger;
-  font-weight: bold;
-  border: solid;
-  color: aliceblue;
-  border-color: black;
-  border-width: 2px;
+  font-size: $sl-circle-size-small * 0.8;
+  font-weight: lighter;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: $spread-level-indicator-width*0.1;
-  width: $spread-level-indicator-width*0.1;
+  height: $sl-circle-size-small;
+  width: $sl-circle-size-small;
   border-radius: 50%;
-  background-color: rgb(85, 29, 138);
-  flex-basis: 18%;
+  // flex-basis: 18%;
+  background-color: rgb(197, 197, 197);
+
 }
 
 .isActive {
-  background-color: rgb(60, 190, 88);
+  font-size: $sl-circle-size-large * 0.5;
+  height: $sl-circle-size-large;
+  width: $sl-circle-size-large;
+  color: white;
 }

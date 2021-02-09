@@ -70,7 +70,7 @@ export const StartGame: React.FC = (): JSX.Element => {
                 <div className="app-container">
                   {/* <Map /> */}
                   {/* <GameBoard /> */}
-                  <div className="sidebar-left">
+                  <div className="sidebar left">
                     <CardHand />
                     <PlayerPrompt />
                   </div>
@@ -81,7 +81,6 @@ export const StartGame: React.FC = (): JSX.Element => {
                       {/* <MapSVG className="map-svg"/> */}
                     </div>
 
-                    <ChaosMeter />
                     <SourceDeck />
                     <MisinformationDeck />
                     <MarkersStore />
@@ -89,9 +88,10 @@ export const StartGame: React.FC = (): JSX.Element => {
                     <OtherPlayer />
                     {/* </Grommet> */}
                   </div>
-                  {/* <div className="side-bar-right"> */}
-
-                  {/* </div> */}
+                  <div className="sidebar right">
+                    <ChaosMeter />
+                    <SpreadLevel/>
+                  </div>
                 </div>
               </div>
           )
