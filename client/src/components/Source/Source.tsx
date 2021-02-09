@@ -16,6 +16,8 @@ export interface SourceProps {
 
 
 export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) => { // SVGIcon
+
+
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
   const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
@@ -85,7 +87,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
     
 
-    return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor }/>)
+    if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor }/>)
 
 
   }
@@ -111,7 +113,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
         {getMarker('social', markers_social, canClearSocial, canDebunk)}
         {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
       </div>
-      {canShare.length > 0 ? getPlayerPawns(canShare, currentPlayer) : null}
+      { getPlayerPawns(canShare, currentPlayer) }
     </div>
   )
 
