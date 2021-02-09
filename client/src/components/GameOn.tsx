@@ -78,6 +78,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                 {/* <MapSVG className="map-svg"/> */}
                 <SourceParent />
               </div>
+              <SourceParent />
               <SourceDeck />
               <MisinformationDeck />
               <MarkersStore />
@@ -85,6 +86,10 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
               <OtherPlayer />
               {/* </Grommet> */}
 
+            </div>
+            <div className="sidebar right">
+              <ChaosMeter />
+              <SpreadLevel />
             </div>
           </div>
         </div>
