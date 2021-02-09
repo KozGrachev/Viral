@@ -14,7 +14,8 @@ export const MarkersStore: React.FC= () => {
       Community Markers Left:{communityLeft}
       <p></p>
       Relations Markers Left:{relationsLeft}
-      <p></p>
+      <p>
+      </p>
       Social Markers Left:{socialLeft}
     </div>
   )
