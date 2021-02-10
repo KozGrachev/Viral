@@ -67,7 +67,19 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             {/* <GameBoard /> */}
             <div className="sidebar left">
               {(checkCards(state) === true) ?
-                <button onClick={getCards}> get cards </button>
+                <button
+                  style={{
+                    background: 'royalblue', 
+                    padding: ' 15px 35px', 
+                    fontSize: '1em', 
+                    borderRadius: '20px', 
+                    border: 'none', 
+                    fontWeight: 'bold', 
+                    color: 'white', 
+                    margin: '15px auto',
+                    width: '100%'
+                  }}
+                  onClick={getCards}> GET CARDS </button>
                 :
                 <CardHand />
               }
@@ -78,6 +90,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                 {/* <MapSVG className="map-svg"/> */}
                 <SourceParent />
               </div>
+              <SourceParent />
               <SourceDeck />
               <MisinformationDeck />
               <MarkersStore />
@@ -88,6 +101,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             </div>
             <div className="sidebar right">
               <ChaosMeter />
+              <SpreadLevel />
             </div>
           </div>
         </div>
