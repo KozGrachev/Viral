@@ -1,11 +1,12 @@
 import React, { ButtonHTMLAttributes, ChangeEvent, DetailedHTMLProps, useState } from 'react';
-import './NewGameMenu.css';
+import './NewGameMenu.scss';
 // import { startGameEvent, addPlayerEvent } from '../../logic/event.listeners'
 import { AddPlayerAction, addPlayerToGameState, DealCardsToNewPlayerAction, StartGameAction, updateGameState } from '../../redux/gameState/gameStateActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, store } from '../../redux/gameState/store';
 import { Player } from '../../types/gameStateTypes';
 import { Console } from 'console';
+import { getIcon} from '../../helpers/iconExporter'
 
 
 export const NewGameMenu: React.FC = () => {
@@ -13,6 +14,8 @@ export const NewGameMenu: React.FC = () => {
   // const [Room, updateRoom] = useState('')
   const dispatch = useDispatch();
   const [option, updateOption] = useState(true)
+
+  const HexagonPawn = getIcon('hexagonPlayerPawn');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault()
@@ -51,6 +54,7 @@ export const NewGameMenu: React.FC = () => {
         <div className='title-container'>
           <h3>Welcome</h3>
         </div>
+        <HexagonPawn className="hex-pawn" />
         <input
           type='text'
           name='name'
@@ -81,7 +85,7 @@ export const NewGameMenu: React.FC = () => {
           name='number of players'
           placeholder='1 - 4 players...'
         ></input>
-        {/* 
+        {/*
         <select
           placeholder='select room'
           value={Room}

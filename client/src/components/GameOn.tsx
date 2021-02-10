@@ -65,7 +65,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
           <div className="app-container">
             {/* <Map /> */}
             {/* <GameBoard /> */}
-            <div className="sidebar-left">
+            <div className="sidebar left">
               {(checkCards(state) === true) ?
                 <button onClick={getCards}> get cards </button>
                 :
@@ -89,7 +89,6 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             </div>
             <div className="sidebar right">
               <ChaosMeter />
-              <SpreadLevel />
             </div>
           </div>
         </div>
