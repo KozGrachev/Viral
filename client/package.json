@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
@@ -16,6 +18,7 @@
     "grommet": "^2.16.2",
     "grommet-icons": "^4.5.0",
     "lottie-web": "^5.7.6",
+    "import": "0.0.6",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-docgen-typescript": "^1.21.0",

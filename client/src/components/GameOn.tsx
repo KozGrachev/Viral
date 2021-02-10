@@ -89,20 +89,23 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
               <div id="game-board">
                 {/* <MapSVG className="map-svg"/> */}
                 <SourceParent />
-                <div id="connections-paths"></div>
+                <div id="connections-paths">
+                  <OtherPlayer />
+                </div>
               </div>
               <SourceParent />
               <SourceDeck />
               <MisinformationDeck />
               <MarkersStore />
               {/* <ChaosMeterGrommet /> */}
-              <OtherPlayer />
+              {/* <OtherPlayer /> */}
               {/* </Grommet> */}
 
             </div>
             <div className="sidebar right">
               <ChaosMeter />
               <SpreadLevel />
+              <CureDeck />
             </div>
           </div>
         </div>

@@ -116,6 +116,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
       }
     }
+    //console.log(players)
     if (test.length > 0) return test.map(player => <PlayerPawn color={player.pawnColor} />)
     else return null
 
@@ -179,12 +180,12 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
           // logic to render different click events from source
           canLogOff ?
             logoffToNewSource :
-            canLogOn ?
-              logonToNewSource :
-              canMove ?
-                changePlayersCurrentSource :
-                unclickableMessage}
-        className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType}`} >
+              canLogOn ?
+                logonToNewSource :
+                canMove ?
+                  changePlayersCurrentSource :
+                  unclickableMessage}
+        className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType} ${canDebunkClassName} `} >
 
         <SVGIconSource />
         <div className={`markers-container ${misinfoType}`}>
