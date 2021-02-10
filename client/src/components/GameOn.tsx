@@ -66,7 +66,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             {/* <Map /> */}
             {/* <GameBoard /> */}
             <div className="sidebar left">
-              {(checkCards(state) === true) ?
+              {(checkCards(state) === true && state.turnMovesLeft > 3) ?
                 <button
                   style={{
                     background: 'royalblue',
@@ -83,7 +83,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                 :
                 <CardHand />
               }
-              <PlayerPrompt state={state}/>
+              <PlayerPrompt state={state} />
             </div>
             <div className="board-container">
               <div id="game-board">
