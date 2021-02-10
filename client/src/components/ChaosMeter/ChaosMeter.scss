@@ -45,7 +45,7 @@ circle {
 
 .percent1 circle:nth-child(2) {
   //  stroke-dashoffset: calc(440 - (440 * 73) / 100);
-   stroke: salmon;
+   stroke: #00BBF9;
    animation: percent 1.8s linear;
    animation-delay: 1.2s;
 }
@@ -55,7 +55,7 @@ circle {
   position: absolute;
   // bottom: 190px;
   // right: -50px;
-  color: #00BBF9;
+  color: #black;
 }
 
 h2 {
@@ -65,7 +65,7 @@ h2 {
 span {
   font-size: 35px;
   opacity: .7;
-  color: 00BBF9;
+  color: black;
 }
 
 @keyframes percent {

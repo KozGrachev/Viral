@@ -69,13 +69,13 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
               {(checkCards(state) === true) ?
                 <button
                   style={{
-                    background: 'royalblue', 
-                    padding: ' 15px 35px', 
-                    fontSize: '1em', 
-                    borderRadius: '20px', 
-                    border: 'none', 
-                    fontWeight: 'bold', 
-                    color: 'white', 
+                    background: 'royalblue',
+                    padding: ' 15px 35px',
+                    fontSize: '1em',
+                    borderRadius: '20px',
+                    border: 'none',
+                    fontWeight: 'bold',
+                    color: 'white',
                     margin: '15px auto',
                     width: '100%'
                   }}
@@ -83,7 +83,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                 :
                 <CardHand />
               }
-              <PlayerPrompt state={state}/>
+              <PlayerPrompt state={state} />
             </div>
             <div className="board-container">
               <div id="game-board">
@@ -103,6 +103,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             <div className="sidebar right">
               <ChaosMeter />
               <SpreadLevel />
+              <CureDeck />
             </div>
           </div>
         </div>
