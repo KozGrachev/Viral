@@ -51,16 +51,16 @@
 }
 
 input, option, select {
-  margin-bottom: 15px;
+  margin-top: 15px;
 
-  height: 20px;
+  height: 18px;
   border-radius: 5px;
   padding: 15px 10px;
   border: 1px solid #ddd;
   font-size: 1em;
   font-weight: 500;
   display: flex;
-  width: 70%;
+  width: 80%;
 }
 
 
@@ -89,7 +89,7 @@ input, option, select {
 
 
 .colors-container {
-  margin: 5px;
+  margin-top: 15px;
   height: 60px;
   border-radius: 5px;
   // border: 1px solid #ddd;
@@ -116,3 +116,7 @@ input, option, select {
    max-width: 50px;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:royalblue;
+  opacity: 0.3; /* Firefox */
+}
