@@ -21,20 +21,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
-<<<<<<< HEAD
-  const array = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))
-  //console.log('CURRENT PLAYER', array)
-  const currentPlayer = array[0]
-  const allPlayers = useSelector((state: RootState) => state.gameStateReducer.players)
-  //console.log('gamestate from source : ', gamestate)
-  //console.log('currentPlayer from source : ' , currentPlayer)
-=======
   const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player=>player.isCurrent===true))[0]
   ////console.log('CURRENT PLAYER', array)
   const allPlayers=useSelector((state: RootState) => state.gameStateReducer.players)
   ////console.log('gamestate from source : ', gamestate)
   ////console.log('currentPlayer from source : ' , currentPlayer)
->>>>>>> 57fe38e0689ba5afaafc9abe6b7ffdb0d76543fe
 
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedDebunkCards, setselectedDebunkCards] = useState([])
@@ -46,18 +37,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   useEffect(() => {
-<<<<<<< HEAD
-    console.log('close modal from source tsx useEffect---------', modalIsOpen)
-
-  }, [modalIsOpen])
-  useEffect(() => {
-    console.log('close modal from source tsx useEffect seleceted debunked cards---------', selectedDebunkCards)
-
-  }, [selectedDebunkCards])
-
-  console.log('source MOVABLE', source.name, canMove)
-  console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
-=======
     //console.log('close modal from source tsx useEffect---------', modalIsOpen)
     
   }, [modalIsOpen])
@@ -67,7 +46,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }, [selectedDebunkCards])
 
 //console.log('source MOVABLE', source.name, canMove)
->>>>>>> 57fe38e0689ba5afaafc9abe6b7ffdb0d76543fe
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   ////console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
