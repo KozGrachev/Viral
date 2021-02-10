@@ -21,9 +21,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
-  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player=>player.isCurrent===true))[0]
+  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0]
   ////console.log('CURRENT PLAYER', array)
-  const allPlayers=useSelector((state: RootState) => state.gameStateReducer.players)
+  const allPlayers = useSelector((state: RootState) => state.gameStateReducer.players)
   ////console.log('gamestate from source : ', gamestate)
   ////console.log('currentPlayer from source : ' , currentPlayer)
 
@@ -38,14 +38,14 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   useEffect(() => {
     //console.log('close modal from source tsx useEffect---------', modalIsOpen)
-    
+
   }, [modalIsOpen])
   useEffect(() => {
     //console.log('close modal from source tsx useEffect seleceted debunked cards---------', selectedDebunkCards)
-    
+
   }, [selectedDebunkCards])
 
-//console.log('source MOVABLE', source.name, canMove)
+  //console.log('source MOVABLE', source.name, canMove)
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   ////console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
@@ -109,18 +109,18 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
-    let test:Player[]=[];
-    for(const player of allPlayers){
-      if (player.currentSource === source.name&& !test.includes(player)) {
+    let test: Player[] = [];
+    for (const player of allPlayers) {
+      if (player.currentSource === source.name && !test.includes(player)) {
         test.push(player)
 
       }
     }
-    if (test.length > 0) return test.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
+    if (test.length > 0) return test.map(player => <PlayerPawn color={player.pawnColor} />)
     else return null
 
   }
-  
+
 
   const changePlayersCurrentSource = () => {
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
@@ -168,7 +168,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
 
-
   return (
     <>
       {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} /> : null}
@@ -202,3 +201,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
 }
+
+
+
+// CAN MOVE:
+// CAN LOGON:
+// CAN LOGOFF:
+// MARKERS x3 ---> CAN CLEAR
+// PAWNS

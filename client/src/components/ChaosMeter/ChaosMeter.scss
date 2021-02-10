@@ -3,29 +3,35 @@
 
 .rings {
   position: relative;
-  // display: flex;
-  // flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   // margin-left: 490px;
 }
 
+
 .percent1,
-.percent2,
-svg,
 circle {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
+  // border: 1px solid green;
 }
 
 circle {
   position: absolute;
   fill: none;
   stroke-width: 10;
-  transform: translate(10px, 10px);
+  // left: 50%;
+  // top: 50%;
+  // transform: scaleY(-1);
+  // transform: translate(-50%, -50%);
+  transform-origin: center;
+  transform: rotate(-90deg) ;
   stroke-dasharray: 440;
   stroke-linecap: round;
 }
 
-circle:nth-child(1) {
+.percent1 circle:nth-child(1) {
   stroke-dashoffset: 0;
   stroke: #ffffff73;
 }
@@ -38,6 +44,7 @@ circle:nth-child(1) {
 }
 
 .number {
+  border: 1px solid green;
   position: absolute;
   // bottom: 190px;
   // right: -50px;
