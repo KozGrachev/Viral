@@ -56,7 +56,7 @@ export const NewGameMenu: React.FC = () => {
     <form className='form' >
       <div className='menu-container'>
         <div className='title-container'>
-          <h3 style={{ color: 'royalblue' }}>Welcome</h3>
+          <h3 style = {{color:'royalblue'}}>Welcome to Viral</h3>
         </div>
         <input
           type='text'
