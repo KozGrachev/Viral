@@ -99,3 +99,7 @@ input, option, select {
    max-width: 50px;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:royalblue;
+  opacity: 0.3; /* Firefox */
+}

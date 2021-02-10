@@ -56,13 +56,13 @@ export const NewGameMenu: React.FC = () => {
     <form className='form' >
       <div className='menu-container'>
         <div className='title-container'>
-          <h3 style = {{color:'royalblue'}}>Welcome</h3>
+          <h3 style={{ color: 'royalblue' }}>Welcome</h3>
         </div>
         <input
           type='text'
           name='name'
           value={input.name}
-          placeholder='player name '
+          placeholder='Player name '
           onChange={handleChange}
         ></input>
 
@@ -71,7 +71,7 @@ export const NewGameMenu: React.FC = () => {
           type='text'
           name='room'
           value={input.room}
-          placeholder='room '
+          placeholder='Room '
           onChange={handleChange}
 
         ></input>
@@ -103,9 +103,7 @@ export const NewGameMenu: React.FC = () => {
           <SquarePawn id="icon"
             onClick={() => handleSelect('red')}
             style={{ border: (input.color === 'red') ? '2px solid red' : 'none' }}
-
           />
-
         </div>
 
         <button className='start_game_button' type='submit' onClick={addPlayer} >
