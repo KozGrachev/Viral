@@ -21,6 +21,10 @@ import { addPlayerToGameState, DealCardsToNewPlayerAction, StartGameAction } fro
 import { Gamestate, Player } from '../types/gameStateTypes';
 import { UpdateGameStateAction } from '../redux/gameState/reduxTypes';
 import { OtherPlayer } from './OtherPlayer/OtherPlayer';
+// import { InfoModal } from './InfoModal/InfoModal';
+import Modal from 'react-modal';
+import { InfoModal } from './InfoModal/InfoModal';
+import './InfoModal/InfoModal.css';
 
 
 interface Props {
@@ -33,7 +37,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
   // const [showSidebar, setShowSidebar] = useState(false);
   const player = useSelector((state: RootState) => state.playerStateReducer)
   const allRooms = useSelector((state: RootState) => state.allGamesStateReducer)
-
+  const [modal, updateModal] = useState(false)
   const getCards = () => {
     state = store.getState().gameStateReducer
     console.log(state, 'state from the gey cards button')
@@ -55,6 +59,13 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
   };
 
 
+  const openModal = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    updateModal(true)
+  }
+  const closeModal = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    updateModal(false)
+  }
+
 
   let state = useSelector((state: RootState) => state.gameStateReducer)
 
@@ -68,17 +79,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             <div className="sidebar left">
               {(checkCards(state) === true && state.turnMovesLeft > 3) ?
                 <button
-                  style={{
-                    background: 'royalblue',
-                    padding: ' 15px 35px',
-                    fontSize: '1em',
-                    borderRadius: '20px',
-                    border: 'none',
-                    fontWeight: 'bold',
-                    color: 'white',
-                    margin: '15px auto',
-                    width: '100%'
-                  }}
+                  className='get-cards'
                   onClick={getCards}> GET CARDS </button>
                 :
                 <CardHand />
@@ -93,6 +94,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                   <OtherPlayer />
                 </div>
               </div>
+
               <SourceParent />
               <SourceDeck />
               <MisinformationDeck />
@@ -106,6 +108,21 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
               <ChaosMeter />
               <SpreadLevel />
               <CureDeck />
+              {!modal &&
+                <button className='info-buton' onClick={openModal} > info </button>}
+              <div className='modal-with-button' >
+                <Modal
+                  isOpen={modal}
+                  onRequestClose={closeModal}
+                  className='modal_container'
+                  contentLabel="Game rules"
+                  ariaHideApp={false}
+
+                >
+                  <InfoModal />
+                  <button className='modal_footer' onClick={closeModal}>close</button >
+                </Modal>
+              </div>
             </div>
           </div>
         </div>
