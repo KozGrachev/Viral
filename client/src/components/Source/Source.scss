@@ -8,7 +8,8 @@ $source-icon-size: $width-ratio * 0.7;
   width: $source-icon-size;
   // border: 3px solid rgb(0, 247, 255);
 
-  svg {
+  >svg {
+    position: absolute;
     width: 100%;
     height: 100%;
   }
@@ -24,9 +25,24 @@ $source-icon-size: $width-ratio * 0.7;
   }
 }
 
-#markers-container .social {
-  transform: scale(0.1);
+.size1 {
+  // transform: scale(1.1);
 }
+
+.size2 {
+  transform: scale(1.5);
+}
+
+.size3 {
+  transform: scale(1.8);
+}
+
+// .markers-container.social {
+//   position: relative;
+  // transform: scale(0.1);
+  // border: 5px solid brown;
+// }
+
 
 #source-parent-grid-container .social {
   transform: scale(1.4);
@@ -53,12 +69,23 @@ $source-icon-size: $width-ratio * 0.7;
   background-color: 'yellow';
 }
 
-.source-container.can-move-to>svg>path {
-  fill: rgba(255, 230, 90, 0.281);
-  animation: move 1s infinite;
+.source-container.can-move-to svg:nth-child(2) path {
+  fill: rgba(255, 230, 90, 0.514);
+  animation: canMove 1s infinite;
 }
 
-@keyframes move {
+.source-container.can-log-on svg:nth-child(2) path {
+  fill: rgba(63, 233, 77, 0.568);
+  animation: canLogOn 1s infinite;
+}
+
+.source-container.can-log-off svg:nth-child(2) path {
+  fill: rgba(107, 90, 255, 0.637);
+  animation: canLogOff 1s infinite;
+}
+
+
+@keyframes canMove {
   0% {
     fill: rgba(255, 255, 255, 0.281);
   }
@@ -71,11 +98,53 @@ $source-icon-size: $width-ratio * 0.7;
     fill: rgba(255, 255, 255, 0.281);
   }
 }
+@keyframes canLogOn {
+  0% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
+
+  50% {
+    fill: rgba(63, 233, 77, 0.281);
+  }
+
+  100% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
+}
+@keyframes canLogOff {
+  0% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
+
+  50% {
+    fill: rgba(107, 90, 255, 0.281);
+  }
+
+  100% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
+}
+
+
+
+svg path.high-school {
+  stroke: #00ff00;
+}
 
 // .source-container.can-log-on {
 //   border: 3px solid blue;
 // }
 
-.source-container.can-log-off {
-  border: 3px solid green;
-}
+// .source-container.can-log-off {
+//   border: 3px solid green;
+// }
+
+// .source-container.can-log-on {
+//   border: 3px solid blue;
+// }
+
+//NOT FLASHING
+// asda
+// crazy dave
+// guy at the bus stop
+// guy at the bus stop
