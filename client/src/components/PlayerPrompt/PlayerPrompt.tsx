@@ -3,7 +3,6 @@ import "./PlayerPrompt.scss"
 
 export interface PlayerPromptProps {
   msg: string
-
 }
 
 

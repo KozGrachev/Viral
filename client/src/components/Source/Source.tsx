@@ -36,14 +36,14 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
 
-  
+
   useEffect(() => {
     console.log('close modal from source tsx useEffect---------', modalIsOpen)
-    
+
   }, [modalIsOpen])
   useEffect(() => {
     console.log('close modal from source tsx useEffect seleceted debunked cards---------', selectedDebunkCards)
-    
+
   }, [selectedDebunkCards])
 
 console.log('source MOVABLE', source.name, canMove)
@@ -55,7 +55,7 @@ console.log('source MOVABLE', source.name, canMove)
 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
     if (num > 0 && canDebunk.includes(category)) {
-      
+
       //get the debunable icon
       const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
@@ -68,7 +68,7 @@ console.log('source MOVABLE', source.name, canMove)
       //get the clearable icon
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
-      
+
       return (<button onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></button>)
 
     }
@@ -86,12 +86,12 @@ console.log('source MOVABLE', source.name, canMove)
 
     setTimeout(async () => {
       try {
-      
+
         // Wait user to confirm !
         dispatch(debunkMisinfoAction({
           oldState: gamestate, currentPlayerID: currentPlayer.id,
         misinfoType:category, usedCards: selectedDebunkCards}))
-        
+
         // this line below is executed only after user click on OK
         alert("OK");
       } catch (err) {
@@ -162,12 +162,12 @@ console.log('source MOVABLE', source.name, canMove)
     console.log('close modal from source tsx---------')
     setIsOpen(false)
 
-    
-    
-  } 
 
-  
-  
+
+  }
+
+  const NewSVG = getIcon('connection1')
+
   return (
 <>
     {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} />: null}
@@ -201,3 +201,11 @@ console.log('source MOVABLE', source.name, canMove)
 
 
 }
+
+
+
+// CAN MOVE:
+// CAN LOGON:
+// CAN LOGOFF:
+// MARKERS x3 ---> CAN CLEAR
+// PAWNS

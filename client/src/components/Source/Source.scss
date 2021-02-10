@@ -22,6 +22,7 @@ $source-icon-size: $width-ratio * 0.7;
     // border: 3px solid rgb(255, 0, 200);
   }
 }
+
 #markers-container .social {
   transform: scale(0.1);
 }
@@ -48,8 +49,23 @@ $source-icon-size: $width-ratio * 0.7;
   background-color: 'yellow';
 }
 
-.source-container.can-move-to {
-  border: 3px solid yellow;
+.source-container.can-move-to>svg>path {
+  fill: rgba(255, 230, 90, 0.281);
+  animation: move 1s infinite;
+}
+
+@keyframes move {
+  0% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
+
+  50% {
+    fill: rgba(255, 230, 90, 0.281);
+  }
+
+  100% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
 }
 
 .source-container.can-log-on {

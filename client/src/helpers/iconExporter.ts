@@ -42,6 +42,9 @@ import { ReactComponent as gameBoard } from '../assets/allIcons/game-board.svg'
 import { ReactComponent as gameBoardWithoutSources } from '../assets/allIcons/game-board-without-sources.svg'
 import { ReactComponent as hexagonPlayerPawn } from '../assets/hexagon-player-pawn.svg'
 
+// CONNECTIONS
+import { ReactComponent as connection1 } from '../assets/hexagon-player-pawn.svg'
+
 
 // interface svgsMap {
 //   [name: string]: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
@@ -87,6 +90,7 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   gameBoard,
   gameBoardWithoutSources,
   hexagonPlayerPawn,
+  connection1,
 }
 
 
