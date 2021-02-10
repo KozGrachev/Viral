@@ -116,7 +116,7 @@ console.log('source MOVABLE', source.name, canMove)
       }
     }
     //console.log(players)
-    if (test.length > 0) return test.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
+    if (test.length > 0) return test.map(player => <PlayerPawn color={player.pawnColor} />)
     else return null
 
   }
