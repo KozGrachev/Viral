@@ -1,7 +1,6 @@
 import { Gamestate, Card,ViralCard, Source, Player, Misinformation } from '../types/gameStateTypes'
-import { didWin, didLose, setUp,typeCheck } from './actions.MW'
+import { didWin,typeCheck } from './actions.MW'
 import { connections as sources } from './connections'
-import { MisinformationDeck } from '../components/MisinformationDeck/misinformationDeck';
 import React,{useState} from 'react';
 
 export const messages:string[]=[]
@@ -279,8 +278,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
     newState = dealConnectionCard(oldState);
     // check here for losing
     if (didLose(newState)){
-      let playerName:string=oldState.players.filter(player=>player.isCurrent)[0].name
-      messages.push(`Oh no ${playerName}! You have no there are no cards left to draw, it's Game over!`)
+      
       // console.log(`%c there are no more cards in the deck, so...`,`color: darkred; padding:10px`);
       // console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
       // console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
@@ -308,8 +306,6 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
     newState = dealMisinfoCard(newState, 1, false)!
     // check if lose (run out of misinfo)
     if (didLose(newState)){
-      let playerName:string=oldState.players.filter(player=>player.isCurrent)[0].name
-      messages.push(`Oh no ${playerName}! You have no there are no cards left to draw, it's Game over!`)
       // console.log(`%c there are no more misinfo cards in the deck, so...`,`color: darkred; padding:10px`);
       // console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
       // console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
@@ -428,8 +424,7 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
   messages.push(`Oh no ${playerName}! We've had an outbreak at ${outbreak_source.name}!! Chaos meter increases to ${oldState.chaosMeter*25}%`)
   // check if lose (chaos meter )
   if (didLose(oldState)){
-    let playerName:string=oldState.players.filter(player=>player.isCurrent)[0].name
-    messages.push(`Oh no ${playerName},Chaos reigns!, the chaos meter is too high, so it's Game Over`)
+    
     //console.log(`%c Chaos reigns!, the chaos meter is too high, so...`,`color: darkred; padding:10px`);
     //console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
     //console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
@@ -453,7 +448,7 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
             source[key]++
             // check if lose (no more misinfo)
             if (didLose(oldState)){
-              messages.push(`All your markers are gone, so it's Game Over`)
+          
               //console.log(`%c all the misinfo markers are gone, so...`,`color: darkred; padding:10px`);
               //console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
               //console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
@@ -473,7 +468,6 @@ export function viralCheck(object: any): object is ViralCard {
 }
 
 export function dealConnectionCard(oldState: Gamestate) {
-  didLose(oldState)
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
   
   if (newCard.cardType==='viral') {
@@ -501,7 +495,9 @@ export function playViralCard(oldState: Gamestate) {
   oldState = dealMisinfoCard(oldState, 3, true)!
   oldState.spreadLevel++
   oldState.misinformationDeckActive = [...shuffle(oldState.misinformationDeckPassive), ...oldState.misinformationDeckActive]
+  oldState.misinformationDeckPassive=[]
   let newState = { ...oldState }
+  console.log(newState)
   return newState
 }
 
@@ -519,6 +515,33 @@ export function shuffle(array: any[]) {
   }
   return array;
 }
+
+export function didLose(state: Gamestate) {
+
+  let playerName:string=state.players.filter(player=>player.isCurrent)[0].name
+  if (state.chaosMeter === 4){
+    messages.push(`Oh no ${playerName},Chaos reigns!, the chaos meter is too high, so it's Game Over`)
+    state.gameLost=true
+    //!UPDATE STATE
+    return true}
+  if (
+    state.misinformation.community.markersLeft === 0 ||
+    state.misinformation.social.markersLeft === 0 ||
+    state.misinformation.relations.markersLeft === 0
+  ){
+    messages.push(`Oh no ${playerName}! All your markers are gone, so it's Game Over`)
+    state.gameLost=true
+    //!UPDATE STATE
+    return true}
+  if (state.connectionDeck.length === 0) {
+    messages.push(`Oh no ${playerName}! You have no there are no cards left to draw, it's Game over!`)
+    state.gameLost=true
+    //!UPDATE STATE
+    return true
+  }
+  return false
+}
+
 
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
   

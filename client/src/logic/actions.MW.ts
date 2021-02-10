@@ -14,15 +14,19 @@ export function didWin(state: Gamestate) {
 }
 
 export function didLose(state: Gamestate) {
-  if (state.chaosMeter === 4)
-    return true
+  console.log(state)
+  if (state.chaosMeter === 4){
+    console.log('chaos')
+    return true}
   if (
     state.misinformation.community.markersLeft === 0 ||
     state.misinformation.social.markersLeft === 0 ||
     state.misinformation.relations.markersLeft === 0
-  )
-    return true
+  ){
+  console.log('markerd')
+    return true}
   if (state.connectionDeck.length === 0) {
+    console.log('connection deck')
     return true
   }
   return false
@@ -345,6 +349,7 @@ export function setUp(players: Player[]) {
   // console.log('AFTER',updateState.sources)
 
   let newState = { ...updateState }
+  console.log(newState)
   return newState
 }
 
