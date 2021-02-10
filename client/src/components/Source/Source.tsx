@@ -179,21 +179,12 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
           // logic to render different click events from source
           canLogOff ?
             logoffToNewSource :
-<<<<<<< HEAD
               canLogOn ?
                 logonToNewSource :
                 canMove ?
                   changePlayersCurrentSource :
                   unclickableMessage}
         className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType} ${canDebunkClassName} `} >
-=======
-            canLogOn ?
-              logonToNewSource :
-              canMove ?
-                changePlayersCurrentSource :
-                unclickableMessage}
-        className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType}`} >
->>>>>>> d5043b02842b76926d5fc5cc5f0d4f0e686f18db
 
         <SVGIconSource />
         <div className={`markers-container ${misinfoType}`}>

@@ -21,25 +21,27 @@ body {
   background-image: url(./assets/allIcons/game-board-slice-no-sources-no-phone.svg);
   background-size: cover;
   background-position: center;
-  // overflow: hidden;
-  
+  overflow: hidden;
+  backdrop-filter: blur(50px);
+
 }
 
 .app-outer-wrapper {
-  border: $panel-border;
-  background: rgba(255, 255, 255, 0.096);
+  // border: $panel-border;
+  // background: rgba(255, 255, 255, 0.096);
 }
 
 .app-container {
   display: grid;
-  position:relative;
+  position: relative;
   grid-template-columns: 20% 82% 20%;
   grid-template-areas: "sidebar-left gameboard sidebar-right";
   left: 43%;
   transform: translateX(-50%);
   margin: 20px 0;
-  width:150vmin;
+  width: 150vmin;
   height: $app-height;
+  // border: 3px solid red;
 }
 
 .sidebar {
@@ -47,7 +49,6 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100%;
   // border: 3px solid red;
   border-radius: 30px;
 
@@ -57,6 +58,7 @@ body {
   justify-content: space-between;
 
   grid-area: sidebar-left;
+  // border: 3px solid rgb(115, 255, 0);
 }
 
 .sidebar.right {
@@ -64,8 +66,8 @@ body {
   // border: 3px solid red;
   grid-area: sidebar-right;
   // width: 100px;
-
-  padding:10px;
+  height: auto;
+  padding: 10px;
 }
 
 @media (min-aspect-ratio: 7/5) {
@@ -339,14 +341,14 @@ body {
 
 .start-game-container {
 
-  height:100vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
 
-  
- 
+
+
 
 }
