@@ -286,18 +286,18 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
       // console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
       //setUp(newState.players);
     }
-    if (newState.players[playerIndex].cards.length > 6) {
-      console.log('your hand is full, you need to discard a card');
-      return {
-        ...newState,
-        players: newState.players
-          .map((player) => player.id === currentPlayerID ?
-            { ...player, cardHandOverflow: true } :
-            player
-          ),
-        dealHistory: cardsLeft - 1,
-      } // exits function here
-    }
+    // if (newState.players[playerIndex].cards.length > 6) {
+    //   console.log('your hand is full, you need to discard a card');
+    //   return {
+    //     ...newState,
+    //     players: newState.players
+    //       .map((player) => player.id === currentPlayerID ?
+    //         { ...player, cardHandOverflow: true } :
+    //         player
+    //       ),
+    //     dealHistory: cardsLeft - 1,
+    //   } // exits function here
+    // }
     cardsLeft--;
   }
   //? do we need to put breaks here, and how, for the front end to update or show when a card has been dealt?
@@ -343,6 +343,9 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
     // reset number of moves
     turnMovesLeft: 4,
   };console.log(`%c NEXT PLAYERS TURN`,`background-color: lightgreen; color: black; padding: 10px`);
+  console.log(nextPlayerIndex)
+  console.log(oldState.players)
+  messages.push(`Now it's over to ${oldState.players[nextPlayerIndex].name}!`)
   return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
 }
   const newState= {
@@ -393,7 +396,7 @@ export function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id
   if (oldState.turnMovesLeft > 0) {
     return updatePossibleActions(oldState, currentPlayerID)
   } else {
-    //? move onto 'board actions' part of turn
+    
     return boardActions(oldState, currentPlayerID, 2)
   }
 }
