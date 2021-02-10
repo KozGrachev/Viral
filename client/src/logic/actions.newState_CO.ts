@@ -525,15 +525,15 @@ export function didLose(state: Gamestate) {
     //!UPDATE STATE
     return true}
   if (
-    state.misinformation.community.markersLeft === 0 ||
-    state.misinformation.social.markersLeft === 0 ||
-    state.misinformation.relations.markersLeft === 0
+    state.misinformation.community.markersLeft <= 0 ||
+    state.misinformation.social.markersLeft <= 0 ||
+    state.misinformation.relations.markersLeft <= 0
   ){
     messages.push(`Oh no ${playerName}! All your markers are gone, so it's Game Over`)
     state.gameLost=true
     //!UPDATE STATE
     return true}
-  if (state.connectionDeck.length === 0) {
+  if (state.connectionDeck.length === 0|| state.misinformationDeckActive.length===0) {
     messages.push(`Oh no ${playerName}! You have no there are no cards left to draw, it's Game over!`)
     state.gameLost=true
     //!UPDATE STATE
@@ -544,7 +544,7 @@ export function didLose(state: Gamestate) {
 
 
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
-  
+  didLose(oldState)
   let oldDeck: Card[] = oldState.misinformationDeckActive
   let drawSource: string
   if (isViral) {
