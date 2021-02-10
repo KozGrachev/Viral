@@ -50,15 +50,17 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   ////console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
+  const SVGIconSourceOverlay: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+    = getIcon(toCamelCase(name) + 'Icon');
 
 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
     if (num > 0 && canDebunk.includes(category)) {
 
-      //get the debunable icon
+      //get the debunkable icon
       const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
-      return (<button onClick={() => debunkMisinforamtion(category)}><DebunkableIcon /></button>)
+      return (<div onClick={() => debunkMisinforamtion(category)}><DebunkableIcon /></div>)
 
     }
 
@@ -68,13 +70,13 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
 
-      return (<button onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></button>)
+      return (<div onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></div>)
 
     }
     if (num > 0) {
       ////console.log(toCamelCase(`marker ${category} ${num}`))
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
-      return <Icon />;
+      return <Icon className={`size${num}`} />;
     }
   }
 
@@ -188,6 +190,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
         className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType} ${canDebunkClassName} `} >
 
         <SVGIconSource />
+        <SVGIconSourceOverlay />
         <div className={`markers-container ${misinfoType}`}>
           {getMarker('community', markers_community, canClearCommunity, canDebunk)}
           {getMarker('social', markers_social, canClearSocial, canDebunk)}
