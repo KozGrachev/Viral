@@ -15,8 +15,6 @@ export const PlayerPrompt: React.FC<PlayerPromptProps> = ({state}:PlayerPromptPr
     <div className="player-prompt-container" >
       {messages.map(msg => {
         let player = state.players.filter(player => {
-          console.log(state.players)
-          console.log(messages)
           if (msg.search(player.name) !== -1 ) {
             return player 
           }})[0]
