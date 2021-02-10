@@ -16,7 +16,8 @@ $source-icon-size: $width-ratio * 0.7;
   .markers-container {
     position: absolute;
     width: 100%;
-    top: 0;
+    left: 50%;
+    top: -45%;
     // height: 100px;
     display: flex;
     // border: 3px solid rgb(255, 0, 200);
@@ -30,9 +31,12 @@ $source-icon-size: $width-ratio * 0.7;
   transform: scale(1.4);
 }
 
+#source-parent-grid-container .markers-container {
+  transform: scale(0.5);
+}
+
 .social {
   background-color: 'blue';
-
 
   // svg {
   //   width: 150%;
@@ -48,14 +52,14 @@ $source-icon-size: $width-ratio * 0.7;
   background-color: 'yellow';
 }
 
-.source-container.can-move-to {
-  border: 3px solid yellow;
-}
+// .source-container.can-move-to {
+//   border: 3px solid yellow;
+// }
 
-.source-container.can-log-on {
-  border: 3px solid blue;
-}
+// .source-container.can-log-on {
+//   border: 3px solid blue;
+// }
 
-.source-container.can-log-off {
-  border: 3px solid green;
-}
+// .source-container.can-log-off {
+//   border: 3px solid green;
+// }
