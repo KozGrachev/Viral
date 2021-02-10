@@ -7,13 +7,6 @@
   justify-content: center;
   align-items: center;
   // margin-left: 490px;
-
-  svg {
-    width: 150px;
-    height: 150px;
-    border: 1px solid green;
-    overflow: visible;
-  }
 }
 
 
@@ -44,10 +37,10 @@ circle {
 }
 
 .percent1 circle:nth-child(2) {
-   stroke-dashoffset: calc(440 - (440 * 0.001) / 100);
-   stroke: salmon;
-   animation: percent 1.8s linear;
-   animation-delay: 1.2s;
+  stroke-dashoffset: calc(440 - (440 * 75) / 100);
+  stroke: #9b5de5;
+  animation: percent 1.5s linear;
+  animation-delay: 1s;
 }
 
 .number {
@@ -64,7 +57,10 @@ h2 {
 
 span {
   font-size: 24px;
-  opacity: .7;
+  opacity: 0.7;
+}
+
+.percent1 span {
   color: gold;
 }
 

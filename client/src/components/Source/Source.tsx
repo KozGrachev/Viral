@@ -21,12 +21,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
-  const array = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))
-  //console.log('CURRENT PLAYER', array)
-  const currentPlayer = array[0]
+  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0]
+  ////console.log('CURRENT PLAYER', array)
   const allPlayers = useSelector((state: RootState) => state.gameStateReducer.players)
-  //console.log('gamestate from source : ', gamestate)
-  //console.log('currentPlayer from source : ' , currentPlayer)
+  ////console.log('gamestate from source : ', gamestate)
+  ////console.log('currentPlayer from source : ' , currentPlayer)
 
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedDebunkCards, setselectedDebunkCards] = useState([])
@@ -38,17 +37,17 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   useEffect(() => {
-    console.log('close modal from source tsx useEffect---------', modalIsOpen)
+    //console.log('close modal from source tsx useEffect---------', modalIsOpen)
 
   }, [modalIsOpen])
   useEffect(() => {
-    console.log('close modal from source tsx useEffect seleceted debunked cards---------', selectedDebunkCards)
+    //console.log('close modal from source tsx useEffect seleceted debunked cards---------', selectedDebunkCards)
 
   }, [selectedDebunkCards])
 
-  console.log('source MOVABLE', source.name, canMove)
-  console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+  //console.log('source MOVABLE', source.name, canMove)
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+  ////console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
 
@@ -73,7 +72,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
     }
     if (num > 0) {
-      //console.log(toCamelCase(`marker ${category} ${num}`))
+      ////console.log(toCamelCase(`marker ${category} ${num}`))
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
       return <Icon />;
     }
@@ -113,18 +112,15 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     let test: Player[] = [];
     for (const player of allPlayers) {
       if (player.currentSource === source.name && !test.includes(player)) {
-        test.push(currentPlayer)
+        test.push(player)
+
       }
     }
-    //console.log(players)
-    if (test.length > 0) return test.map(player => {
-      console.log('player', player)
-       return < PlayerPawn color = { player.pawnColor } />
-      })
-
+    if (test.length > 0) return test.map(player => <PlayerPawn color={player.pawnColor} />)
     else return null
 
   }
+
 
   const changePlayersCurrentSource = () => {
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
@@ -152,7 +148,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   function unclickableMessage() {
-    console.log(`%c you can't do anything at ${source.name}`, `background-color: red; color: white; padding: 10px`)
+    //console.log(`%c you can't do anything at ${source.name}`,`background-color: red; color: white; padding: 10px`)
     return null;
   }
 
@@ -164,14 +160,13 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   const closeModal = () => {
-    console.log('close modal from source tsx---------')
+    //console.log('close modal from source tsx---------')
     setIsOpen(false)
 
 
 
   }
 
-  const NewSVG = getIcon('connection1')
 
   return (
     <>

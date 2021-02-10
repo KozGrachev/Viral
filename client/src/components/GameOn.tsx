@@ -83,12 +83,13 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                 :
                 <CardHand />
               }
-              <PlayerPrompt />
+              <PlayerPrompt state={state}/>
             </div>
             <div className="board-container">
               <div id="game-board">
                 {/* <MapSVG className="map-svg"/> */}
                 <SourceParent />
+                <div id="connections-paths"></div>
               </div>
               <SourceParent />
               <SourceDeck />
