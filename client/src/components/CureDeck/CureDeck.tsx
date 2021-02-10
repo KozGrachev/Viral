@@ -29,15 +29,15 @@ export const CureDeck: React.FC = ():JSX.Element => {
   let noCureString = "Not debunked yet - we're screwed"
   let cureString = "Debunked!! bitches!"
   const CureDeck = (<>
-    <div className="debunk-indicator A">
+    <div className="debunk-indicator community">
       {/* {misinformationCommunityHasDebunked ? <WifiOffIcon style={style.large} /> : <WifiIcon style={style.large} />} */}
       {communityCubesLeft}
     </div>
-    <div className="debunk-indicator B">
+    <div className="debunk-indicator relations">
       {/* {misinformationRelationsHasDebunked ? <WifiOffIcon style={style.large} /> : <WifiIcon style={style.large} />} */}
       {relationsCubesLeft}
     </div>
-    <div className="debunk-indicator C">
+    <div className="debunk-indicator social">
       {socialCubesLeft}
       {/* {misinformationSocialHasDebunked ? <WifiOffIcon style={style.large} /> : <WifiIcon style={style.large} />} */}
     </div>
