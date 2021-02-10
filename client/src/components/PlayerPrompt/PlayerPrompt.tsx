@@ -1,24 +1,25 @@
-import React from 'react';
+import React,{useState} from 'react';
+import {messages} from '../../logic/actions.newState_CO'
+import {Gamestate} from '../../types/gameStateTypes'
+
 import "./PlayerPrompt.scss"
 
 export interface PlayerPromptProps {
-  msg: string
-
+  state:Gamestate
 }
 
 
-export const PlayerPrompt: React.FC = () => { // SVGIcon
-  // using redux instead of props for real implementation
-  //const gamestate = useSelector(state => state.gamestate)
-  //const msg = gamestate.messages
+export const PlayerPrompt: React.FC<PlayerPromptProps> = ({state}:PlayerPromptProps) => { // SVGIcon
 
-
-  const messages = ['this is a test message' , 'Bratuwurst?', ' ja bitte Bratwurst', 'Donald Trump is Tupac and lives under Connors head']
-  //messages.push(msg)
   return (
     <div className="player-prompt-container" >
-      {messages.map(msg => {return (
-        <div className="single-message">{msg}</div>)
+      {messages.map(msg => {
+        let player = state.players.filter(player => {
+          if (msg.search(player.name) !== -1 ) {
+            return player 
+          }})[0]
+        return (
+        <div className="single-message" style = {{border:`2px solid ${player.pawnColor}`}}>{msg}</div>)
       })}
 
     </div>
