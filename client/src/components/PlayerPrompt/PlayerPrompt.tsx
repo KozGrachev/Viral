@@ -1,6 +1,6 @@
-import React,{useState} from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 import {messages} from '../../logic/actions.newState_CO'
-import {Gamestate} from '../../types/gameStateTypes'
+import { Gamestate } from '../../types/gameStateTypes'
 
 import "./PlayerPrompt.scss"
 
@@ -10,6 +10,22 @@ export interface PlayerPromptProps {
 
 
 export const PlayerPrompt: React.FC<PlayerPromptProps> = ({state}:PlayerPromptProps) => { // SVGIcon
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+
+
+  const scrollToBottom = () => {
+    h1Ref.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+    
+  }, [state])
+
+
 
   return (
     <div className="player-prompt-container" >
@@ -19,9 +35,12 @@ export const PlayerPrompt: React.FC<PlayerPromptProps> = ({state}:PlayerPromptPr
             return player 
           }})[0]
         return (
-        <div className="single-message" style = {{border:`2px solid ${player.pawnColor}`}}>{msg}</div>)
+          <div className="single-message"
+            style={{ border: `2px solid ${player.pawnColor}` }}>{msg}</div>)
       })}
+      
 
+      <div ref={h1Ref}></div>
     </div>
   )
 }
