@@ -1,0 +1,106 @@
+* {
+}
+
+.hex-player {
+
+  svg path {
+    fill: red;
+  }
+}
+
+.colors-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; 
+  width: 100%;
+  align-content: center;
+  height: 20px;
+}
+
+
+
+.form {
+  /* display: flex; */
+
+  flex-direction: column;
+  box-shadow: 0 1px 1px 3px rgba(0, 0, 0, 0.2);
+  padding: 25px 35px;
+  border-radius: 3px;
+  /* width: 30%; */
+}
+
+.menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 5px 0;
+}
+
+input, option, select {
+  margin-top: 15px;
+
+  height: 18px;
+  border-radius: 5px;
+  padding: 15px 10px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  font-weight: 500;
+  display: flex;
+  width: 80%;
+}
+
+
+  
+
+.title-container {
+  /* justify-self: center; */
+  /* border: 3px solid blue; */
+  font-size: 36px;
+}
+
+.start_game_button {
+  background: lightblue;
+  padding: 15px 35px;
+  font-size: 1em;
+  border-radius: 3px;
+  border: none;
+  font-weight: 600;
+  color: white;
+  margin: 15px auto;
+  width: 30%;
+}
+
+
+.colors-container {
+  margin-top: 15px;
+  height: 60px;
+  border-radius: 5px;
+  // border: 1px solid #ddd;
+  font-size: 1em;
+  font-weight: 500;
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+}
+
+
+#icon { 
+  margin:5px; 
+  padding: 10px 10px;
+  flex:1;
+  height: 50px;
+  justify-content: row;
+  align-self: center; 
+  text-align: center; 
+   border: 2px solid #ddd ;
+   box-shadow:greenyellow;
+   background: #ddd;
+   border-radius: 5px;
+   max-width: 50px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:royalblue;
+  opacity: 0.3; /* Firefox */
+}

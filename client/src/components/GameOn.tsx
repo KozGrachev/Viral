@@ -67,7 +67,19 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             {/* <GameBoard /> */}
             <div className="sidebar-left">
               {(checkCards(state) === true) ?
-                <button onClick={getCards}> get cards </button>
+                <button
+                  style={{
+                    background: 'royalblue', 
+                    padding: ' 15px 35px', 
+                    fontSize: '1em', 
+                    borderRadius: '20px', 
+                    border: 'none', 
+                    fontWeight: 'bold', 
+                    color: 'white', 
+                    margin: '15px auto',
+                    width: '100%'
+                  }}
+                  onClick={getCards}> GET CARDS </button>
                 :
                 <CardHand />
               }
