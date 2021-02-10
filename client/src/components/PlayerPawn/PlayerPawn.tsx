@@ -7,18 +7,17 @@ import { withDesign } from 'storybook-addon-designs';
 import { useSelector } from 'react-redux';
 // import {RootState} from '../../redux/gameState/store'
 
+
 export interface PlayerPawnProps {
-  player: string;
-  colour: string;
+  color: string;
 }
 
 export const PlayerPawn: React.FC<PlayerPawnProps> = ({
-  player,
-  colour,
+  color,
 }: PlayerPawnProps) => {
   return (
     <div className='container'>
-      <div className={`player_pawn ${colour}`}></div>
+      <div className={`player_pawn ${color}`}></div>
     </div>
   );
 };
