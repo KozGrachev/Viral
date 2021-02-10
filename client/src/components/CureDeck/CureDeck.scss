@@ -1,9 +1,10 @@
+@import '../../style/theme';
+
+
 .cure-deck-container {
-  position: absolute;
   display: flex;
   height:150px;
   width: 300px;
-  border:2px solid ;
   justify-content: space-evenly;
   align-items: center;
   right: 0;
@@ -11,9 +12,9 @@
 }
 
 .debunk-indicator {
+  @include glass-panel();
   flex-basis: 30%;
   height:90%;
-  border:2px solid ;
   margin: 2px;
   display:flex;
   justify-content: center;
@@ -24,15 +25,17 @@
 
 }
 
+.icon {font-size: 55px;}
+
 .A{
-  background-color: aquamarine;
+  background-color: #00BBF9;
 
 }
 
 .B{
-  background-color: tomato;
+  background-color: #F15BB5;
 }
 
 .C{
-  background-color: yellow;
+  background-color: #FEE440;
 }

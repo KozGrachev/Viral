@@ -4,8 +4,16 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/gameState/store';
 
 
+import WifiIcon from '@material-ui/icons/Wifi';
+import WifiOffIcon from '@material-ui/icons/WifiOff';
 
 
+
+const style = {
+  large: {
+    fontSize:50
+  }
+}
 export const CureDeck: React.FC = ():JSX.Element => {
 
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
@@ -17,9 +25,12 @@ export const CureDeck: React.FC = ():JSX.Element => {
   let noCureString = "Not debunked yet - we're screwed"
   let cureString = "Debunked!! bitches!"
   const CureDeck = (<>
-    <div className="debunk-indicator A">{misinformationCommunityHasDebunked ? cureString : noCureString}</div>
-    <div className="debunk-indicator B">{misinformationRelationsHasDebunked ? cureString : noCureString}</div>
-    <div className="debunk-indicator C">{misinformationSocialHasDebunked ? cureString : noCureString}</div>
+    <div className="debunk-indicator A">
+      {misinformationCommunityHasDebunked ? <WifiOffIcon style={style.large}/> : <WifiIcon style={style.large}/> }</div>
+    <div className="debunk-indicator B">
+      {misinformationRelationsHasDebunked ? <WifiOffIcon style={style.large} /> : <WifiIcon style={style.large}/> }</div>
+    <div className="debunk-indicator C">
+      {misinformationSocialHasDebunked ? <WifiOffIcon style={style.large}/> : <WifiIcon style={style.large}/> }</div>
   </>)
 
   return (
