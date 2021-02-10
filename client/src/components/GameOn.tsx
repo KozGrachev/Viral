@@ -103,6 +103,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             <div className="sidebar right">
               <ChaosMeter />
               <SpreadLevel />
+              <CureDeck />
             </div>
           </div>
         </div>
