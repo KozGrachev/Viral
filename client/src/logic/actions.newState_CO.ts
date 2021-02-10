@@ -3,13 +3,17 @@ import { didWin, viral as playViralCard, dealMisinfoCard,dealConnectionCard, did
 import { connections as sources } from './connections'
 import {viralCheck} from './actions.MW'
 import { MisinformationDeck } from '../components/MisinformationDeck/misinformationDeck';
+import React,{useState} from 'react';
 
-
+export const messages:string[]=[]
 //* START THE GAME
 //? called when start button pressed, after game initialised and player order set
 
 export function startGame(oldState: Gamestate) {
+
   const currentPlayerID: Player['id'] = oldState.players[0].id;
+  let playerName:string=oldState.players.filter(player=>player.id===currentPlayerID)[0].name
+  messages.push(`Welcome ${playerName}! Time to travel around the map cleaning up misinformation around town. Good Luck!`)
   return updatePossibleActions(oldState, currentPlayerID);
 }
 
@@ -26,8 +30,11 @@ export function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], l
       ),
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
-  console.log(`%c player moved to ${location}`,`background-color: green; color: white; padding: 10px`);
-  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
+
+  let playerName:string=oldState.players.filter(player=>player.id===currentPlayerID)[0].name
+
+  messages.push(`${playerName} moved to "${location}"`) 
+  messages.push(`${playerName} has ${newState.turnMovesLeft} moves left`)
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -56,9 +63,15 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
     },
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
+
+  let playerName:string=oldState.players.filter(player=>player.id===currentPlayerID)[0].name
+
+  messages.push(`${playerName} cleared ${noOfMarkers} bit of ${misinfoType} misinformation from ${location}`)
+  messages.push(`${playerName} has ${newState.turnMovesLeft} moves left`)
+
   console.log('player cleared', noOfMarkers, misinfoType);
-  console.log(`%c player cleared ${noOfMarkers} ${misinfoType} markers`,`background-color: lightsalmon; color: green; padding: 10px`);
-  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
+  //console.log(`%c player cleared ${noOfMarkers} ${misinfoType} markers`,`background-color: lightsalmon; color: green; padding: 10px`);
+  //console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -115,8 +128,12 @@ export function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], loc
       ),
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
-  console.log(`%c player flew to ${location} using the ${usedCard} card`,`background-color: cyan; color: black; padding: 10px`);
-  console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
+
+  let playerName:string=oldState.players.filter(player=>player.id===currentPlayerID)[0].name
+  messages.push(`${playerName} fast traveled to "${location}" using their "${usedCard}" card`)
+  messages.push(`${playerName} has ${newState.turnMovesLeft} moves left`)
+  //console.log(`%c player flew to ${location} using the ${usedCard} card`,`background-color: cyan; color: black; padding: 10px`);
+  //console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
