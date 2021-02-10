@@ -21,12 +21,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
-  const array = useSelector((state: RootState) => state.gameStateReducer.players.filter(player=>player.isCurrent===true))
-  //console.log('CURRENT PLAYER', array)
-  const currentPlayer=array[0]
-  const allPlayers=useSelector((state: RootState) => state.gameStateReducer.players)
-  //console.log('gamestate from source : ', gamestate)
-  //console.log('currentPlayer from source : ' , currentPlayer)
+  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0]
+  ////console.log('CURRENT PLAYER', array)
+  const allPlayers = useSelector((state: RootState) => state.gameStateReducer.players)
+  ////console.log('gamestate from source : ', gamestate)
+  ////console.log('currentPlayer from source : ' , currentPlayer)
 
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedDebunkCards, setselectedDebunkCards] = useState([])
@@ -36,26 +35,26 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
 
-  
+
   useEffect(() => {
-    console.log('close modal from source tsx useEffect---------', modalIsOpen)
-    
+    //console.log('close modal from source tsx useEffect---------', modalIsOpen)
+
   }, [modalIsOpen])
   useEffect(() => {
-    console.log('close modal from source tsx useEffect seleceted debunked cards---------', selectedDebunkCards)
-    
+    //console.log('close modal from source tsx useEffect seleceted debunked cards---------', selectedDebunkCards)
+
   }, [selectedDebunkCards])
 
-console.log('source MOVABLE', source.name, canMove)
-  console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+  //console.log('source MOVABLE', source.name, canMove)
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+  ////console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
 
 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
     if (num > 0 && canDebunk.includes(category)) {
-      
+
       //get the debunable icon
       const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
@@ -68,12 +67,12 @@ console.log('source MOVABLE', source.name, canMove)
       //get the clearable icon
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
-      
+
       return (<button onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></button>)
 
     }
     if (num > 0) {
-      //console.log(toCamelCase(`marker ${category} ${num}`))
+      ////console.log(toCamelCase(`marker ${category} ${num}`))
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
       return <Icon />;
     }
@@ -86,12 +85,13 @@ console.log('source MOVABLE', source.name, canMove)
 
     setTimeout(async () => {
       try {
-      
+
         // Wait user to confirm !
         dispatch(debunkMisinfoAction({
           oldState: gamestate, currentPlayerID: currentPlayer.id,
-        misinfoType:category, usedCards: selectedDebunkCards}))
-        
+          misinfoType: category, usedCards: selectedDebunkCards
+        }))
+
         // this line below is executed only after user click on OK
         alert("OK");
       } catch (err) {
@@ -109,24 +109,25 @@ console.log('source MOVABLE', source.name, canMove)
 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
-    let test:Player[]=[];
-    for(const player of allPlayers){
-      if (player.currentSource === source.name&& !test.includes(player)) {
-        test.push(currentPlayer)
+    let test: Player[] = [];
+    for (const player of allPlayers) {
+      if (player.currentSource === source.name && !test.includes(player)) {
+        test.push(player)
+
       }
     }
-    //console.log(players)
-    if (test.length > 0) return test.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
+    if (test.length > 0) return test.map(player => <PlayerPawn color={player.pawnColor} />)
     else return null
 
   }
+
 
   const changePlayersCurrentSource = () => {
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
   }
 
   const logonToNewSource = () => {
-    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard:  source.name }))
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard: source.name }))
   }
 
   const logoffToNewSource = () => {
@@ -147,7 +148,7 @@ console.log('source MOVABLE', source.name, canMove)
   }
 
   function unclickableMessage() {
-    console.log(`%c you can't do anything at ${source.name}`,`background-color: red; color: white; padding: 10px`)
+    //console.log(`%c you can't do anything at ${source.name}`,`background-color: red; color: white; padding: 10px`)
     return null;
   }
 
@@ -159,18 +160,17 @@ console.log('source MOVABLE', source.name, canMove)
 
 
   const closeModal = () => {
-    console.log('close modal from source tsx---------')
+    //console.log('close modal from source tsx---------')
     setIsOpen(false)
 
-    
-    
-  } 
 
-  
-  
+
+  }
+
+
   return (
-<>
-    {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} />: null}
+    <>
+      {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} /> : null}
 
 
 
@@ -179,12 +179,21 @@ console.log('source MOVABLE', source.name, canMove)
           // logic to render different click events from source
           canLogOff ?
             logoffToNewSource :
+<<<<<<< HEAD
               canLogOn ?
                 logonToNewSource :
                 canMove ?
                   changePlayersCurrentSource :
                   unclickableMessage}
         className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType} ${canDebunkClassName} `} >
+=======
+            canLogOn ?
+              logonToNewSource :
+              canMove ?
+                changePlayersCurrentSource :
+                unclickableMessage}
+        className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType}`} >
+>>>>>>> d5043b02842b76926d5fc5cc5f0d4f0e686f18db
 
         <SVGIconSource />
         <div className={`markers-container ${misinfoType}`}>
@@ -194,10 +203,18 @@ console.log('source MOVABLE', source.name, canMove)
         </div>
         {getPlayerPawns(canShare, currentPlayer)}
       </div>
-      </>
+    </>
 
   )
 
 
 
 }
+
+
+
+// CAN MOVE:
+// CAN LOGON:
+// CAN LOGOFF:
+// MARKERS x3 ---> CAN CLEAR
+// PAWNS
