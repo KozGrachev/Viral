@@ -29,15 +29,12 @@ export const NewGameMenu: React.FC = () => {
 
   }
   const [input, updateInput] = useState({ name: '', color: '', room: '' })
-  // const [Room, updateRoom] = useState('')
   const dispatch = useDispatch();
 
 
   const handleSelect = (color: string) => {
     let selectedPawn: string = 'none';
-    console.log(selectedPawn, 'selectedPawn')
     selectedPawn = color === input.color ? 'none' : color;
-    console.log(selectedPawn, 'selectedPawn after')
 
     updateInput(state => ({
       ...state,
@@ -45,7 +42,6 @@ export const NewGameMenu: React.FC = () => {
     }))
 
   }
-  console.log(input.color, 'input')
 
   let player = useSelector((state: RootState) => state.playerStateReducer)
   let state = useSelector((state: RootState) => state.gameStateReducer)
@@ -66,18 +62,11 @@ export const NewGameMenu: React.FC = () => {
           type='text'
           name='name'
           value={input.name}
-          placeholder=' player name '
+          placeholder='player name '
           onChange={handleChange}
         ></input>
 
-        {/* <input
-          type='text'
-          name='color'
-          value={input.color}
-          placeholder='color'
-          onChange={handleChange}
-        >
-        </input> */}
+
         <input
           type='text'
           name='room'
@@ -86,15 +75,11 @@ export const NewGameMenu: React.FC = () => {
           onChange={handleChange}
 
         ></input>
-        {console.log(input.color === 'orange', 'input color 89 ')}
         <div className='colors-container' >
-
           <FirePawn id="icon"
             style={{ border: input.color === 'orange' ? '2px solid orange' : 'none' }}
             onClick={() => handleSelect('orange')}
           />
-
-
 
           <HexagonPawn id="icon"
             style={{ border: (input.color === 'green') ? ' 2px solid green' : 'none' }}
