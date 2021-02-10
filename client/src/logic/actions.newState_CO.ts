@@ -56,7 +56,7 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
       ...oldState.misinformation,
       [misinfoType]: {
         ...oldState.misinformation[misinfoType],
-        markersLeft: oldState.misinformation[misinfoType].markersLeft - noOfMarkers
+        markersLeft: oldState.misinformation[misinfoType].markersLeft + noOfMarkers
       }
     },
     turnMovesLeft: oldState.turnMovesLeft - 1,
@@ -497,7 +497,7 @@ export function playViralCard(oldState: Gamestate) {
   oldState.misinformationDeckActive = [...shuffle(oldState.misinformationDeckPassive), ...oldState.misinformationDeckActive]
   oldState.misinformationDeckPassive=[]
   let newState = { ...oldState }
-  console.log(newState)
+  console.log('SPREADLEVEL SHOULD',newState)
   return newState
 }
 
