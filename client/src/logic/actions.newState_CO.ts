@@ -275,6 +275,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   
   let newState: Gamestate = oldState;
   while (cardsLeft > 0) {
+    didLose(newState)
     newState = dealConnectionCard(oldState);
     // check here for losing
     if (didLose(newState)){
@@ -468,7 +469,6 @@ export function viralCheck(object: any): object is ViralCard {
 }
 
 export function dealConnectionCard(oldState: Gamestate) {
-  didLose(oldState)
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
   
   if (newCard.cardType==='viral') {
