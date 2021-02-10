@@ -73,14 +73,13 @@ input, option, select {
 
 .colors-container {
   margin: 5px;
-  height: 50px;
+  height: 60px;
   border-radius: 5px;
-  padding: 10px 10px;
-  border: 1px solid #ddd;
+  // border: 1px solid #ddd;
   font-size: 1em;
   font-weight: 500;
   display: flex;
-  width: 100%;
+  width: 60%;
   justify-content: space-around;
 }
 
@@ -92,5 +91,11 @@ input, option, select {
   height: 50px;
   justify-content: row;
   align-self: center; 
-  text-align: center;
+  text-align: center; 
+   border: 2px solid #ddd ;
+   box-shadow:greenyellow;
+   background: #ddd;
+   border-radius: 5px;
+   max-width: 50px;
 }
+

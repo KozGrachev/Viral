@@ -10,10 +10,6 @@ import { getIcon } from '../../helpers/iconExporter'
 
 
 export const NewGameMenu: React.FC = () => {
-  const [input, updateName] = useState({ name: '', color: '', room: '' })
-  // const [Room, updateRoom] = useState('')
-  const dispatch = useDispatch();
-  const [option, updateOption] = useState(true)
 
   const FirePawn = getIcon('firePawn');
   const HexagonPawn = getIcon('hexagonPlayerPawn');
@@ -22,17 +18,34 @@ export const NewGameMenu: React.FC = () => {
   const SunPawn = getIcon('sunPawn')
   const SquarePawn = getIcon('squarePawn')
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  function handleChange(event: ChangeEvent<HTMLInputElement>): void {
     event.preventDefault()
     if (event.target) {
-      updateName(state => ({
+      updateInput(state => ({
         ...state,
         [event.target.name]: event.target.value
       }))
     }
 
   }
+  const [input, updateInput] = useState({ name: '', color: '', room: '' })
+  // const [Room, updateRoom] = useState('')
+  const dispatch = useDispatch();
 
+
+  const handleSelect = (color: string) => {
+    let selectedPawn: string = 'none';
+    console.log(selectedPawn, 'selectedPawn')
+    selectedPawn = color === input.color ? 'none' : color;
+    console.log(selectedPawn, 'selectedPawn after')
+
+    updateInput(state => ({
+      ...state,
+      color: selectedPawn
+    }))
+
+  }
+  console.log(input.color, 'input')
 
   let player = useSelector((state: RootState) => state.playerStateReducer)
   let state = useSelector((state: RootState) => state.gameStateReducer)
@@ -42,11 +55,6 @@ export const NewGameMenu: React.FC = () => {
     dispatch(AddPlayerAction(input.name, input.color, input.room))
   }
 
-
-  // const selectRoom = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  //   console.log(e.target.value);
-  //   updateRoom(e.target.value);
-  // }
 
   return (
     <form className='form' >
@@ -78,42 +86,42 @@ export const NewGameMenu: React.FC = () => {
           onChange={handleChange}
 
         ></input>
-
+        {console.log(input.color === 'orange', 'input color 89 ')}
         <div className='colors-container' >
 
-          <FirePawn id="icon" />
+          <FirePawn id="icon"
+            style={{ border: input.color === 'orange' ? '2px solid orange' : 'none' }}
+            onClick={() => handleSelect('orange')}
+          />
 
-          <HexagonPawn className="hex-pawn" id="icon" />
 
-          <FlowerPawn id="icon" />
 
-          <RombPawn id="icon" />
+          <HexagonPawn id="icon"
+            style={{ border: (input.color === 'green') ? ' 2px solid green' : 'none' }}
+            onClick={() => handleSelect('green')}
+          />
 
-          <SunPawn id="icon" onClick={() => {
-            console.log('hi?')
-          }} />
+          <FlowerPawn id="icon"
+            style={{ border: (input.color === 'pink') ? '2px solid pink' : 'none' }}
+            onClick={() => handleSelect('pink')}
+          />
 
-          <SquarePawn id="icon" />
+          <RombPawn id="icon"
+            style={{ border: (input.color === 'blue') ? ' 2px solid blue' : 'none' }}
+            onClick={() => handleSelect('blue')}
+          />
+          <SunPawn id='icon'
+            onClick={() => handleSelect('yellow')}
+            style={{ border: (input.color === 'yellow') ? '2px solid yellow' : 'none' }}
+          />
+
+          <SquarePawn id="icon"
+            onClick={() => handleSelect('red')}
+            style={{ border: (input.color === 'red') ? '2px solid red' : 'none' }}
+
+          />
 
         </div>
-        {/* <input
-          type='text'
-          name='number of players'
-          placeholder='1 - 4 players...'
-        ></input>
-        {/*
-        <select
-          placeholder='select room'
-          value={Room}
-          onChange={selectRoom}>
-          {(rooms.length > 0) ?
-            rooms.map(room =>
-              <option value={`${room}`} id='room-options'>
-                {room}
-              </option>) :
-            <option> Start new game</option>
-          }
-        </select> */}
 
         <button className='start_game_button' type='submit' onClick={addPlayer} >
           Play
