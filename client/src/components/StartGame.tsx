@@ -49,13 +49,16 @@ export const StartGame: React.FC = (): JSX.Element => {
 
   return (
 
-    <div>
+    <div className="start-game-container">
       {state.gameWon ?
         <Winner /> :
         state.gameLost ?
           <GameOver /> :
           (player.name.length < 1) ?
-            <NewGameMenu />
+            
+
+              <NewGameMenu />
+            
             : (
               (!stateRendered) ?
                 <h1>

@@ -52,7 +52,7 @@ export const NewGameMenu: React.FC = () => {
     <form className='form' >
       <div className='menu-container'>
         <div className='title-container'>
-          <h3>Welcome</h3>
+          <h3>Welcome to Viral!</h3>
         </div>
         <HexagonPawn className="hex-pawn" />
         <input

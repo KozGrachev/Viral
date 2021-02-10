@@ -1,3 +1,7 @@
+
+
+@import '../../style/theme';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
 }
 
@@ -10,15 +14,17 @@
 
 .form {
   /* display: flex; */
-
+  
   flex-direction: column;
   box-shadow: 0 1px 1px 3px rgba(0, 0, 0, 0.2);
   padding: 25px 35px;
   border-radius: 3px;
   /* width: 30%; */
+  flex-basis: 40%;
 }
 
 .menu-container {
+  flex-basis: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,22 +32,30 @@
   margin: 5px 0;
 }
 
+.hex-pawn {
+  margin-bottom: 35px;
+}
+
 input, option, select {
   margin-bottom: 15px;
-  height: 18px;
+
+  height: 20px;
   border-radius: 5px;
   padding: 15px 10px;
   border: 1px solid #ddd;
   font-size: 1em;
   font-weight: 500;
   display: flex;
-  width: 100%;
+  width: 70%;
 }
 
 .title-container {
   /* justify-self: center; */
   /* border: 3px solid blue; */
   font-size: 36px;
+  margin-bottom: 30px;
+
+ font-family: 'Roboto', sans-serif;;
 }
 
 .start_game_button {
@@ -53,6 +67,6 @@ input, option, select {
   font-weight: 600;
   color: white;
   margin: 15px auto;
-  width: 30%;
+  flex-basis: 30%;
 }
 
