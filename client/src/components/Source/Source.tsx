@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Player, Source } from '../../types/objects.REDO'
+import React, { Fragment, useEffect, useState } from 'react';
+import { Player, Source } from '../../types/gameStateTypes'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss'
@@ -21,7 +21,10 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
-  const currentPlayer = useSelector((state: RootState) => state.playerStateReducer)
+  const array = useSelector((state: RootState) => state.gameStateReducer.players.filter(player=>player.isCurrent===true))
+  //console.log('CURRENT PLAYER', array)
+  const currentPlayer=array[0]
+  const allPlayers=useSelector((state: RootState) => state.gameStateReducer.players)
   //console.log('gamestate from source : ', gamestate)
   //console.log('currentPlayer from source : ' , currentPlayer)
 
@@ -33,24 +36,30 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
 
+  
+  useEffect(() => {
+    console.log('close modal from source tsx useEffect---------', modalIsOpen)
+    
+  }, [modalIsOpen])
+  useEffect(() => {
+    console.log('close modal from source tsx useEffect seleceted debunked cards---------', selectedDebunkCards)
+    
+  }, [selectedDebunkCards])
 
-// console.log('source MOVABLE', source.name, canMove)
-  // console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
+console.log('source MOVABLE', source.name, canMove)
+  console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
 
 
-
-
-
-
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
     if (num > 0 && canDebunk.includes(category)) {
+      
       //get the debunable icon
-      const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
+      const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
-      return (<button onClick={() => debunkMisinforamtion(category)}><ClearableIcon /></button>)
+      return (<button onClick={() => debunkMisinforamtion(category)}><DebunkableIcon /></button>)
 
     }
 
@@ -59,6 +68,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
       //get the clearable icon
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
       //wrap it with  button to make it clickable
+      
       return (<button onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></button>)
 
     }
@@ -71,14 +81,26 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const debunkMisinforamtion = (category: string) => {
 
-    // dispatch(debunkMisinfoAction({
-    //   oldState: gamestate, currentPlayerID: currentPlayer.id,
-    // misinfoType:category, usedCards:}))
+    //showModal
+    setIsOpen(true)
+
+    setTimeout(async () => {
+      try {
+      
+        // Wait user to confirm !
+        dispatch(debunkMisinfoAction({
+          oldState: gamestate, currentPlayerID: currentPlayer.id,
+        misinfoType:category, usedCards: selectedDebunkCards}))
+        
+        // this line below is executed only after user click on OK
+        alert("OK");
+      } catch (err) {
+        alert("CANCEL");
+      }
+    }, 7000);
+
 
   }
-
-
-
 
   const clearMisinformationbyOne = (misinfoType: string) => {
     //throws a logic error !!!
@@ -87,17 +109,19 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
-
-    if (currentPlayer.currentSource === source.name) players.push(currentPlayer)
-
-
-    if (players.length > 0) return players.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
-
+    let test:Player[]=[];
+    for(const player of allPlayers){
+      if (player.currentSource === source.name&& !test.includes(player)) {
+        test.push(currentPlayer)
+      }
+    }
+    //console.log(players)
+    if (test.length > 0) return test.map(player => <PlayerPawn player={player.name} colour={player.pawnColor} />)
+    else return null
 
   }
 
   const changePlayersCurrentSource = () => {
-
     dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
   }
 
@@ -106,9 +130,8 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const logoffToNewSource = () => {
-    // get card of location user moving from
-    const spentCard = '';
-    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard:  source.name }))
+    const spentCard = gamestate.players.filter(player => player.id === currentPlayer.id)[0].currentSource;
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard: spentCard }))
   }
 
   const renderIcon = () => {
@@ -132,11 +155,22 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   let canMoveClassName = canMove ? 'can-move-to' : ''
   let canLogOffClassName = canLogOff ? 'can-log-off' : ''
   let canLogOnClassName = canLogOn ? 'can-log-on' : ''
+  let canDebunkClassName = canDebunk ? 'can-debunk' : ''
 
-  if (modalIsOpen) return <ModalComponent modalIsOpen={modalIsOpen}
-    setIsOpen={setIsOpen} setselectedDebunkCards={setselectedDebunkCards} />;
 
+  const closeModal = () => {
+    console.log('close modal from source tsx---------')
+    setIsOpen(false)
+
+    
+    
+  } 
+
+  
+  
   return (
+<>
+    {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} />: null}
 
 
 
@@ -160,27 +194,10 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
         </div>
         {getPlayerPawns(canShare, currentPlayer)}
       </div>
+      </>
 
   )
 
 
 
 }
-
-// highlighted to show canMove, canLogon (single source which), canLogoff
-
-// 3 markers & can clear?
-
-// pawn <-- use otherPlayer, (canShare in otherPlayer)
-
-// canMove: white transparent overlay (AWAY LOCATION)
-// canLogon: blue border? (AWAY LOCATION)
-// canLogoff: green border? (AWAY LOCATION)
-// canLogon and Logoff: split blue/green border (AWAY LOCATION)
-
-// with social marker: red dot on corner w/ number 1,2,3 (BOTH CURRENT & AWAY)
-//    canClear that marker: slow flashing (CURRENT LOCATION)
-// with community marker: yellow triangle on corner w/ number 1,2,3 (BOTH CURRENT & AWAY)
-//    canClear that marker: slow flashing (CURRENT LOCATION)
-// with relations marker: blue square on corner w/ number 1,2,3 (BOTH CURRENT & AWAY)
-//    canClear that marker: slow flashing (CURRENT LOCATION)

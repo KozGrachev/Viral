@@ -7,22 +7,16 @@ import { RootState, store } from '../redux/gameState/store';
 import { getGame, getGames, joinRoom } from '../socket-io-client/socket-io-client';
 import { CureDeck } from '../components/CureDeck/CureDeck';
 import { getIcon } from '../helpers/iconExporter'
-import { SourceCard } from '../components/SourceCard/SourceCard';
-import { CardHand } from '../components/CardHand/CardHand';
-import { SourceDeck } from '../components/sourceDeck/sourceDeck'
-import { MarkersStore } from '../components/MarkersStore/MarkersStore'
-import { MisinformationDeck } from '../components/MisinformationDeck/misinformationDeck'
-import { ChaosMeter } from '../components/ChaosMeter/ChaosMeter'
-import { SpreadLevel } from '../components/SpreadLevel/SpreadLevel';
-import { PlayerPrompt } from '../components/PlayerPrompt/PlayerPrompt';
-import { SourceParent } from '../components/SourceParent/SourceParent';
+
+
 import { NewGameMenu } from '../components/NewGameMenu/NewGameMenu'
-import { addPlayerToGameState, StartGameAction } from '../redux/gameState/gameStateActions';
+import { addPlayerToGameState, DealCardsToNewPlayerAction, StartGameAction } from '../redux/gameState/gameStateActions';
 import { Gamestate, Player } from '../types/gameStateTypes';
-import { UpdateGameStateAction } from '../redux/gameState/reduxTypes';
-import { OtherPlayer } from './OtherPlayer/OtherPlayer';
 
+import { GameOn } from './GameOn';
 
+import { GameOver } from './GameOver/gameOver'
+import { Winner } from './YouWon/youWon'
 
 export const StartGame: React.FC = (): JSX.Element => {
 
@@ -32,7 +26,7 @@ export const StartGame: React.FC = (): JSX.Element => {
   const allRooms = useSelector((state: RootState) => state.allGamesStateReducer)
   const [stateRendered, updateStateRendered] = useState(false)
   // let gameOn: boolean = false;
-  const state = useSelector((state: RootState) => state.gameStateReducer)
+  let state = useSelector((state: RootState) => state.gameStateReducer)
 
   const startGame = (player: Player) => {
     if (!stateRendered) {
@@ -54,50 +48,25 @@ export const StartGame: React.FC = (): JSX.Element => {
   // }
 
   return (
+
     <div>
-      {
-        (player.name.length < 1) ?
-          <NewGameMenu />
-          : (
-            (!stateRendered) ?
-              <h1>
-                game loading ...
+      {state.gameWon ?
+        <Winner /> :
+        state.gameLost ?
+          <GameOver /> :
+          (player.name.length < 1) ?
+            <NewGameMenu />
+            : (
+              (!stateRendered) ?
+                <h1>
+                  game loading ...
           {startGame(player)}
-              </h1>
-              :
-              (stateRendered && state.gameOn) &&
-              <div className="app-outer-wrapper">
-                <div className="app-container">
-                  {/* <Map /> */}
-                  {/* <GameBoard /> */}
-                  <div className="sidebar left">
-                    <CardHand />
-                    <PlayerPrompt />
-                  </div>
-                  <div className="board-container">
-
-                    <div id="game-board">
-                      <SourceParent />
-                      {/* <MapSVG className="map-svg"/> */}
-                    </div>
-
-                    <SourceDeck />
-                    <MisinformationDeck />
-                    <MarkersStore />
-                    {/* <ChaosMeterGrommet /> */}
-                    <OtherPlayer />
-                    {/* </Grommet> */}
-                  </div>
-                  <div className="sidebar right">
-                    <ChaosMeter />
-                    <SpreadLevel/>
-                  </div>
-                </div>
-              </div>
-          )
+                </h1>
+                :
+                <GameOn rendered={stateRendered} />
+            )
       }
     </div>
-
   )
 }
 
@@ -108,94 +77,3 @@ export const StartGame: React.FC = (): JSX.Element => {
 
 
 
-
-
-
-
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import { Box, Button, Grommet, Card, CardHeader, CardBody, CardFooter, Meter } from 'grommet';
-// // import { Notification } from 'grommet-icons';
-// import './App.scss';
-// import './socket-io-client/socket-io-client';
-// import { Provider } from 'react-redux';
-// import { store } from './redux/gameState/store';
-// import { getGames } from './socket-io-client/socket-io-client';
-// import { CureDeck } from './components/CureDeck/CureDeck';
-// import { getIcon } from './helpers/iconExporter'
-// import { SourceCard } from './components/SourceCard/SourceCard';
-// import { CardHand } from './components/CardHand/CardHand';
-// import { SourceDeck } from './components/sourceDeck/sourceDeck'
-// import { MarkersStore } from './components/MarkersStore/MarkersStore'
-// import { MisinformationDeck } from './components/MisinformationDeck/misinformationDeck'
-// import { ChaosMeter } from './components/ChaosMeter/ChaosMeter'
-// import { SpreadLevel } from './components/SpreadLevel/SpreadLevel';
-// import { PlayerPrompt } from './components/PlayerPrompt/PlayerPrompt';
-// import { SourceParent } from './components/SourceParent/SourceParent';
-// import { ChaosMeterGrommet } from './components/ChaosMeter_Grommet/ChaosMeter_Grommet'
-// import { OtherPlayer } from './components/OtherPlayer/OtherPlayer';
-// import { connections } from './types/connections'
-// // import './assets/allIcons/game-board-without-sources.svg';
-
-
-
-
-
-
-// function App () {
-
-//   const [showSidebar, setShowSidebar] = useState(false);
-
-//   useEffect(() => {
-//     getGames();
-//   }, []);
-
-//   const MapSVG = getIcon('map');
-
-//   const fakePlayer1 = {
-//     name: 'Konstantin',
-//     // id: '5678',
-//     cards: [
-//       connections[Math.floor(Math.random() * (connections.length - 1))],
-//     ],
-//     cardHandFull: false,
-//     isCurrent: false,
-//     pawnColor: 'fuchsia',
-//     currentSource: 'University'
-//   }
-
-//   return (
-//     // <Grommet theme={grommet} full>
-//     <Provider store={store}>
-//       <div className="app-outer-wrapper">
-//         <div className="app-container">
-//           {/* <Map /> */}
-//           {/* <GameBoard /> */}
-//           <div className="sidebar-left">
-//             <CardHand />
-//             <PlayerPrompt />
-//           </div>
-//           <div className="board-container">
-
-//             <div id="game-board">
-//               {/* <MapSVG className="map-svg"/> */}
-//               <SourceParent />
-//             </div>
-
-//             {/* <ChaosMeter />
-//             <SourceDeck />
-//             <MisinformationDeck />
-//             <MarkersStore />
-//             <ChaosMeterGrommet />
-//             <OtherPlayer />
-//             // {/* </Grommet> */ }
-//           </div>
-//         </div>
-//       </div>
-//     </Provider>
-//   );
-// }
-
-// export default App;

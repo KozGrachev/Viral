@@ -71,12 +71,13 @@ io.on('connection', function (socket) {
     //save to database
   });
   socket.on('retriveGame', function (player) {
-    // console.log('RETRIBE GAME player', player);
+    console.log('RETRIBE GAME player', player);
     redis_db_1.getState(player.room).then(function (data) {
       // console.log(data, 'data from db');
       data === null || data === void 0 ? void 0 : data.players.push(player);
       data && redis_db_1.setState(player.room, data);
       // console.log('retrive data sent back after user added -players', data?.players);
+      console.log('retrived gata from the dv gere', data);
       socket.emit('updatedState', data);
       socket.broadcast.to(player.room).emit('updatedState', data);
     });

@@ -1,5 +1,5 @@
-import { Gamestate, Card,ViralCard, Source, Player } from '../types/gameStateTypes'
-import {startGame} from './actions.newState_CO'
+import { Gamestate, Card, ViralCard, Source, Player } from '../types/gameStateTypes'
+import { startGame } from './actions.newState_CO'
 import { connections as sources } from './connections'
 
 //! HELPER HELPERS
@@ -95,9 +95,9 @@ export function insertViralCards(oldState: Gamestate) {
   //console.log('inserting viral cards to connection deck')
   let oldDeck = oldState.connectionDeck
 
-  const viral1: ViralCard = { cardType: "viral"}
-  const viral2: ViralCard = { cardType: "viral"}
-  const viral3: ViralCard = { cardType: "viral"}
+  const viral1: ViralCard = { cardType: "viral" }
+  const viral2: ViralCard = { cardType: "viral" }
+  const viral3: ViralCard = { cardType: "viral" }
   let first = oldDeck.slice(0, (oldDeck.length / 3))
   let second = oldDeck.slice((oldDeck.length / 3), (2 * oldDeck.length / 3))
   let third = oldDeck.slice((2 * oldDeck.length / 3), oldDeck.length)
@@ -117,15 +117,15 @@ export function insertViralCards(oldState: Gamestate) {
 
 }
 
-function typeCheck(string:string){
-  if(
-    string==='social'||
-    string==='community'|| 
-    string==='relations'||
-    string==='markers_community'||
-    string==='markers_social'||
-    string==='markers_relations')
-  return true
+function typeCheck(string: string) {
+  if (
+    string === 'social' ||
+    string === 'community' ||
+    string === 'relations' ||
+    string === 'markers_community' ||
+    string === 'markers_social' ||
+    string === 'markers_relations')
+    return true
   else return false
 }
 
@@ -133,24 +133,28 @@ function typeCheck(string:string){
 
 export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
   let oldDeck: Card[] = oldState.misinformationDeckActive
+  console.log(oldDeck)
   let drawSource: string
   if (isViral) {
     drawSource = oldDeck[oldDeck.length - 1].sourceName
   }
   else {
-    
     drawSource = oldDeck[0].sourceName
   }
   
+  
   for (const source of oldState.sources) {
+  
     if (source.name === drawSource) {
 
       while (weight > 0) {
+        
+
         let key1 = 'markers_' + source.misinfoType
         let key2 = source.misinfoType
 
-        if(typeCheck(key1)&&typeCheck(key2)){
-        
+        if (typeCheck(key1) && typeCheck(key2)) {
+
           if (source[key1] === 3) {
             oldState = outbreak(source, oldState)
           }
@@ -162,7 +166,7 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
           weight--
         }
       }
-    
+
       if (isViral) {
         oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length - 1])
         oldState.misinformationDeckActive.pop()
@@ -178,8 +182,15 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
 }
 
 export function outbreak(outbreak_source: Source, oldState: Gamestate) {
-  //console.log('outbreak!! chaos meter increases')
+  console.log(`%c OUTBREAK!! chaos meter increases`,`background-color: orange; color: maroon; padding:10px`);
   oldState.chaosMeter++
+  // check if lose (chaos meter )
+  if (didLose(oldState)){
+    console.log(`%c Chaos reigns!, the chaos meter is too high, so...`,`color: darkred; padding:10px`);
+    console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
+    console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
+    setUp(oldState.players);
+  }
   let connections!: string[];
   for (const source of sources) {
     if (source.name === outbreak_source.name) {
@@ -196,49 +207,53 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
           }
           else {
             source[key]++
+            // check if lose (no more misinfo)
+            if (didLose(oldState)){
+              console.log(`%c all the misinfo markers are gone, so...`,`color: darkred; padding:10px`);
+              console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
+              console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
+              setUp(oldState.players);
+            }
           }
 
       }
     }
   }
-  //console.log('outbreak on', outbreak_source)
   let newState = { ...oldState }
   return newState
 }
 
 
-export function viralCheck(object:any): object is ViralCard{
+export function viralCheck(object: any): object is ViralCard {
   return false
 }
 
 export function dealConnectionCard(oldState: Gamestate) {
-  let newCard: Card|ViralCard = oldState.connectionDeck[0]
-  
-  if (newCard.cardType==='viral') {
-    console.log(`%c IT'S GONE VIRAL!`,`background-color: red; color: black; padding: 10px; font-weight: bold`);
+  let newCard: Card | ViralCard = oldState.connectionDeck[0]
+
+  if (newCard.cardType === 'viral') {
+    // console.log('viral')
     oldState = viral(oldState)
     oldState.connectionDeck.shift()
   }
   else {
     for (const player of oldState.players) {
       if (player.isCurrent) {
-        if(!viralCheck(newCard)){
-        player.cards.push(newCard)
-        oldState.connectionDeck.shift()
+        if (!viralCheck(newCard)) {
+          player.cards.push(newCard)
+          oldState.connectionDeck.shift()
         }
       }
-      }
     }
-  
-  console.log(oldState.players)
+  }
+
+  // console.log(oldState.players)
   let newState = { ...oldState }
   return newState
 }
 
 export function viral(oldState: Gamestate) {
-  //console.log('viral card!!!')
   oldState = dealMisinfoCard(oldState, 3, true)!
-
   oldState.spreadLevel++
   //* shuffle passive misinfo deck and put on top of active misinfo deck
   oldState.misinformationDeckActive = [...shuffle(oldState.misinformationDeckPassive), ...oldState.misinformationDeckActive]
@@ -273,6 +288,47 @@ export function addPlayerToGame(player: Player, oldState: Gamestate) {
   return newState;
 }
 
+
+
+export function dealConnectionCard2(player: Player, oldState: Gamestate) {
+  let newCard: Card | ViralCard = oldState.connectionDeck[0]
+
+  if (newCard.cardType === 'viral') {
+    // console.log('viral')
+    oldState = viral(oldState)
+    oldState.connectionDeck.shift()
+  }
+  else {
+    // console.log('hello')
+
+    for (const Player of oldState.players) {
+      // console.log('state before loop', oldState)
+      if (Player.id === player.id) {
+        if (!viralCheck(newCard)) {
+          Player.cards.push(newCard)
+          oldState.connectionDeck.shift()
+        }
+        // console.log('STATE AFTER LOOP', oldState)
+
+      }
+    }
+    let state = { ...oldState };
+    return state;
+  }
+}
+export function dealCardsToNewPlayer(player: Player, state: Gamestate) {
+  // console.log('does it get here - 305 malcolm ')
+  let updatedState: any;
+  let cards = 3
+  while (cards > 0) {
+    // console.log('inside the loop', cards)
+    updatedState = dealConnectionCard2(player, state)
+    cards--
+  }
+  console.log('UPDATE STATE - CARDS', updatedState)
+  return { ...updatedState }
+}
+
 export function setUp(players: Player[]) {
 
   let cards;
@@ -296,7 +352,7 @@ export function setUp(players: Player[]) {
   const gameWon = false;
   const gameLost = false;
   const received = false;
-  const gameOn =true; 
+  const gameOn = true;
 
 
   let state = {
@@ -312,17 +368,16 @@ export function setUp(players: Player[]) {
     turnMovesLeft,
     gameWon,
     gameLost,
-    received, 
+    received,
     gameOn
   }
 
-  if (state.players.length > 2) cards = 2;
+  if (state.players.length > 0) cards = 3;
   else cards = 3
 
   for (let i = 0; i < state.players.length; i++) { //* deal connection cards to players before inserting viral cards
     //console.log(state.players)
-    if (state.players.length > 2) cards = 2;
-    else cards = 3
+
     while (cards > 0) {
       state = dealConnectionCard(state)
       cards--
@@ -343,9 +398,9 @@ export function setUp(players: Player[]) {
   }
 
   //! UPDATE POSSIBLE ACTIONS
-  console.log('BEFORE',updateState.sources)
-  updateState=startGame(updateState)
-  console.log('AFTER',updateState.sources)
+  // console.log('BEFORE',updateState.sources)
+  updateState = startGame(updateState)
+  // console.log('AFTER',updateState.sources)
 
   let newState = { ...updateState }
   return newState
@@ -401,12 +456,3 @@ export function setUp(players: Player[]) {
 //   currentSource: 'crazy dave'
 // },
 // ]
-
-
-
-
-
-
-
-
-
