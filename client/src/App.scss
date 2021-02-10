@@ -22,7 +22,7 @@ body {
   background-size: cover;
   background-position: center;
   // overflow: hidden;
-  backdrop-filter: blur(50px);
+  
 }
 
 .app-outer-wrapper {
@@ -328,6 +328,7 @@ body {
 
 
 .start-game-container {
+
   height:100vh;
   width: 100vw;
   display: flex;

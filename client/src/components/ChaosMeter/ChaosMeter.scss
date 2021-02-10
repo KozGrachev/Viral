@@ -11,7 +11,7 @@
   svg {
     width: 150px;
     height: 150px;
-    border: 1px solid green;
+    // border: 1px solid green;
     overflow: visible;
   }
 }
@@ -44,18 +44,18 @@ circle {
 }
 
 .percent1 circle:nth-child(2) {
-   stroke-dashoffset: calc(440 - (440 * 0.001) / 100);
+  //  stroke-dashoffset: calc(440 - (440 * 73) / 100);
    stroke: salmon;
    animation: percent 1.8s linear;
    animation-delay: 1.2s;
 }
 
 .number {
-  border: 1px solid green;
+  // border: 1px solid green;
   position: absolute;
   // bottom: 190px;
   // right: -50px;
-  color: #fff;
+  color: #00BBF9;
 }
 
 h2 {
@@ -63,9 +63,9 @@ h2 {
 }
 
 span {
-  font-size: 24px;
+  font-size: 35px;
   opacity: .7;
-  color: gold;
+  color: 00BBF9;
 }
 
 @keyframes percent {
