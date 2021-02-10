@@ -468,7 +468,6 @@ export function viralCheck(object: any): object is ViralCard {
 }
 
 export function dealConnectionCard(oldState: Gamestate) {
-  didLose(oldState)
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
   
   if (newCard.cardType==='viral') {
@@ -522,6 +521,8 @@ export function didLose(state: Gamestate) {
   let playerName:string=state.players.filter(player=>player.isCurrent)[0].name
   if (state.chaosMeter === 4){
     messages.push(`Oh no ${playerName},Chaos reigns!, the chaos meter is too high, so it's Game Over`)
+    state.gameLost=true
+    //!UPDATE STATE
     return true}
   if (
     state.misinformation.community.markersLeft === 0 ||
@@ -529,9 +530,13 @@ export function didLose(state: Gamestate) {
     state.misinformation.relations.markersLeft === 0
   ){
     messages.push(`Oh no ${playerName}! All your markers are gone, so it's Game Over`)
+    state.gameLost=true
+    //!UPDATE STATE
     return true}
   if (state.connectionDeck.length === 0) {
     messages.push(`Oh no ${playerName}! You have no there are no cards left to draw, it's Game over!`)
+    state.gameLost=true
+    //!UPDATE STATE
     return true
   }
   return false
