@@ -41,11 +41,15 @@ import { ReactComponent as map } from '../assets/allIcons/map.svg'
 import { ReactComponent as gameBoard } from '../assets/allIcons/game-board.svg'
 import { ReactComponent as gameBoardWithoutSources } from '../assets/allIcons/game-board-without-sources.svg'
 import { ReactComponent as firePawn } from '../assets/playerPawns/fire-icon.svg'
-import { ReactComponent as hexagonPlayerPawn } from '../assets/playerPawns/hexagon-player-pawn.svg'
 import { ReactComponent as flowerPawn } from '../assets/playerPawns/flower-pawn.svg'
 import { ReactComponent as rombPawn } from '../assets/playerPawns/romb-pawn.svg'
 import { ReactComponent as sunPawn } from '../assets/playerPawns/sun-pawn.svg'
 import { ReactComponent as squarePawn } from '../assets/playerPawns/square-pawn.svg'
+import { ReactComponent as hexagonPlayerPawn } from '../assets/playerPawns/hexagon-player-pawn.svg'
+
+// CONNECTIONS
+import { ReactComponent as connection1 } from '../assets/playerPawns/hexagon-player-pawn.svg'
+
 
 // interface svgsMap {
 //   [name: string]: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
@@ -95,7 +99,8 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   flowerPawn,
   rombPawn,
   sunPawn,
-  squarePawn
+  squarePawn, 
+  connection1,
 }
 
 
