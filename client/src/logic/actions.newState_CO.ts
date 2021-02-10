@@ -56,7 +56,7 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
       ...oldState.misinformation,
       [misinfoType]: {
         ...oldState.misinformation[misinfoType],
-        markersLeft: oldState.misinformation[misinfoType].markersLeft - noOfMarkers
+        markersLeft: oldState.misinformation[misinfoType].markersLeft + noOfMarkers
       }
     },
     turnMovesLeft: oldState.turnMovesLeft - 1,
@@ -275,6 +275,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   
   let newState: Gamestate = oldState;
   while (cardsLeft > 0) {
+    didLose(newState)
     newState = dealConnectionCard(oldState);
     // check here for losing
     if (didLose(newState)){
@@ -468,6 +469,7 @@ export function viralCheck(object: any): object is ViralCard {
 }
 
 export function dealConnectionCard(oldState: Gamestate) {
+  console.log(oldState.connectionDeck)
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
   
   if (newCard.cardType==='viral') {
@@ -497,7 +499,7 @@ export function playViralCard(oldState: Gamestate) {
   oldState.misinformationDeckActive = [...shuffle(oldState.misinformationDeckPassive), ...oldState.misinformationDeckActive]
   oldState.misinformationDeckPassive=[]
   let newState = { ...oldState }
-  console.log(newState)
+  console.log('SPREADLEVEL SHOULD',newState)
   return newState
 }
 
