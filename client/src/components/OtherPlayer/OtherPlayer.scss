@@ -3,13 +3,15 @@
 
 .other-player-container {
   margin: $hud-margin;
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  top: 0;
   border: 1px dashed rgb(255, 89, 47);
   height: 200px;
+  padding: 10px;
   display: flex;
   width: auto;
   align-items: center;
+  transform: scale(0.85);
 }
 
 .purple {
