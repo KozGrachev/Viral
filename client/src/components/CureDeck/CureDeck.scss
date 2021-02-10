@@ -3,10 +3,9 @@
 
 .cure-deck-container {
   display: flex;
-  height:150px;
-  width: 300px;
-  justify-content: space-evenly;
-  align-items: center;
+  flex-direction: column;
+  height: 35%;
+  width: 55%;
   right: 0;
   bottom: 0;
 }
@@ -14,7 +13,7 @@
 .debunk-indicator {
   @include glass-panel();
   flex-basis: 30%;
-  height:90%;
+  height:30%;
   margin: 2px;
   display:flex;
   justify-content: center;
