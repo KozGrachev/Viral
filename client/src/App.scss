@@ -97,7 +97,7 @@ body {
   width: 100%;
   height: 100%;
   // background-color: pink;
-  background: url(./assets/allIcons/game-board-slice-no-sources.svg);
+  background: url(./assets/allIcons/game-board-slice-with-sources.svg);
   background-size: 100%;
   background-repeat: no-repeat;
   // background-size: cover;
@@ -139,7 +139,7 @@ body {
 // Community sources
 
 .university {
-  grid-area: 8/2/9/3;
+  grid-area: 6/2/7/3;
   position: absolute;
   left: 58%;
   top: 70%;

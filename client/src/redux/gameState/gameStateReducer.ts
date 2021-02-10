@@ -2,7 +2,7 @@ import { ADD_PLAYER_TO_GAME, CLEAR_MISINFO, DEAL_CARDS, DEBUNK_MISINFO, DISCARD_
 import { initialState } from './initialState'
 import { Gamestate } from '../../types/gameStateTypes'
 import { clearMisinfo, debunkMisinfo, discardCard, logOnOff, moveAction, shareCard } from '../../logic/actions.newState_CO'
-import { addPlayerToGame, dealCardsToNewPlayer, setUp } from '../../logic/actions.MW';
+import {dealCardsToNewPlayer, setUp } from '../../logic/actions.MW';
 import { Console } from 'console';
 //here should be a initial State of the Game
 const GameState: Gamestate = initialState;

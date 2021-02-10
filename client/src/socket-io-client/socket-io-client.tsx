@@ -41,7 +41,7 @@ store.subscribe(() => {
 
 //data coming from backend after game state changed
 socket.on('updatedState', (newState: Gamestate) => {
-  // console.log('newstate from client ', newState)
+  console.log('newstate from client ', newState)
   newState.received = true;
   store.dispatch(updateGameState(newState))
 })
