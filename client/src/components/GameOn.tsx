@@ -66,16 +66,16 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             {/* <Map /> */}
             {/* <GameBoard /> */}
             <div className="sidebar left">
-              {(checkCards(state) === true && state.turnMovesLeft < 4 ) ?
+              {(checkCards(state) === true && state.turnMovesLeft  > 3) ?
                 <button
                   style={{
-                    background: 'royalblue', 
-                    padding: ' 15px 35px', 
-                    fontSize: '1em', 
-                    borderRadius: '20px', 
-                    border: 'none', 
-                    fontWeight: 'bold', 
-                    color: 'white', 
+                    background: 'royalblue',
+                    padding: ' 15px 35px',
+                    fontSize: '1em',
+                    borderRadius: '20px',
+                    border: 'none',
+                    fontWeight: 'bold',
+                    color: 'white',
                     margin: '15px auto',
                     width: '100%'
                   }}
@@ -83,7 +83,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                 :
                 <CardHand />
               }
-              <PlayerPrompt state={state}/>
+              <PlayerPrompt state={state} />
             </div>
             <div className="board-container">
               <div id="game-board">
