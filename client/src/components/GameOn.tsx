@@ -110,7 +110,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
               <CureDeck />
               {!modal &&
                 <button className='info-buton' onClick={openModal} > info </button>}
-              <div className='modal-with-button' >
+              {/* <div className='modal-with-button' > */}
                 <Modal
                   isOpen={modal}
                   onRequestClose={closeModal}
@@ -120,9 +120,9 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
 
                 >
                   <InfoModal />
-                  <button className='modal_footer' onClick={closeModal}>close</button >
+                  <button className='modal_button' onClick={closeModal}>close</button >
                 </Modal>
-              </div>
+              {/* </div> */}
             </div>
           </div>
         </div>

@@ -7,66 +7,56 @@
 
 
 .modal_container {
+
   display: flex;
   flex-direction: column;
   justify-content: center;  
-  background: rgb(125, 201, 214);
+  align-items: center;
+  align-content: center;
+  background: lightgreen;
   opacity: 0.7;
   margin: 4rem auto;
-  top:50%;
+  /* top:50%;
   left: 50%;
+  right: auto;
+  bottom: auto; */
   height: 60%;
   width: 60%;
-  right: auto;
-  bottom: auto;
   border-radius: 6px;
-  border:none
-  
+  padding:20px;
+  outline: none;
 
 }
-
-.modal_header {
-  /* background: #2c2c2c; */
-  color: #e9e9e9;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.modal_container span {
-  display: flex;
-  font-size: 1.5rem;
-  cursor: pointer;
-  flex-direction: column;
-;}
 
 
 
 .modal_body h4 {
   font-size: 1.8rem;
-  color:  rgb(202, 91, 17);
+  color:purple; 
   text-align: center;
+  border-radius: 6px;
+  align-self: center;
+  
 }
 
 .modal_body p {
   font-size: 1rem;
-  color:  blue;
-  color: #333;
-  padding: 1rem;
+  color: rgb(88, 85, 85);
+  padding: 2rem;
   margin: 1rem 0 2rem 0;
+  
 }
 
-.modal_footer {
-  display: block;
+.modal_button {
   font-size: 1rem;
   width: 10%;
-  padding: 01.5rem 1.8rem;
-  background: orange;
+  padding: 0.5rem 1.8rem;
+  background: purple;
   color: white;
   border: none;
   outline: none;
-  cursor: pointer
+  cursor: pointer; 
+  border-radius:6px
 }
 
 .info-button {
@@ -75,19 +65,14 @@ height: 5%;
 background: blue;
 color: white;
 }
-.modal-with-button {
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-} 
+ 
 .text {
   text-align: center;
   text-indent: 50px;
   white-space: wrap;  
   line-height: 1.8;
   
-}
+} 
 
 .get-cards { 
   background: royalblue;
