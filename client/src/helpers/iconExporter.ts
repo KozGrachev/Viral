@@ -56,7 +56,8 @@ import { ReactComponent as infoIcon } from '../assets/allIcons/info-icon.svg'
 import { ReactComponent as connectionsWithFrame } from '../assets/allIcons/connections-with-frame.svg'
 
 
-
+// CONNECTIONS
+// import { ReactComponent as connection1 } from '../assets/hexagon-player-pawn.svg'
 
 // interface svgsMap {
 //   [name: string]: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
@@ -108,6 +109,7 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   rombPawn,
   sunPawn,
   squarePawn,
+  // connection1,
   infoIcon,
   connectionsWithFrame,
 
