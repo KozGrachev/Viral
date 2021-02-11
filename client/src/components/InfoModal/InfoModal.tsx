@@ -14,7 +14,6 @@ export const InfoModal: React.FC = () => {
     <div className='modal_body'>
       <h4>Welcome to Viral!</h4>
       <p className='text'>
-
         In this game you have to travel around town cleaning up misinformation from various sources.
         You can either travel to an adjacent source or fast travel by using one of your cards. Each player can make 4 actions, either moving or cleaning, on each turn.
         After each turn additional misinformation will spread throughout the town so you’ll have to act quickly!
