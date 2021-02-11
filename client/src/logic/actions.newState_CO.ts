@@ -469,9 +469,9 @@ export function viralCheck(object: any): object is ViralCard {
 }
 
 export function dealConnectionCard(oldState: Gamestate) {
-  console.log(oldState.connectionDeck)
+  
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
-
+  if(newCard===undefined)oldState.gameLost=true
   if (newCard.cardType==='viral') {
     //console.log(`%c IT'S GONE VIRAL!`,`background-color: red; color: black; padding: 10px; font-weight: bold`);
     oldState = playViralCard(oldState)

@@ -13,21 +13,21 @@ $source-icon-size: $width-ratio * 0.7;
     width: 100%;
     height: 100%;
   }
-  .social svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-  .relations svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-  .social svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
+  // .social svg {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 100%;
+  // }
+  // .relations svg {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 100%;
+  // }
+  // .social svg {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 100%;
+  // }
 
   .player-pawn-container {
     position: absolute;
@@ -74,23 +74,6 @@ $source-icon-size: $width-ratio * 0.7;
 
 #source-parent-grid-container .markers-container {
   transform: scale(0.5);
-}
-
-.social {
-  // background-color: 'blue';
-
-  // svg {
-  //   width: 150%;
-  //   height: 150%;
-  // }
-}
-
-.community {
-  // background-color: 'red';
-}
-
-.relations {
-  // background-color: 'yellow';
 }
 
 .source-container.can-move-to svg:nth-child(2) path {
