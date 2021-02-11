@@ -24,7 +24,7 @@ import { OtherPlayer } from './OtherPlayer/OtherPlayer';
 // import { InfoModal } from './InfoModal/InfoModal';
 import Modal from 'react-modal';
 import { InfoModal } from './InfoModal/InfoModal';
-import './InfoModal/InfoModal.css';
+import './InfoModal/InfoModal.scss';
 
 
 interface Props {
@@ -59,12 +59,13 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
   };
 
 
-  const openModal = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const openModal = () => {
     updateModal(true)
   }
-  const closeModal = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const closeModal = () => {
     updateModal(false)
   }
+  const InfoIcon = getIcon('infoIcon');
 
 
   let state = useSelector((state: RootState) => state.gameStateReducer)
@@ -92,9 +93,9 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                 <SourceParent />
                 <div id="connections-paths">
                   <OtherPlayer />
+                  {!modal && <InfoIcon onClick={openModal} />}
                 </div>
               </div>
-
               <SourceParent />
               <SourceDeck />
               <MisinformationDeck />
@@ -105,24 +106,20 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
 
             </div>
             <div className="sidebar right">
+
+              <Modal
+                isOpen={modal}
+                onRequestClose={closeModal}
+                className='modal_container'
+                contentLabel="Game rules"
+                ariaHideApp={false}
+              >
+                <InfoModal />
+                <button className='modal_button' onClick={closeModal}>close</button >
+              </Modal>
               <ChaosMeter />
               <SpreadLevel />
               <CureDeck />
-              {!modal &&
-                <button className='info-buton' onClick={openModal} > info </button>}
-              {/* <div className='modal-with-button' > */}
-                <Modal
-                  isOpen={modal}
-                  onRequestClose={closeModal}
-                  className='modal_container'
-                  contentLabel="Game rules"
-                  ariaHideApp={false}
-
-                >
-                  <InfoModal />
-                  <button className='modal_button' onClick={closeModal}>close</button >
-                </Modal>
-              {/* </div> */}
             </div>
           </div>
         </div>

@@ -46,7 +46,7 @@ import { ReactComponent as rombPawn } from '../assets/playerPawns/romb-pawn.svg'
 import { ReactComponent as sunPawn } from '../assets/playerPawns/sun-pawn.svg'
 import { ReactComponent as squarePawn } from '../assets/playerPawns/square-pawn.svg'
 import { ReactComponent as hexagonPlayerPawn } from '../assets/playerPawns/hexagon-player-pawn.svg'
-
+import { ReactComponent as infoIcon } from '../assets/allIcons/info-icon.svg'
 // CONNECTIONS
 import { ReactComponent as connection1 } from '../assets/playerPawns/hexagon-player-pawn.svg'
 
@@ -99,8 +99,9 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   flowerPawn,
   rombPawn,
   sunPawn,
-  squarePawn, 
+  squarePawn,
   connection1,
+  infoIcon
 }
 
 
