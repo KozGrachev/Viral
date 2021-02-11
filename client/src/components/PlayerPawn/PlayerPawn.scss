@@ -1,3 +1,5 @@
+@import '../../style/theme.scss';
+
 .player_pawn {
   height: 30px;
   width: 30px;
@@ -9,27 +11,27 @@
 }
 
 .blue {
-  background-color: blue;
+  @include blue;
 }
 
 .green {
-  background-color: green;
+  @include green;
 }
 
 .yellow {
-  background-color: yellow;
+  @include green;
 }
 
 .pink {
-  background-color: pink;
+  @include fuchsia;
 }
 
 .red {
-  background-color: tomato;
+  @include purple;
 }
 
 .orange {
-  background-color: orange;
+  @include orange;
 }
 
 

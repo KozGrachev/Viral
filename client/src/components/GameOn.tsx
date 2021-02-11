@@ -21,6 +21,10 @@ import { addPlayerToGameState, DealCardsToNewPlayerAction, StartGameAction } fro
 import { Gamestate, Player } from '../types/gameStateTypes';
 import { UpdateGameStateAction } from '../redux/gameState/reduxTypes';
 import { OtherPlayer } from './OtherPlayer/OtherPlayer';
+// import { InfoModal } from './InfoModal/InfoModal';
+import Modal from 'react-modal';
+import { InfoModal } from './InfoModal/InfoModal';
+import './InfoModal/InfoModal.scss';
 
 
 interface Props {
@@ -33,7 +37,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
   // const [showSidebar, setShowSidebar] = useState(false);
   const player = useSelector((state: RootState) => state.playerStateReducer)
   const allRooms = useSelector((state: RootState) => state.allGamesStateReducer)
-
+  const [modal, updateModal] = useState(false)
   const getCards = () => {
     state = store.getState().gameStateReducer
     console.log(state, 'state from the gey cards button')
@@ -56,7 +60,16 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
 
 
 
+  const openModal = () => {
+    updateModal(true)
+  }
+  const closeModal = () => {
+    updateModal(false)
+  }
+  const InfoIcon = getIcon('infoIcon');
+
   let state = useSelector((state: RootState) => state.gameStateReducer)
+  const ConnectionsWithFrame = getIcon('connectionsWithFrame');
 
   return (
     <div>
@@ -66,28 +79,53 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             {/* <Map /> */}
             {/* <GameBoard /> */}
             <div className="sidebar left">
-              {(checkCards(state) === true) ?
-                <button onClick={getCards}> get cards </button>
+              {(checkCards(state) === true && state.turnMovesLeft > 3) ?
+                <button
+                  className='get-cards'
+                  onClick={getCards}> GET CARDS </button>
                 :
                 <CardHand />
               }
-              <PlayerPrompt />
+              <PlayerPrompt state={state} />
             </div>
             <div className="board-container">
               <div id="game-board">
                 {/* <MapSVG className="map-svg"/> */}
+                <ConnectionsWithFrame className="connections-overlay" />
                 <SourceParent />
+                {/* <div id="connections-paths"> */}
+                  <OtherPlayer />
+                  {!modal && <InfoIcon onClick={openModal} />}
+                {/* </div> */}
+                <OtherPlayer />
+                {/* <div id="connections-paths">
+                </div> */}
+
               </div>
+              {/* <SourceParent /> */}
               <SourceDeck />
               <MisinformationDeck />
               <MarkersStore />
               {/* <ChaosMeterGrommet /> */}
-              <OtherPlayer />
+              {/* <OtherPlayer /> */}
               {/* </Grommet> */}
 
             </div>
             <div className="sidebar right">
+
+              <Modal
+                isOpen={modal}
+                onRequestClose={closeModal}
+                className='modal_container'
+                contentLabel="Game rules"
+                ariaHideApp={false}
+              >
+                <InfoModal />
+                <button className='modal_button' onClick={closeModal}>close</button >
+              </Modal>
               <ChaosMeter />
+              <SpreadLevel />
+              <CureDeck />
             </div>
           </div>
         </div>

@@ -21,6 +21,26 @@ Player1.args = {
 
 export const Player2 = Template.bind({});
 Player2.args = {
+  color: 'blue',
+};
+
+export const Player3 = Template.bind({});
+Player3.args = {
+  color: 'red',
+};
+
+export const Player4 = Template.bind({});
+Player4.args = {
+  color: 'orange',
+};
+
+
+export const Player5 = Template.bind({});
+Player5.args = {
   color: 'pink',
 };
- 
+
+export const Player6 = Template.bind({});
+Player6.args = {
+  color: 'green',
+};

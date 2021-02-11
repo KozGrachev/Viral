@@ -7,14 +7,10 @@ import { RootState, store } from '../redux/gameState/store';
 import { getGame, getGames, joinRoom } from '../socket-io-client/socket-io-client';
 import { CureDeck } from '../components/CureDeck/CureDeck';
 import { getIcon } from '../helpers/iconExporter'
-
-
 import { NewGameMenu } from '../components/NewGameMenu/NewGameMenu'
 import { addPlayerToGameState, DealCardsToNewPlayerAction, StartGameAction } from '../redux/gameState/gameStateActions';
 import { Gamestate, Player } from '../types/gameStateTypes';
-
 import { GameOn } from './GameOn';
-
 import { GameOver } from './GameOver/gameOver'
 import { Winner } from './YouWon/youWon'
 
@@ -40,7 +36,7 @@ export const StartGame: React.FC = (): JSX.Element => {
       }
     }
   }
-
+  
 
   const MapSVG = getIcon('map');
   // const addPlayer = () => {
@@ -49,13 +45,16 @@ export const StartGame: React.FC = (): JSX.Element => {
 
   return (
 
-    <div>
+    <div className="start-game-container">
       {state.gameWon ?
         <Winner /> :
         state.gameLost ?
           <GameOver /> :
           (player.name.length < 1) ?
+
+
             <NewGameMenu />
+
             : (
               (!stateRendered) ?
                 <h1>
