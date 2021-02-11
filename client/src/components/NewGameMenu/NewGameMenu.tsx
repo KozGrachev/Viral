@@ -87,8 +87,8 @@ export const NewGameMenu: React.FC = () => {
           />
 
           <FlowerPawn className="icon"
-            style={{ transform: (input.color === 'fuchsia') ? 'scale(1.7)' : 'none' }}
-            onClick={() => handleSelect('fuchsia')}
+            style={{ transform: (input.color === 'pink') ? 'scale(1.7)' : 'none' }}
+            onClick={() => handleSelect('pink')}
           />
 
           <RombPawn className="icon"
@@ -101,8 +101,8 @@ export const NewGameMenu: React.FC = () => {
           />
 
           <SquarePawn className="icon"
-            style={{ transform: (input.color === 'purple') ? 'scale(1.7)' : 'none' }}
-            onClick={() => handleSelect('purple')}
+            style={{ transform: (input.color === 'red') ? 'scale(1.7)' : 'none' }}
+            onClick={() => handleSelect('red')}
           />
         </div>
 
