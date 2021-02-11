@@ -1,39 +1,115 @@
 @import '../../style/variables.scss';
+@import '../../style/theme.scss';
 
-.chaos-meter-container {
-  margin: $hud-margin;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.track {
-  stroke: rgba(211, 211, 211, 0);
-  fill: none;
-}
-
-.progress {
-  fill: none;
-  stroke: rgb(255, 81, 0);
-  stroke-width: 10px;
-  stroke-dasharray: 630;
-  stroke-dashoffset: 0;
-}
-
-.chaos-label{
-  position: absolute;
-  // display: flex;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.progress p {
+.rings {
+  position: relative;
+  display: flex;
   justify-content: center;
-}
+  align-items: center;
+  // margin-left: 490px;
 
-@keyframes progress {
-  to {
-    stroke-dasharray: 180;
+  svg {
+    width: 150px;
+    height: 150px;
+    // border: 1px solid green;
+    overflow: visible;
   }
 }
+
+
+.percent1,
+circle {
+  width: 150px;
+  height: 150px;
+  // border: 1px solid green;
+}
+
+circle {
+  position: absolute;
+  fill: none;
+  stroke-width: 10;
+  // left: 50%;
+  // top: 50%;
+  // transform: scaleY(-1);
+  // transform: translate(-50%, -50%);
+  transform-origin: center;
+  transform: rotate(-90deg) ;
+  stroke-dasharray: 440;
+  stroke-linecap: round;
+}
+
+.percent1 circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: #ffffff73;
+}
+
+.percent1 circle:nth-child(2) {
+  //  stroke-dashoffset: calc(440 - (440 * 73) / 100);
+   stroke: #00BBF9;
+   animation: percent 1.8s linear;
+   animation-delay: 1.2s;
+}
+
+.number {
+  // border: 1px solid green;
+  position: absolute;
+  // bottom: 190px;
+  // right: -50px;
+  color: black;
+}
+
+h2 {
+  font-size: 48px;
+}
+
+span {
+  font-size: 35px;
+  opacity: .7;
+  color: black;
+}
+
+@keyframes percent {
+  0% {
+    stroke-dashoffset: 0;
+    stroke-width: 0;
+  }
+}
+
+// .chaos-meter-container {
+
+//   margin: $hud-margin;
+//   position: relative;
+//   right: 0;
+//   top: 0;
+// }
+
+// .track {
+//   stroke: rgba(211, 211, 211, 0);
+//   fill: none;
+// }
+
+// .progress {
+//   fill: none;
+//   stroke: rgb(255, 81, 0);
+//   stroke-width: 10px;
+//   stroke-dasharray: 630;
+//   stroke-dashoffset: 0;
+// }
+
+// .chaos-label {
+//   position: absolute;
+//   display: flex;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+// }
+
+// .progress p {
+//   justify-content: center;
+// }
+
+// @keyframes progress {
+//   to {
+//     stroke-dasharray: 180;
+//   }
+// }

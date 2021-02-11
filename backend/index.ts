@@ -47,22 +47,25 @@ io.on('connection', (socket) => {
     ({ newState, Player }: { newState: Gamestate, Player: IUser }) => {
       // console.log('NEWSTATE: ', newState, 'CONSOLE FROM ONCGANGE');
       const user = Player;
-      setState(user.room, newState);
       socket.broadcast.to(user.room)
         .emit('updatedState', newState);
+      setState(user.room, newState);
+      console.log('nestate from the backend after cards update', newState);
       //save to database
 
     });
 
   socket.on('retriveGame', (player: Player) => {
-    // console.log('RETRIBE GAME player', player);
+    console.log('RETRIBE GAME player', player);
     getState(player.room).then(data => {
       // console.log(data, 'data from db');
       data?.players.push(player);
-      data && setState(player.room, data);
       // console.log('retrive data sent back after user added -players', data?.players);
+      console.log('retrived gata from the dv gere', data);
       socket.emit('updatedState', data);
       socket.broadcast.to(player.room).emit('updatedState', data);
+      data && setState(player.room, data);
+
 
     });
 
@@ -85,9 +88,10 @@ io.on('connection', (socket) => {
         const newPlayers = game?.players.filter(player => player.name !== user.name);
         const data = { ...game, players: newPlayers };
         if (data) {
-          setState(user.room, data);
           socket.emit('updatedState', data);
           socket.broadcast.to(user.room).emit('updatedState', data);
+          setState(user.room, data);
+
         }
         if (user) {
           io.to(user.room).emit(

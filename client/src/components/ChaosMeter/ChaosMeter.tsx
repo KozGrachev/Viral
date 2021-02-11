@@ -5,18 +5,20 @@ import { RootState } from '../../redux/gameState/store';
 export const ChaosMeter: React.FC = () => {
   //const chaos = store.getState().gameStateReducer.chaosMeter;
   const chaos = useSelector((state: RootState) => state.gameStateReducer.chaosMeter)
+  let chaosPercentage = (chaos / 4) * 100
+  let offSet = (440 - (440 * chaosPercentage / 100))
 
   return (
-    <div className="chaos-meter-container">
-      <div className="chaos-label">
-        <p>
-          {chaos}/4
-        </p>
+    <div className="rings">
+      <div className="percent1" >
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" style={{ strokeDashoffset: offSet }}></circle>
+        </svg>
       </div>
-      <svg width='150' height='150'>
-        <circle className='track' r='70' cx='75' cy='75'></circle>
-        <circle className='progress' r='70' cx='75' cy='75'></circle>
-      </svg>
+      <div className="number ">
+        <h2>{chaosPercentage}<span>%</span></h2>
+      </div>
     </div>
   );
 };

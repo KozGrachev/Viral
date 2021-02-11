@@ -9,14 +9,14 @@ import { store } from './redux/gameState/store';
 import { StartGame } from './components/StartGame'
 
 
-function App () {
+function App() {
   return (
 
     <Provider store={store}>
 
       <StartGame />
     </Provider >
-  
+
   );
 }
 

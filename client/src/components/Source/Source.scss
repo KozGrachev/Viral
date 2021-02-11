@@ -1,61 +1,173 @@
 @import '../../style/variables.scss';
 
-$source-icon-size: $width-ratio*0.7;
+$source-icon-size: $width-ratio * 0.7;
 
 .source-container {
   position: relative;
-  margin: 50px;
   height: $source-icon-size;
   width: $source-icon-size;
   // border: 3px solid rgb(0, 247, 255);
 
-  svg {
+  >svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .social svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .relations svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .social svg {
+    position: absolute;
     width: 100%;
     height: 100%;
   }
 
+  .player-pawn-container {
+    position: absolute;
+    left: -50%;
+    top: -45%;
+  }
+
   .markers-container {
     position: absolute;
-    width: 100%;
-    top: 0;
+    width: 200%;
+    left: 50%;
+    top: -45%;
     // height: 100px;
     display: flex;
     // border: 3px solid rgb(255, 0, 200);
   }
 }
 
+.size1 {
+  // transform: scale(1.1);
+}
+
+.size2 {
+  transform: scale(1.5);
+}
+
+.size3 {
+  transform: scale(1.8);
+}
+
+// .markers-container.social {
+//   position: relative;
+// transform: scale(0.1);
+// border: 5px solid brown;
+// }
+
+
+#source-parent-grid-container .social {
+  transform: scale(1.4);
+}
+
+#source-parent-grid-container .markers-container {
+  transform: scale(0.5);
+}
+
 .social {
-  background-color: 'blue';
+  // background-color: 'blue';
+
+  // svg {
+  //   width: 150%;
+  //   height: 150%;
+  // }
 }
 
 .community {
-  background-color: 'red';
+  // background-color: 'red';
 }
 
 .relations {
-  background-color: 'yellow';
+  // background-color: 'yellow';
+}
+
+.source-container.can-move-to svg:nth-child(2) path {
+  fill: rgba(255, 230, 90, 0.514);
+  animation: canMove 1s infinite;
+}
+
+.source-container.can-log-on svg:nth-child(2) path {
+  fill: rgba(63, 233, 77, 0.568);
+  animation: canLogOn 1s infinite;
+}
+
+.source-container.can-log-off svg:nth-child(2) path {
+  fill: rgba(107, 90, 255, 0.637);
+  animation: canLogOff 1s infinite;
 }
 
 
-.source-container.can-move-to {
-  border: 3px solid yellow;
+@keyframes canMove {
+  0% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
+
+  50% {
+    fill: rgba(255, 230, 90, 0.281);
+  }
+
+  100% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
 }
 
-.can-log-on {
-  /*
-  can go to a specific place
-  on the source-container
-  */
+@keyframes canLogOn {
+  0% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
+
+  50% {
+    fill: rgba(63, 233, 77, 0.281);
+  }
+
+  100% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
 }
 
-.can-log-off {
-  /*
-  can go to any place
-  on the source-container
-  */
-  
+@keyframes canLogOff {
+  0% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
+
+  50% {
+    fill: rgba(107, 90, 255, 0.281);
+  }
+
+  100% {
+    fill: rgba(255, 255, 255, 0.281);
+  }
 }
 
-.can-share-with {
-  /* on the playerPawn */
+
+
+svg path.high-school {
+  stroke: #00ff00;
 }
+
+// .source-container.can-log-on {
+//   border: 3px solid blue;
+// }
+
+// .source-container.can-log-off {
+//   border: 3px solid green;
+// }
+
+// .source-container.can-log-on {
+//   border: 3px solid blue;
+// }
+
+//NOT FLASHING
+// asda
+// crazy dave
+// guy at the bus stop
+// guy at the bus stop

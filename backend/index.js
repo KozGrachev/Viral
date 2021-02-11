@@ -65,20 +65,22 @@ io.on('connection', function (socket) {
     var newState = _a.newState, Player = _a.Player;
     // console.log('NEWSTATE: ', newState, 'CONSOLE FROM ONCGANGE');
     var user = Player;
-    redis_db_1.setState(user.room, newState);
     socket.broadcast.to(user.room)
       .emit('updatedState', newState);
+    redis_db_1.setState(user.room, newState);
+    console.log('nestate from the backend after cards update', newState);
     //save to database
   });
   socket.on('retriveGame', function (player) {
-    // console.log('RETRIBE GAME player', player);
+    console.log('RETRIBE GAME player', player);
     redis_db_1.getState(player.room).then(function (data) {
       // console.log(data, 'data from db');
       data === null || data === void 0 ? void 0 : data.players.push(player);
-      data && redis_db_1.setState(player.room, data);
       // console.log('retrive data sent back after user added -players', data?.players);
+      console.log('retrived gata from the dv gere', data);
       socket.emit('updatedState', data);
       socket.broadcast.to(player.room).emit('updatedState', data);
+      data && redis_db_1.setState(player.room, data);
     });
   });
   socket.on('getGames', function () {
@@ -94,9 +96,9 @@ io.on('connection', function (socket) {
               var newPlayers = game === null || game === void 0 ? void 0 : game.players.filter(function (player) { return player.name !== user.name; });
               var data = __assign(__assign({}, game), { players: newPlayers });
               if (data) {
-                redis_db_1.setState(user.room, data);
                 socket.emit('updatedState', data);
                 socket.broadcast.to(user.room).emit('updatedState', data);
+                redis_db_1.setState(user.room, data);
               }
               if (user) {
                 io.to(user.room).emit('userLeft', user.name + ' has left the game');

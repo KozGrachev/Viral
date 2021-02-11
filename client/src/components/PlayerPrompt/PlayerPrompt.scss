@@ -1,20 +1,14 @@
 @import '../../style/theme';
 
 .player-prompt-container {
-  @include glass-panel;
-  padding: 10px;
-  display: flex;
-  height:150px;
+  @include scroll-panel;
+  height: 350px;
   width: 100%;
   flex-direction: column;
-  justify-content: flex-start;
   /* align-items: center; */
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
-.player-prompt-container::-webkit-scrollbar{
+.player-prompt-container::-webkit-scrollbar {
   display: none;
 }
 
@@ -23,5 +17,5 @@
   margin-bottom: 10px;
   font-size: 15px;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.623);
+  text-align: center;
 }
