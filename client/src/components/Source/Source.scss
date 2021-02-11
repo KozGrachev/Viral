@@ -8,7 +8,7 @@ $source-icon-size: $width-ratio * 0.7;
   width: $source-icon-size;
   // border: 3px solid rgb(0, 247, 255);
 
-  >svg {
+  > svg {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -33,6 +33,10 @@ $source-icon-size: $width-ratio * 0.7;
     position: absolute;
     left: -50%;
     top: -45%;
+    display: grid;
+    svg {
+      position: relative;
+    }
   }
 
   .markers-container {
@@ -63,7 +67,6 @@ $source-icon-size: $width-ratio * 0.7;
 // transform: scale(0.1);
 // border: 5px solid brown;
 // }
-
 
 #source-parent-grid-container .social {
   transform: scale(1.4);
@@ -104,7 +107,6 @@ $source-icon-size: $width-ratio * 0.7;
   fill: rgba(107, 90, 255, 0.637);
   animation: canLogOff 1s infinite;
 }
-
 
 @keyframes canMove {
   0% {
@@ -147,8 +149,6 @@ $source-icon-size: $width-ratio * 0.7;
     fill: rgba(255, 255, 255, 0.281);
   }
 }
-
-
 
 svg path.high-school {
   stroke: #00ff00;
