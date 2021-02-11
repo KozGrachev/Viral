@@ -120,9 +120,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     }
     //console.log(players)
     if (test.length > 0) return test.map(player => {
-      return <div className="player-pawn-container">
-        <PlayerPawn color={player.pawnColor} />
-      </div>
+      return <PlayerPawn color={player.pawnColor} />
     })
     else return null
 
@@ -200,7 +198,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
           {getMarker('social', markers_social, canClearSocial, canDebunk)}
           {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
         </div>
+        <div className="player-pawn-container">
           {getPlayerPawns(canShare, currentPlayer)}
+        </div>
       </div>
     </>
 

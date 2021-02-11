@@ -36,8 +36,7 @@ export const PlayerPawn: React.FC<PlayerPawnProps> = ({
   color,
 }: PlayerPawnProps) => {
   return (
-    <div className='container'>
-      {getPawn(color)}
-    </div>
-  );
+  <>
+  {getPawn(color)}
+  </>)
 };

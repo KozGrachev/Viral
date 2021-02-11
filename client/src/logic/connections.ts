@@ -127,7 +127,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'whatsapp',
-    connections: ['reddit', 'illuminatify', 'tik-tok', 'twitter'],
+    connections: ['reddit', 'illuminatify', 'tiktok', 'twitter'],
     category: 'social',
   },
   {
