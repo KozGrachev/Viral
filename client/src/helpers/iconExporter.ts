@@ -26,6 +26,7 @@ import { ReactComponent as evilExIcon } from '../assets/allIcons/evil-ex-icon.sv
 import { ReactComponent as opinionatedGrandpaIcon } from '../assets/allIcons/opinionated-grandpa-icon.svg'
 import { ReactComponent as uncleEugeneIcon } from '../assets/allIcons/uncle-eugene-icon.svg'
 
+import { ReactComponent as emptyAppIcon } from '../assets/allIcons/empty-app-icon.svg'
 
 import { ReactComponent as markerSocial1 } from '../assets/allIcons/marker-social-1.svg'
 import { ReactComponent as markerSocial2 } from '../assets/allIcons/marker-social-2.svg'
@@ -36,6 +37,8 @@ import { ReactComponent as markerCommunity3 } from '../assets/allIcons/marker-co
 import { ReactComponent as markerRelations1 } from '../assets/allIcons/marker-relations-1.svg'
 import { ReactComponent as markerRelations2 } from '../assets/allIcons/marker-relations-2.svg'
 import { ReactComponent as markerRelations3 } from '../assets/allIcons/marker-relations-3.svg'
+
+
 
 import { ReactComponent as map } from '../assets/allIcons/map.svg'
 import { ReactComponent as gameBoard } from '../assets/allIcons/game-board.svg'
@@ -85,6 +88,7 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   evilExIcon,
   opinionatedGrandpaIcon,
   uncleEugeneIcon,
+  emptyAppIcon,
   markerSocial1,
   markerSocial2,
   markerSocial3,

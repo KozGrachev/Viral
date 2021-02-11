@@ -163,6 +163,12 @@ svg.connections-overlay {
 
 // Community sources
 
+.empty-app-icon-1 {
+  position: absolute;
+  grid-area: 9/12/10/13;
+  top: 10%;
+  // border: 5px solid red;
+}
 
 .university {
   grid-area: 9/5/8/6;
@@ -233,7 +239,7 @@ svg.connections-overlay {
   grid-area: 8/10/9/11;
   position: absolute;
   left: 60%;
-  top: 11%;
+  top: 5%;
   // border: 0.3px solid rgb(255, 0, 255);
 }
 
@@ -249,7 +255,7 @@ svg.connections-overlay {
   grid-area: 8/11/9/12;
   position: absolute;
   left: 60%;
-  top: 11%;
+  top: 5%;
   // border: 0.3px solid rgb(255, 0, 255);
 }
 
@@ -265,7 +271,7 @@ svg.connections-overlay {
   grid-area: 8/12/9/13;
   position: absolute;
   left: 61%;
-  top: 16%;
+  top: 5%;
   // border: 0.3px solid rgb(255, 0, 255);
 }
 

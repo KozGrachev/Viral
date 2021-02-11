@@ -54,6 +54,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
     return false;
   };
 
+  
 
   let state = useSelector((state: RootState) => state.gameStateReducer)
   const ConnectionsWithFrame = getIcon('connectionsWithFrame');
