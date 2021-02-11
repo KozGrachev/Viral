@@ -1,14 +1,12 @@
-
-
 @import '../../style/theme';
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-* {
-}
+
+* {}
 
 .colors-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around; 
+  justify-content: space-around;
   width: 100%;
   align-content: center;
   height: 20px;
@@ -19,7 +17,7 @@
 .form {
   /* display: flex; */
   @include glass-panel;
-  
+
   flex-direction: column;
   box-shadow: 0 1px 1px 3px rgba(0, 0, 0, 0.2);
   padding: 25px 35px;
@@ -43,13 +41,15 @@
   margin-bottom: 35px;
 }
 
-input, option, select {
+input,
+option,
+select {
   margin-top: 15px;
 
   height: 18px;
   border-radius: 5px;
   padding: 15px 10px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.466);
   font-size: 1em;
   font-weight: 500;
   display: flex;
@@ -57,7 +57,7 @@ input, option, select {
 }
 
 
-  
+
 
 .title-container {
   /* justify-self: center; */
@@ -65,7 +65,8 @@ input, option, select {
   font-size: 36px;
   margin-bottom: 30px;
 
- font-family: 'Roboto', sans-serif;;
+  font-family: 'Roboto', sans-serif;
+  ;
 }
 
 .start_game_button {
@@ -83,9 +84,10 @@ input, option, select {
 
 .colors-container {
   margin-top: 15px;
-  height: 60px;
-  border-radius: 5px;
-  // border: 1px solid #ddd;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid rgba(221, 221, 221, 0.541);
+  background: rgba(255, 255, 255, 0.767);
   font-size: 1em;
   font-weight: 500;
   display: flex;
@@ -94,22 +96,26 @@ input, option, select {
 }
 
 
-#icon { 
-  margin:5px; 
+.icon {
+  margin: 5px;
   padding: 10px 10px;
-  flex:1;
+  flex: 1;
   height: 50px;
   justify-content: row;
-  align-self: center; 
-  text-align: center; 
-   border: 2px solid #ddd ;
-   box-shadow:greenyellow;
-   background: #ddd;
-   border-radius: 5px;
-   max-width: 50px;
+  align-self: center;
+  text-align: center;
+  // border: 2px solid #ddd;
+  // box-shadow: greenyellow;
+  // background: rgba(255, 255, 255, 0.459);
+  border-radius: 5px;
+  max-width: 50px;
+  transition: transform 150ms cubic-bezier(0.25, 0.1, 0.58, 1.82);
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color:royalblue;
-  opacity: 0.3; /* Firefox */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: royalblue;
+  opacity: 0.3;
+  /* Firefox */
 }
+

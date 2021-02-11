@@ -2,7 +2,7 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
-import './PlayerPawn.css';
+import './PlayerPawn.scss';
 import { withDesign } from 'storybook-addon-designs';
 import { useSelector } from 'react-redux';
 // import {RootState} from '../../redux/gameState/store'

@@ -76,33 +76,33 @@ export const NewGameMenu: React.FC = () => {
 
         ></input>
         <div className='colors-container' >
-          <FirePawn id="icon"
-            style={{ border: input.color === 'orange' ? '2px solid orange' : 'none' }}
+          <FirePawn className="icon"
+            style={{ transform: (input.color === 'orange') ? 'scale(1.7)' : 'none' }}
             onClick={() => handleSelect('orange')}
           />
 
-          <HexagonPawn id="icon"
-            style={{ border: (input.color === 'green') ? ' 2px solid green' : 'none' }}
+          <HexagonPawn className="icon"
+            style={{ transform: (input.color === 'green') ? 'scale(1.7)' : 'none' }}
             onClick={() => handleSelect('green')}
           />
 
-          <FlowerPawn id="icon"
-            style={{ border: (input.color === 'pink') ? '2px solid pink' : 'none' }}
-            onClick={() => handleSelect('pink')}
+          <FlowerPawn className="icon"
+            style={{ transform: (input.color === 'fuchsia') ? 'scale(1.7)' : 'none' }}
+            onClick={() => handleSelect('fuchsia')}
           />
 
-          <RombPawn id="icon"
-            style={{ border: (input.color === 'blue') ? ' 2px solid blue' : 'none' }}
+          <RombPawn className="icon"
+            style={{ transform: (input.color === 'blue') ? 'scale(1.7)' : 'none' }}
             onClick={() => handleSelect('blue')}
           />
-          <SunPawn id='icon'
+          <SunPawn className="icon"
+            style={{ transform: (input.color === 'yellow') ? 'scale(1.7)' : 'none' }}
             onClick={() => handleSelect('yellow')}
-            style={{ border: (input.color === 'yellow') ? '2px solid yellow' : 'none' }}
           />
 
-          <SquarePawn id="icon"
-            onClick={() => handleSelect('red')}
-            style={{ border: (input.color === 'red') ? '2px solid red' : 'none' }}
+          <SquarePawn className="icon"
+            style={{ transform: (input.color === 'purple') ? 'scale(1.7)' : 'none' }}
+            onClick={() => handleSelect('purple')}
           />
         </div>
 

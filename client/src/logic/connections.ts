@@ -12,7 +12,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'local cult',
-    connections: ['taxi', 'pub', 'auntie'],
+    connections: ['taxi', 'pub', 'uncle eugene'],
     category: 'community',
   },
   {
@@ -66,7 +66,7 @@ export const connections: Connection[] = [
     category: 'relations',
   },
   {
-    name: 'evil ex',
+    name: 'evil-ex',
     connections: [
       'mother-in-law',
       'cousin',

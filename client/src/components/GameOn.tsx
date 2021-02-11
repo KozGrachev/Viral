@@ -67,8 +67,8 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
   }
   const InfoIcon = getIcon('infoIcon');
 
-
   let state = useSelector((state: RootState) => state.gameStateReducer)
+  const ConnectionsWithFrame = getIcon('connectionsWithFrame');
 
   return (
     <div>
@@ -90,13 +90,18 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
             <div className="board-container">
               <div id="game-board">
                 {/* <MapSVG className="map-svg"/> */}
+                <ConnectionsWithFrame className="connections-overlay" />
                 <SourceParent />
                 <div id="connections-paths">
                   <OtherPlayer />
                   {!modal && <InfoIcon onClick={openModal} />}
                 </div>
+                <OtherPlayer />
+                {/* <div id="connections-paths">
+                </div> */}
+
               </div>
-              <SourceParent />
+              {/* <SourceParent /> */}
               <SourceDeck />
               <MisinformationDeck />
               <MarkersStore />

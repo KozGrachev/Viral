@@ -40,6 +40,7 @@ import { ReactComponent as markerRelations3 } from '../assets/allIcons/marker-re
 import { ReactComponent as map } from '../assets/allIcons/map.svg'
 import { ReactComponent as gameBoard } from '../assets/allIcons/game-board.svg'
 import { ReactComponent as gameBoardWithoutSources } from '../assets/allIcons/game-board-without-sources.svg'
+
 import { ReactComponent as firePawn } from '../assets/playerPawns/fire-icon.svg'
 import { ReactComponent as flowerPawn } from '../assets/playerPawns/flower-pawn.svg'
 import { ReactComponent as rombPawn } from '../assets/playerPawns/romb-pawn.svg'
@@ -47,8 +48,11 @@ import { ReactComponent as sunPawn } from '../assets/playerPawns/sun-pawn.svg'
 import { ReactComponent as squarePawn } from '../assets/playerPawns/square-pawn.svg'
 import { ReactComponent as hexagonPlayerPawn } from '../assets/playerPawns/hexagon-player-pawn.svg'
 import { ReactComponent as infoIcon } from '../assets/allIcons/info-icon.svg'
+
 // CONNECTIONS
-import { ReactComponent as connection1 } from '../assets/playerPawns/hexagon-player-pawn.svg'
+import { ReactComponent as connectionsWithFrame } from '../assets/allIcons/connections-with-frame.svg'
+
+
 
 
 // interface svgsMap {
@@ -101,7 +105,9 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
   sunPawn,
   squarePawn,
   connection1,
-  infoIcon
+  infoIcon, 
+  connectionsWithFrame,
+
 }
 
 
