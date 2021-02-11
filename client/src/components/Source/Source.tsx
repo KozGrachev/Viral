@@ -119,7 +119,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
       }
     }
     //console.log(players)
-    if (test.length > 0) return test.map(player => <PlayerPawn color={player.pawnColor} />)
+    if (test.length > 0) return test.map(player => {
+      return <div className="player-pawn-container">
+        <PlayerPawn color={player.pawnColor} />
+      </div>
+    })
     else return null
 
   }
@@ -150,7 +154,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   }
 
-  function unclickableMessage() {
+  function unclickableMessage () {
     //console.log(`%c you can't do anything at ${source.name}`,`background-color: red; color: white; padding: 10px`)
     return null;
   }
@@ -182,11 +186,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
           // logic to render different click events from source
           canLogOff ?
             logoffToNewSource :
-              canLogOn ?
-                logonToNewSource :
-                canMove ?
-                  changePlayersCurrentSource :
-                  unclickableMessage}
+            canLogOn ?
+              logonToNewSource :
+              canMove ?
+                changePlayersCurrentSource :
+                unclickableMessage}
         className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType} ${canDebunkClassName} `} >
 
         <SVGIconSource />
@@ -196,7 +200,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
           {getMarker('social', markers_social, canClearSocial, canDebunk)}
           {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
         </div>
-        {getPlayerPawns(canShare, currentPlayer)}
+          {getPlayerPawns(canShare, currentPlayer)}
       </div>
     </>
 
