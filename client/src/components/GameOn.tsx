@@ -58,7 +58,7 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
     return false;
   };
 
-  
+
 
   const openModal = () => {
     updateModal(true)
@@ -93,10 +93,10 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                 {/* <MapSVG className="map-svg"/> */}
                 <ConnectionsWithFrame className="connections-overlay" />
                 <SourceParent />
-                <div id="connections-paths">
+                {/* <div id="connections-paths"> */}
                   <OtherPlayer />
                   {!modal && <InfoIcon onClick={openModal} />}
-                </div>
+                {/* </div> */}
                 <OtherPlayer />
                 {/* <div id="connections-paths">
                 </div> */}
