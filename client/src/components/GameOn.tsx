@@ -80,20 +80,19 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                     width: '100%'
                   }}
                   onClick={getCards}> GET CARDS </button>
-                  :
-                  <CardHand />
-                }
+                :
+                <CardHand />
+              }
               <PlayerPrompt state={state} />
             </div>
             <div className="board-container">
               <div id="game-board">
                 {/* <MapSVG className="map-svg"/> */}
-                <ConnectionsWithFrame className="connections-overlay"/>
+                <ConnectionsWithFrame className="connections-overlay" />
                 <SourceParent />
-                <div id="connections-paths">
-
-                  <OtherPlayer />
-                </div>
+                <OtherPlayer />
+                {/* <div id="connections-paths">
+                </div> */}
               </div>
               {/* <SourceParent /> */}
               <SourceDeck />
