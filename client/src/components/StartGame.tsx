@@ -55,10 +55,10 @@ export const StartGame: React.FC = (): JSX.Element => {
         state.gameLost ?
           <GameOver /> :
           (player.name.length < 1) ?
-            
 
-              <NewGameMenu />
-            
+
+            <NewGameMenu />
+
             : (
               (!stateRendered) ?
                 <h1>

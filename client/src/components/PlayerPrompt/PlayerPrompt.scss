@@ -2,9 +2,9 @@
 
 .player-prompt-container {
   @include scroll-panel;
-  height: 200px;
+  height: 350px;
   width: 100%;
-  flex-direction: column-reverse;
+  flex-direction: column;
   /* align-items: center; */
 }
 
