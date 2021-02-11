@@ -24,10 +24,6 @@
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "eslint": "^7.19.0",
-<<<<<<< HEAD
-    "react-hook-form": "^6.15.1"
-=======
     "react-modal": "^3.12.1"
->>>>>>> 127e23c389b2339e9418ddd6d1f1b9a6748fdca1
   }
 }
