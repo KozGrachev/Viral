@@ -94,12 +94,8 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                 <ConnectionsWithFrame className="connections-overlay" />
                 <SourceParent />
                 {/* <div id="connections-paths"> */}
-                  <OtherPlayer />
-                  {!modal && <InfoIcon onClick={openModal} />}
-                {/* </div> */}
                 <OtherPlayer />
-                {/* <div id="connections-paths">
-                </div> */}
+                {/* </div> */}
 
               </div>
               {/* <SourceParent /> */}
@@ -112,12 +108,13 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
 
             </div>
             <div className="sidebar right">
-
+              {!modal && <InfoIcon onClick={openModal} />}
               <Modal
                 isOpen={modal}
                 onRequestClose={closeModal}
-                className='modal_container'
                 contentLabel="Game rules"
+                className="mymodal"
+                overlayClassName='overlayClassName'
                 ariaHideApp={false}
               >
                 <InfoModal />
