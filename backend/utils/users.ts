@@ -10,11 +10,6 @@ export interface Socket {
 export interface IUser {
   name: string;
   id: string;
-  cards?: Card[];
-  cardHandOverflow?: boolean;
-  isCurrent?: boolean;
-  pawnColor?: string;
-  currentSource?: string;
   room: string;
 }
 
