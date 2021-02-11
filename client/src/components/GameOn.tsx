@@ -97,9 +97,6 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
                   <OtherPlayer />
                   {!modal && <InfoIcon onClick={openModal} />}
                 {/* </div> */}
-                <OtherPlayer />
-                {/* <div id="connections-paths">
-                </div> */}
 
               </div>
               {/* <SourceParent /> */}
