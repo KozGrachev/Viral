@@ -152,7 +152,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   }
 
-  function unclickableMessage () {
+  function unclickableMessage() {
     //console.log(`%c you can't do anything at ${source.name}`,`background-color: red; color: white; padding: 10px`)
     return null;
   }
@@ -205,15 +205,4 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     </>
 
   )
-
-
-
 }
-
-
-
-// CAN MOVE:
-// CAN LOGON:
-// CAN LOGOFF:
-// MARKERS x3 ---> CAN CLEAR
-// PAWNS
