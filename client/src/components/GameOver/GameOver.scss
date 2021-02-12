@@ -1,0 +1,85 @@
+
+// // @import '../../style/theme';
+// @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+// * {
+// }
+
+  
+
+
+.main-game-container {
+  
+  height:100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
+  
+  // background: #bbabd8
+  background: linear-gradient(white,#bbabd8), repeating-linear-gradient(0, transparent, transparent 2px, white 3px, white 3px),
+}
+
+.game-over-container { 
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 5px 0;
+ 
+  padding: 25px 35px;
+}
+  
+.animation-container {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 5px 0;
+  
+  padding: 25px 35px;
+}
+
+.game-over { 
+  height: 10%;
+   color: red;
+    font-weight: bold;
+     text-align: center;
+      font-size: 300% ;
+ animation:netflix_style 2s 1;
+}
+@keyframes netflix_style {
+  0% {
+    text-shadow: makelongshadow(100,1);
+    color:#e90418;
+    transform: scale(1.5, 1.5);
+  }
+  10% {
+    text-shadow: makelongshadow(100,1.5);
+    color:#e90418;
+    transform: scale(1.5, 1.5);
+  }
+  15% {
+     color:#e90418;
+  }
+  20% {    
+    color:#e90418;
+    text-shadow: none;
+    transform: scale(1.1, 1.1);
+  }
+  75% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;    
+    color:#e90418;
+    transform: scale(0.85, 0.9);
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}

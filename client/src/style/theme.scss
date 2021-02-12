@@ -14,7 +14,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  // justify-content: flex-start;
 }
 
 @mixin purple {
@@ -39,5 +39,10 @@
 
 @mixin yellow {
   background-color: #FEE440;
+  color: black;
+}
+
+@mixin orange {
+  background-color: #F8A07B;
   color: black;
 }

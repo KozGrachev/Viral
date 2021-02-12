@@ -20,6 +20,7 @@ export const SourceCard: React.FC<SourceCardProps> = ({ name, category, canShare
 
   const currentState = {}
 
+  console.log('Source name:', name, 'category:', category, 'can share:', canShare)
   const SVGIcon = getIcon(toCamelCase(name) + 'Icon');
 
   const handleShareClick = (id: string) => {

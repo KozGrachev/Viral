@@ -17,6 +17,100 @@ export const OtherPlayer: React.FC = () => {
   const second=otherPlayerState[1]
   const third= otherPlayerState[2]
 
+  //? dummy data for styling otherPlayers
+  // const first = {
+  //   name: "Quinn",
+  //   id: '1234',
+  //   cards: [
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'university',
+  //       misinfoType: 'community',
+  //     },
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'cousin',
+  //       misinfoType: 'relations',
+  //     },
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'instagram',
+  //       misinfoType: 'social',
+  //     },
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'university',
+  //       misinfoType: 'community',
+  //     },
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'cousin',
+  //       misinfoType: 'relations',
+  //     },
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'instagram',
+  //       misinfoType: 'social',
+  //     },
+  //   ],
+  //   cardHandOverflow: false,
+  //   isCurrent: false,
+  //   pawnColor: 'green',
+  //   currentSource: 'tiktok',
+  //   room: 'test',
+  // };
+
+  // const second = {
+  //   name: "Brill",
+  //   id: '1334',
+  //   cards: [
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'university',
+  //       misinfoType: 'community',
+  //     },
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'cousin',
+  //       misinfoType: 'relations',
+  //     },
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'instagram',
+  //       misinfoType: 'social',
+  //     },
+  //   ],
+  //   cardHandOverflow: false,
+  //   isCurrent: false,
+  //   pawnColor: 'red',
+  //   currentSource: 'tiktok',
+  //   room: 'test',
+  // };
+
+  // const third = {
+  //   name: "Gruff",
+  //   id: '1344',
+  //   cards: [
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'university',
+  //       misinfoType: 'community',
+  //     },
+  //     {
+  //       cardType: 'connection',
+  //       sourceName: 'cousin',
+  //       misinfoType: 'relations',
+  //     },
+  //   ],
+  //   cardHandOverflow: false,
+  //   isCurrent: false,
+  //   pawnColor: 'yellow',
+  //   currentSource: 'tiktok',
+  //   room: 'test',
+  // };
+
+
+
   const renderCards = (player:Player) => {
     const angle = 40;
     const numGaps = player.cards.length - 1;

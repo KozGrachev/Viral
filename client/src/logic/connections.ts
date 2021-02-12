@@ -12,7 +12,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'local cult',
-    connections: ['taxi', 'pub', 'auntie'],
+    connections: ['taxi', 'pub', 'uncle eugene'],
     category: 'community',
   },
   {
@@ -32,7 +32,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'gym',
-    connections: ['intagram', 'asda', 'pub', 'hair salon'],
+    connections: ['instagram', 'asda', 'pub', 'hair salon'],
     category: 'community',
   },
   {
@@ -52,7 +52,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'mother-in-law',
-    connections: ['auntie', 'evil-ex', 'cousin'],
+    connections: ['uncle eugene', 'evil-ex', 'cousin'],
     category: 'relations',
   },
   {
@@ -66,7 +66,7 @@ export const connections: Connection[] = [
     category: 'relations',
   },
   {
-    name: 'evil ex',
+    name: 'evil-ex',
     connections: [
       'mother-in-law',
       'cousin',
@@ -77,7 +77,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'guy at the bus stop',
-    connections: ['auntie', 'evil-ex', 'crazy dave'],
+    connections: ['uncle eugene', 'evil-ex', 'crazy dave'],
     category: 'relations',
   },
   {
@@ -92,7 +92,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'opinionated grandpa',
-    connections: ['crazy dave', 'auntie', 'asda'],
+    connections: ['crazy dave', 'uncle eugene', 'asda'],
     category: 'relations',
   },
   {
@@ -127,7 +127,7 @@ export const connections: Connection[] = [
   },
   {
     name: 'whatsapp',
-    connections: ['reddit', 'illuminatify', 'tik-tok', 'twitter'],
+    connections: ['reddit', 'illuminatify', 'tiktok', 'twitter'],
     category: 'social',
   },
   {
