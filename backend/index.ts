@@ -46,18 +46,18 @@ io.on('connection', (socket) => {
       socket.broadcast.to(user.room)
         .emit('updatedState', newState);
       setState(user.room, newState);
-      console.log('nestate from the backend after cards update', newState);
+      // console.log('nestate from the backend after cards update', newState);
       //save to database
 
     });
 
   socket.on('retriveGame', (player: Player) => {
-    console.log('RETRIBE GAME player', player);
+    // console.log('RETRIBE GAME player', player);
     getState(player.room).then(data => {
       // console.log(data, 'data from db');
       data && data.players.push(player);
       // console.log('retrive data sent back after user added -players', data?.players);
-      console.log('retrived gata from the dv gere', data);
+      // console.log('retrived gata from the dv gere', data);
       socket.emit('updatedState', data);
       socket.broadcast.to(player.room).emit('updatedState', data);
       data && setState(player.room, data);
