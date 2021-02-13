@@ -8,7 +8,11 @@ This is a multiplayer turn-based online game that requires strong teamwork to co
 It is also an adaptation of the the popular boardgame "Pandemic", "Hot-zone North America" version, created by zmangames.
 
 
-Travel around town cleaning up the spread of three types of misinformation: "social"- misinformation from social networks and other online platforms, "relations"- misinformation from friend and relatives, and "community"- misinformation from other institutions around the town.
+Travel around town cleaning up the spread of three types of misinformation: 
+"social" :iphone: misinformation from social networks and other online platforms
+"relations" :bearded_person: misinformation from friend and relatives  
+"community" :convenience_store: misinformation from other institutions around the town.
+
 <code><img height="500" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/mainGame2.PNG"></code> 
 
 
