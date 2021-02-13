@@ -1,8 +1,5 @@
 import { ClearmisinfoProps, CLEAR_MISINFO, DebunkMisinfoProps, DEBUNK_MISINFO, discardCardProps, DISCARD_ACTION, logOnOffProps, LOG_ON_OFF, MoveActionProps, MOVE_ACTION, ShareCardProps, SHARE_CARD, UPDATE_GAME_STATE, GameStateActionTypes, PlayerStateActionTypes, ADD_PLAYER, GET_ALL_GAMES, AllGamesActionTypes, START_GAME, ADD_PLAYER_TO_GAME, DEAL_CARDS, dealCardsProp } from './reduxTypes';
 import { Gamestate, Player, } from '../../types/gameStateTypes'
-import { gameStateReducer } from './gameStateReducer';
-//Below are example of actions with typescript.
-// we need to create an action for each reduced case
 
 
 export function moveAction(props: MoveActionProps): GameStateActionTypes {
@@ -54,7 +51,7 @@ export function discardCardAction(props: discardCardProps): GameStateActionTypes
     payload: { oldState, currentPlayerID, discardedCard }
   }
 }
-//redux action to update whole gameState // examples
+
 export function updateGameState(gameState: Gamestate): GameStateActionTypes {
   return {
     type: UPDATE_GAME_STATE,

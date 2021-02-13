@@ -5,7 +5,6 @@
   margin: $hud-margin;
   position: relative;
   top: 0;
-  // border: 1px dashed rgb(255, 89, 47);
   height: 200px;
   padding: 10px;
   display: flex;
@@ -36,14 +35,6 @@
 
 .current {
   border: 3px solid #00ff1a;
-  /* border: 10px solid;
-  border-image-slice: 1;
-  border-width: 5px;
-  border-image-source: linear-gradient(to left, #00C853, #B2FF59); */
-  /* background-clip: padding-box; */
-  /* !importanté */
-  /* border: solid $border transparent; */
-  /* !importanté */
 }
 
 .player-avatar {
@@ -52,7 +43,7 @@
   display: flex;
   align-items: center;
   border-radius: 50%;
-  /* top: 50%; */
+
   width: 100px;
   height: 100px;
 }
@@ -61,32 +52,22 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  /* left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%); */
-  /* transform-origin: center; */
-  /* border: 1px dashed greenyellow; */
 }
 
 .displace {
   width: 120px;
-  /* height: 100px; */
+
   left: 50%;
   top: 50%;
   transform-origin: left;
   position: absolute;
-  /* border: 1px dashed red; */
 }
 
 .other-player-card {
-  /* border: 1px dashed rgb(92, 47, 255); */
   position: absolute;
   left: 50%;
   top: 50%;
   transform-origin: center;
-
-  /* transform: translate(140%, -50%); */
-  /* transform-origin:center; */
 }
 
 .other-player-card svg {

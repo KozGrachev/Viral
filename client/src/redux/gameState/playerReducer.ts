@@ -1,4 +1,3 @@
-//here should be a initial State of the Game
 
 import { createPlayer } from "../../logic/setup";
 import { Player } from "../../types/gameStateTypes";

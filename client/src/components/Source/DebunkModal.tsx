@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import Modal from 'react-modal';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/gameState/store';
 import { SourceCard } from '../SourceCard/SourceCard';
-import ReactDOM from 'react-dom';
 import { Card } from '../../types/gameStateTypes';
 import ReactModal from 'react-modal';
+
+//TODO
+
+
 
 const customStyles = {
   content: {
@@ -38,13 +40,6 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
   const [pickedCards, setpickedCards] = useState<CardWithId[]>([])
 
 
-  let playerCards = players.find(player => player.id === playerId)?.cards
-
-
-
-
-  console.log('FUCK ALL THESE LOGS _ -----------------!!!!!playerCards ', playerId, players)
-
   const fakeCards: Card[] = [{ cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" },
   { cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" },
   { cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" }]
@@ -56,8 +51,6 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
 
   const [fakeCardsWithId, setfakeCardsWithId] = useState(fakeCardsWithIdInit)
 
-
-  var subtitle: any;
 
   useEffect(() => {
     console.log('pickedCards from UseEffect', pickedCards)

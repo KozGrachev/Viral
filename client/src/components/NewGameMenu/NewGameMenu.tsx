@@ -1,11 +1,10 @@
-import React, { ButtonHTMLAttributes, ChangeEvent, DetailedHTMLProps, useState } from 'react';
+import React, {  ChangeEvent, useState } from 'react';
 import './NewGameMenu.scss';
-// import { startGameEvent, addPlayerEvent } from '../../logic/event.listeners'
-import { AddPlayerAction, addPlayerToGameState, DealCardsToNewPlayerAction, StartGameAction, updateGameState } from '../../redux/gameState/gameStateActions';
+
+import { AddPlayerAction} from '../../redux/gameState/gameStateActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, store } from '../../redux/gameState/store';
-import { Player } from '../../types/gameStateTypes';
-import { Console } from 'console';
+import { RootState } from '../../redux/gameState/store';
+
 import { getIcon } from '../../helpers/iconExporter'
 
 
@@ -42,9 +41,6 @@ export const NewGameMenu: React.FC = () => {
     }))
 
   }
-
-  let player = useSelector((state: RootState) => state.playerStateReducer)
-  let state = useSelector((state: RootState) => state.gameStateReducer)
 
   const addPlayer = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()

@@ -3,9 +3,6 @@ $sl-circle-size-small: 20px;
 $sl-circle-size-large: 50px;
 
 .spread-level-container {
-  // margin: $hud-margin;
-
-  // position: absolute;
   height: 60px;
   width: 100%;
   justify-items: center;
@@ -25,7 +22,7 @@ $sl-circle-size-large: 50px;
   height: $sl-circle-size-small;
   width: $sl-circle-size-small;
   border-radius: 50%;
-  // flex-basis: 18%;
+
   background-color: whitesmoke;
 }
 

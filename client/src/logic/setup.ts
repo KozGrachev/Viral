@@ -2,8 +2,6 @@ import { Gamestate, Card, ViralCard, Source, Player } from '../types/gameStateTy
 import { startGame, dealMisinfoCard, dealConnectionCard, shuffle } from './moves'
 import { connections as sources } from './connections'
 
-//! HELPER HELPERS
-
 
 export function didWin(state: Gamestate) {
   if (state.misinformation.community.debunked === true &&
