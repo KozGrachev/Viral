@@ -1,6 +1,5 @@
 # Viral
-Welcome to Viral! A game where you stop the missinformation pandemic...
-
+Welcome to Viral! A game where you stop a deadly pandemic of misinformation. 
 
 ## Introduction
 
