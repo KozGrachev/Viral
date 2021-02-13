@@ -39,12 +39,12 @@ The MVP of the game (featured screenshots) was build in 10 days by the wonderful
 
 ## Future Tasks :earth_africa:
 
-```
+
 - Refactoring
 - Improving UX
 - Add testing
 - Deploy
-```
+
 Contributors ✨
 <table> 
   <tr>
