@@ -130,12 +130,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
 
-  function unclickableMessage () {
-
-    return null;
-  }
-
-
   let canMoveClassName = canMove ? 'can-move-to' : ''
   let canLogOffClassName = canLogOff ? 'can-log-off' : ''
   let canLogOnClassName = canLogOn ? 'can-log-on' : ''
@@ -182,15 +176,4 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     </>
 
   )
-
-
-
 }
-
-
-
-// CAN MOVE:
-// CAN LOGON:
-// CAN LOGOFF:
-// MARKERS x3 ---> CAN CLEAR
-// PAWNS

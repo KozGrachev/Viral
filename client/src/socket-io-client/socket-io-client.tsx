@@ -27,14 +27,15 @@ socket.on('joinConfirmation', (message: string) => {
 store.subscribe(() => {
   const newState = store.getState().gameStateReducer
   const Player = store.getState().playerStateReducer
- 
+
   if (!newState.received && Player && newState.gameOn) {
     socket.emit('onChangeState', { newState, Player })
   }
 })
 
+
 socket.on('updatedState', (newState: Gamestate) => {
-  console.log('newstate from client ', newState)
+  console.log('newstate from client - always check this ', newState)
   newState.received = true;
   store.dispatch(updateGameState(newState))
 })
