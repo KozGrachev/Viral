@@ -24,7 +24,7 @@ So, harry up!
 <code><img height="500" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/misinfospreading.PNG"></code> 
 
  
-The MVP of the game (featured screenshots), including design of all assets, was build in 10 days by the wonderful people featured below
+The MVP of the game (featured screenshots), including design of all assets, was build in **10 days** by the wonderful people featured below
 🦸‍♀️🦸‍♂️🦸‍♂️🦸‍♂️🦸‍♂️🦸‍♂️
 
 
