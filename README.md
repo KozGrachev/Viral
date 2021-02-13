@@ -1,7 +1,7 @@
-## Viral
+# Viral
 Welcome to Viral! A game where you stop the virus of misinformation...
 
-# Introduction
+## Introduction
 
 Viral is based on the popular boardgame "Pandemic", more specifically the "Hot-zone North America" version, by zmangames. In Viral you must travel around town cleaning up the spread of misinformation coming from various sources. These sources come in three types; "social"- misinformation from social networks and other online platforms, "relations"- misinformation from friend and relatives, and "community"- misinformation from other institutions around the town.
 
