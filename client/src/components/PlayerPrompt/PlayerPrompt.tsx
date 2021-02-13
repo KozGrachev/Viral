@@ -1,5 +1,5 @@
 import React,{useEffect, useRef, useState} from 'react';
-import {messages} from '../../logic/actions.newState_CO'
+import {messages} from '../../logic/moves'
 import { Gamestate } from '../../types/gameStateTypes'
 
 import "./PlayerPrompt.scss"

@@ -8,7 +8,7 @@ import { clearMisinfoAction, debunkMisinfoAction, moveAction, logOnOffAction } f
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
 import { ModalComponent } from './DebunkModal';
-import { logOnOff } from '../../logic/actions.newState_CO';
+import { logOnOff } from '../../logic/moves';
 
 
 export interface SourceProps {
