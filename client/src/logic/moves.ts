@@ -1,7 +1,7 @@
 import { Gamestate, Card,ViralCard, Source, Player, Misinformation } from '../types/gameStateTypes'
-import { didWin,typeCheck } from './actions.MW'
+import { didWin,typeCheck } from './setup'
 import { connections as sources } from './connections'
-import React,{useState} from 'react';
+
 
 export const messages:string[]=[]
 //* START THE GAME
@@ -68,8 +68,7 @@ export function clearMisinfo(oldState: Gamestate, currentPlayerID: Player['id'],
   messages.push(`${playerName} has ${newState.turnMovesLeft} moves left`)
 
   console.log('player cleared', noOfMarkers, misinfoType);
-  //console.log(`%c player cleared ${noOfMarkers} ${misinfoType} markers`,`background-color: lightsalmon; color: green; padding: 10px`);
-  //console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
+
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -130,8 +129,7 @@ export function logOnOff(oldState: Gamestate, currentPlayerID: Player['id'], loc
   let playerName:string=oldState.players.filter(player=>player.id===currentPlayerID)[0].name
   messages.push(`${playerName} fast traveled to "${location}" using their "${usedCard}" card`)
   messages.push(`${playerName} has ${newState.turnMovesLeft} moves left`)
-  //console.log(`%c player flew to ${location} using the ${usedCard} card`,`background-color: cyan; color: black; padding: 10px`);
-  //console.log(`%c there are ${newState.turnMovesLeft} moves left`,`background-color: lightpink; color: black; padding: 10px`);
+  
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -188,12 +186,12 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
   // check if cards in hand
   let possibleShares: Player[] = [];
   if (oldState.players[playerIndex].cards.length > 0) {
-    // check if another player is there
+    
     const otherPlayers: Player[] = oldState
       .players
       .filter((player) => player.id !== currentPlayerID)
       .filter((otherPlayer) => otherPlayer.currentSource === location);
-    // check players have space in their hand
+    
     possibleShares = otherPlayers
       .filter((player) => player.cards.length < 6)
   }
@@ -203,14 +201,14 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
     .filter((card) => card.sourceName === location)
     .length > 0;
   //* logon check
-  // check hand contains other location card
+  
   const logonPossible: Card['sourceName'][] = oldState.players[playerIndex].cards
     .map((card) => card.sourceName)
     .filter((name) => name !== location);
   //* debunk checks
-  // check if we are at home (debunk 1/2)
+ 
   const atHome: boolean = location === 'crazy dave';
-  // check hand contains 4 of any misinfo type/area (debunk 2/2)
+  
   const debunkable: Misinformation['name'][] = []
   if (atHome) {
     if (
@@ -232,7 +230,7 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
       debunkable.push('relations')
     };
   };
-  //* UPDATE ENTIRE STATE WITH ALL ABOVE CHANGES
+  
   const newState: Gamestate =
   {
     ...oldState,
@@ -268,35 +266,14 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
 
 export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'], noOfCards: number): Gamestate {
   // deal connection cards
-  const playerIndex = oldState.players
-    .map((player) => player.id)
-    .indexOf(currentPlayerID);
+ 
   let cardsLeft = noOfCards;
 
   let newState: Gamestate = oldState;
   while (cardsLeft > 0) {
     didLose(newState)
     newState = dealConnectionCard(oldState);
-    // check here for losing
-    if (didLose(newState)){
-
-      // console.log(`%c there are no more cards in the deck, so...`,`color: darkred; padding:10px`);
-      // console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
-      // console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
-      //setUp(newState.players);
-    }
-    // if (newState.players[playerIndex].cards.length > 6) {
-    //   console.log('your hand is full, you need to discard a card');
-    //   return {
-    //     ...newState,
-    //     players: newState.players
-    //       .map((player) => player.id === currentPlayerID ?
-    //         { ...player, cardHandOverflow: true } :
-    //         player
-    //       ),
-    //     dealHistory: cardsLeft - 1,
-    //   } // exits function here
-    // }
+    
     cardsLeft--;
   }
   //? do we need to put breaks here, and how, for the front end to update or show when a card has been dealt?
@@ -305,17 +282,12 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   let misinfoCardNo = [2, 2, 3, 4][newState.spreadLevel];
   while (misinfoCardNo > 0) {
     newState = dealMisinfoCard(newState, 1, false)!
-    // check if lose (run out of misinfo)
-    if (didLose(newState)){
-      // console.log(`%c there are no more misinfo cards in the deck, so...`,`color: darkred; padding:10px`);
-      // console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
-      // console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
-      //setUp(newState.players);
-    }
+    
+    didLose(newState)
+     
     misinfoCardNo--
   }
-  //change current player turn
-  //? anything else needs resetting?
+ 
   return nextTurn(newState, currentPlayerID)
 }
 
@@ -340,8 +312,7 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
     // reset number of moves
     turnMovesLeft: 4,
   };console.log(`%c NEXT PLAYERS TURN`,`background-color: lightgreen; color: black; padding: 10px`);
-  console.log(nextPlayerIndex)
-  console.log(oldState.players)
+  
   messages.push(`Now it's over to ${oldState.players[nextPlayerIndex].name}!`)
   return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
 }
@@ -351,42 +322,6 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
   };
   return updatePossibleActions(newState,currentPlayerID)
 }
-
-
-// export function dealConnectionCard(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
-//   //* if no cards left then game is lost
-//   if (oldState.connectionDeck.length === 0) {
-//     console.log('no more connections... you lost!');
-//     return {
-//       ...oldState,
-//       gameLost: true
-//     }
-//   }
-//   const newCard: Card|ViralCard = oldState.connectionDeck[0]
-//   console.log('NEWCARD' , newCard)
-//   if (viralCheck(newCard)) {
-//     //? does viral function remove card? should it be returned? should it also break for game checks?
-//     console.log('you drew a viral card!');
-//     return playViralCard(oldState)
-//   }
-//   else {
-//     const newState: Gamestate =
-//     {
-//       ...oldState,
-//       players: oldState.players
-//         .map((player) => player.id === currentPlayerID ?
-//           {
-//             ...player,
-//             cards: [...player.cards, newCard],
-//           } :
-//           player
-//         ),
-//       connectionDeck: oldState.connectionDeck.slice(1)
-//     };
-//     console.log('player was dealt a', newCard, 'connection card');
-//     return newState;
-//   }
-// }
 
 
 export function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
@@ -423,14 +358,8 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
   let playerName:string=oldState.players.filter(player=>player.isCurrent)[0].name
   oldState.chaosMeter++
   messages.push(`Oh no ${playerName}! We've had an outbreak at ${outbreak_source.name}!! Chaos meter increases to ${oldState.chaosMeter*25}%`)
-  // check if lose (chaos meter )
-  if (didLose(oldState)){
-
-    //console.log(`%c Chaos reigns!, the chaos meter is too high, so...`,`color: darkred; padding:10px`);
-    //console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
-    //console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
-    //setUp(oldState.players);
-  }
+  
+  didLose(oldState)
   let connections!: string[];
   for (const source of sources) {
     if (source.name === outbreak_source.name) {
@@ -447,14 +376,7 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
           }
           else {
             source[key]++
-            // check if lose (no more misinfo)
-            if (didLose(oldState)){
-
-              //console.log(`%c all the misinfo markers are gone, so...`,`color: darkred; padding:10px`);
-              //console.log(`%c ...You Lose!`,`background-color: darkred; color: mintcream; font-weight: bold; padding:10px`);
-              //console.log(`%c SETTING UP NEW GAME...`,`background-color: mediumspringgreen; color: navy; font-weight: bold; padding:10px`);
-              //setUp(oldState.players);
-            }
+            didLose(oldState)
           }
 
       }
@@ -469,11 +391,10 @@ export function viralCheck(object: any): object is ViralCard {
 }
 
 export function dealConnectionCard(oldState: Gamestate) {
-  console.log(oldState.connectionDeck)
+  
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
-
+  if(newCard===undefined)oldState.gameLost=true
   if (newCard.cardType==='viral') {
-    //console.log(`%c IT'S GONE VIRAL!`,`background-color: red; color: black; padding: 10px; font-weight: bold`);
     oldState = playViralCard(oldState)
     oldState.connectionDeck.shift()
   }
@@ -488,7 +409,6 @@ export function dealConnectionCard(oldState: Gamestate) {
     }
   }
 
-  // console.log(oldState.players)
   let newState = { ...oldState }
   return newState
 }
@@ -524,7 +444,6 @@ export function didLose(state: Gamestate) {
   if (state.chaosMeter === 4){
     messages.push(`Oh no ${playerName},Chaos reigns!, the chaos meter is too high, so it's Game Over`)
     state.gameLost=true
-    //!UPDATE STATE
     return true}
   if (
     state.misinformation.community.markersLeft <= 0 ||
@@ -533,12 +452,10 @@ export function didLose(state: Gamestate) {
   ){
     messages.push(`Oh no ${playerName}! All your markers are gone, so it's Game Over`)
     state.gameLost=true
-    //!UPDATE STATE
     return true}
   if (state.connectionDeck.length === 0|| state.misinformationDeckActive.length===0) {
     messages.push(`Oh no ${playerName}! You have no there are no cards left to draw, it's Game over!`)
     state.gameLost=true
-    //!UPDATE STATE
     return true
   }
   return false

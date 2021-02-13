@@ -1,8 +1,6 @@
 import { Gamestate, Card, ViralCard, Source, Player } from '../types/gameStateTypes'
-import { startGame, dealMisinfoCard, dealConnectionCard, playViralCard, shuffle } from './actions.newState_CO'
+import { startGame, dealMisinfoCard, dealConnectionCard, shuffle } from './moves'
 import { connections as sources } from './connections'
-
-//! HELPER HELPERS
 
 
 export function didWin(state: Gamestate) {
@@ -72,7 +70,6 @@ export function createSources() {
   return array
 }
 
-//! SET STATE
 
 export function playerOrder(oldState: Gamestate) { //! where to put this?
   let players = oldState.players
@@ -85,7 +82,7 @@ export function playerOrder(oldState: Gamestate) { //! where to put this?
 
 
 export function insertViralCards(oldState: Gamestate) {
-  //console.log('inserting viral cards to connection deck')
+  
   let oldDeck = oldState.connectionDeck
 
   const viral1: ViralCard = { cardType: "viral" }
@@ -122,61 +119,6 @@ export function typeCheck(string: string) {
   else return false
 }
 
-//* spread level will define how many times this function is called 
-
-// export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: boolean) {
-
-//   let oldDeck: Card[] = oldState.misinformationDeckActive
-//   console.log(oldDeck)
-//   let drawSource: string
-//   if (isViral) {
-//     drawSource = oldDeck[oldDeck.length - 1].sourceName
-//   }
-//   else {
-//     drawSource = oldDeck[0].sourceName
-//   }
-
-
-//   for (const source of oldState.sources) {
-
-//     if (source.name === drawSource) {
-
-//       while (weight > 0) {
-
-
-//         let key1 = 'markers_' + source.misinfoType
-//         let key2 = source.misinfoType
-
-//         if (typeCheck(key1) && typeCheck(key2)) {
-
-//           if (source[key1] === 3) {
-//             oldState = outbreak(source, oldState)
-//           }
-//           else {
-//             source[key1]++
-//             oldState.misinformation[key2].markersLeft--
-//           }
-//           didLose(oldState)
-//           weight--
-//         }
-//       }
-
-//       if (isViral) {
-//         oldState.misinformationDeckPassive.push(oldDeck[oldDeck.length - 1])
-//         oldState.misinformationDeckActive.pop()
-//       }
-//       else {
-//         oldState.misinformationDeckPassive.push(oldDeck[0])
-//         oldState.misinformationDeckActive.shift()
-//       }
-//       let newState = { ...oldState }
-//       return newState
-//     }
-//   }
-// }
-
-
-
 
 export function viralCheck(object: any): object is ViralCard {
   return false
@@ -185,7 +127,6 @@ export function viralCheck(object: any): object is ViralCard {
 
 export function createPlayer(name: string, color: string, room: string) {
 
-  // update the state fo rthe player
   let random = Math.floor(Math.random() * 100000)
   const player = {
     name,
@@ -225,11 +166,11 @@ export function dealConnectionCard2(player: Player, oldState: Gamestate) {
   return state;
 }
 export function dealCardsToNewPlayer(player: Player, state: Gamestate) {
-  // console.log('does it get here - 305 malcolm ')
+  
   let updatedState: any;
   let cards = 3
   while (cards > 0) {
-    // console.log('inside the loop', cards)
+    
     updatedState = dealConnectionCard2(player, state)
     cards--
   }
@@ -283,7 +224,6 @@ export function setUp(players: Player[]) {
   else cards = 3
 
   for (let i = 0; i < state.players.length; i++) { //* deal connection cards to players before inserting viral cards
-    //console.log(state.players)
 
     while (cards > 0) {
       state = dealConnectionCard(state)
@@ -304,10 +244,8 @@ export function setUp(players: Player[]) {
     misinfo--
   }
 
-  //! UPDATE POSSIBLE ACTIONS
-  // console.log('BEFORE',updateState.sources)
   updateState = startGame(updateState)
-  // console.log('AFTER',updateState.sources)
+  
 
   let newState = { ...updateState }
   console.log(newState)
@@ -320,52 +258,3 @@ export function addPlayerToGame(player: Player, oldState: Gamestate) {
   let newState = { ...oldState }
   return newState;
 }
-
-// export function deleteCard(card: Card, oldState: Gamestate) {
-//   for (const player of oldState.players) {
-//     if (player.isCurrent) {
-//       for (const [i, value] of player.cards.entries()) {
-//         if (value === card) {
-//           player.cards.splice(i, 1)
-//         }
-//       }
-//     }
-//   }
-//   let newState = { ...oldState }
-//   return newState
-
-// }
-
-// if ((key === `markers_community` && key2 === `community`)
-        //   || (key === `markers_social` && key2 === `social`)
-        //   || (key === `markers_relations` && key2 === `relations`)
-        // ) {
-
- // if (player.cards.length > 6) { //! not relevent at this stage
-        //   let chosenCard = {
-        //     cardType: 'connection',
-        //     sourceName: 'University',
-        //     misinfoType: 'community',
-        //   } 
-        //   deleteCard(chosenCard, oldState)
-
-
-// let array = [{
-//   name: 'Player 1',
-//   id: '1234',
-//   cards: [],
-//   cardHandOverflow: false,
-//   isCurrent: true,
-//   pawnColor: 'green',
-//   currentSource: 'crazy dave'
-// },
-// {
-//   name: 'Player 2',
-//   id: '5678',
-//   cards: [],
-//   cardHandOverflow: false,
-//   isCurrent: false,
-//   pawnColor: 'purple',
-//   currentSource: 'crazy dave'
-// },
-// ]

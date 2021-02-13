@@ -1,6 +1,5 @@
-//here should be a initial State of the Game
 
-import { createPlayer } from "../../logic/actions.MW";
+import { createPlayer } from "../../logic/setup";
 import { Player } from "../../types/gameStateTypes";
 import { ADD_PLAYER, PlayerStateActionTypes } from "./reduxTypes";
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Player, Source } from '../../types/gameStateTypes'
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
@@ -8,7 +8,7 @@ import { clearMisinfoAction, debunkMisinfoAction, moveAction, logOnOffAction } f
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
 import { ModalComponent } from './DebunkModal';
-import { logOnOff } from '../../logic/actions.newState_CO';
+
 
 
 export interface SourceProps {
@@ -22,10 +22,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   const dispatch = useDispatch()
   const gamestate = useSelector((state: RootState) => state.gameStateReducer)
   const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0]
-  ////console.log('CURRENT PLAYER', array)
+
   const allPlayers = useSelector((state: RootState) => state.gameStateReducer.players)
-  ////console.log('gamestate from source : ', gamestate)
-  ////console.log('currentPlayer from source : ' , currentPlayer)
+
 
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedDebunkCards, setselectedDebunkCards] = useState([])
@@ -37,17 +36,12 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   useEffect(() => {
-    //console.log('close modal from source tsx useEffect---------', modalIsOpen)
 
   }, [modalIsOpen])
   useEffect(() => {
-    //console.log('close modal from source tsx useEffect seleceted debunked cards---------', selectedDebunkCards)
 
   }, [selectedDebunkCards])
 
-  //console.log('source MOVABLE', source.name, canMove)
-  //console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
-  ////console.log('THIS IS THE NAME::::::: ', toCamelCase(name));
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
   const SVGIconSourceOverlay: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
@@ -57,24 +51,22 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
     if (num > 0 && canDebunk.includes(category)) {
 
-      //get the debunkable icon
       const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
-      //wrap it with  button to make it clickable
       return (<div onClick={() => debunkMisinforamtion(category)}><DebunkableIcon /></div>)
 
     }
 
-    //add a different icon if canBeCleared
+
     if (num > 0 && canBeCleared) {
-      //get the clearable icon
+      
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
-      //wrap it with  button to make it clickable
+      
 
       return (<div onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></div>)
 
     }
     if (num > 0) {
-      ////console.log(toCamelCase(`marker ${category} ${num}`))
+     
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
       return <Icon className={`size${num}`} />;
     }
@@ -82,19 +74,16 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const debunkMisinforamtion = (category: string) => {
 
-    //showModal
     setIsOpen(true)
 
     setTimeout(async () => {
       try {
 
-        // Wait user to confirm !
         dispatch(debunkMisinfoAction({
           oldState: gamestate, currentPlayerID: currentPlayer.id,
           misinfoType: category, usedCards: selectedDebunkCards
         }))
 
-        // this line below is executed only after user click on OK
         alert("OK");
       } catch (err) {
         alert("CANCEL");
@@ -105,12 +94,12 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const clearMisinformationbyOne = (misinfoType: string) => {
-    //throws a logic error !!!
+   
     dispatch(clearMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, misinfoType, location: source.name }))
   }
 
 
-  const getPlayerPawns = (players: Player[], currentPlayer: Player) => {
+  const getPlayerPawns = () => {
     let test: Player[] = [];
     for (const player of allPlayers) {
       if (player.currentSource === source.name && !test.includes(player)) {
@@ -118,7 +107,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
       }
     }
-    //console.log(players)
+
     if (test.length > 0) return test.map(player => {
       return <PlayerPawn color={player.pawnColor} />
     })
@@ -140,24 +129,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard: spentCard }))
   }
 
-  const renderIcon = () => {
-    if (canMove) return <button onClick={() => changePlayersCurrentSource()}> <SVGIconSource /> </button>
-    return null
 
-  }
-
-  const renderAsLogOn = () => {
-    if (canLogOn) return <button onClick={() => changePlayersCurrentSource()}> <SVGIconSource /> </button>
-    return null
-
-  }
-
-  function unclickableMessage() {
-    //console.log(`%c you can't do anything at ${source.name}`,`background-color: red; color: white; padding: 10px`)
-    return null;
-  }
-
-  //adding the right class names
   let canMoveClassName = canMove ? 'can-move-to' : ''
   let canLogOffClassName = canLogOff ? 'can-log-off' : ''
   let canLogOnClassName = canLogOn ? 'can-log-on' : ''
@@ -165,7 +137,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   const closeModal = () => {
-    //console.log('close modal from source tsx---------')
+
     setIsOpen(false)
 
 
@@ -181,7 +153,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
       <div
         onClick={
-          // logic to render different click events from source
           canLogOff ?
             logoffToNewSource :
             canLogOn ?
@@ -199,7 +170,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
           {getMarker('relations', markers_relations, canClearRelations, canDebunk)}
         </div>
         <div className="player-pawn-container">
-          {getPlayerPawns(canShare, currentPlayer)}
+          {getPlayerPawns()}
         </div>
       </div>
     </>

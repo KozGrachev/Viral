@@ -1,5 +1,5 @@
-import React,{useEffect, useRef, useState} from 'react';
-import {messages} from '../../logic/actions.newState_CO'
+import React,{useEffect, useRef} from 'react';
+import {messages} from '../../logic/moves'
 import { Gamestate } from '../../types/gameStateTypes'
 
 import "./PlayerPrompt.scss"
@@ -9,7 +9,7 @@ export interface PlayerPromptProps {
 }
 
 
-export const PlayerPrompt: React.FC<PlayerPromptProps> = ({state}:PlayerPromptProps) => { // SVGIcon
+export const PlayerPrompt: React.FC<PlayerPromptProps> = ({state}:PlayerPromptProps) => {
   const h1Ref = useRef<HTMLHeadingElement>(null);
 
 
