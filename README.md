@@ -3,14 +3,12 @@
 
 <code><img height="200" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/logo.png"></code> 
 
-This is a multiplayer turn-based online game that requires strong teamwork to complete. 
-
-While "misinformation" & "fake news" have been buzzwords for several years. in the past year it has been revealed more than ever just how harmful these can become. Therefore, we hope that with Viral we can help raise players’ awareness and enhance their interest in this particular topic.
-
-
-The game if an adaptation of the the popular boardgame "Pandemic", "Hot-zone North America" version, created by zmangames.
+# The Why 
+"Misinformation" & "fake news" have been buzzwords for several years. In the past year however it has been revealed more than ever just how harmful these can become. Therefore, we hope that with Viral we can help raise players’ awareness and enhance their interest in this particular topic.
 
 # About :world_map:
+
+This is a multiplayer turn-based online game that requires strong teamwork to complete. 
 
 Travel around town cleaning up the spread of three types of misinformation: 
 - "social" :iphone: misinformation from social networks and other online platforms
@@ -26,7 +24,8 @@ So, harry up!
 
 <code><img height="500" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/misinfospreading.PNG"></code> 
 
- 
+ The game if an adaptation of the the popular boardgame "Pandemic", "Hot-zone North America" version, created by zmangames.
+
 The MVP of the game (featured screenshots), including design of all assets, was build in **10 days** by the wonderful people featured below
 🦸‍♀️🦸‍♂️🦸‍♂️🦸‍♂️🦸‍♂️🦸‍♂️
 
