@@ -1,24 +1,23 @@
-# Viral  
-
- - logo here 
- 
-# Screenshots  
-Travel around town cleaning up the spread of three types of misinformation: "social"- misinformation from social networks and other online platforms, "relations"- misinformation from friend and relatives, and "community"- misinformation from other institutions around the town.
- Screeshot 1 
- 
- To win you must debunk all three types of misinformation. Each type of misinformation is debunked by collection 4 source cards representing that type of misinformation.
-
-Screenshot 2 
-
-The game is over if the chaos meter increases to 100%, you run out of source cards or if you run out of any type of misinformation marker. 
- Screenshot 3
- 
-Viral is a game where you can stop a deadly pandemic of misinformation. 
+#VIRAL
+A game where you can stop a deadly pandemic of misinformation. 
+<code><img height="200" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/logo.png"></code> 
 
 This is a multiplayer turn-based online game that requires strong teamwork to complete. 
 
 It is also an adaptation of the the popular boardgame "Pandemic", "Hot-zone North America" version, created by zmangames.
 
+
+Travel around town cleaning up the spread of three types of misinformation: "social"- misinformation from social networks and other online platforms, "relations"- misinformation from friend and relatives, and "community"- misinformation from other institutions around the town.
+<code><img height="500" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/mainGame2.PNG"></code> 
+
+
+To win you must debunk all three types of misinformation. Each type of misinformation is debunked by collection 4 source cards representing that type of misinformation.
+The game is over if the chaos meter increases to 100%, you run out of source cards or if you run out of any type of misinformation marker. 
+So, harry up! 
+
+<code><img height="500" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/misinfospreading.PNG"></code> 
+
+ 
 The MVP of the game (featured screenshots) was build in 10 days by the wonderful people featured below 🦸‍♀️🦸‍♂️🦸‍♂️🦸‍♂️🦸‍♂️🦸‍♂️
 
 
