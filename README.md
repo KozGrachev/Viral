@@ -5,7 +5,10 @@
 
 This is a multiplayer turn-based online game that requires strong teamwork to complete. 
 
-It is also an adaptation of the the popular boardgame "Pandemic", "Hot-zone North America" version, created by zmangames.
+While "misinformation" & "fake news" have been buzzwords for several years. in the past year it has been revealed more than ever just how harmful these can become. Therefore, we hope that with Viral we can help raise players’ awareness and enhance their interest in this particular topic.
+
+
+The game if an adaptation of the the popular boardgame "Pandemic", "Hot-zone North America" version, created by zmangames.
 
 # About :world_map:
 
