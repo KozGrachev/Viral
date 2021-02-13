@@ -3,7 +3,7 @@
 
 <code><img height="200" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/logo.png"></code> 
 
-# The Why 
+# Why 
 "Misinformation" & "fake news" have been buzzwords for several years. In the past year however it has been revealed more than ever just how harmful these can become. Therefore, we hope that with Viral we can help raise players’ awareness and enhance their interest in this particular topic.
 
 # About :world_map:
