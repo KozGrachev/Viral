@@ -52,7 +52,7 @@ Contributors ✨
 <table> 
   <tr>
     <td align="center"><a href="https://github.com/Bobik808"><img src="https://avatars.githubusercontent.com/u/39499810?s=400&u=f1de6116a4cf63f6bd29ece9e8445c3999ac6c0e&v=4" width="100px;" alt=""/><br /><sub><b> Konstantin Gratchev 🎨  </b></sub> 
-    <td align="center"><a href="https://github.com/anasau"><img src="https://avatars.githubusercontent.com/u/63604711?s=400&u=981abf7ed369db91f09417c4714e8a425df17e52&v=4" width="100px;" alt=""/><br /><sub><b> Ana Sau 💻 </b></sub>
+    <td align="center"><a href="https://github.com/anasau"><img src="https://avatars.githubusercontent.com/u/63604711?s=400&u=981abf7ed369db91f09417c4714e8a425df17e52&v=4" width="100px;"  alt=""/><br /><sub><b> Ana Sau 💻 </b></sub>
  <td align="center"><a href="https://github.com/mwi079"><img src="https://avatars.githubusercontent.com/u/61749243?s=400&u=c1e4d80faf1ed8a3eb90ffc023d5920eacb33e68&v=4" width="100px;" alt=""/><br /><sub><b> Malcolm Wilkie 💻 </b></sub>
  <td align="center"><a href="https://github.com/awenine"><img src="https://avatars.githubusercontent.com/u/9653071?s=400&u=7b9906df991404a41b8b330e870aabbf465ad41e&v=4" width="100px;" alt=""/><br /><sub><b> Christopher Owen 💻 🎨  </b></sub>
    <td align="center"><a href="https://github.com/Stil87"><img src="https://avatars.githubusercontent.com/u/42698392?s=400&u=76c452337f412e832e601ffb2a5179944ff81c6b&v=4" width="100px;" alt=""/><br /><sub><b> Till Schmidt💻  🎨  </b></sub>
