@@ -13,7 +13,7 @@ const HOST = process.env.DB_HOST;
 
 let client = redis.createClient(PORT, HOST);
 
-if (process.env.REDISCLOUD_URL) {
+if (process.env.NODE_ENV === 'production' && process.env.REDISCLOUD_URL) {
   client = redis.createClient(process.env.REDISCLOUD_URL);
 }
 
