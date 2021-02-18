@@ -40,11 +40,17 @@ var socket_io_1 = require("socket.io");
 var users_1 = require("./utils/users");
 var redis_db_1 = require("./redis/redis-db");
 var dotenv = __importStar(require("dotenv"));
+var path = require('path');
+var buildPath = path.resolve('client/build');
 dotenv.config({ path: __dirname + '/.env' });
 var app = express_1.default();
 app.use(cors_1.default());
 var httpServer = http_1.createServer(app);
 var PORT = process.env.PORT || 3002;
+if (process.env.NODE_ENV === 'production') {
+    app.use(express_1.default.static(buildPath));
+    app.get('*', function (_, res) { return res.sendFile(path.join(buildPath, 'index.html')); });
+}
 var io = new socket_io_1.Server(httpServer, {
     cors: { origin: "" + process.env.CLIENT_URL, methods: ['GET', 'POST', 'DELETE'] }
 });
