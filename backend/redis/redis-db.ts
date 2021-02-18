@@ -3,17 +3,19 @@ import redis from 'redis';
 import dotenv from 'dotenv';
 import { Gamestate } from '../utils/game';
 import { IUser, Socket } from '../utils/users';
-
 dotenv.config({ path: __dirname + '../.env' });
 
-const PORT = Number(process.env.DB_PORT) || 6379;
-const HOST = process.env.DB_HOST || '127.0.0.1';
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const redisURL = new URL(process.env.REDISCLOUD_URL!);
+
+
+
+const PORT = Number(redisURL.port) || Number(process.env.DB_PORT);
+const HOST = redisURL.host || process.env.DB_HOST;
+
 
 const client = redis.createClient(PORT, HOST);
-
-if (process.env.DB_PASSWORD) {
-  client.auth(process.env.DB_PASSWORD);
-}
+console.log(PORT, HOST);
 
 client.once('error', (err) => {
   console.error('Redis connect error', err);
@@ -23,7 +25,6 @@ client.once('error', (err) => {
 client.on('ready', () => {
   console.log('Redis connected');
 });
-
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars 
 const redisGetAsync = promisify(client.get).bind(client);
@@ -39,7 +40,7 @@ export const setState = (room: IUser['room'], state: Gamestate): void => {
 };
 
 
-export const setUser = (users:string, usersArray:Socket[] | undefined): void => {
+export const setUser = (users: string, usersArray: Socket[] | undefined): void => {
 
   const json = JSON.stringify(usersArray);
   client.set(users, json);
