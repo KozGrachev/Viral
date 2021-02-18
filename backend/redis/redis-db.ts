@@ -25,10 +25,9 @@ client.on('ready', () => {
 });
 
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars 
 const redisGetAsync = promisify(client.get).bind(client);
 const redisKEYSAsync = promisify(client.KEYS).bind(client);
-// const redisDelAsync = promisify(client.del).bind(client);
+
 
 
 export const setState = (room: IUser['room'], state: Gamestate): void => {
@@ -67,15 +66,9 @@ export const getState = async (room: IUser['room']): Promise<Gamestate | undefin
 
 };
 
-// get all games saved room:Game list returns as an array of strings 
 export const getGames = async (patern: string): Promise<string[] | undefined> => {
 
   const games = await redisKEYSAsync(patern);
   if (games) return games;
 
 };
-
-// export const deleteGame = async (room: string): Promise<string> => {
-//   await redisDelAsync(room).then(data => data);
-//   return `${room} successfully deleted`;
-// };

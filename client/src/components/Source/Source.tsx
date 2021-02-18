@@ -146,8 +146,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
     setIsOpen(false)
 
-
-
   }
 
 
