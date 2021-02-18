@@ -4,7 +4,9 @@
   "description": "Codeworks Thesis Project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "npm i --prefix backend && npm i --prefix client",
+    "start": "cd backend && npm i && npm start",
+    "heroku-postbuild": "cd client && npm i && npm run build"
   },
   "repository": {
     "type": "git",
