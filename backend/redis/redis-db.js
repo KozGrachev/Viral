@@ -44,12 +44,13 @@ var util_1 = require("util");
 var redis_1 = __importDefault(require("redis"));
 var dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config({ path: __dirname + '../.env' });
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-var redisURL = new URL(process.env.REDISCLOUD_URL);
-var PORT = Number(redisURL.port) || Number(process.env.DB_PORT);
-var HOST = redisURL.host || process.env.DB_HOST;
+// // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+var PORT = Number(process.env.DB_PORT);
+var HOST = process.env.DB_HOST;
 var client = redis_1.default.createClient(PORT, HOST);
-console.log(PORT, HOST);
+if (process.env.REDISCLOUD_URL) {
+    client = redis_1.default.createClient(process.env.REDISCLOUD_URL);
+}
 client.once('error', function (err) {
     console.error('Redis connect error', err);
     process.exit(1);

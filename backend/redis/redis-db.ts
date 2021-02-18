@@ -5,17 +5,17 @@ import { Gamestate } from '../utils/game';
 import { IUser, Socket } from '../utils/users';
 dotenv.config({ path: __dirname + '../.env' });
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const redisURL = new URL(process.env.REDISCLOUD_URL!);
+// // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 
 
+const PORT = Number(process.env.DB_PORT);
+const HOST = process.env.DB_HOST;
 
-const PORT = Number(redisURL.port) || Number(process.env.DB_PORT);
-const HOST = redisURL.host || process.env.DB_HOST;
+let client = redis.createClient(PORT, HOST);
 
-
-const client = redis.createClient(PORT, HOST);
-console.log(PORT, HOST);
+if (process.env.REDISCLOUD_URL) {
+  client = redis.createClient(process.env.REDISCLOUD_URL);
+}
 
 client.once('error', (err) => {
   console.error('Redis connect error', err);
