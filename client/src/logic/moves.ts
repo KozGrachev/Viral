@@ -154,7 +154,7 @@ export function debunkMisinfo(oldState: Gamestate, currentPlayerID: Player['id']
       }
     },
     turnMovesLeft: oldState.turnMovesLeft - 1,
-  };
+  }
   if (didWin(newState)) {
     console.log(`%c CONGRATULATIONS! You debunked all the misinformation in the world and won. Good for you.`,`background-color: chartreuse; color: indianred; padding: 10px; font-weight: bold`);
     return {
@@ -260,6 +260,7 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
         }
       ),
   };
+  console.log('spreadlevel',newState)
   return newState;
 }
 
@@ -271,9 +272,11 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
 
   let newState: Gamestate = oldState;
   while (cardsLeft > 0) {
+    console.log('Cards Left',cardsLeft)
     didLose(newState)
-    newState = dealConnectionCard(oldState);
-    
+    console.log('before deal connection',newState)
+    newState = dealConnectionCard(newState);
+    console.log('after deal connection',newState)
     cardsLeft--;
   }
   //? do we need to put breaks here, and how, for the front end to update or show when a card has been dealt?
@@ -287,7 +290,7 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
      
     misinfoCardNo--
   }
- 
+  console.log('spreadLevel',newState)
   return nextTurn(newState, currentPlayerID)
 }
 
@@ -314,12 +317,14 @@ export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Ga
   };console.log(`%c NEXT PLAYERS TURN`,`background-color: lightgreen; color: black; padding: 10px`);
   
   messages.push(`Now it's over to ${oldState.players[nextPlayerIndex].name}!`)
+  console.log('spreadlevel', newState)
   return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
 }
   const newState= {
     ...oldState,
     turnMovesLeft: 4,
   };
+  console.log('spreadlevel', newState)
   return updatePossibleActions(newState,currentPlayerID)
 }
 
@@ -354,7 +359,7 @@ export function discardCard(oldState: Gamestate, currentPlayerID: Player['id'], 
 }
 
 
-export function outbreak(outbreak_source: Source, oldState: Gamestate) {
+export function outbreak(outbreak_source: Source, oldState: Gamestate, from:string) {
   let playerName:string=oldState.players.filter(player=>player.isCurrent)[0].name
   oldState.chaosMeter++
   messages.push(`Oh no ${playerName}! We've had an outbreak at ${outbreak_source.name}!! Chaos meter increases to ${oldState.chaosMeter*25}%`)
@@ -369,10 +374,12 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate) {
   for (const connection of connections) {
     for (const source of oldState.sources) {
       if (source.name === connection) {
-        let key = outbreak_source.misinfoType
+        let key = `markers_${outbreak_source.misinfoType}`
+        console.log('source we outbreak to',source)
+        console.log('source we outbreak from',outbreak_source)
         if (typeCheck(key))
-          if (source[key] === 3) {
-            oldState = outbreak(source, oldState)
+          if (source[key] === 3 && source.name!==from) {
+            oldState = outbreak(source, oldState,outbreak_source.name)
           }
           else {
             source[key]++
@@ -393,15 +400,22 @@ export function viralCheck(object: any): object is ViralCard {
 export function dealConnectionCard(oldState: Gamestate) {
   
   let newCard: Card|ViralCard = oldState.connectionDeck[0]
-  if(newCard===undefined)oldState.gameLost=true
+  if(newCard===undefined){
+    oldState.gameLost=true
+    let newState = { ...oldState }
+    console.log('game lost',newState)
+    return newState
+  }
   if (newCard.cardType==='viral') {
     oldState = playViralCard(oldState)
+    console.log("speadlevel", oldState.spreadLevel)
     oldState.connectionDeck.shift()
   }
   else {
     for (const player of oldState.players) {
       if (player.isCurrent) {
         if (!viralCheck(newCard)) {
+          console.log('deal normal card', oldState)
           player.cards.push(newCard)
           oldState.connectionDeck.shift()
         }
@@ -410,6 +424,7 @@ export function dealConnectionCard(oldState: Gamestate) {
   }
 
   let newState = { ...oldState }
+  console.log('spreadlevel',newState)
   return newState
 }
 
@@ -440,21 +455,24 @@ export function shuffle(array: any[]) {
 
 export function didLose(state: Gamestate) {
 
-  let playerName:string=state.players.filter(player=>player.isCurrent)[0].name
+  //let playerName:string=state.players.filter(player=>player.isCurrent)[0].name
   if (state.chaosMeter === 4){
-    messages.push(`Oh no ${playerName},Chaos reigns!, the chaos meter is too high, so it's Game Over`)
+    //messages.push(`Oh no ${playerName},Chaos reigns!, the chaos meter is too high, so it's Game Over`)
     state.gameLost=true
+    console.log(state)
     return true}
   if (
     state.misinformation.community.markersLeft <= 0 ||
     state.misinformation.social.markersLeft <= 0 ||
     state.misinformation.relations.markersLeft <= 0
   ){
-    messages.push(`Oh no ${playerName}! All your markers are gone, so it's Game Over`)
+    //messages.push(`Oh no ${playerName}! All your markers are gone, so it's Game Over`)
+    console.log(state)
     state.gameLost=true
     return true}
   if (state.connectionDeck.length === 0|| state.misinformationDeckActive.length===0) {
-    messages.push(`Oh no ${playerName}! You have no there are no cards left to draw, it's Game over!`)
+    //messages.push(`Oh no ${playerName}! You have no there are no cards left to draw, it's Game over!`)
+    console.log(state)
     state.gameLost=true
     return true
   }
@@ -489,7 +507,7 @@ export function dealMisinfoCard(oldState: Gamestate, weight: number, isViral: bo
         if (typeCheck(key1) && typeCheck(key2)) {
 
           if (source[key1] === 3) {
-            oldState = outbreak(source, oldState)
+            oldState = outbreak(source, oldState,'no')
           }
           else {
             source[key1]++
