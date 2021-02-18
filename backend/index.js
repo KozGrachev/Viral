@@ -41,7 +41,7 @@ var users_1 = require('./utils/users');
 var redis_db_1 = require('./redis/redis-db');
 var dotenv = __importStar(require('dotenv'));
 var path = require('path');
-var buildPath = path.resolve('client/build');
+var buildPath = path.resolve('../client/build');
 dotenv.config({ path: __dirname + '/.env' });
 var app = express_1.default();
 app.use(cors_1.default());

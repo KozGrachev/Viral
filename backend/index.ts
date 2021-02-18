@@ -8,7 +8,7 @@ import * as dotenv from 'dotenv';
 import { Gamestate, Player } from './utils/game';
 
 const path = require('path');
-const buildPath = path.resolve('client/build');
+const buildPath = path.resolve('../client/build');
 
 dotenv.config({ path: __dirname + '/.env' });
 const app = express();
