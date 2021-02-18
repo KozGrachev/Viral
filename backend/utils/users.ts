@@ -10,11 +10,6 @@ export interface Socket {
 export interface IUser {
   name: string;
   id: string;
-  cards?: Card[];
-  cardHandOverflow?: boolean;
-  isCurrent?: boolean;
-  pawnColor?: string;
-  currentSource?: string;
   room: string;
 }
 
@@ -45,14 +40,14 @@ export function userJoin (id: string, name: string, room: string): IUser {
 
 
 
-// User leaves chat
+
 export function userLeave (id: string): Socket | undefined {
   getUsers().then(data => users = data);
   const index = users?.findIndex(user => user.id === id);
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+ 
   if (index && users) {
     const user = users[index]; 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    
     console.log(users, 'users');
     users?.splice(index, 1);
     setUser('users', users);

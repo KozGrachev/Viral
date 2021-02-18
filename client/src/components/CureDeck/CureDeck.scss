@@ -21,23 +21,25 @@
   text-align: center;
 
 
+  &.community{
+    background-color: #00BBF9;
+    font-size: 32px;
 
+  }
+
+  &.relations{
+    font-size: 32px;
+    background-color: #FEE440;
+  }
+
+  &.social{
+    font-size: 32px;
+    background-color: #F15BB5;
+  }
+
+  .icon {font-size: 55px;}
 }
 
-.icon {font-size: 55px;}
 
-.community{
-  background-color: #00BBF9;
-  font-size: 32px;
-  
-}
 
-.relations{
-  font-size: 32px;
-  background-color: #FEE440;
-}
 
-.social{
-  font-size: 32px;
-  background-color: #F15BB5;
-}

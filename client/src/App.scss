@@ -10,24 +10,14 @@ $app-width: calc((100vh - 40px) * 1.8);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: 'Comfortaa',
-    cursive; */
-  /* color: red; */
 }
 
 body {
-  // height: 100vh;
   background-image: url(./assets/allIcons/game-board-slice-no-sources-no-phone.svg);
   background-size: cover;
   background-position: center;
   overflow: hidden;
   backdrop-filter: blur(50px);
-
-}
-
-.app-outer-wrapper {
-  // border: $panel-border;
-  // background: rgba(255, 255, 255, 0.096);
 }
 
 .app-container {
@@ -49,22 +39,17 @@ body {
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  // border: 3px solid red;
   border-radius: 30px;
 }
 
 .sidebar.left {
   justify-content: space-between;
-
   grid-area: sidebar-left;
-  // border: 3px solid rgb(115, 255, 0);
 }
 
 .sidebar.right {
   @include glass-panel;
-  // border: 3px solid red;
   grid-area: sidebar-right;
-  // width: 100px;
   height: auto;
 
   padding: 10px;
@@ -73,36 +58,27 @@ body {
 @media (min-aspect-ratio: 7/5) {
   .board-container {
     background-color: black;
-    // border:5px solid blue;
   }
 }
 
 .board-container {
-  /* box-sizing: ; */
-  // width:100%;
   width: auto;
   height: 100%;
   position: relative;
   grid-area: gameboard;
   margin: 0 20px;
-
-  // border: 2px solid green;
-  // border: $panel-border;
   background: $panel-background_translucent;
   border-radius: 30px;
   overflow: hidden;
-  // transform: scale(calc(100vw/100vh));
 }
 
 #game-board {
   position: relative;
   width: 100%;
   height: 100%;
-  // background-color: pink;
   background: url(./assets/allIcons/game-board-slice-no-sources.svg);
   background-size: 100%;
   background-repeat: no-repeat;
-  // background-size: cover;
   background-position: 0 10%;
 }
 
@@ -117,13 +93,18 @@ body {
   background-position: 0 10%;
 }
 
+svg.connections-overlay {
+  width: 100%;
+  height: 99.5%;
+  position: absolute;
+}
+
 #map-svg {
   position: absolute;
   width: 100%;
 }
 
 .map-svg {
-  // position: ;
   width: 100%;
 }
 
@@ -139,9 +120,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-
 .start-game-container {
-
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -150,17 +129,17 @@ body {
   background-color: transparent;
 }
 
-
-
-// Community sources
-
+.empty-app-icon-1 {
+  position: absolute;
+  grid-area: 9/12/10/13;
+  top: 10%;
+}
 
 .university {
   grid-area: 9/5/8/6;
   position: absolute;
   left: 15%;
   top: 60%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .local-cult {
@@ -168,7 +147,6 @@ body {
   position: absolute;
   left: 55%;
   top: 21%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .high-school {
@@ -176,7 +154,6 @@ body {
   position: absolute;
   left: 49%;
   top: 63%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .pub {
@@ -184,7 +161,6 @@ body {
   position: absolute;
   left: 40%;
   top: 13%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .taxi {
@@ -192,7 +168,6 @@ body {
   position: absolute;
   left: 60%;
   top: 30%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .asda {
@@ -200,7 +175,6 @@ body {
   position: absolute;
   left: 20%;
   top: 60%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .gym {
@@ -208,7 +182,6 @@ body {
   position: absolute;
   left: 4%;
   top: 67%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .hair-salon {
@@ -216,7 +189,6 @@ body {
   position: absolute;
   left: -12%;
   top: 13%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 // Social sources
@@ -224,8 +196,7 @@ body {
   grid-area: 8/10/9/11;
   position: absolute;
   left: 60%;
-  top: 11%;
-  // border: 0.3px solid rgb(255, 0, 255);
+  top: 5%;
 }
 
 .facebook {
@@ -233,15 +204,13 @@ body {
   position: absolute;
   left: 61%;
   top: 16%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .youtube {
   grid-area: 8/11/9/12;
   position: absolute;
   left: 60%;
-  top: 11%;
-  // border: 0.3px solid rgb(255, 0, 255);
+  top: 5%;
 }
 
 .twitter {
@@ -249,15 +218,13 @@ body {
   position: absolute;
   left: 61%;
   top: 18%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .illuminatify {
   grid-area: 8/12/9/13;
   position: absolute;
   left: 61%;
-  top: 16%;
-  // border: 0.3px solid rgb(255, 0, 255);
+  top: 5%;
 }
 
 .reddit {
@@ -265,7 +232,6 @@ body {
   position: absolute;
   left: -37%;
   top: 16%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .whatsapp {
@@ -273,7 +239,6 @@ body {
   position: absolute;
   left: 61%;
   top: 16%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .tiktok {
@@ -281,7 +246,6 @@ body {
   position: absolute;
   left: 61%;
   top: 17%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 // Relations sources
@@ -290,7 +254,6 @@ body {
   position: absolute;
   left: 35%;
   top: 80%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .cousin {
@@ -298,7 +261,6 @@ body {
   position: absolute;
   left: -15%;
   top: 55%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .fran-from-hr {
@@ -306,7 +268,6 @@ body {
   position: absolute;
   left: -20%;
   top: 0%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .evil-ex {
@@ -314,7 +275,6 @@ body {
   position: absolute;
   left: 15%;
   top: -30%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .opinionated-grandpa {
@@ -322,7 +282,6 @@ body {
   position: absolute;
   left: 75%;
   top: 40%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .crazy-dave {
@@ -330,7 +289,6 @@ body {
   position: absolute;
   left: 10%;
   top: -2%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .guy-at-the-bus-stop {
@@ -338,7 +296,6 @@ body {
   position: absolute;
   left: 21%;
   top: -20%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }
 
 .mother-in-law {
@@ -346,5 +303,4 @@ body {
   position: absolute;
   left: 35%;
   top: 45%;
-  // border: 0.3px solid rgb(255, 0, 255);
 }

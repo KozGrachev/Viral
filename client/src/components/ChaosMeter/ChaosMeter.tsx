@@ -3,7 +3,7 @@ import './ChaosMeter.scss';
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/gameState/store';
 export const ChaosMeter: React.FC = () => {
-  //const chaos = store.getState().gameStateReducer.chaosMeter;
+  
   const chaos = useSelector((state: RootState) => state.gameStateReducer.chaosMeter)
   let chaosPercentage = (chaos / 4) * 100
   let offSet = (440 - (440 * chaosPercentage / 100))

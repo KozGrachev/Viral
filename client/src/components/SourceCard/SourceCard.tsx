@@ -2,28 +2,26 @@ import React from 'react';
 import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toPascalCase } from '../../helpers/utils'
 import './SourceCard.scss'
-import { shareCardEvent } from '../../logic/event.listeners';
-import { ShareCardProps } from '../../redux/gameState/reduxTypes'
 
-//! issue with "Card" interface beings used for both Source/connection & "Viral" cards, which have name type "null" - possible change types/logic later
+
+
 export interface SourceCardProps {
-  name: string,    //! NULL TO BE REMOVED
-  category: string, //! NULL TO BE REMOVED
+  name: string,   
+  category: string, 
   canShare: any[]
 }
-// DON'T NEED ===> canlogon can go to the place if you have that card
-// canShare: a button that appears on each card when you are on the same location as another player
-// canchare: Player[]
+
 
 
 export const SourceCard: React.FC<SourceCardProps> = ({ name, category, canShare }: SourceCardProps) => { // SVGIcon
 
-  const currentState = {}
 
+
+  console.log('Source name:', name, 'category:', category, 'can share:', canShare)
   const SVGIcon = getIcon(toCamelCase(name) + 'Icon');
 
   const handleShareClick = (id: string) => {
-    //DISPATCH ACTION
+
     console.log(`SHARING CARD ${name} WITH ${id}`);
   }
 
@@ -31,12 +29,7 @@ export const SourceCard: React.FC<SourceCardProps> = ({ name, category, canShare
   const renderShareButtons = (shareWith: { name: string, id: string }[]) => {
     return shareWith.map(player => <button onClick={() => handleShareClick(player.id)
 
-      // shareCardEvent({
-      //   oldState: currentState,
-      //   currentPlayerID: ,
-      //   recipient: player.id,
-      //   sharedCard: name
-      // })
+  
     }>{player.name}</button>)
   }
   return (

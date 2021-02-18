@@ -1,11 +1,10 @@
-import React, { ButtonHTMLAttributes, ChangeEvent, DetailedHTMLProps, useState } from 'react';
+import React, {  ChangeEvent, useState } from 'react';
 import './NewGameMenu.scss';
-// import { startGameEvent, addPlayerEvent } from '../../logic/event.listeners'
-import { AddPlayerAction, addPlayerToGameState, DealCardsToNewPlayerAction, StartGameAction, updateGameState } from '../../redux/gameState/gameStateActions';
+
+import { AddPlayerAction} from '../../redux/gameState/gameStateActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, store } from '../../redux/gameState/store';
-import { Player } from '../../types/gameStateTypes';
-import { Console } from 'console';
+import { RootState } from '../../redux/gameState/store';
+
 import { getIcon } from '../../helpers/iconExporter'
 
 
@@ -43,9 +42,6 @@ export const NewGameMenu: React.FC = () => {
 
   }
 
-  let player = useSelector((state: RootState) => state.playerStateReducer)
-  let state = useSelector((state: RootState) => state.gameStateReducer)
-
   const addPlayer = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     dispatch(AddPlayerAction(input.name, input.color, input.room))
@@ -76,33 +72,33 @@ export const NewGameMenu: React.FC = () => {
 
         ></input>
         <div className='colors-container' >
-          <FirePawn id="icon"
-            style={{ border: input.color === 'orange' ? '2px solid orange' : 'none' }}
+          <FirePawn className="icon"
+            style={{ transform: (input.color === 'orange') ? 'scale(1.7)' : 'none' }}
             onClick={() => handleSelect('orange')}
           />
 
-          <HexagonPawn id="icon"
-            style={{ border: (input.color === 'green') ? ' 2px solid green' : 'none' }}
+          <HexagonPawn className="icon"
+            style={{ transform: (input.color === 'green') ? 'scale(1.7)' : 'none' }}
             onClick={() => handleSelect('green')}
           />
 
-          <FlowerPawn id="icon"
-            style={{ border: (input.color === 'pink') ? '2px solid pink' : 'none' }}
+          <FlowerPawn className="icon"
+            style={{ transform: (input.color === 'pink') ? 'scale(1.7)' : 'none' }}
             onClick={() => handleSelect('pink')}
           />
 
-          <RombPawn id="icon"
-            style={{ border: (input.color === 'blue') ? ' 2px solid blue' : 'none' }}
+          <RombPawn className="icon"
+            style={{ transform: (input.color === 'blue') ? 'scale(1.7)' : 'none' }}
             onClick={() => handleSelect('blue')}
           />
-          <SunPawn id='icon'
+          <SunPawn className="icon"
+            style={{ transform: (input.color === 'yellow') ? 'scale(1.7)' : 'none' }}
             onClick={() => handleSelect('yellow')}
-            style={{ border: (input.color === 'yellow') ? '2px solid yellow' : 'none' }}
           />
 
-          <SquarePawn id="icon"
+          <SquarePawn className="icon"
+            style={{ transform: (input.color === 'red') ? 'scale(1.7)' : 'none' }}
             onClick={() => handleSelect('red')}
-            style={{ border: (input.color === 'red') ? '2px solid red' : 'none' }}
           />
         </div>
 
