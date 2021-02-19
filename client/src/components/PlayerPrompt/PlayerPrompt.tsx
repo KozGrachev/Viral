@@ -19,13 +19,13 @@ export const PlayerPrompt: React.FC<PlayerPromptProps> = ({state}:PlayerPromptPr
   }, [state])
   return (
     <div className="player-prompt-container" >
-      {messages.map(msg => {
+      {messages.map((msg,i) => {
         let player = state.players.filter(player => {
           if (msg.search(player.name) !== -1 ) {
             return player 
           }})[0]
         return (
-          <div className="single-message"
+          <div className="single-message" key={msg.split(' ')[0] + i}
             style={{ border: `2px solid ${player.pawnColor}` }}>{msg}</div>)
       })}
       <div ref={h1Ref}></div>
