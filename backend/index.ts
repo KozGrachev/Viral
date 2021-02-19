@@ -4,15 +4,26 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { userJoin, userLeave } from './utils/users';
 import { getState, setState, getGames } from './redis/redis-db';
-
 import * as dotenv from 'dotenv';
 import { Gamestate, Player } from './utils/game';
+
+const path = require('path');
+const buildPath = path.resolve('../client/build');
 
 dotenv.config({ path: __dirname + '/.env' });
 const app = express();
 app.use(cors());
+
+
 const httpServer = createServer(app);
 const PORT = process.env.PORT || 3002;
+
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(buildPath));
+  app.get('*', (_, res) => res.sendFile(path.join(buildPath, 'index.html')));
+}
+
 
 const io = new Server(httpServer, {
   cors: { origin: `${process.env.CLIENT_URL}`, methods: ['GET', 'POST', 'DELETE'] }
