@@ -47,9 +47,12 @@ dotenv_1.default.config({ path: __dirname + '../.env' });
 // // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 var PORT = Number(process.env.DB_PORT);
 var HOST = process.env.DB_HOST;
-var client = redis_1.default.createClient(process.env.REDISCLOUD_URL);
+var client;
 if (process.env.NODE_ENV === 'production' && process.env.REDISCLOUD_URL) {
   client = redis_1.default.createClient(process.env.REDISCLOUD_URL);
+}
+else {
+  client = redis_1.default.createClient(PORT, HOST);
 }
 client.once('error', function (err) {
   console.error('Redis connect error', err);
@@ -72,61 +75,55 @@ var setUser = function (users, usersArray) {
   client.set(users, json);
 };
 exports.setUser = setUser;
-var getUsers = function () {
-  return __awaiter(void 0, void 0, void 0, function () {
-    var json, state;
-    return __generator(this, function (_a) {
-      switch (_a.label) {
-      case 0: return [4 /*yield*/, redisGetAsync('users')];
-      case 1:
-        json = _a.sent();
-        if (json) {
-          state = JSON.parse(json);
-          return [2 /*return*/, state];
-        }
-        return [2 /*return*/];
+var getUsers = function () { return __awaiter(void 0, void 0, void 0, function () {
+  var json, state;
+  return __generator(this, function (_a) {
+    switch (_a.label) {
+    case 0: return [4 /*yield*/, redisGetAsync('users')];
+    case 1:
+      json = _a.sent();
+      if (json) {
+        state = JSON.parse(json);
+        return [2 /*return*/, state];
       }
-    });
+      return [2 /*return*/];
+    }
   });
-};
+}); };
 exports.getUsers = getUsers;
-var getState = function (room) {
-  return __awaiter(void 0, void 0, void 0, function () {
-    var json, state;
-    return __generator(this, function (_a) {
-      switch (_a.label) {
-      case 0:
-        if (!room)
-          return [2 /*return*/];
-        return [4 /*yield*/, redisGetAsync(room)];
-      case 1:
-        json = _a.sent();
-        if (json) {
-          state = JSON.parse(json);
-          return [2 /*return*/, state];
-        }
+var getState = function (room) { return __awaiter(void 0, void 0, void 0, function () {
+  var json, state;
+  return __generator(this, function (_a) {
+    switch (_a.label) {
+    case 0:
+      if (!room)
         return [2 /*return*/];
+      return [4 /*yield*/, redisGetAsync(room)];
+    case 1:
+      json = _a.sent();
+      if (json) {
+        state = JSON.parse(json);
+        return [2 /*return*/, state];
       }
-    });
+      return [2 /*return*/];
+    }
   });
-};
+}); };
 exports.getState = getState;
 // get all games saved room:Game list returns as an array of strings 
-var getGames = function (patern) {
-  return __awaiter(void 0, void 0, void 0, function () {
-    var games;
-    return __generator(this, function (_a) {
-      switch (_a.label) {
-      case 0: return [4 /*yield*/, redisKEYSAsync(patern)];
-      case 1:
-        games = _a.sent();
-        if (games)
-          return [2 /*return*/, games];
-        return [2 /*return*/];
-      }
-    });
+var getGames = function (patern) { return __awaiter(void 0, void 0, void 0, function () {
+  var games;
+  return __generator(this, function (_a) {
+    switch (_a.label) {
+    case 0: return [4 /*yield*/, redisKEYSAsync(patern)];
+    case 1:
+      games = _a.sent();
+      if (games)
+        return [2 /*return*/, games];
+      return [2 /*return*/];
+    }
   });
-};
+}); };
 exports.getGames = getGames;
 // export const deleteGame = async (room: string): Promise<string> => {
 //   await redisDelAsync(room).then(data => data);

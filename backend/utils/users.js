@@ -12,7 +12,6 @@ function userJoin (id, name, room) {
     room: room,
   };
   exports.users === null || exports.users === void 0 ? void 0 : exports.users.push(user);
-  console.log(exports.users, 'users');
   redis_db_1.setUser('users', exports.users);
   return user;
 }

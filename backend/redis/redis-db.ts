@@ -1,5 +1,5 @@
 import { promisify } from 'util';
-import redis from 'redis';
+import redis, { RedisClient } from 'redis';
 import dotenv from 'dotenv';
 import { Gamestate } from '../utils/game';
 import { IUser, Socket } from '../utils/users';
@@ -11,10 +11,12 @@ dotenv.config({ path: __dirname + '../.env' });
 const PORT = Number(process.env.DB_PORT);
 const HOST = process.env.DB_HOST;
 
-let client = redis.createClient(PORT, HOST);
+let client:RedisClient; 
 
 if (process.env.NODE_ENV === 'production' && process.env.REDISCLOUD_URL) {
   client = redis.createClient(process.env.REDISCLOUD_URL);
+} else {
+  client = redis.createClient(PORT, HOST);
 }
 
 client.once('error', (err) => {
