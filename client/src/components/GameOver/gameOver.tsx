@@ -3,9 +3,7 @@ import lottie from 'lottie-web'
 import './GameOver.scss'
 
 export const GameOver: React.FC = (): JSX.Element => {
-
   const container = useRef<HTMLDivElement>(null)
-
   useEffect(() => {
     if (container.current) {
       lottie.loadAnimation({
@@ -14,16 +12,11 @@ export const GameOver: React.FC = (): JSX.Element => {
         autoplay: true,
         loop: false,
         animationData: require('../../assets/endgame.json')
-
       })
     }
-
   })
-
-
   return (
     <div className="main-game-container" >
-
       <div className='game-over-container'>
         <div ref={container} className='animation-container' >
         </div>

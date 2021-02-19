@@ -18,13 +18,11 @@
 
 .source-card-container {
   @include glass-panel;
-  /* position: relative; */
   margin-bottom: 10px;
   display: grid;
   align-items: center;
   justify-items: center;
   grid-template-columns: 70px auto;
-  /* width: 100%; */
   height: 70px;
 
   transform: scale(1);

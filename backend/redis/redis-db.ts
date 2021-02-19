@@ -7,7 +7,6 @@ dotenv.config({ path: __dirname + '../.env' });
 
 const PORT = Number(process.env.DB_PORT);
 const HOST = process.env.DB_HOST;
-
 let client:RedisClient; 
 
 if (process.env.NODE_ENV === 'production' && process.env.REDISCLOUD_URL) {
@@ -15,7 +14,6 @@ if (process.env.NODE_ENV === 'production' && process.env.REDISCLOUD_URL) {
 } else {
   client = redis.createClient(PORT, HOST);
 }
-
 client.once('error', (err) => {
   console.error('Redis connect error', err);
   process.exit(1);
@@ -24,13 +22,11 @@ client.once('error', (err) => {
 client.on('ready', () => {
   console.log('Redis connected');
 });
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars 
 const redisGetAsync = promisify(client.get).bind(client);
 const redisKEYSAsync = promisify(client.KEYS).bind(client);
 
 export const setState = (room: IUser['room'], state: Gamestate): void => {
-
   const json = JSON.stringify(state);
   client.set(room, json);
 };
@@ -47,7 +43,6 @@ export const getUsers = async (): Promise<Socket[] | undefined> => {
     return state;
   }
 };
-
 
 export const getState = async (room: IUser['room']): Promise<Gamestate | undefined> => {
   if (!room) return;

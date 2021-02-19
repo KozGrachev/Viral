@@ -2,12 +2,9 @@ import { CLEAR_MISINFO, DEAL_CARDS, DEBUNK_MISINFO, DISCARD_ACTION, GameStateAct
 import { initialState } from './initialState'
 import { Gamestate } from '../../types/gameStateTypes'
 import { clearMisinfo, debunkMisinfo, discardCard, logOnOff, moveAction, shareCard } from '../../logic/moves'
-import {dealCardsToNewPlayer, setUp } from '../../logic/setup';
-
+import { dealCardsToNewPlayer, setUp } from '../../logic/setup';
 
 const GameState: Gamestate = initialState;
-
-
 export function gameStateReducer(
   state = GameState,
   action: GameStateActionTypes
@@ -45,25 +42,19 @@ export function gameStateReducer(
       const newstate = discardCard(ap.oldState, ap.currentPlayerID, ap.discardedCard)
       return { ...state, ...newstate, received: false };
     }
-
     case UPDATE_GAME_STATE:
       return {
         ...state, ...action.payload
       }
-
     case DEAL_CARDS: {
       const ap = action.payload;
       const newstate = dealCardsToNewPlayer(ap.player, ap.state)
-      
       return { ...newstate, received: false }
     }
     case START_GAME: {
       const initialState = setUp(action.payload)
-      
-      const obj = { ...state, ...initialState, gameOn: true, received: false }
-      
-      return obj
-
+      const newstate = { ...state, ...initialState, gameOn: true, received: false }
+      return newstate;
     }
     default: return state
   }
