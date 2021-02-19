@@ -40,8 +40,6 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
 
   }, [pickedCards])
 
-
-
   function uid(rounds: number = 1) {
     let uid = '';
     while (rounds > 0) {
