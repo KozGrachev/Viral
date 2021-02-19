@@ -138,17 +138,13 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   function unclickableMessage () {return null}
 
   const closeModal = () => {
-
     setIsOpen(false)
-
   }
 
 
   return (
     <>
       {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} /> : null}
-
-
 
       <div
         onClick={
@@ -160,7 +156,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
                 changePlayersCurrentSource :
                 unclickableMessage}
         className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType} ${canDebunkClassName} `} >
-
         <SVGIconSource />
         <SVGIconSourceOverlay />
         <div className={`markers-container ${misinfoType}`}>
