@@ -1,4 +1,4 @@
-# VIRAL 
+# VIRAL
 ### A game where you can stop a deadly pandemic of misinformation. 
 
 <code><img height="200" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/logo.png"></code> 
@@ -40,7 +40,7 @@ The MVP of the game (featured screenshots), including design of all assets, was 
 - [Redis](https://redis.io/)
 - [Docker](https://www.docker.com/)
 
-## Future Tasks 
+## Future Tasks 🚧
 
 
 - Refactoring
