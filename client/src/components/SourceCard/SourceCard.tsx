@@ -15,14 +15,10 @@ export interface SourceCardProps {
 
 export const SourceCard: React.FC<SourceCardProps> = ({ name, category, canShare }: SourceCardProps) => { // SVGIcon
 
-
-
-  //console.log('Source name:', name, 'category:', category, 'can share:', canShare)
   const SVGIcon = getIcon(toCamelCase(name) + 'Icon');
 
   const handleShareClick = (id: string) => {
 
-    console.log(`SHARING CARD ${name} WITH ${id}`);
   }
 
 

@@ -37,7 +37,6 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
   const [modal, updateModal] = useState(false)
   const getCards = () => {
     state = store.getState().gameStateReducer
-    console.log(state, 'state from the gey cards button')
     dispatch(DealCardsToNewPlayerAction({ player, state }))
   }
 

@@ -12,9 +12,9 @@ export function didWin(state: Gamestate) {
 }
 
 export function didLose(state: Gamestate) {
-  console.log(state)
+
   if (state.chaosMeter === 4) {
-    console.log('chaos')
+  
     return true
   }
   if (
@@ -22,11 +22,11 @@ export function didLose(state: Gamestate) {
     state.misinformation.social.markersLeft === 0 ||
     state.misinformation.relations.markersLeft === 0
   ) {
-    console.log('markerd')
+    
     return true
   }
   if (state.connectionDeck.length === 0) {
-    console.log('connection deck')
+
     return true
   }
   return false
@@ -151,12 +151,11 @@ export function dealConnectionCard2(player: Player, oldState: Gamestate) {
     newCard = oldState.connectionDeck[0]
     oldState.connectionDeck.shift()
   }
-  console.log('card passed the viral check')
+  
 
   for (const Player of oldState.players) {
     if (Player.id === player.id) {
       if (!viralCheck(newCard)) {
-        console.log('not viral', newCard)
         Player.cards.push(newCard)
         oldState.connectionDeck.shift()
       }
@@ -178,6 +177,9 @@ export function dealCardsToNewPlayer(player: Player, state: Gamestate) {
 }
 
 export function setUp(players: Player[]) {
+
+
+
 
   let cards;
   let misinfo = 6;
@@ -248,7 +250,6 @@ export function setUp(players: Player[]) {
   
 
   let newState = { ...updateState }
-  console.log(newState)
   return newState
 }
 
