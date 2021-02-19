@@ -4,7 +4,9 @@
   "description": "Codeworks Thesis Project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "npm i --prefix backend && npm i --prefix client",
+    "start": "cd backend && npm i && npm start",
+    "heroku-postbuild": "cd client && npm i && npm run build"
   },
   "repository": {
     "type": "git",
@@ -15,7 +17,6 @@
   "bugs": {
     "url": "https://github.com/Bobik808/Viral/issues"
   },
-  
   "homepage": "https://github.com/Bobik808/Viral#readme",
   "devDependencies": {},
   "dependencies": {
@@ -25,6 +26,7 @@
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "eslint": "^7.19.0",
-    "react-modal": "^3.12.1"
+    "react-modal": "^3.12.1",
+    "uuidv4": "^6.2.6"
   }
 }

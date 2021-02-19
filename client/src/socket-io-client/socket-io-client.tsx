@@ -6,7 +6,7 @@ import { GetAllGamesAction, updateGameState } from "../redux/gameState/gameState
 import { Gamestate } from "../types/gameStateTypes";
 
 dotenv.config({ path: __dirname + '../.env' });
-const socket = io(process.env.SERVER_URL || 'http://localhost:3002');
+const socket = io();
 
 
 const Player = store.getState().playerStateReducer
