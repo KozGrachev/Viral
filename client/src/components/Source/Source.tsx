@@ -135,17 +135,11 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   let canLogOnClassName = canLogOn ? 'can-log-on' : ''
   let canDebunkClassName = canDebunk ? 'can-debunk' : ''
 
-  function unclickableMessage () {
+  function unclickableMessage () {return null}
 
-    return null;
-  }
-  
-  
   const closeModal = () => {
 
     setIsOpen(false)
-
-
 
   }
 
