@@ -53,7 +53,6 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
 
 
   useEffect(() => {
-    console.log('pickedCards from UseEffect', pickedCards)
 
   }, [pickedCards])
 
@@ -74,7 +73,6 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
 
   function sendcloseModal(e: any) {
     e.preventDefault()
-    console.log('Close Modal')
 
     const pickedCardsAsCard: Card[] = pickedCards.map((cardWithId) => {
       const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType }
@@ -86,7 +84,6 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
   }
 
   const clickOnCard = (e: React.MouseEvent<HTMLElement>, fakeCard: CardWithId) => {
-    console.log(e.target);
     let div = e.target as HTMLInputElement;
 
     if (!div.classList.contains('selected')) {
@@ -98,7 +95,6 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
 
       const filtered = pickedCards.filter(card => card.id !== fakeCard.id)
 
-      console.log('filtered cards ', filtered)
       setpickedCards(filtered)
     }
 

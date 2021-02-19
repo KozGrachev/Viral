@@ -19,7 +19,6 @@ export default {
 
 const Template: Story = (args) => <OtherPlayer {...args} />
 
-console.log('CONNECTION::::', connections[0]);
 
 export const StoryName1 = Template.bind({});
 StoryName1.args = {
@@ -37,7 +36,6 @@ StoryName1.args = {
 
 for (let i = 0; i < 20; i++) {
   const r1 = Math.floor(Math.random() * (connections.length - 1));
-  console.log(r1, '   : ', connections[r1])
 }
 
 

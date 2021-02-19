@@ -1,23 +1,23 @@
-require("dotenv").config();
-const axios = require("axios");
-const figmaRestApi = require("./util/figmaRestApi");
-const Utils = require("./util/utils");
-const outputFolder = "../client/src/assets/allIcons/";
+require('dotenv').config();
+const axios = require('axios');
+const figmaRestApi = require('./util/figmaRestApi');
+const Utils = require('./util/utils');
+const outputFolder = '../client/src/assets/allIcons/';
 const rateLimit = 20;
 const waitTimeInSeconds = 45;
 
 const getProjectNode = async () => {
   return await figmaRestApi.get(
-    "files/" +
+    'files/' +
       process.env.FIGMA_PROJECT_ID +
-      "/nodes?ids=" +
+      '/nodes?ids=' +
       process.env.FIGMA_PROJECT_NODE_ID
   );
 };
 
 const getSVGURL = async (id) => {
   return await figmaRestApi.get(
-    "images/" + process.env.FIGMA_PROJECT_ID + "/?ids=" + id + "&format=svg"
+    'images/' + process.env.FIGMA_PROJECT_ID + '/?ids=' + id + '&format=svg'
   );
 };
 
@@ -29,10 +29,8 @@ const svgExporter = async () => {
       process.env.FIGMA_PROJECT_NODE_ID
     ].document.children;
 
-    const svgs = Utils.findAllByValue(children, "COMPONENT");
+    const svgs = Utils.findAllByValue(children, 'COMPONENT');
     const numOfSvgs = svgs.length;
-
-    console.log("Number of SVGs", numOfSvgs);
 
     Utils.createFolder(outputFolder);
 
@@ -41,8 +39,8 @@ const svgExporter = async () => {
         // Get URL of each SVG
         let svgName = await svg.name;
 
-        if (svgName.includes("/")) {
-          const nameArr = svg.name.split("/").join("-");
+        if (svgName.includes('/')) {
+          const nameArr = svg.name.split('/').join('-');
           svgName = nameArr;
         }
 
@@ -58,10 +56,8 @@ const svgExporter = async () => {
 
       await Promise.all(requests)
         .then(() => {
-          console.log(`Wait for ${waitTimeInSeconds} seconds`);
           return new Promise(function (resolve) {
             setTimeout(() => {
-              console.log(`${waitTimeInSeconds} seconds!`);
               resolve();
             }, waitTimeInSeconds * 1000);
           });

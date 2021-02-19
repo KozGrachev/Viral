@@ -54,9 +54,7 @@ export function gameStateReducer(
     case DEAL_CARDS: {
       const ap = action.payload;
       const newstate = dealCardsToNewPlayer(ap.player, ap.state)
-      console.log(
-        'reducer - deal cards', newstate
-      )
+      
       return { ...newstate, received: false }
     }
     case START_GAME: {

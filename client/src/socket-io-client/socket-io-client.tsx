@@ -18,7 +18,7 @@ export const joinRoom = (player: typeof Player) => {
 
 
 socket.on('joinConfirmation', (message: string) => {
-  console.log(message); 
+
 
 });
 
@@ -35,7 +35,6 @@ store.subscribe(() => {
 
 
 socket.on('updatedState', (newState: Gamestate) => {
-  console.log('newstate from client - always check this ', newState)
   newState.received = true;
   store.dispatch(updateGameState(newState))
 })
