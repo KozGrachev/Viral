@@ -39,6 +39,7 @@ The MVP of the game (featured screenshots), including design of all assets, was 
 - [Express](https://expressjs.com/)
 - [Redis](https://redis.io/)
 - [Docker](https://www.docker.com/)
+- [Heroku](https://dashboard.heroku.com)
 
 ## Future Tasks 🚧
 
