@@ -374,15 +374,17 @@ export function outbreak(outbreak_source: Source, oldState: Gamestate, from:stri
   for (const connection of connections) {
     for (const source of oldState.sources) {
       if (source.name === connection) {
-        let key = `markers_${outbreak_source.misinfoType}`
+        let key1 = `markers_${outbreak_source.misinfoType}`
+        let key2 = outbreak_source.misinfoType
         console.log('source we outbreak to',source)
         console.log('source we outbreak from',outbreak_source)
-        if (typeCheck(key))
-          if (source[key] === 3 && source.name!==from) {
+        if (typeCheck(key1))
+          if (source[key1] === 3 && source.name!==from) {
             oldState = outbreak(source, oldState,outbreak_source.name)
           }
           else {
-            source[key]++
+            source[key1]++
+            oldState.misinformation[key2].markersLeft--
             didLose(oldState)
           }
 
