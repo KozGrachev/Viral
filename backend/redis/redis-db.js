@@ -44,7 +44,6 @@ var util_1 = require('util');
 var redis_1 = __importDefault(require('redis'));
 var dotenv_1 = __importDefault(require('dotenv'));
 dotenv_1.default.config({ path: __dirname + '../.env' });
-// // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 var PORT = Number(process.env.DB_PORT);
 var HOST = process.env.DB_HOST;
 var client;
@@ -64,7 +63,6 @@ client.on('ready', function () {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars 
 var redisGetAsync = util_1.promisify(client.get).bind(client);
 var redisKEYSAsync = util_1.promisify(client.KEYS).bind(client);
-// const redisDelAsync = promisify(client.del).bind(client);
 var setState = function (room, state) {
   var json = JSON.stringify(state);
   client.set(room, json);
@@ -110,7 +108,6 @@ var getState = function (room) { return __awaiter(void 0, void 0, void 0, functi
   });
 }); };
 exports.getState = getState;
-// get all games saved room:Game list returns as an array of strings 
 var getGames = function (patern) { return __awaiter(void 0, void 0, void 0, function () {
   var games;
   return __generator(this, function (_a) {
@@ -125,7 +122,3 @@ var getGames = function (patern) { return __awaiter(void 0, void 0, void 0, func
   });
 }); };
 exports.getGames = getGames;
-// export const deleteGame = async (room: string): Promise<string> => {
-//   await redisDelAsync(room).then(data => data);
-//   return `${room} successfully deleted`;
-// };

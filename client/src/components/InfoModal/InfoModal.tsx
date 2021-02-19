@@ -1,14 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './InfoModal.scss';
 
-
 export const InfoModal: React.FC = () => {
-
-
-  const onClose = () => {
-
-  };
-
   return (
 
     <div className='modal_body'>

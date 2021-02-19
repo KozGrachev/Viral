@@ -1,14 +1,7 @@
-//? put obljects here as we use/store stuff
-
-//Time to save the world!!
-
 export interface Turn {
   player: Player;
   movesLeft: number;
-}// do we need a turn export interface to keep track of how many actions left etc?
-
-//* STATE
-
+}
 export interface Gamestate {
   sources: Source[];
   players: Player[];
@@ -43,7 +36,7 @@ export interface Player {
 }
 
 export interface Source {
-  [key: string]: any, //? see: typescript index rules
+  [key: string]: any, 
   name: string;
   misinfoType: string;
   markers_community: number;
@@ -66,7 +59,7 @@ export interface Misinformation {
 }
 
 export interface Card {
-  cardType: string; //? 'connection', 'minformation' or 'viral'
+  cardType: string;
   sourceName: string;
   misinfoType: string;
 }
@@ -74,8 +67,6 @@ export interface Card {
 export interface  ViralCard{
   cardType:string
 }
-
-//* CLIENT
 
 export interface Connection {
   name: string;

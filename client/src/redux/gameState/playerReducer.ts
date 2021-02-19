@@ -3,8 +3,6 @@ import { createPlayer } from "../../logic/setup";
 import { Player } from "../../types/gameStateTypes";
 import { ADD_PLAYER, PlayerStateActionTypes } from "./reduxTypes";
 
-
-
 let PlayerState: Player = {
   name: '',
   id: '',
@@ -15,8 +13,6 @@ let PlayerState: Player = {
   currentSource: '',
   room: '',
 }
-
-
 export function playerStateReducer(
   state = PlayerState,
   action: PlayerStateActionTypes
