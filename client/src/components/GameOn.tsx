@@ -15,21 +15,15 @@ import { ChaosMeter } from '../components/ChaosMeter/ChaosMeter'
 import { SpreadLevel } from '../components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from '../components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from '../components/SourceParent/SourceParent';
-
 import {DealCardsToNewPlayerAction} from '../redux/gameState/gameStateActions';
 import { Gamestate } from '../types/gameStateTypes';
-
 import { OtherPlayer } from './OtherPlayer/OtherPlayer';
-
 import Modal from 'react-modal';
 import { InfoModal } from './InfoModal/InfoModal';
 import './InfoModal/InfoModal.scss';
-
-
 interface Props {
   rendered: boolean
 }
-
 export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
 
   const dispatch = useDispatch();
@@ -37,7 +31,6 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
   const [modal, updateModal] = useState(false)
   const getCards = () => {
     state = store.getState().gameStateReducer
-    console.log(state, 'state from the gey cards button')
     dispatch(DealCardsToNewPlayerAction({ player, state }))
   }
 
@@ -47,15 +40,12 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
         const p = PLAYER.cards;
         const card = p[0];
         if (!card) {
-
           return true
         }
       }
     }
     return false;
   };
-
-
 
   const openModal = () => {
     updateModal(true)
@@ -85,16 +75,11 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
               <PlayerPrompt state={state} />
             </div>
             <div className="board-container">
-              <div id="game-board">
-               
+              <div id="game-board">        
                 <ConnectionsWithFrame className="connections-overlay" />
-                <SourceParent />
-               
+                <SourceParent />          
                 <OtherPlayer />
-             
-
               </div>
-         
               <SourceDeck />
               <MisinformationDeck />
               <MarkersStore />
