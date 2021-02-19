@@ -14,7 +14,7 @@ const spreadLevel = useSelector((state:RootState) => state.gameStateReducer.spre
       {spreadLevelArray.map((spreadLevelCircleNumber, index) => {
         (index === spreadLevel) ? isActiveToggle = "isActive" : isActiveToggle = "isPassive"
         return (
-          <div className={`spread-level-circle ${isActiveToggle}`} >{spreadLevelCircleNumber}</div>
+          <div className={`spread-level-circle ${isActiveToggle}`} key={index} >{spreadLevelCircleNumber}</div>
         )
       })}
     </div>
