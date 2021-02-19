@@ -109,7 +109,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
     }
 
     if (test.length > 0) return test.map(player => {
-      return <PlayerPawn color={player.pawnColor} />
+      return <PlayerPawn color={player.pawnColor} key={player.id} />
     })
     else return null
 
