@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/gameState/store';
+import React, { useState } from 'react';
 import { SourceCard } from '../SourceCard/SourceCard';
 import { Card } from '../../types/gameStateTypes';
 import ReactModal from 'react-modal';

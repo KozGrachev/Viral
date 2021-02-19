@@ -13,7 +13,6 @@ export const joinRoom = (player: typeof Player) => {
 }
 socket.on('joinConfirmation', (message: string) => {
   console.log(message);
-
 });
 
 store.subscribe(() => {
@@ -32,7 +31,6 @@ socket.on('updatedState', (newState: Gamestate) => {
 
 export const getGame = (player: typeof Player) => {
   player && socket.emit('retriveGame', player)
-
 }
 
 export const getGames = () => {
@@ -44,5 +42,4 @@ export const getGames = () => {
   ))
 }
 getGames();
-
 socket.on('userLeft', (message: string) => console.log(message)) 
