@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SourceCard } from '../SourceCard/SourceCard';
 import { Card } from '../../types/gameStateTypes';
 import ReactModal from 'react-modal';
@@ -35,6 +35,12 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
   }) as CardWithId[]
 
   const [fakeCardsWithId, setfakeCardsWithId] = useState(fakeCardsWithIdInit)
+
+  useEffect(() => {
+
+  }, [pickedCards])
+
+
 
   function uid(rounds: number = 1) {
     let uid = '';
