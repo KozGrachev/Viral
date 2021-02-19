@@ -4,21 +4,20 @@ import * as dotenv from 'dotenv';
 import { store } from '../redux/gameState/store'
 import { GetAllGamesAction, updateGameState } from "../redux/gameState/gameStateActions";
 import { Gamestate } from "../types/gameStateTypes";
-
 dotenv.config({ path: __dirname + '../.env' });
-const socket = io();
 
+const socket = process.env.NODE_ENV === 'production' ? io() : io('http://localhost:3002')
 
 const Player = store.getState().playerStateReducer
 
- 
+
 export const joinRoom = (player: typeof Player) => {
   socket.emit('joinRoom', player);
 }
 
 
 socket.on('joinConfirmation', (message: string) => {
-  console.log(message); 
+  console.log(message);
 
 });
 
