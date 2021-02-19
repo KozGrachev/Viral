@@ -11,7 +11,7 @@ export const CardHand: React.FC = () => {
   const renderCards = (cardArray: SourceCardType[]) => {
     return cardArray.map(card => {
       if(card.cardType !=='viral' ) {
-        return <SourceCard name={card.sourceName} category={card.misinfoType} canShare={[]} />
+        return <SourceCard name={card.sourceName} key={card.sourceName} category={card.misinfoType} canShare={[]} />
       }  else {
         <h1> this is a viral card you are trying you are passing </h1>
       }
