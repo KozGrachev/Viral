@@ -1,4 +1,4 @@
-# VIRAL
+# [VIRAL](http://www.viralgame.co/)
 ### A game where you can stop a deadly pandemic of misinformation. 
 
 <code><img height="200" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/logo.png"></code> 
