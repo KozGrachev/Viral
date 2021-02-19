@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/gameState/store';
+import React, { useState } from 'react';
 import { SourceCard } from '../SourceCard/SourceCard';
 import { Card } from '../../types/gameStateTypes';
 import ReactModal from 'react-modal';
-
-//TODO
-
-
 
 const customStyles = {
   content: {
@@ -19,8 +13,6 @@ const customStyles = {
     transform: 'translate(-50%, -50%)'
   }
 };
-
-
 interface ModalProps {
   modalIsOpen: boolean,
   closeModal: Function,
@@ -29,17 +21,10 @@ interface ModalProps {
 
 interface CardWithId extends Card {
   id: string
-
 }
 
 export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards, }: ModalProps) {
-  const playerId = useSelector((state: RootState) => state.playerStateReducer.id)
-
-  const players = useSelector((state: RootState) => state.gameStateReducer.players)
-
   const [pickedCards, setpickedCards] = useState<CardWithId[]>([])
-
-
   const fakeCards: Card[] = [{ cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" },
   { cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" },
   { cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" }]
@@ -51,12 +36,6 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
 
   const [fakeCardsWithId, setfakeCardsWithId] = useState(fakeCardsWithIdInit)
 
-
-  useEffect(() => {
-
-  }, [pickedCards])
-
-
   function uid(rounds: number = 1) {
     let uid = '';
     while (rounds > 0) {
@@ -65,10 +44,7 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
     }
     return uid;
   }
-
-
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
   }
 
   function sendcloseModal(e: any) {
@@ -89,24 +65,15 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
     if (!div.classList.contains('selected')) {
       div.classList.add('selected')
       setpickedCards(prev => [...prev, fakeCard])
-
     } else {
       div.classList.remove('selected')
-
       const filtered = pickedCards.filter(card => card.id !== fakeCard.id)
-
       setpickedCards(filtered)
     }
-
-
-
-
-
   }
 
   return (
     <div>
-
       <ReactModal
         ariaHideApp={false}
         isOpen={modalIsOpen}
@@ -119,16 +86,11 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
         {pickedCards.map((pickedCard, index) => <div style={{ height: 50, borderWidth: 'solid' }} key={index}
           onClick={(e) => clickOnCard(e, pickedCard)}>
           <SourceCard name={pickedCard.sourceName} category={pickedCard.cardType} canShare={[]} />
-
         </div>)}
-
         <div style={{ border: "1px solid black" }}></div>
-
-
         {fakeCardsWithId.map((fakeCard, index) => <div style={{ height: 50, borderWidth: 'solid' }} key={index}
           onClick={(e) => clickOnCard(e, fakeCard)}>
           <SourceCard name={fakeCard.sourceName} category={fakeCard.cardType} canShare={[]} />
-
         </div>)}
         <button onClick={sendcloseModal}>Send</button>
       </ReactModal>

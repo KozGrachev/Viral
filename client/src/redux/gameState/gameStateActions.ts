@@ -1,7 +1,6 @@
 import { ClearmisinfoProps, CLEAR_MISINFO, DebunkMisinfoProps, DEBUNK_MISINFO, discardCardProps, DISCARD_ACTION, logOnOffProps, LOG_ON_OFF, MoveActionProps, MOVE_ACTION, ShareCardProps, SHARE_CARD, UPDATE_GAME_STATE, GameStateActionTypes, PlayerStateActionTypes, ADD_PLAYER, GET_ALL_GAMES, AllGamesActionTypes, START_GAME, ADD_PLAYER_TO_GAME, DEAL_CARDS, dealCardsProp } from './reduxTypes';
 import { Gamestate, Player, } from '../../types/gameStateTypes'
 
-
 export function moveAction(props: MoveActionProps): GameStateActionTypes {
   const { oldState, currentPlayerID, location } = props
   return {
@@ -9,9 +8,6 @@ export function moveAction(props: MoveActionProps): GameStateActionTypes {
     payload: { oldState, currentPlayerID, location }
   }
 }
-
-
-
 export function clearMisinfoAction(props: ClearmisinfoProps): GameStateActionTypes {
   const { oldState, currentPlayerID, location, misinfoType } = props;
   return {
@@ -19,8 +15,6 @@ export function clearMisinfoAction(props: ClearmisinfoProps): GameStateActionTyp
     payload: { oldState, currentPlayerID, location, misinfoType }
   }
 }
-
-
 export function shareCardAction(props: ShareCardProps): GameStateActionTypes {
   const { oldState, currentPlayerID, recipient, sharedCard } = props;
   return {
@@ -72,23 +66,18 @@ export function GetAllGamesAction(array: string[]): AllGamesActionTypes {
     payload: array
   }
 }
-
-
 export function StartGameAction(players: Player[]): GameStateActionTypes {
   return {
     type: START_GAME,
     payload: players
   }
 }
-
 export function addPlayerToGameState(player: Player): GameStateActionTypes {
   return {
     type: ADD_PLAYER_TO_GAME,
     payload: { player }
   }
 }
-
-
 export function DealCardsToNewPlayerAction(props: dealCardsProp): GameStateActionTypes {
   const { player, state } = props;
   return {

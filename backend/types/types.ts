@@ -1,21 +1,14 @@
-//? put obljects here as we use/store stuff
-
-//Time to save the world!!
-
 export interface Turn {
   player: Player;
   movesLeft: number;
-}// do we need a turn export interface to keep track of how many actions left etc?
-
-//* STATE
-
+}
 export interface Gamestate {
   sources: Source[];
   players: Player[];
-  spreadLevel: number; // 0,1,2 or 3
+  spreadLevel: number;
   chaosMeter: number;
   misinformation: {
-    [key: string]: Misinformation, //? see: typescript index rules
+    [key: string]: Misinformation, 
     community: Misinformation,
     social: Misinformation,
     relations: Misinformation
@@ -43,7 +36,7 @@ export interface Player {
 
 export interface Source {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any, //? see: typescript index rules
+  [key: string]: any;
   name: string;
   misinfoType: string;
   markers_community: number;
@@ -65,19 +58,31 @@ export interface Misinformation {
   markersLeft: number;
 }
 
-
 export interface Card {
-
-  cardType: string; //? 'connection', 'minformation' or 'viral'
-
+  cardType: string;
   sourceName: string | null;
   misinfoType: string | null;
 }
-
-//* CLIENT
-
 export interface Connection {
   name: string;
   connections: string[];
   category: string;
+}
+
+export interface Socket {
+  id: string
+  name: string
+  room: string
+}
+export interface IUser {
+  name: string;
+  id: string;
+  room: string;
+}
+
+export interface Card {
+
+  cardType: string;
+  sourceName: string | null;
+  misinfoType: string | null;
 }

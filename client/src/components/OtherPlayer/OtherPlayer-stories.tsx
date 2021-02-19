@@ -38,8 +38,6 @@ for (let i = 0; i < 20; i++) {
   const r1 = Math.floor(Math.random() * (connections.length - 1));
 }
 
-
-
 export const StoryName2 = Template.bind({});
 StoryName2.args = {
   player: {

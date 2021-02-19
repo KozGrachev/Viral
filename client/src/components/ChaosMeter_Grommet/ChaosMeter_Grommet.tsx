@@ -4,11 +4,8 @@ import { Grommet, Box, Meter, Stack, Text } from 'grommet';
 import { RootState} from '../../redux/gameState/store';
 
 export const ChaosMeterGrommet = () => {
-
   const chaos=useSelector((state:RootState)=>state.gameStateReducer.chaosMeter)
   return (
-    
-    
     <Grommet >
       <Box
         align="end"
@@ -39,6 +36,5 @@ export const ChaosMeterGrommet = () => {
         </Stack>
       </Box>
     </Grommet>
-    
   );
 };

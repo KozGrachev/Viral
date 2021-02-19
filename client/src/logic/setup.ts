@@ -2,7 +2,6 @@ import { Gamestate, Card, ViralCard, Source, Player } from '../types/gameStateTy
 import { startGame, dealMisinfoCard, dealConnectionCard, shuffle } from './moves'
 import { connections as sources } from './connections'
 
-
 export function didWin(state: Gamestate) {
   if (state.misinformation.community.debunked === true &&
     state.misinformation.social.debunked === true &&
@@ -12,9 +11,7 @@ export function didWin(state: Gamestate) {
 }
 
 export function didLose(state: Gamestate) {
-
   if (state.chaosMeter === 4) {
-  
     return true
   }
   if (
@@ -22,7 +19,6 @@ export function didLose(state: Gamestate) {
     state.misinformation.social.markersLeft === 0 ||
     state.misinformation.relations.markersLeft === 0
   ) {
-    
     return true
   }
   if (state.connectionDeck.length === 0) {
@@ -31,7 +27,6 @@ export function didLose(state: Gamestate) {
   }
   return false
 }
-
 export function createConnectionDeck() {
   let deck: Card[] = [];
   for (const source of sources) {
@@ -39,7 +34,6 @@ export function createConnectionDeck() {
   }
   return deck;
 }
-
 export function createMisinformationDeck() {
   let deck: Card[] = [];
   for (const source of sources) {
@@ -47,7 +41,6 @@ export function createMisinformationDeck() {
   }
   return deck;
 }
-
 export function createSources() {
   let array: Source[] = [];
   for (const source of sources) {
@@ -69,8 +62,6 @@ export function createSources() {
   }
   return array
 }
-
-
 export function playerOrder(oldState: Gamestate) { //! where to put this?
   let players = oldState.players
   let newPlayers = shuffle(players)
@@ -78,13 +69,8 @@ export function playerOrder(oldState: Gamestate) { //! where to put this?
   let newState = { ...oldState, newPlayers }
   return newState
 }
-
-
-
 export function insertViralCards(oldState: Gamestate) {
-  
   let oldDeck = oldState.connectionDeck
-
   const viral1: ViralCard = { cardType: "viral" }
   const viral2: ViralCard = { cardType: "viral" }
   const viral3: ViralCard = { cardType: "viral" }
@@ -99,14 +85,11 @@ export function insertViralCards(oldState: Gamestate) {
   first = shuffle(first)
   second = shuffle(second)
   third = shuffle(third)
-
   let connectionDeck = [...first, ...second, ...third]
-
   let newState = { ...oldState, connectionDeck }
   return newState
 
 }
-
 export function typeCheck(string: string) {
   if (
     string === 'social' ||
@@ -119,14 +102,10 @@ export function typeCheck(string: string) {
   else return false
 }
 
-
 export function viralCheck(object: any): object is ViralCard {
   return false
 }
-
-
 export function createPlayer(name: string, color: string, room: string) {
-
   let random = Math.floor(Math.random() * 100000)
   const player = {
     name,
@@ -139,10 +118,9 @@ export function createPlayer(name: string, color: string, room: string) {
     room: room
   }
   return player
-
 }
 
-export function dealConnectionCard2(player: Player, oldState: Gamestate) {
+export function dealConnectionCardToOtherPlayer(player: Player, oldState: Gamestate) {
   let newCard: Card | ViralCard = oldState.connectionDeck[0]
 
   if (newCard.cardType === 'viral') {
@@ -151,8 +129,6 @@ export function dealConnectionCard2(player: Player, oldState: Gamestate) {
     newCard = oldState.connectionDeck[0]
     oldState.connectionDeck.shift()
   }
-  
-
   for (const Player of oldState.players) {
     if (Player.id === player.id) {
       if (!viralCheck(newCard)) {
@@ -165,27 +141,19 @@ export function dealConnectionCard2(player: Player, oldState: Gamestate) {
   return state;
 }
 export function dealCardsToNewPlayer(player: Player, state: Gamestate) {
-  
   let updatedState: any;
   let cards = 3
   while (cards > 0) {
-    
-    updatedState = dealConnectionCard2(player, state)
+    updatedState = dealConnectionCardToOtherPlayer(player, state)
     cards--
   }
   return { ...updatedState }
 }
-
 export function setUp(players: Player[]) {
-
-
-
-
   let cards;
   let misinfo = 6;
   let index = 0;
   let weights = [3, 3, 2, 2, 1, 1]
-
   const sources = createSources()
   const spreadLevel = 0;
   const chaosMeter = 0;
@@ -221,12 +189,9 @@ export function setUp(players: Player[]) {
     received,
     gameOn
   }
-
   if (state.players.length > 0) cards = 3;
   else cards = 3
-
   for (let i = 0; i < state.players.length; i++) { //* deal connection cards to players before inserting viral cards
-
     while (cards > 0) {
       state = dealConnectionCard(state)
       cards--
@@ -235,26 +200,19 @@ export function setUp(players: Player[]) {
     if (i !== state.players.length - 1) state.players[i + 1].isCurrent = true;
     else state.players[0].isCurrent = true;
   }
-
   let updateState = insertViralCards({ ...state, connectionDeck: withoutViral })
-
-
   while (misinfo > 0) {
     let weight = weights[index]
     updateState = dealMisinfoCard(updateState, weight, false)!
     index++
     misinfo--
   }
-
   updateState = startGame(updateState)
-  
-
   let newState = { ...updateState }
   return newState
 }
 
 export function addPlayerToGame(player: Player, oldState: Gamestate) {
-
   oldState.players.push(player)
   let newState = { ...oldState }
   return newState;
