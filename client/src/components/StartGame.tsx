@@ -18,11 +18,11 @@ export const StartGame: React.FC = (): JSX.Element => {
 
   let state = useSelector((state: RootState) => state.gameStateReducer)
 
-  const startGame = (player: Player) => {
+  const startGame = async (player: Player) => {
     if (!stateRendered) {
       joinRoom(player)
       if (allRooms.filter(room => room === player.room).length > 0) {
-        getGame(player);
+        await getGame(player);
         updateStateRendered(true)
       } else {
         dispatch(StartGameAction([player]))
