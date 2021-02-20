@@ -32,7 +32,7 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
     return card
   }) as CardWithId[]
 
-  const [fakeCardsWithId, setfakeCardsWithId] = useState(debunkableCardsWithIdInit)
+  const [debunkableCardsWithId, setDebunkableCardsWithId] = useState(debunkableCardsWithIdInit)
 
   function uid(rounds: number = 1) {
     let uid = '';
@@ -43,6 +43,7 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
     return uid;
   }
   function afterOpenModal() { //? whats this intended for?
+    // console.log('%c modal open...', 'background-color: lightblue')
   }
 
   function sendcloseModal(e: any) {
@@ -57,15 +58,15 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
     closeModal()
   }
 
-  const clickOnCard = (e: React.MouseEvent<HTMLElement>, fakeCard: CardWithId) => {
-    let div = e.target as HTMLInputElement;
+  const clickOnCard = (e: React.MouseEvent<HTMLElement>, card: CardWithId) => {
+    let div = e.target as HTMLInputElement; //! this is a different target depending on whether the icon, text, or containing div are clicked
 
-    if (!div.classList.contains('selected')) {
-      div.classList.add('selected')               //? reason for card duplication?
-      setpickedCards(prev => [...pickedCards, fakeCard])
+    if (!div.classList.contains('selectedDebunkableCard')) {
+      div.classList.add('selectedDebunkableCard')
+      setpickedCards(prev => [...pickedCards, card])
     } else {
-      div.classList.remove('selected')
-      const filtered = pickedCards.filter(card => card.id !== fakeCard.id)
+      div.classList.remove('selectedDebunkableCard')
+      const filtered = pickedCards.filter(pickedCard => pickedCard.id !== card.id)
       setpickedCards(filtered)
     }
   }
@@ -80,18 +81,13 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
         style={customStyles}
         contentLabel="Example Modal"
       >
-
-        {pickedCards.map((pickedCard, index) => <div style={{ height: 50, borderWidth: 'solid', borderColor: 'red', backgroundColor: 'red', margin: '20px' }} key={index} >
-          <SourceCard name={pickedCard.sourceName} category={pickedCard.cardType} canShare={[]} />
-        </div>)}
-        <div style={{ border: "1px solid black", margin: '20px' }}></div>
-        {fakeCardsWithId.map((fakeCard, index) => <div style={{ height: 50, borderWidth: 'solid', margin: '20px' }} key={index}
-          onClick={(e) => clickOnCard(e, fakeCard)}>
-          <SourceCard name={fakeCard.sourceName} category={fakeCard.cardType} canShare={[]} />
-        </div>)}
+        {debunkableCardsWithId.map((card, index) => <div style={{ height: 50, borderWidth: 'solid', margin: '20px' }} key={index}
+            onClick={(e) => clickOnCard(e, card)}>
+            <SourceCard name={card.sourceName} category={card.cardType} canShare={[]} />
+          </div>)}
         {pickedCards.length === 4 ? 
-          <button onClick={sendcloseModal}>Debunk {fakeCardsWithId[0].misinfoType}</button> :
-          <div>Select 4 cards to debunk {fakeCardsWithId[0].misinfoType}...</div>
+          <button onClick={sendcloseModal}>Debunk {debunkableCardsWithId[0].misinfoType}</button> :
+          <div>Select 4 cards to debunk {debunkableCardsWithId[0].misinfoType}...</div>
         }
       </ReactModal>
     </div>
