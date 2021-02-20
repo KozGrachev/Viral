@@ -51,7 +51,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
     if (canDebunk.includes(category)) {
 
-      const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${'3'}`))
+      const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${'3'}`)) //TODO this should be a seperate icon for debunking each relevant misinfo, here its defaulting to '3' as no svg available
       return (<div onClick={() => debunkMisinforamtion(category)}><DebunkableIcon /></div>)
 
     }

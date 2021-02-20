@@ -89,7 +89,10 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
           onClick={(e) => clickOnCard(e, fakeCard)}>
           <SourceCard name={fakeCard.sourceName} category={fakeCard.cardType} canShare={[]} />
         </div>)}
-        <button onClick={sendcloseModal}>Send</button>
+        {pickedCards.length === 4 ? 
+          <button onClick={sendcloseModal}>Debunk {fakeCardsWithId[0].misinfoType}</button> :
+          <div>Select 4 cards to debunk {fakeCardsWithId[0].misinfoType}...</div>
+        }
       </ReactModal>
     </div>
   );
