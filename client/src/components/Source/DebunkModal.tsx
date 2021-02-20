@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { SourceCard } from '../SourceCard/SourceCard';
 import { Card } from '../../types/gameStateTypes';
 import ReactModal from 'react-modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { debunkMisinfoAction } from '../../redux/gameState/gameStateActions';
+import { RootState } from '../../redux/gameState/store';
 
 const customStyles = {
   content: {
@@ -25,6 +28,10 @@ interface CardWithId extends Card {
 }
 
 export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards, debunkableCards }: ModalProps) {
+  const dispatch = useDispatch();
+  const gamestate = useSelector((state: RootState) => state.gameStateReducer);
+  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0]
+  
   const [pickedCards, setpickedCards] = useState<CardWithId[]>([])
 
   const debunkableCardsWithIdInit: CardWithId[] = debunkableCards.map((card) => {
@@ -54,7 +61,9 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
       return card
     }) as Card[]
 
-    setselectedDebunkCards(pickedCardsAsCard)
+    // setselectedDebunkCards(pickedCardsAsCard)
+    dispatch(debunkMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, usedCards: pickedCardsAsCard.map(pickedCard => pickedCard.sourceName), misinfoType: pickedCardsAsCard[0].misinfoType }))
+    // { oldState, currentPlayerID, usedCards, misinfoType }
     closeModal()
   }
 
@@ -81,12 +90,18 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
         style={customStyles}
         contentLabel="Example Modal"
       >
-        {debunkableCardsWithId.map((card, index) => <div style={{ height: 50, borderWidth: 'solid', margin: '20px' }} key={index}
-            onClick={(e) => clickOnCard(e, card)}>
+        {debunkableCardsWithId.map((card, index) => 
+          <div 
+            style={{ height: 50, borderWidth: 'solid', margin: '20px' }} 
+            key={index}
+            onClick={(e) => clickOnCard(e, card)}
+          >
             <SourceCard name={card.sourceName} category={card.cardType} canShare={[]} />
           </div>)}
         {pickedCards.length === 4 ? 
-          <button onClick={sendcloseModal}>Debunk {debunkableCardsWithId[0].misinfoType}</button> :
+          <button onClick={sendcloseModal}>
+            Debunk {debunkableCardsWithId[0].misinfoType}
+          </button> :
           <div>Select 4 cards to debunk {debunkableCardsWithId[0].misinfoType}...</div>
         }
       </ReactModal>
