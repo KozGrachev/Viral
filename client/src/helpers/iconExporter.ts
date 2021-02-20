@@ -123,4 +123,5 @@ export const getIcon = (name: string): React.FunctionComponent<React.SVGProps<SV
   // return youtubeIcon;
   // return svgs['youtubeIcon'];
   return svgs[name] ?? svgs.markerSocial3;  //? if the left hand side is undefined or null, return the right hand side
+  //TODO replace above with default marker when svg not found
 }

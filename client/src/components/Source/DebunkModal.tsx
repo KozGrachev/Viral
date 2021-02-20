@@ -16,18 +16,17 @@ const customStyles = {
 interface ModalProps {
   modalIsOpen: boolean,
   closeModal: Function,
-  setselectedDebunkCards: Function
+  setselectedDebunkCards: Function,
+  playerCards: Card[]
 }
 
 interface CardWithId extends Card {
   id: string
 }
 
-export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards, }: ModalProps) {
+export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards, playerCards }: ModalProps) {
   const [pickedCards, setpickedCards] = useState<CardWithId[]>([])
-  const fakeCards: Card[] = [{ cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" },
-  { cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" },
-  { cardType: "connection", sourceName: "Instagram", misinfoType: "yellow" }]
+  const fakeCards: Card[] = playerCards
 
   const fakeCardsWithIdInit: CardWithId[] = fakeCards.map((card) => {
     (card as CardWithId).id = uid()
@@ -44,7 +43,7 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
     }
     return uid;
   }
-  function afterOpenModal() {
+  function afterOpenModal() { //? whats this intended for?
   }
 
   function sendcloseModal(e: any) {
@@ -63,8 +62,8 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
     let div = e.target as HTMLInputElement;
 
     if (!div.classList.contains('selected')) {
-      div.classList.add('selected')
-      setpickedCards(prev => [...prev, fakeCard])
+      div.classList.add('selected')               //? reason for card duplication?
+      setpickedCards(prev => [...pickedCards, fakeCard])
     } else {
       div.classList.remove('selected')
       const filtered = pickedCards.filter(card => card.id !== fakeCard.id)
@@ -83,12 +82,11 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
         contentLabel="Example Modal"
       >
 
-        {pickedCards.map((pickedCard, index) => <div style={{ height: 50, borderWidth: 'solid' }} key={index}
-          onClick={(e) => clickOnCard(e, pickedCard)}>
+        {pickedCards.map((pickedCard, index) => <div style={{ height: 50, borderWidth: 'solid', borderColor: 'red', backgroundColor: 'red', margin: '20px' }} key={index} >
           <SourceCard name={pickedCard.sourceName} category={pickedCard.cardType} canShare={[]} />
         </div>)}
-        <div style={{ border: "1px solid black" }}></div>
-        {fakeCardsWithId.map((fakeCard, index) => <div style={{ height: 50, borderWidth: 'solid' }} key={index}
+        <div style={{ border: "1px solid black", margin: '20px' }}></div>
+        {fakeCardsWithId.map((fakeCard, index) => <div style={{ height: 50, borderWidth: 'solid', margin: '20px' }} key={index}
           onClick={(e) => clickOnCard(e, fakeCard)}>
           <SourceCard name={fakeCard.sourceName} category={fakeCard.cardType} canShare={[]} />
         </div>)}

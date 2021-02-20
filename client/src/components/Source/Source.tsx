@@ -75,22 +75,21 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   const debunkMisinforamtion = (category: string) => {
 
     setIsOpen(true)
-
-    setTimeout(async () => {
-      try {
-
-        dispatch(debunkMisinfoAction({
-          oldState: gamestate, currentPlayerID: currentPlayer.id,
-          misinfoType: category, usedCards: selectedDebunkCards
-        }))
-
-        alert("OK");
-      } catch (err) {
-        alert("CANCEL");
-      }
-    }, 7000);
-
-
+    
+    //? What is this used for?
+    // setTimeout(async () => {
+    //   try {
+    //     dispatch(debunkMisinfoAction({
+    //       oldState: gamestate, 
+    //       currentPlayerID: currentPlayer.id,
+    //       misinfoType: category, 
+    //       usedCards: selectedDebunkCards
+    //     }))
+    //     alert("OK");
+    //   } catch (err) {
+    //     alert("CANCEL");
+    //   }
+    // }, 7000);
   }
 
   const clearMisinformationbyOne = (misinfoType: string) => {
@@ -135,18 +134,16 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   let canLogOnClassName = canLogOn ? 'can-log-on' : ''
   let canDebunkClassName = canDebunk ? 'can-debunk' : ''
 
-  function unclickableMessage () {return null}
+  function unclickableMessage () {return null} //? whats this?
 
   const closeModal = () => {
-
     setIsOpen(false)
-
   }
 
 
   return (
     <>
-      {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} /> : null}
+      {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} playerCards={currentPlayer.cards}/> : null}
 
 
 
