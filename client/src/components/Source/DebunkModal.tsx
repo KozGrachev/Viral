@@ -17,23 +17,22 @@ interface ModalProps {
   modalIsOpen: boolean,
   closeModal: Function,
   setselectedDebunkCards: Function,
-  playerCards: Card[]
+  debunkableCards: Card[]
 }
 
 interface CardWithId extends Card {
   id: string
 }
 
-export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards, playerCards }: ModalProps) {
+export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards, debunkableCards }: ModalProps) {
   const [pickedCards, setpickedCards] = useState<CardWithId[]>([])
-  const fakeCards: Card[] = playerCards
 
-  const fakeCardsWithIdInit: CardWithId[] = fakeCards.map((card) => {
+  const debunkableCardsWithIdInit: CardWithId[] = debunkableCards.map((card) => {
     (card as CardWithId).id = uid()
     return card
   }) as CardWithId[]
 
-  const [fakeCardsWithId, setfakeCardsWithId] = useState(fakeCardsWithIdInit)
+  const [fakeCardsWithId, setfakeCardsWithId] = useState(debunkableCardsWithIdInit)
 
   function uid(rounds: number = 1) {
     let uid = '';

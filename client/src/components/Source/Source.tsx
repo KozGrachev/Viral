@@ -49,9 +49,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
-    if (num > 0 && canDebunk.includes(category)) {
+    if (canDebunk.includes(category)) {
 
-      const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
+      const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${'3'}`))
       return (<div onClick={() => debunkMisinforamtion(category)}><DebunkableIcon /></div>)
 
     }
@@ -143,7 +143,13 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   return (
     <>
-      {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} playerCards={currentPlayer.cards}/> : null}
+      {modalIsOpen ? 
+        <ModalComponent 
+          modalIsOpen={modalIsOpen} 
+          closeModal={closeModal} 
+          setselectedDebunkCards={setselectedDebunkCards} 
+          debunkableCards={currentPlayer.cards.filter(card => canDebunk.includes(card.misinfoType))}
+        /> : null}
 
 
 
