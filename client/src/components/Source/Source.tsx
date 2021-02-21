@@ -73,23 +73,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const debunkMisinforamtion = (category: string) => {
-
     setIsOpen(true)
-    
-    //? What is this used for?
-    // setTimeout(async () => {
-    //   try {
-    //     dispatch(debunkMisinfoAction({
-    //       oldState: gamestate, 
-    //       currentPlayerID: currentPlayer.id,
-    //       misinfoType: category, 
-    //       usedCards: selectedDebunkCards
-    //     }))
-    //     alert("OK");
-    //   } catch (err) {
-    //     alert("CANCEL");
-    //   }
-    // }, 7000);
   }
 
   const clearMisinformationbyOne = (misinfoType: string) => {

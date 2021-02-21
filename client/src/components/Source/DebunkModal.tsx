@@ -55,15 +55,15 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
 
   function sendcloseModal(e: any) {
     e.preventDefault()
-
     const pickedCardsAsCard: Card[] = pickedCards.map((cardWithId) => {
       const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType }
       return card
     }) as Card[]
-
-    // setselectedDebunkCards(pickedCardsAsCard)
     dispatch(debunkMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, usedCards: pickedCardsAsCard.map(pickedCard => pickedCard.sourceName), misinfoType: pickedCardsAsCard[0].misinfoType }))
-    // { oldState, currentPlayerID, usedCards, misinfoType }
+    closeModal()
+  }
+  function sendCloseModal(e: any) {
+    e.preventDefault()
     closeModal()
   }
 
@@ -86,7 +86,7 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
         ariaHideApp={false}
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
-        onRequestClose={sendcloseModal}
+        onRequestClose={sendCloseModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
