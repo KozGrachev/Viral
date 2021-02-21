@@ -25,28 +25,16 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const allPlayers = useSelector((state: RootState) => state.gameStateReducer.players)
 
-
-  const [modalIsOpen, setIsOpen] = useState(false)
-  const [selectedDebunkCards, setselectedDebunkCards] = useState([])
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   let { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
     canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
 
-
-
-  useEffect(() => {
-
-  }, [modalIsOpen])
-  useEffect(() => {
-
-  }, [selectedDebunkCards])
-
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
   const SVGIconSourceOverlay: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
-
 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
     if (canDebunk.includes(category)) {
@@ -130,8 +118,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
       {modalIsOpen ? 
         <ModalComponent 
           modalIsOpen={modalIsOpen} 
-          closeModal={closeModal} 
-          setselectedDebunkCards={setselectedDebunkCards} 
+          closeModal={closeModal}
           debunkableCards={currentPlayer.cards.filter(card => canDebunk.includes(card.misinfoType))}
         /> : null}
 

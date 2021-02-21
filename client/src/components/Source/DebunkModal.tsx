@@ -19,7 +19,6 @@ const customStyles = {
 interface ModalProps {
   modalIsOpen: boolean,
   closeModal: Function,
-  setselectedDebunkCards: Function,
   debunkableCards: Card[]
 }
 
@@ -27,7 +26,7 @@ interface CardWithId extends Card {
   id: string
 }
 
-export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards, debunkableCards }: ModalProps) {
+export function ModalComponent({ modalIsOpen, closeModal, debunkableCards }: ModalProps) {
   const dispatch = useDispatch();
   const gamestate = useSelector((state: RootState) => state.gameStateReducer);
   const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0]
@@ -48,9 +47,6 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
       rounds -= 1;
     }
     return uid;
-  }
-  function afterOpenModal() { //? whats this intended for?
-    // console.log('%c modal open...', 'background-color: lightblue')
   }
 
   function sendcloseModal(e: any) {
@@ -85,7 +81,6 @@ export function ModalComponent({ modalIsOpen, closeModal, setselectedDebunkCards
       <ReactModal
         ariaHideApp={false}
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={sendCloseModal}
         style={customStyles}
         contentLabel="Example Modal"
