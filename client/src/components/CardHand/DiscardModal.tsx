@@ -19,26 +19,32 @@ const customStyles = {
 interface ModalProps {
   modalIsOpen: boolean,
   closeModal: Function,
-  debunkableCards: Card[]
+  discardableCards: Card[]
 }
 
 interface CardWithId extends Card {
   id: string
 }
 
-export function DebunkModal({ modalIsOpen, closeModal, debunkableCards }: ModalProps) {
+export function DiscardModal({ 
+  modalIsOpen, closeModal, 
+  discardableCards }: ModalProps) {
   const dispatch = useDispatch();
   const gamestate = useSelector((state: RootState) => state.gameStateReducer);
   const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0]
   
   const [pickedCards, setpickedCards] = useState<CardWithId[]>([])
 
-  const debunkableCardsWithIdInit: CardWithId[] = debunkableCards.map((card) => {
+  const discardableCardsWithIdInit: CardWithId[] = discardableCards.map((card) => {
     (card as CardWithId).id = uid()
     return card
   }) as CardWithId[]
 
-  const [debunkableCardsWithId, setDebunkableCardsWithId] = useState(debunkableCardsWithIdInit)
+  const [discardableCardsWithId, setDiscardableCardsWithId] = useState(discardableCardsWithIdInit)
+
+  useEffect(() => {
+
+  }, [pickedCards])
 
   function uid(rounds: number = 1) {
     let uid = '';
@@ -66,13 +72,18 @@ export function DebunkModal({ modalIsOpen, closeModal, debunkableCards }: ModalP
   const clickOnCard = (e: React.MouseEvent<HTMLElement>, card: CardWithId) => {
     let div = e.currentTarget as HTMLInputElement; //! this is a different target depending on whether the icon, text, or containing div are clicked
 
-    if (!div.classList.contains('selectedDebunkableCard')) {
-      div.classList.add('selectedDebunkableCard')
-      setpickedCards(prev => [...pickedCards, card])
+    console.log('target', e.target)
+    console.log('currentTarget', e.currentTarget)
+
+    const discardModalCards = document.getElementsByClassName('discard-modal-cards');
+
+    if (!div.classList.contains('discardableCard')) {
+      div.classList.add('discardableCard')
+      setpickedCards(prev => [card])
     } else {
-      div.classList.remove('selectedDebunkableCard')
-      const filtered = pickedCards.filter(pickedCard => pickedCard.id !== card.id)
-      setpickedCards(filtered)
+      div.classList.remove('discardableCard')
+      // const filtered = pickedCards.filter(pickedCard => pickedCard.id !== card.id)
+      setpickedCards([])
     }
   }
 
@@ -85,19 +96,22 @@ export function DebunkModal({ modalIsOpen, closeModal, debunkableCards }: ModalP
         style={customStyles}
         contentLabel="Example Modal"
       >
-        {debunkableCardsWithId.map((card, index) => 
+        
+
+        {discardableCardsWithId.map((card, index) => 
           <div 
             style={{ height: 50, borderWidth: 'solid', margin: '20px' }} 
             key={index}
             onClick={(e) => clickOnCard(e, card)}
+            className={'discard-modal-card'}
           >
             <SourceCard name={card.sourceName} category={card.cardType} canShare={[]} />
           </div>)}
-        {pickedCards.length === 4 ? 
+        {pickedCards.length === 1 ? 
           <button onClick={sendcloseModal}>
-            Debunk {debunkableCardsWithId[0].misinfoType}
+            Discard this card
           </button> :
-          <div>Select 4 cards to debunk {debunkableCardsWithId[0].misinfoType}...</div>
+          <div>you have {discardableCards.length} cards. Please discard one...</div>
         }
       </ReactModal>
     </div>

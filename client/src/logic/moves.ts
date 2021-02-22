@@ -262,16 +262,28 @@ export function updatePossibleActions(oldState: Gamestate, currentPlayerID: Play
 
 export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'], noOfCards: number): Gamestate {
   // deal connection cards
- 
+  const playerIndex = oldState.players
+  .map((player) => player.id)
+  .indexOf(currentPlayerID);
+
   let cardsLeft = noOfCards;
-
   let newState: Gamestate = oldState;
-  while (cardsLeft > 0) {
 
+  while (cardsLeft > 0) {
     didLose(newState)
-    
     newState = dealConnectionCard(newState);
-    
+    if (newState.players[playerIndex].cards.length > 6) {
+      console.log('your hand is full, you need to discard a card');
+      return {
+        ...newState,
+        players: newState.players
+          .map((player) => player.id === currentPlayerID ?
+            { ...player, cardHandOverflow: true } :
+            player
+          ),
+        dealHistory: cardsLeft - 1,
+      } // exits function here
+    }
     cardsLeft--;
   }
   //? do we need to put breaks here, and how, for the front end to update or show when a card has been dealt?
@@ -280,12 +292,9 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   let misinfoCardNo = [2, 2, 3, 4][newState.spreadLevel];
   while (misinfoCardNo > 0) {
     newState = dealMisinfoCard(newState, 1, false)!
-    
     didLose(newState)
-     
     misinfoCardNo--
   }
- 
   return nextTurn(newState, currentPlayerID)
 }
 

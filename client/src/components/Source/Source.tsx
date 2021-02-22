@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearMisinfoAction, debunkMisinfoAction, moveAction, logOnOffAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
-import { ModalComponent } from './DebunkModal';
+import { DebunkModal } from './DebunkModal';
 
 
 
@@ -116,7 +116,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   return (
     <>
       {modalIsOpen ? 
-        <ModalComponent 
+        <DebunkModal 
           modalIsOpen={modalIsOpen} 
           closeModal={closeModal}
           debunkableCards={currentPlayer.cards.filter(card => canDebunk.includes(card.misinfoType))}
