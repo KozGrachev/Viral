@@ -1,8 +1,9 @@
 @import '../../style/theme.scss';
+@import '../../style/variables.scss';
 
 .player_pawn {
-  height: 30px;
-  width: 30px;
+  // width: $size-ratio;
+  // height: $size-ratio;
   background-color: none;
   border-radius: 50%;
   border: solid;
@@ -35,9 +36,7 @@
 }
 
 
-.gameboard {
-  display: grid;
-  grid-template-columns: repeat()
-}
-
-
+// .gameboard {
+//   display: grid;
+//   grid-template-columns: repeat()
+// }

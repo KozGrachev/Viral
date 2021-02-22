@@ -1,13 +1,13 @@
 @import '../../style/variables.scss';
 
-$source-icon-size: $width-ratio * 0.7;
+$source-icon-size: $size-ratio * 0.4;
 
 .source-container {
   position: relative;
   height: $source-icon-size;
   width: $source-icon-size;
 
-  > svg {
+  >svg {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -17,26 +17,32 @@ $source-icon-size: $width-ratio * 0.7;
     position: absolute;
     left: -50%;
     top: -45%;
+    width: 10px;
+    height: 10px;
     display: grid;
+
     svg {
       position: relative;
+      width: $size-ratio*0.4;
+      height: $size-ratio*0.4;
     }
   }
 
   .markers-container {
     position: absolute;
-    width: 200%;
+    width: $size-ratio*0.3;
+    height: $size-ratio*0.3;
     left: 50%;
-    top: -45%;
+    top: -20%;
     display: flex;
   }
 }
 
-.size2 {
+.medium-marker {
   transform: scale(1.5);
 }
 
-.size3 {
+.large-marker {
   transform: scale(1.8);
 }
 

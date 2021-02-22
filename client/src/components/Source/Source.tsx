@@ -46,17 +46,17 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
 
     if (num > 0 && canBeCleared) {
-      
+
       const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
-      
+
 
       return (<div onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></div>)
 
     }
     if (num > 0) {
-     
+
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
-      return <Icon className={`size${num}`} />;
+      return <Icon className={`${num === 1 ? 'small' : num === 2 ? 'medium' : num === 3 ? 'large' : ''}-marker`} />;
     }
   }
 
@@ -65,7 +65,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const clearMisinformationbyOne = (misinfoType: string) => {
-   
+
     dispatch(clearMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, misinfoType, location: source.name }))
   }
 
@@ -115,9 +115,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   return (
     <>
-      {modalIsOpen ? 
-        <ModalComponent 
-          modalIsOpen={modalIsOpen} 
+      {modalIsOpen ?
+        <ModalComponent
+          modalIsOpen={modalIsOpen}
           closeModal={closeModal}
           debunkableCards={currentPlayer.cards.filter(card => canDebunk.includes(card.misinfoType))}
         /> : null}
