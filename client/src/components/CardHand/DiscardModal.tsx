@@ -3,7 +3,7 @@ import { SourceCard } from '../SourceCard/SourceCard';
 import { Card } from '../../types/gameStateTypes';
 import ReactModal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { debunkMisinfoAction } from '../../redux/gameState/gameStateActions';
+import { discardCardAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
 
 const customStyles = {
@@ -61,7 +61,10 @@ export function DiscardModal({
       const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType }
       return card
     }) as Card[]
-    dispatch(debunkMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, usedCards: pickedCardsAsCard.map(pickedCard => pickedCard.sourceName), misinfoType: pickedCardsAsCard[0].misinfoType }))
+    dispatch(discardCardAction({ 
+      oldState: gamestate, 
+      currentPlayerID: currentPlayer.id, 
+      discardedCard: pickedCardsAsCard[0].sourceName }))
     closeModal()
   }
   function sendCloseModal(e: any) {
@@ -71,18 +74,17 @@ export function DiscardModal({
 
   const clickOnCard = (e: React.MouseEvent<HTMLElement>, card: CardWithId) => {
     let div = e.currentTarget as HTMLInputElement; //! this is a different target depending on whether the icon, text, or containing div are clicked
-
-    console.log('target', e.target)
-    console.log('currentTarget', e.currentTarget)
-
-    const discardModalCards = document.getElementsByClassName('discard-modal-cards');
+    const discardModalCards = document.getElementsByClassName('discard-modal-card');
 
     if (!div.classList.contains('discardableCard')) {
+      for (let i = 0; i < discardModalCards.length; i++) {
+        console.log('card:',discardModalCards[i])
+        discardModalCards[i].classList.remove('discardableCard')
+      }
       div.classList.add('discardableCard')
       setpickedCards(prev => [card])
     } else {
       div.classList.remove('discardableCard')
-      // const filtered = pickedCards.filter(pickedCard => pickedCard.id !== card.id)
       setpickedCards([])
     }
   }
@@ -103,9 +105,13 @@ export function DiscardModal({
             style={{ height: 50, borderWidth: 'solid', margin: '20px' }} 
             key={index}
             onClick={(e) => clickOnCard(e, card)}
-            className={'discard-modal-card'}
+            className={'discard-modal-card'} 
           >
-            <SourceCard name={card.sourceName} category={card.cardType} canShare={[]} />
+            <SourceCard 
+              name={card.sourceName} 
+              category={card.cardType} 
+              canShare={[]}
+            />
           </div>)}
         {pickedCards.length === 1 ? 
           <button onClick={sendcloseModal}>

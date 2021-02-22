@@ -55,7 +55,11 @@ export function DebunkModal({ modalIsOpen, closeModal, debunkableCards }: ModalP
       const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType }
       return card
     }) as Card[]
-    dispatch(debunkMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, usedCards: pickedCardsAsCard.map(pickedCard => pickedCard.sourceName), misinfoType: pickedCardsAsCard[0].misinfoType }))
+    dispatch(debunkMisinfoAction({ 
+      oldState: gamestate, 
+      currentPlayerID: currentPlayer.id, 
+      usedCards: pickedCardsAsCard.map(pickedCard => pickedCard.sourceName), 
+      misinfoType: pickedCardsAsCard[0].misinfoType }))
     closeModal()
   }
   function sendCloseModal(e: any) {

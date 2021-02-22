@@ -46,8 +46,6 @@ export const CardHand: React.FC = () => {
           discardableCards={cards}
         /> : null}
       <div className="source-card-hand">
-        <button onClick={openModal}>Open Modal</button>
-        <div>{cardHandOverflow + ''}</div>
         {renderCards(cards)}
       </div>
     </>

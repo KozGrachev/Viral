@@ -358,6 +358,7 @@ export function discardCard(oldState: Gamestate, currentPlayerID: Player['id'], 
       ),
   };
   //? calling boardActions with newState.dealHistory will decrement the amount of connection cards to be dealt, allowing the function to continue where it left off
+  console.log('deal history:', newState.dealHistory)
   return boardActions(newState, currentPlayerID, newState.dealHistory)
 }
 
