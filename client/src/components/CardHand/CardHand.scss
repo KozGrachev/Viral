@@ -1,16 +1,17 @@
 @import '../../style/theme';
+@import '../../style/variables.scss';
 
 .source-card-hand {
   @include scroll-panel;
   width: 100%;
-  height: 500px;
+  height: 50vh;
   grid-template-rows: repeat(auto-fill, auto);
   grid-template-columns: 500px;
 }
 
 .source-card-cell {
   width: 100%;
-  height: 100px;
+  // height: $size-ratio;
   border: 3px solid rgb(136, 255, 0);
 }
 
