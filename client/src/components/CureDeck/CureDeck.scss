@@ -1,10 +1,11 @@
 @import '../../style/theme';
-
+@import '../../style/variables';
+$cure-deck-font: $size-ratio*0.4;
 
 .cure-deck-container {
   display: flex;
   flex-direction: column;
-  height: 35%;
+  height: $size-ratio * 3;
   width: 55%;
   right: 0;
   bottom: 0;
@@ -23,16 +24,16 @@
 
   &.community{
     background-color: #00BBF9;
-    font-size: 32px;
+    font-size: $cure-deck-font;
   }
 
   &.relations{
-    font-size: 32px;
+    font-size: $cure-deck-font;
     background-color: #FEE440;
   }
 
   &.social{
-    font-size: 32px;
+    font-size: $cure-deck-font;
     background-color: #F15BB5;
   }
 

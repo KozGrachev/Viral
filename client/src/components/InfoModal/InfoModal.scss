@@ -1,5 +1,5 @@
-
 @import '../../style/theme';
+@import '../../style/variables';
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 
@@ -16,11 +16,11 @@
   right: 27%;
   bottom: 140px;
   background: #bbabd8;
-  height:50%;
-  width:50%;
-  overflow:hidden;
-  padding:20px;
-  outline:none;
+  height: 50%;
+  width: 50%;
+  overflow: hidden;
+  padding: 20px;
+  outline: none;
 
 }
 
@@ -34,17 +34,17 @@
   background: #bbabd8;
   overflow: auto;
   outline: none;
-  color:white;
+  color: white;
 }
 
 .modal_body h4 {
   font-size: 1.8rem;
-  color: Purple; 
+  color: Purple;
   text-align: center;
   border-radius: 6px;
   align-self: center;
-  padding:10px; 
-  
+  padding: 10px;
+
 }
 
 .modal_body p {
@@ -52,7 +52,7 @@
   color: white;
   padding: 2rem;
   margin: 1rem 0 2rem 0;
-  
+
 }
 
 .modal_button {
@@ -63,28 +63,28 @@
   color: white;
   border: 1px bold white;
   outline: white;
-  cursor: pointer; 
-  border-radius:6px; 
-  position:absolute;
-  left:45%;
+  cursor: pointer;
+  border-radius: 6px;
+  position: absolute;
+  left: 45%;
 }
 
 .info-button {
-width: 15%;
-height: 5%; 
-background: blue;
-color: white;
+  width: $size-ratio;
+  width: $size-ratio;
+  background: blue;
+  color: white;
 }
- 
+
 .text {
   text-align: center;
   text-indent: 50px;
-  white-space: wrap;  
+  white-space: wrap;
   line-height: 1.8;
-  
-} 
 
-.get-cards { 
+}
+
+.get-cards {
   background: royalblue;
   padding: 15px 35px;
   font-size: 1em;

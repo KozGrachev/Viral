@@ -1,9 +1,9 @@
 @import '../../style/variables.scss';
-$sl-circle-size-small: 20px;
-$sl-circle-size-large: 50px;
+$sl-circle-size-small: $size-ratio*0.3;
+$sl-circle-size-large: $size-ratio*0.5;
 
 .spread-level-container {
-  height: 60px;
+  height: $size-ratio*0.6;
   width: 100%;
   justify-items: center;
   align-items: center;
