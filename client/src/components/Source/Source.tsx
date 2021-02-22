@@ -25,33 +25,21 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   const allPlayers = useSelector((state: RootState) => state.gameStateReducer.players)
 
-
-  const [modalIsOpen, setIsOpen] = useState(false)
-  const [selectedDebunkCards, setselectedDebunkCards] = useState([])
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   let { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
     canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
-
-
-
-  useEffect(() => {
-
-  }, [modalIsOpen])
-  useEffect(() => {
-
-  }, [selectedDebunkCards])
 
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
   const SVGIconSourceOverlay: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
 
-
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
-    if (num > 0 && canDebunk.includes(category)) {
+    if (canDebunk.includes(category)) {
 
-      const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
+      const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${'3'}`)) //TODO this should be a seperate icon for debunking each relevant misinfo, here its defaulting to '3' as no svg available
       return (<div onClick={() => debunkMisinforamtion(category)}><DebunkableIcon /></div>)
 
     }
@@ -73,24 +61,7 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   }
 
   const debunkMisinforamtion = (category: string) => {
-
     setIsOpen(true)
-
-    setTimeout(async () => {
-      try {
-
-        dispatch(debunkMisinfoAction({
-          oldState: gamestate, currentPlayerID: currentPlayer.id,
-          misinfoType: category, usedCards: selectedDebunkCards
-        }))
-
-        alert("OK");
-      } catch (err) {
-        alert("CANCEL");
-      }
-    }, 7000);
-
-
   }
 
   const clearMisinformationbyOne = (misinfoType: string) => {
@@ -144,7 +115,12 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
 
   return (
     <>
-      {modalIsOpen ? <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal} setselectedDebunkCards={setselectedDebunkCards} /> : null}
+      {modalIsOpen ? 
+        <ModalComponent 
+          modalIsOpen={modalIsOpen} 
+          closeModal={closeModal}
+          debunkableCards={currentPlayer.cards.filter(card => canDebunk.includes(card.misinfoType))}
+        /> : null}
 
       <div
         onClick={
