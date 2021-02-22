@@ -7,7 +7,6 @@ import { ReactComponent as whatsappIcon } from '../assets/allIcons/whatsapp-icon
 import { ReactComponent as redditIcon } from '../assets/allIcons/reddit-icon.svg';
 import { ReactComponent as youtubeIcon } from '../assets/allIcons/youtube-icon.svg';
 import { ReactComponent as illuminatifyIcon } from '../assets/allIcons/illuminatify-icon.svg';
-
 import { ReactComponent as highSchoolIcon } from '../assets/allIcons/high-school-icon.svg';
 import { ReactComponent as taxiIcon } from '../assets/allIcons/taxi-icon.svg';
 import { ReactComponent as localCultIcon } from '../assets/allIcons/local-cult-icon.svg';
@@ -16,7 +15,6 @@ import { ReactComponent as gymIcon } from '../assets/allIcons/gym-icon.svg';
 import { ReactComponent as asdaIcon } from '../assets/allIcons/asda-icon.svg';
 import { ReactComponent as pubIcon } from '../assets/allIcons/pub-icon.svg';
 import { ReactComponent as universityIcon } from '../assets/allIcons/university-icon.svg';
-
 import { ReactComponent as cousinIcon } from '../assets/allIcons/cousin-icon.svg';
 import { ReactComponent as guyAtTheBusStopIcon } from '../assets/allIcons/guy-at-the-bus-stop-icon.svg';
 import { ReactComponent as crazyDaveIcon } from '../assets/allIcons/crazy-dave-icon.svg';
@@ -25,9 +23,7 @@ import { ReactComponent as franFromHrIcon } from '../assets/allIcons/fran-from-h
 import { ReactComponent as evilExIcon } from '../assets/allIcons/evil-ex-icon.svg';
 import { ReactComponent as opinionatedGrandpaIcon } from '../assets/allIcons/opinionated-grandpa-icon.svg';
 import { ReactComponent as uncleEugeneIcon } from '../assets/allIcons/uncle-eugene-icon.svg';
-
 import { ReactComponent as emptyAppIcon } from '../assets/allIcons/empty-app-icon.svg';
-
 import { ReactComponent as markerSocial1 } from '../assets/allIcons/marker-social-1.svg';
 import { ReactComponent as markerSocial2 } from '../assets/allIcons/marker-social-2.svg';
 import { ReactComponent as markerSocial3 } from '../assets/allIcons/marker-social-3.svg';
@@ -37,13 +33,9 @@ import { ReactComponent as markerCommunity3 } from '../assets/allIcons/marker-co
 import { ReactComponent as markerRelations1 } from '../assets/allIcons/marker-relations-1.svg';
 import { ReactComponent as markerRelations2 } from '../assets/allIcons/marker-relations-2.svg';
 import { ReactComponent as markerRelations3 } from '../assets/allIcons/marker-relations-3.svg';
-
-
-
 import { ReactComponent as map } from '../assets/allIcons/map.svg';
 import { ReactComponent as gameBoard } from '../assets/allIcons/game-board.svg';
 import { ReactComponent as gameBoardWithoutSources } from '../assets/allIcons/game-board-without-sources.svg';
-
 import { ReactComponent as firePawn } from '../assets/allIcons/fire-icon.svg';
 import { ReactComponent as flowerPawn } from '../assets/allIcons/flower-pawn.svg';
 import { ReactComponent as rombPawn } from '../assets/allIcons/romb-pawn.svg';
@@ -51,18 +43,7 @@ import { ReactComponent as sunPawn } from '../assets/allIcons/sun-pawn.svg';
 import { ReactComponent as squarePawn } from '../assets/allIcons/square-pawn.svg';
 import { ReactComponent as hexagonPlayerPawn } from '../assets/allIcons/hexagon-player-pawn.svg';
 import { ReactComponent as infoIcon } from '../assets/allIcons/info-icon.svg';
-
-// CONNECTIONS
 import { ReactComponent as connectionsWithFrame } from '../assets/allIcons/connections-with-frame.svg';
-
-
-// CONNECTIONS
-// import { ReactComponent as connection1 } from '../assets/hexagon-player-pawn.svg'
-
-// interface svgsMap {
-//   [name: string]: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-// }
-// const svgs: svgsMap = {
 
 
 const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
@@ -115,12 +96,7 @@ const svgs: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>
 
 };
 
-
-
-
-
 export const getIcon = (name: string): React.FunctionComponent<React.SVGProps<SVGSVGElement>> => {
-  // return youtubeIcon;
-  // return svgs['youtubeIcon'];
-  return svgs[name] ?? svgs.markerSocial3;  //? if the left hand side is undefined or null, return the right hand side
+
+  return svgs[name] ?? svgs.markerSocial3;
 };

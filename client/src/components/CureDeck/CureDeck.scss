@@ -24,7 +24,6 @@
   &.community{
     background-color: #00BBF9;
     font-size: 32px;
-
   }
 
   &.relations{
@@ -35,6 +34,10 @@
   &.social{
     font-size: 32px;
     background-color: #F15BB5;
+  }
+
+  &.debunked{
+    color: mediumseagreen;
   }
 
   .icon {font-size: 55px;}

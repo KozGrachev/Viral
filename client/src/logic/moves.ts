@@ -33,6 +33,8 @@ export function moveAction (oldState: Gamestate, currentPlayerID: Player['id'], 
 
   messages.push(`${playerName} moved to "${location}"`);
   messages.push(`${playerName} has ${newState.turnMovesLeft} moves left`);
+  // logging - debunk function
+  console.table(newState.sources[14].canDebunk);
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -123,7 +125,7 @@ export function logOnOff (oldState: Gamestate, currentPlayerID: Player['id'], lo
   const playerName:string=oldState.players.filter(player=>player.id===currentPlayerID)[0].name;
   messages.push(`${playerName} fast traveled to "${location}" using their "${usedCard}" card`);
   messages.push(`${playerName} has ${newState.turnMovesLeft} moves left`);
-  
+
   return nextMoveChecker(newState, currentPlayerID);
 }
 
@@ -150,7 +152,7 @@ export function debunkMisinfo (oldState: Gamestate, currentPlayerID: Player['id'
     turnMovesLeft: oldState.turnMovesLeft - 1,
   };
   if (didWin(newState)) {
-   
+
     return {
       ...newState,
       gameWon: true,
@@ -179,12 +181,12 @@ export function updatePossibleActions (oldState: Gamestate, currentPlayerID: Pla
   // check if cards in hand
   let possibleShares: Player[] = [];
   if (oldState.players[playerIndex].cards.length > 0) {
-    
+
     const otherPlayers: Player[] = oldState
       .players
       .filter((player) => player.id !== currentPlayerID)
       .filter((otherPlayer) => otherPlayer.currentSource === location);
-    
+
     possibleShares = otherPlayers
       .filter((player) => player.cards.length < 6);
   }
@@ -194,14 +196,14 @@ export function updatePossibleActions (oldState: Gamestate, currentPlayerID: Pla
     .filter((card) => card.sourceName === location)
     .length > 0;
   //* logon check
-  
+
   const logonPossible: Card['sourceName'][] = oldState.players[playerIndex].cards
     .map((card) => card.sourceName)
     .filter((name) => name !== location);
   //* debunk checks
- 
+
   const atHome: boolean = location === 'crazy dave';
-  
+
   const debunkable: Misinformation['name'][] = [];
   if (atHome) {
     if (
@@ -223,7 +225,7 @@ export function updatePossibleActions (oldState: Gamestate, currentPlayerID: Pla
       debunkable.push('relations');
     }
   }
-  
+
   const newState: Gamestate =
   {
     ...oldState,
@@ -253,23 +255,23 @@ export function updatePossibleActions (oldState: Gamestate, currentPlayerID: Pla
         }
       ),
   };
-  
+
   return newState;
 }
 
 
 export function boardActions (oldState: Gamestate, currentPlayerID: Player['id'], noOfCards: number): Gamestate {
   // deal connection cards
- 
+
   let cardsLeft = noOfCards;
 
   let newState: Gamestate = oldState;
   while (cardsLeft > 0) {
 
     didLose(newState);
-    
+
     newState = dealConnectionCard(newState);
-    
+
     cardsLeft--;
   }
   //? do we need to put breaks here, and how, for the front end to update or show when a card has been dealt?
@@ -278,12 +280,12 @@ export function boardActions (oldState: Gamestate, currentPlayerID: Player['id']
   let misinfoCardNo = [2, 2, 3, 4][newState.spreadLevel];
   while (misinfoCardNo > 0) {
     newState = dealMisinfoCard(newState, 1, false)!;
-    
+
     didLose(newState);
-     
+
     misinfoCardNo--;
   }
- 
+
   return nextTurn(newState, currentPlayerID);
 }
 
@@ -308,9 +310,9 @@ export function nextTurn (oldState: Gamestate, currentPlayerID: Player['id']): G
     // reset number of moves
     turnMovesLeft: 4,
   };
-  
+
     messages.push(`Now it's over to ${oldState.players[nextPlayerIndex].name}!`);
- 
+
     return updatePossibleActions(newState, newState.players[nextPlayerIndex].id);
   }
   const newState= {
@@ -355,7 +357,7 @@ export function outbreak (outbreak_source: Source, oldState: Gamestate, from:str
   const playerName:string=oldState.players.filter(player=>player.isCurrent)[0].name;
   oldState.chaosMeter++;
   messages.push(`Oh no ${playerName}! We've had an outbreak at ${outbreak_source.name}!! Chaos meter increases to ${oldState.chaosMeter*25}%`);
-  
+
   didLose(oldState);
   let connections!: string[];
   for (const source of sources) {
@@ -368,7 +370,7 @@ export function outbreak (outbreak_source: Source, oldState: Gamestate, from:str
       if (source.name === connection) {
         const key1 = `markers_${outbreak_source.misinfoType}`;
         const key2 = outbreak_source.misinfoType;
-      
+
         if (typeCheck(key1))
           if (source[key1] === 3 && source.name!==from) {
             oldState = outbreak(source, oldState,outbreak_source.name);
@@ -391,24 +393,24 @@ export function viralCheck (object: any): object is ViralCard {
 }
 
 export function dealConnectionCard (oldState: Gamestate) {
-  
+
   const newCard: Card|ViralCard = oldState.connectionDeck[0];
   if (newCard===undefined) {
     oldState.gameLost=true;
     const newState = { ...oldState };
-   
+
     return newState;
   }
   if (newCard.cardType==='viral') {
     oldState = playViralCard(oldState);
-   
+
     oldState.connectionDeck.shift();
   }
   else {
     for (const player of oldState.players) {
       if (player.isCurrent) {
         if (!viralCheck(newCard)) {
-          
+
           player.cards.push(newCard);
           oldState.connectionDeck.shift();
         }
@@ -417,7 +419,7 @@ export function dealConnectionCard (oldState: Gamestate) {
   }
 
   const newState = { ...oldState };
-  
+
   return newState;
 }
 
@@ -427,7 +429,7 @@ export function playViralCard (oldState: Gamestate) {
   oldState.misinformationDeckActive = [...shuffle(oldState.misinformationDeckPassive), ...oldState.misinformationDeckActive];
   oldState.misinformationDeckPassive=[];
   const newState = { ...oldState };
- 
+
   return newState;
 }
 
@@ -448,9 +450,9 @@ export function shuffle (array: any[]) {
 
 export function didLose (state: Gamestate) {
 
-  
+
   if (state.chaosMeter === 4) {
-   
+
     state.gameLost=true;
     return true;}
   if (
@@ -458,11 +460,11 @@ export function didLose (state: Gamestate) {
     state.misinformation.social.markersLeft <= 0 ||
     state.misinformation.relations.markersLeft <= 0
   ) {
-    
+
     state.gameLost=true;
     return true;}
   if (state.connectionDeck.length === 0|| state.misinformationDeckActive.length===0) {
-    
+
     state.gameLost=true;
     return true;
   }
