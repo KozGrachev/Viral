@@ -86,7 +86,9 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
 
             </div>
             <div className="sidebar right">
-              {<InfoIcon onClick={openModal} />}
+              <div className="info-icon">
+                <InfoIcon onClick={openModal} />
+              </div>
               <Modal
                 isOpen={modal}
                 onRequestClose={closeModal}
