@@ -19,9 +19,11 @@ export const OtherPlayer: React.FC = () => {
     return player.cards.map((card, index) => {
       const SVGIcon: React.FunctionComponent<React.SVGProps<SVGSVGElement>> = getIcon(toCamelCase(card.sourceName) + 'Icon');
       const rotationAngle = (numGaps * angle / 2) + index * angle - angle * numGaps;
-      return <div className="displace" style={{
-        transform: ` rotate(${rotationAngle}deg)`,
-      }}>
+      return <div 
+        className="displace" 
+        style={{transform: ` rotate(${rotationAngle}deg)`}}
+        key = {index}
+        >
         <div
           className="other-player-card"
           key={uuidv4()}
