@@ -122,8 +122,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
           debunkableCards={currentPlayer.cards.filter(card => canDebunk.includes(card.misinfoType))}
         /> : null}
 
-
-
       <div
         onClick={
           canLogOff ?
@@ -134,7 +132,6 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
                 changePlayersCurrentSource :
                 unclickableMessage}
         className={`source-container ${toKebabCase(name)} ${canLogOffClassName} ${canLogOnClassName} ${canMoveClassName} ${source.misinfoType} ${canDebunkClassName} `} >
-
         <SVGIconSource />
         <SVGIconSourceOverlay />
         <div className={`markers-container ${misinfoType}`}>

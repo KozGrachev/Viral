@@ -20,7 +20,7 @@ Travel around town cleaning up the spread of three types of misinformation:
 
 To win you must debunk all three types of misinformation. Each type of misinformation is debunked by collecting 4 source cards representing that type of misinformation.
 The game is over if the chaos meter increases to 100%, you run out of source cards or if you run out of any type of misinformation marker. 
-So, harry up! 
+So, hurry up! 
 
 <code><img height="500" alt="Viral Logo" src="https://github.com/Bobik808/Viral/blob/main/assets/misinfospreading.PNG"></code> 
 
