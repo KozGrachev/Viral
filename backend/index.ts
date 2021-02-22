@@ -82,9 +82,10 @@ io.on('connection', (socket) => {
   socket.on('disconnect', async () => {
     try {
       const user = await userLeave(socket.id);
+      console.log(user, 'user');
       user &&
         getState(user.room).then(game => {
-          if (game && (!game.gameLost || !game.gameWon)) {
+          if (game && game.gameLost === false && game.gameWon === false) {
             const newPlayers = game.players.filter(player => player.name !== user.name);
             const data = { ...game, players: newPlayers };
             if (data) {
@@ -93,7 +94,12 @@ io.on('connection', (socket) => {
               setState(user.room, data);
             }
           } else {
-            game && (game.gameLost || game.gameWon) && deleteGame(user.room).then(data => console.log('game has been deleted'));
+            game && (game.gameLost || game.gameWon) && deleteGame(user.room).then(() => {
+              getGames('*').then(data => {
+                socket.emit('games', data);
+              });
+            }
+            );
           }
 
           io.to(user.room).emit(
@@ -102,7 +108,6 @@ io.on('connection', (socket) => {
     } catch (e) {
       console.log(e);
     }
-
   });
 });
 

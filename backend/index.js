@@ -142,7 +142,9 @@ io.on('connection', function (socket) {
         }
     });
     socket.on('getGames', function () {
-        redis_db_1.getGames('*').then(function (data) { return socket.emit('games', data); });
+        redis_db_1.getGames('*').then(function (data) {
+            socket.emit('games', data);
+        });
     });
     socket.on('disconnect', function () { return __awaiter(void 0, void 0, void 0, function () {
         var user_1, e_2;
@@ -153,9 +155,10 @@ io.on('connection', function (socket) {
                     return [4 /*yield*/, users_1.userLeave(socket.id)];
                 case 1:
                     user_1 = _a.sent();
+                    console.log(user_1, 'user');
                     user_1 &&
                         redis_db_1.getState(user_1.room).then(function (game) {
-                            if (game) {
+                            if (game && game.gameLost === false && game.gameWon === false) {
                                 var newPlayers = game.players.filter(function (player) { return player.name !== user_1.name; });
                                 var data = __assign(__assign({}, game), { players: newPlayers });
                                 if (data) {
@@ -165,11 +168,13 @@ io.on('connection', function (socket) {
                                 }
                             }
                             else {
-                                console.warn('invalid room record');
+                                game && (game.gameLost || game.gameWon) && redis_db_1.deleteGame(user_1.room).then(function () {
+                                    redis_db_1.getGames('*').then(function (data) {
+                                        socket.emit('games', data);
+                                    });
+                                });
                             }
-                            if (user_1) {
-                                io.to(user_1.room).emit('userLeft', user_1.name + " has left the game");
-                            }
+                            io.to(user_1.room).emit('userLeft', user_1.name + " has left the game");
                         });
                     return [3 /*break*/, 3];
                 case 2:
