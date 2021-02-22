@@ -13,4 +13,4 @@ export const toKebabCase = (str: string): string => {
     .filter(Boolean)
     .map(x => x.toLowerCase())
     .join('-') : '';
-  }
+};

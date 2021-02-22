@@ -1,12 +1,12 @@
 import React from 'react';
 import './ChaosMeter.scss';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/gameState/store';
 
 export const ChaosMeter: React.FC = () => { 
-  const chaos = useSelector((state: RootState) => state.gameStateReducer.chaosMeter)
-  let chaosPercentage = (chaos / 4) * 100
-  let offSet = (440 - (440 * chaosPercentage / 100))
+  const chaos = useSelector((state: RootState) => state.gameStateReducer.chaosMeter);
+  const chaosPercentage = (chaos / 4) * 100;
+  const offSet = (440 - (440 * chaosPercentage / 100));
   return (
     <div className="rings">
       <div className="percent1" >

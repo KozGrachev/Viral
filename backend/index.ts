@@ -31,8 +31,8 @@ const welcomeMessage = 'Welcome';
 
 io.on('connection', (socket) => {
   console.log('server connected');
-  socket.on('joinRoom', async (player: Player) => {
-    const user = userJoin(socket.id, player.name, player.room);
+  socket.on('joinRoom', async (player: Player) => {    
+    const user = player && userJoin(socket.id, player.name, player.room);
     socket.join((await user).room);
     socket.emit('joinConfirmation', `${welcomeMessage} ${player.name}, you can start playing now.`);
     socket.broadcast
@@ -76,7 +76,7 @@ io.on('connection', (socket) => {
             setState(user.room, data);
           }
         } else {
-          console.log('game not found');
+          console.log('input a valid room name');
         }
         if (user) {
           io.to(user.room).emit(

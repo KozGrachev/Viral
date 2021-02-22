@@ -2,17 +2,17 @@ import React from 'react';
 import { getIcon } from '../../helpers/iconExporter';
 import { toCamelCase } from '../../helpers/utils';
 import { v4 as uuidv4 } from 'uuid';
-import './OtherPlayer.scss'
-import { RootState } from '../../redux/gameState/store'
+import './OtherPlayer.scss'; 
+import { RootState } from '../../redux/gameState/store'; 
 import { useSelector } from 'react-redux';
 import { Player } from '../../types/gameStateTypes';
 export const OtherPlayer: React.FC = () => {
-  const myName = useSelector((state: RootState) => state.playerStateReducer.name)
-  const playerState = useSelector((state: RootState) => state.gameStateReducer.players)
-  const otherPlayerState = playerState.filter((player) => player.name !== myName)
-  const first = otherPlayerState[0]
-  const second = otherPlayerState[1]
-  const third = otherPlayerState[2]
+  const myName = useSelector((state: RootState) => state.playerStateReducer.name); 
+  const playerState = useSelector((state: RootState) => state.gameStateReducer.players); 
+  const otherPlayerState = playerState.filter((player) => player.name !== myName); 
+  const first = otherPlayerState[0];
+  const second = otherPlayerState[1];
+  const third = otherPlayerState[2];
   const renderCards = (player: Player) => {
     const angle = 40;
     const numGaps = player.cards.length - 1;
@@ -32,8 +32,8 @@ export const OtherPlayer: React.FC = () => {
           <SVGIcon />
         </div>
       </div>;
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -62,6 +62,5 @@ export const OtherPlayer: React.FC = () => {
         </div>
       </div> : null}
     </>
-  )
-}
-
+  );
+};

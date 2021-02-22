@@ -1,7 +1,7 @@
 import React,{useEffect, useRef} from 'react';
-import {messages} from '../../logic/moves'
-import { Gamestate } from '../../types/gameStateTypes'
-import "./PlayerPrompt.scss"
+import {messages} from '../../logic/moves';
+import { Gamestate } from '../../types/gameStateTypes';
+import './PlayerPrompt.scss';
 export interface PlayerPromptProps {
   state:Gamestate
 }
@@ -9,26 +9,26 @@ export const PlayerPrompt: React.FC<PlayerPromptProps> = ({state}:PlayerPromptPr
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const scrollToBottom = () => {
     h1Ref.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+      behavior: 'smooth',
+      block: 'start',
     });
-  }
+  };
   useEffect(() => {
-    scrollToBottom()
+    scrollToBottom();
     
-  }, [state])
+  }, [state]);
   return (
     <div className="player-prompt-container" >
       {messages.map((msg,i) => {
-        let player = state.players.filter(player => {
+        const player = state.players.filter(player => {
           if (msg.search(player.name) !== -1 ) {
-            return player 
-          }})[0]
+            return player; 
+          }})[0];
         return (
           <div className="single-message" key={msg.split(' ')[0] + i}
-            style={{ border: `2px solid ${player.pawnColor}` }}>{msg}</div>)
+            style={{ border: `2px solid ${player.pawnColor}` }}>{msg}</div>);
       })}
       <div ref={h1Ref}></div>
     </div>
-  )
-}
+  );
+};

@@ -1,17 +1,14 @@
 
 import React, { useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, store } from '../redux/gameState/store';
-
+import { RootState } from '../redux/gameState/store';
 import { CureDeck } from '../components/CureDeck/CureDeck';
-import { getIcon } from '../helpers/iconExporter'
-  ;
+import { getIcon } from '../helpers/iconExporter';
 import { CardHand } from '../components/CardHand/CardHand';
-import { SourceDeck } from '../components/sourceDeck/sourceDeck'
-import { MarkersStore } from '../components/MarkersStore/MarkersStore'
-import { MisinformationDeck } from '../components/MisinformationDeck/misinformationDeck'
-import { ChaosMeter } from '../components/ChaosMeter/ChaosMeter'
+import { SourceDeck } from '../components/sourceDeck/sourceDeck';
+import { MarkersStore } from '../components/MarkersStore/MarkersStore';
+import { MisinformationDeck } from '../components/MisinformationDeck/misinformationDeck';
+import { ChaosMeter } from '../components/ChaosMeter/ChaosMeter';
 import { SpreadLevel } from '../components/SpreadLevel/SpreadLevel';
 import { PlayerPrompt } from '../components/PlayerPrompt/PlayerPrompt';
 import { SourceParent } from '../components/SourceParent/SourceParent';
@@ -25,22 +22,21 @@ interface Props {
   rendered: boolean
 }
 export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
-
+  const state = useSelector((state: RootState) => state.gameStateReducer);
   const dispatch = useDispatch();
-  const player = useSelector((state: RootState) => state.playerStateReducer)
-  const [modal, updateModal] = useState(false)
+  const player = useSelector((state: RootState) => state.playerStateReducer);
+  const [modal, updateModal] = useState(false);
   const getCards = () => {
-    state = store.getState().gameStateReducer
-    dispatch(DealCardsToNewPlayerAction({ player, state }))
-  }
+    dispatch(DealCardsToNewPlayerAction({ player, state }));
+  };
 
   const checkCards = (newstate: Gamestate) => {
-    for (let PLAYER of newstate.players) {
+    for (const PLAYER of newstate.players) {
       if (PLAYER.id === player.id) {
         const p = PLAYER.cards;
         const card = p[0];
         if (!card) {
-          return true
+          return true;
         }
       }
     }
@@ -48,14 +44,13 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
   };
 
   const openModal = () => {
-    updateModal(true)
-  }
+    updateModal(true);
+  };
   const closeModal = () => {
-    updateModal(false)
-  }
+    updateModal(false);
+  };
   const InfoIcon = getIcon('infoIcon');
 
-  let state = useSelector((state: RootState) => state.gameStateReducer)
   const ConnectionsWithFrame = getIcon('connectionsWithFrame');
 
   return (
@@ -106,5 +101,5 @@ export const GameOn: React.FC<Props> = ({ rendered }): JSX.Element => {
         </div>
       }
     </div >
-  )
-}
+  );
+};

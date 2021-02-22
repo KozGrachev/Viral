@@ -1,10 +1,10 @@
 import React from 'react';
-import {useSelector} from 'react-redux'
+import {useSelector} from 'react-redux';
 import { Grommet, Box, Meter, Stack, Text } from 'grommet';
 import { RootState} from '../../redux/gameState/store';
 
 export const ChaosMeterGrommet = () => {
-  const chaos=useSelector((state:RootState)=>state.gameStateReducer.chaosMeter)
+  const chaos=useSelector((state:RootState)=>state.gameStateReducer.chaosMeter);
   return (
     <Grommet >
       <Box

@@ -2,12 +2,12 @@ import { promisify } from 'util';
 import redis, { RedisClient } from 'redis';
 import dotenv from 'dotenv';
 import { Gamestate } from '../types/types';
-import { IUser, Socket } from '../types/types'; 
+import { IUser, Socket } from '../types/types';
 dotenv.config({ path: __dirname + '../.env' });
 
 const PORT = Number(process.env.DB_PORT);
 const HOST = process.env.DB_HOST;
-let client:RedisClient; 
+let client: RedisClient;
 
 if (process.env.NODE_ENV === 'production' && process.env.REDISCLOUD_URL) {
   client = redis.createClient(process.env.REDISCLOUD_URL);
@@ -36,12 +36,15 @@ export const setUser = (users: string, usersArray: Socket[] | undefined): void =
   client.set(users, json);
 };
 
-export const getUsers = async (): Promise<Socket[] | undefined> => {
-  const json = await redisGetAsync('users');
-  if (json) {
-    const state = JSON.parse(json);
-    return state;
-  }
+export const getUsers = (): Promise<Socket[] | undefined> => {
+  return redisGetAsync('users').then(json => {
+    if (json && json.length > 1) {
+      const state = json && JSON.parse(json);
+      return state;
+    } else {
+      return [];
+    }
+  });
 };
 
 export const getState = async (room: IUser['room']): Promise<Gamestate | undefined> => {
