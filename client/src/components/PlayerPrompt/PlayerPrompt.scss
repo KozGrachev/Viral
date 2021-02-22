@@ -1,10 +1,12 @@
 @import '../../style/theme';
+@import '../../style/variables.scss';
 
 .player-prompt-container {
   @include scroll-panel;
-  height: 350px;
   width: 100%;
+  height: $size-ratio*4;
   flex-direction: column;
+  margin-top: $hud-margin;
 }
 
 .player-prompt-container::-webkit-scrollbar {
@@ -14,7 +16,7 @@
 .single-message {
   @include glass-panel;
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: $size-ratio *0.22;
   padding: 10px;
   text-align: center;
 }
