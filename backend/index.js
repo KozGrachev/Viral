@@ -94,70 +94,89 @@ var welcomeMessage = 'Welcome';
 io.on('connection', function (socket) {
     console.log('server connected');
     socket.on('joinRoom', function (player) { return __awaiter(void 0, void 0, void 0, function () {
-        var user, _a, _b, _c, _d;
-        return __generator(this, function (_e) {
-            switch (_e.label) {
+        var user, e_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
-                    user = player && users_1.userJoin(socket.id, player.name, player.room);
-                    _b = (_a = socket).join;
-                    return [4 /*yield*/, user];
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, users_1.userJoin(socket.id, player.name, player.room)];
                 case 1:
-                    _b.apply(_a, [(_e.sent()).room]);
+                    user = _a.sent();
+                    user && socket.join(user.room);
                     socket.emit('joinConfirmation', welcomeMessage + " " + player.name + ", you can start playing now.");
-                    _d = (_c = socket.broadcast)
-                        .to;
-                    return [4 /*yield*/, user];
-                case 2:
-                    _d.apply(_c, [(_e.sent()).room])
+                    socket.broadcast
+                        .to(user.room)
                         .emit('joinConfirmation', player.name + " has joined the game");
-                    return [2 /*return*/];
+                    return [3 /*break*/, 3];
+                case 2:
+                    e_1 = _a.sent();
+                    console.log(e_1);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     }); });
     socket.on('onChangeState', function (_a) {
         var newState = _a.newState, Player = _a.Player;
-        var user = Player;
-        socket.broadcast.to(user.room)
-            .emit('updatedState', newState);
-        redis_db_1.setState(user.room, newState);
+        try {
+            var user = Player;
+            socket.broadcast.to(user.room)
+                .emit('updatedState', newState);
+            redis_db_1.setState(user.room, newState);
+        }
+        catch (e) {
+            console.log(e);
+        }
     });
     socket.on('retriveGame', function (player) {
-        redis_db_1.getState(player.room).then(function (data) {
-            data && data.players.push(player);
-            socket.emit('updatedState', data);
-            socket.broadcast.to(player.room).emit('updatedState', data);
-            data && redis_db_1.setState(player.room, data);
-        });
+        try {
+            redis_db_1.getState(player.room).then(function (data) {
+                data && data.players.push(player);
+                socket.emit('updatedState', data);
+                socket.broadcast.to(player.room).emit('updatedState', data);
+                data && redis_db_1.setState(player.room, data);
+            });
+        }
+        catch (e) {
+            console.log(e);
+        }
     });
     socket.on('getGames', function () {
         redis_db_1.getGames('*').then(function (data) { return socket.emit('games', data); });
     });
     socket.on('disconnect', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var user;
+        var user_1, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, users_1.userLeave(socket.id)];
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, users_1.userLeave(socket.id)];
                 case 1:
-                    user = _a.sent();
-                    user &&
-                        redis_db_1.getState(user.room).then(function (game) {
+                    user_1 = _a.sent();
+                    user_1 &&
+                        redis_db_1.getState(user_1.room).then(function (game) {
                             if (game) {
-                                var newPlayers = game.players.filter(function (player) { return player.name !== user.name; });
+                                var newPlayers = game.players.filter(function (player) { return player.name !== user_1.name; });
                                 var data = __assign(__assign({}, game), { players: newPlayers });
                                 if (data) {
                                     socket.emit('updatedState', data);
-                                    socket.broadcast.to(user.room).emit('updatedState', data);
-                                    redis_db_1.setState(user.room, data);
+                                    socket.broadcast.to(user_1.room).emit('updatedState', data);
+                                    redis_db_1.setState(user_1.room, data);
                                 }
                             }
                             else {
-                                console.log('input a valid room name');
+                                console.warn('invalid room record');
                             }
-                            if (user) {
-                                io.to(user.room).emit('userLeft', user.name + " has left the game");
+                            if (user_1) {
+                                io.to(user_1.room).emit('userLeft', user_1.name + " has left the game");
                             }
                         });
-                    return [2 /*return*/];
+                    return [3 /*break*/, 3];
+                case 2:
+                    e_2 = _a.sent();
+                    console.log(e_2);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     }); });
