@@ -11,7 +11,6 @@ export const ChaosMeter: React.FC = () => {
     function handleResize () {
       setScale(vmin(1.3)/10);
     }
-    console.log('scale is:', scale)
 
     window.addEventListener('resize', handleResize);
 
