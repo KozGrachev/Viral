@@ -10,6 +10,7 @@ export const CardHand: React.FC = () => {
   const Player = useSelector((state: RootState) => state.playerStateReducer);
   const cards = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.id === Player.id)[0].cards);
   const cardHandOverflow = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.id === Player.id)[0].cardHandOverflow);
+  const dealHistory = useSelector((state: RootState) => state.gameStateReducer.dealHistory);
   const renderCards = (cardArray: SourceCardType[]) => {
     return cardArray.map(card => {
       if(card.cardType !=='viral' ) {
@@ -26,26 +27,24 @@ export const CardHand: React.FC = () => {
     setIsOpen(false)
   }
 
-  const openModal = () => {
-    setIsOpen(false)
-  }
-  
+  let cardsToDiscard = cards;
 
   useEffect(() => { 
     if (cardHandOverflow) { 
       setIsOpen(true); }}, 
-      [cardHandOverflow, setIsOpen])
+      [cardHandOverflow, setIsOpen, dealHistory])
 
 
   return (
     <>
-      {cardHandOverflow ? 
+      {modalIsOpen ? 
         <DiscardModal 
           modalIsOpen={modalIsOpen} 
           closeModal={closeModal}
-          discardableCards={cards}
+          discardableCards={cardsToDiscard}
         /> : null}
       <div className="source-card-hand">
+        {'--------------' + cardHandOverflow}
         {renderCards(cards)}
       </div>
     </>

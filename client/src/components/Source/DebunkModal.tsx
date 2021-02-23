@@ -68,8 +68,7 @@ export function DebunkModal({ modalIsOpen, closeModal, debunkableCards }: ModalP
   }
 
   const clickOnCard = (e: React.MouseEvent<HTMLElement>, card: CardWithId) => {
-    let div = e.currentTarget as HTMLInputElement; //! this is a different target depending on whether the icon, text, or containing div are clicked
-
+    let div = e.currentTarget as HTMLInputElement;
     if (!div.classList.contains('selectedDebunkableCard')) {
       div.classList.add('selectedDebunkableCard')
       setpickedCards(prev => [...pickedCards, card])

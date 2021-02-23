@@ -73,12 +73,10 @@ export function DiscardModal({
   }
 
   const clickOnCard = (e: React.MouseEvent<HTMLElement>, card: CardWithId) => {
-    let div = e.currentTarget as HTMLInputElement; //! this is a different target depending on whether the icon, text, or containing div are clicked
+    let div = e.currentTarget as HTMLInputElement;
     const discardModalCards = document.getElementsByClassName('discard-modal-card');
-
     if (!div.classList.contains('discardableCard')) {
       for (let i = 0; i < discardModalCards.length; i++) {
-        console.log('card:',discardModalCards[i])
         discardModalCards[i].classList.remove('discardableCard')
       }
       div.classList.add('discardableCard')

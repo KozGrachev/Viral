@@ -272,8 +272,8 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
   while (cardsLeft > 0) {
     didLose(newState)
     newState = dealConnectionCard(newState);
+    cardsLeft--;
     if (newState.players[playerIndex].cards.length > 6) {
-      console.log('your hand is full, you need to discard a card');
       return {
         ...newState,
         players: newState.players
@@ -281,10 +281,9 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
             { ...player, cardHandOverflow: true } :
             player
           ),
-        dealHistory: cardsLeft - 1,
+        dealHistory: cardsLeft,
       } // exits function here
     }
-    cardsLeft--;
   }
   //? do we need to put breaks here, and how, for the front end to update or show when a card has been dealt?
   // check spread marker for weight
@@ -301,29 +300,29 @@ export function boardActions(oldState: Gamestate, currentPlayerID: Player['id'],
 //* HELPERS
 
 export function nextTurn(oldState: Gamestate, currentPlayerID: Player['id']): Gamestate {
-  if(oldState.players.length>1){
-  const playerIndex: number = oldState.players.map((player) => player.id).indexOf(currentPlayerID);
-  const nextPlayerIndex: number = playerIndex === oldState.players.length - 1 ?
-    0 :
-    playerIndex + 1;
-  const newState: Gamestate =
-  {
-    ...oldState,
-    players: oldState.players
-      .map((player, index) => index === playerIndex ?
-        { ...player, isCurrent: false } :
-        index === nextPlayerIndex ?
-          { ...player, isCurrent: true } :
-          player
-      ),
-    // reset number of moves
-    turnMovesLeft: 4,
-  };
+  if(oldState.players.length>1) {
+    const playerIndex: number = oldState.players.map((player) => player.id).indexOf(currentPlayerID);
+    const nextPlayerIndex: number = playerIndex === oldState.players.length - 1 ?
+      0 :
+      playerIndex + 1;
+    const newState: Gamestate =
+    {
+      ...oldState,
+      players: oldState.players
+        .map((player, index) => index === playerIndex ?
+          { ...player, isCurrent: false } :
+          index === nextPlayerIndex ?
+            { ...player, isCurrent: true } :
+            player
+        ),
+      // reset number of moves
+      turnMovesLeft: 4,
+    };
+    
+    messages.push(`Now it's over to ${oldState.players[nextPlayerIndex].name}!`)
   
-  messages.push(`Now it's over to ${oldState.players[nextPlayerIndex].name}!`)
- 
-  return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
-}
+    return updatePossibleActions(newState, newState.players[nextPlayerIndex].id)
+  }
   const newState= {
     ...oldState,
     turnMovesLeft: 4,
@@ -336,7 +335,6 @@ export function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id
   if (oldState.turnMovesLeft > 0) {
     return updatePossibleActions(oldState, currentPlayerID)
   } else {
-
     return boardActions(oldState, currentPlayerID, 2)
   }
 }
@@ -344,6 +342,7 @@ export function nextMoveChecker(oldState: Gamestate, currentPlayerID: Player['id
 
 // called when player has chosen to discard card from hand, when cardHandOverflow === true
 export function discardCard(oldState: Gamestate, currentPlayerID: Player['id'], discardedCard: Card['sourceName']): Gamestate {
+  const cardsLeft = oldState.dealHistory;
   const newState: Gamestate =
   {
     ...oldState,
@@ -356,10 +355,10 @@ export function discardCard(oldState: Gamestate, currentPlayerID: Player['id'], 
         } :
         player
       ),
+      dealHistory: 0,
   };
   //? calling boardActions with newState.dealHistory will decrement the amount of connection cards to be dealt, allowing the function to continue where it left off
-  console.log('deal history:', newState.dealHistory)
-  return boardActions(newState, currentPlayerID, newState.dealHistory)
+  return boardActions(newState, currentPlayerID, cardsLeft)
 }
 
 
@@ -404,23 +403,20 @@ export function viralCheck(object: any): object is ViralCard {
 
 export function dealConnectionCard(oldState: Gamestate) {
   
-  let newCard: Card|ViralCard = oldState.connectionDeck[0]
+  const newCard = oldState.connectionDeck[0]
   if(newCard===undefined){
     oldState.gameLost=true
     let newState = { ...oldState }
-   
     return newState
   }
   if (newCard.cardType==='viral') {
     oldState = playViralCard(oldState)
-   
     oldState.connectionDeck.shift()
   }
   else {
     for (const player of oldState.players) {
       if (player.isCurrent) {
         if (!viralCheck(newCard)) {
-          
           player.cards.push(newCard)
           oldState.connectionDeck.shift()
         }
