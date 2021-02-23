@@ -44,7 +44,6 @@ export const CardHand: React.FC = () => {
           discardableCards={cardsToDiscard}
         /> : null}
       <div className="source-card-hand">
-        {'--------------' + cardHandOverflow}
         {renderCards(cards)}
       </div>
     </>
