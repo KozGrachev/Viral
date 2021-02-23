@@ -4,22 +4,22 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/gameState/store';
 
 export const ChaosMeter: React.FC = () => {
-  const chaos = useSelector((state: RootState) => state.gameStateReducer.chaosMeter)
+  const chaos = useSelector((state: RootState) => state.gameStateReducer.chaosMeter);
   const [scale, setScale] = useState(vmin(1.3) / 10);
 
   useEffect(() => {
     function handleResize () {
       setScale(vmin(1.3)/10);
     }
-    console.log('scale is:', scale)
+    console.log('scale is:', scale);
 
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  }, [scale])
+  }, [scale]);
 
-  let chaosPercentage = (chaos / 4) * 100
-  let offSet = (440 - (440 * chaosPercentage / 100))
+  const chaosPercentage = (chaos / 4) * 100;
+  const offSet = (440 - (440 * chaosPercentage / 100));
 
 
   function vh (v: number) {
