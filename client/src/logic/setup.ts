@@ -1,48 +1,48 @@
-import { Gamestate, Card, ViralCard, Source, Player } from '../types/gameStateTypes'
-import { startGame, dealMisinfoCard, dealConnectionCard, shuffle } from './moves'
-import { connections as sources } from './connections'
+import { Gamestate, Card, ViralCard, Source, Player } from '../types/gameStateTypes';
+import { startGame, dealMisinfoCard, dealConnectionCard, shuffle } from './moves';
+import { connections as sources } from './connections';
 
-export function didWin(state: Gamestate) {
+export function didWin (state: Gamestate) {
   if (state.misinformation.community.debunked === true &&
     state.misinformation.social.debunked === true &&
     state.misinformation.relations.debunked === true)
-    return true
+    return true;
   else return false;
 }
 
-export function didLose(state: Gamestate) {
+export function didLose (state: Gamestate) {
   if (state.chaosMeter === 4) {
-    return true
+    return true;
   }
   if (
     state.misinformation.community.markersLeft === 0 ||
     state.misinformation.social.markersLeft === 0 ||
     state.misinformation.relations.markersLeft === 0
   ) {
-    return true
+    return true;
   }
   if (state.connectionDeck.length === 0) {
 
-    return true
+    return true;
   }
-  return false
+  return false;
 }
-export function createConnectionDeck() {
-  let deck: Card[] = [];
+export function createConnectionDeck () {
+  const deck: Card[] = [];
   for (const source of sources) {
     deck.push({ cardType: 'connection', sourceName: source.name, misinfoType: source.category });
   }
   return deck;
 }
-export function createMisinformationDeck() {
-  let deck: Card[] = [];
+export function createMisinformationDeck () {
+  const deck: Card[] = [];
   for (const source of sources) {
     deck.push({ cardType: 'misinformation', sourceName: source.name, misinfoType: source.category });
   }
   return deck;
 }
-export function createSources() {
-  let array: Source[] = [];
+export function createSources () {
+  const array: Source[] = [];
   for (const source of sources) {
     array.push({
       name: source.name,
@@ -58,39 +58,39 @@ export function createSources() {
       canClearRelations: false,
       canShare: [],
       canDebunk: [],
-    })
+    });
   }
-  return array
+  return array;
 }
-export function playerOrder(oldState: Gamestate) { //! where to put this?
-  let players = oldState.players
-  let newPlayers = shuffle(players)
-  newPlayers[0].isCurrent = true
-  let newState = { ...oldState, newPlayers }
-  return newState
+export function playerOrder (oldState: Gamestate) { //! where to put this?
+  const players = oldState.players;
+  const newPlayers = shuffle(players);
+  newPlayers[0].isCurrent = true;
+  const newState = { ...oldState, newPlayers };
+  return newState;
 }
-export function insertViralCards(oldState: Gamestate) {
-  let oldDeck = oldState.connectionDeck
-  const viral1: ViralCard = { cardType: "viral" }
-  const viral2: ViralCard = { cardType: "viral" }
-  const viral3: ViralCard = { cardType: "viral" }
-  let first = oldDeck.slice(0, (oldDeck.length / 3))
-  let second = oldDeck.slice((oldDeck.length / 3), (2 * oldDeck.length / 3))
-  let third = oldDeck.slice((2 * oldDeck.length / 3), oldDeck.length)
+export function insertViralCards (oldState: Gamestate) {
+  const oldDeck = oldState.connectionDeck;
+  const viral1: ViralCard = { cardType: 'viral' };
+  const viral2: ViralCard = { cardType: 'viral' };
+  const viral3: ViralCard = { cardType: 'viral' };
+  let first = oldDeck.slice(0, (oldDeck.length / 3));
+  let second = oldDeck.slice((oldDeck.length / 3), (2 * oldDeck.length / 3));
+  let third = oldDeck.slice((2 * oldDeck.length / 3), oldDeck.length);
 
-  first.push(viral1)
-  second.push(viral2)
-  third.push(viral3)
+  first.push(viral1);
+  second.push(viral2);
+  third.push(viral3);
 
-  first = shuffle(first)
-  second = shuffle(second)
-  third = shuffle(third)
-  let connectionDeck = [...first, ...second, ...third]
-  let newState = { ...oldState, connectionDeck }
-  return newState
+  first = shuffle(first);
+  second = shuffle(second);
+  third = shuffle(third);
+  const connectionDeck = [...first, ...second, ...third];
+  const newState = { ...oldState, connectionDeck };
+  return newState;
 
 }
-export function typeCheck(string: string) {
+export function typeCheck (string: string) {
   if (
     string === 'social' ||
     string === 'community' ||
@@ -98,15 +98,15 @@ export function typeCheck(string: string) {
     string === 'markers_community' ||
     string === 'markers_social' ||
     string === 'markers_relations')
-    return true
-  else return false
+    return true;
+  else return false;
 }
 
-export function viralCheck(object: any): object is ViralCard {
-  return false
+export function viralCheck (object: any): object is ViralCard {
+  return false;
 }
-export function createPlayer(name: string, color: string, room: string) {
-  let random = Math.floor(Math.random() * 100000)
+export function createPlayer (name: string, color: string, room: string) {
+  const random = Math.floor(Math.random() * 100000);
   const player = {
     name,
     id: String(random),
@@ -116,55 +116,55 @@ export function createPlayer(name: string, color: string, room: string) {
     pawnColor: color,
     currentSource: 'crazy dave',
     room: room
-  }
-  return player
+  };
+  return player;
 }
 
-export function dealConnectionCardToOtherPlayer(player: Player, oldState: Gamestate) {
-  let newCard: Card | ViralCard = oldState.connectionDeck[0]
+export function dealConnectionCardToOtherPlayer (player: Player, oldState: Gamestate) {
+  let newCard: Card | ViralCard = oldState.connectionDeck[0];
 
   if (newCard.cardType === 'viral') {
-    oldState.connectionDeck = shuffle(oldState.connectionDeck)
-    oldState.connectionDeck.push(newCard)
-    newCard = oldState.connectionDeck[0]
-    oldState.connectionDeck.shift()
+    oldState.connectionDeck = shuffle(oldState.connectionDeck);
+    oldState.connectionDeck.push(newCard);
+    newCard = oldState.connectionDeck[0];
+    oldState.connectionDeck.shift();
   }
   for (const Player of oldState.players) {
     if (Player.id === player.id) {
       if (!viralCheck(newCard)) {
-        Player.cards.push(newCard)
-        oldState.connectionDeck.shift()
+        Player.cards.push(newCard);
+        oldState.connectionDeck.shift();
       }
     }
   }
-  let state = { ...oldState };
+  const state = { ...oldState };
   return state;
 }
-export function dealCardsToNewPlayer(player: Player, state: Gamestate) {
+export function dealCardsToNewPlayer (player: Player, state: Gamestate) {
   let updatedState: any;
-  let cards = 3
+  let cards = 3;
   while (cards > 0) {
-    updatedState = dealConnectionCardToOtherPlayer(player, state)
-    cards--
+    updatedState = dealConnectionCardToOtherPlayer(player, state);
+    cards--;
   }
-  return { ...updatedState }
+  return { ...updatedState };
 }
-export function setUp(players: Player[]) {
+export function setUp (players: Player[]) {
   let cards;
   let misinfo = 6;
   let index = 0;
-  let weights = [3, 3, 2, 2, 1, 1]
-  const sources = createSources()
+  const weights = [3, 3, 2, 2, 1, 1];
+  const sources = createSources();
   const spreadLevel = 0;
   const chaosMeter = 0;
   const misinformation = {
     community: { name: 'community', debunked: false, markersLeft: 16 },
     social: { name: 'social', debunked: false, markersLeft: 16 },
     relations: { name: 'relations', debunked: false, markersLeft: 16 },
-  }
+  };
   const withoutViral = shuffle(createConnectionDeck());
   const misinformationDeckActive = shuffle(createMisinformationDeck());
-  const misinformationDeckPassive: Card[] = []
+  const misinformationDeckPassive: Card[] = [];
   const dealHistory = 0;
   const turnMovesLeft = 4;
   const gameWon = false;
@@ -188,32 +188,32 @@ export function setUp(players: Player[]) {
     gameLost,
     received,
     gameOn
-  }
+  };
   if (state.players.length > 0) cards = 3;
-  else cards = 3
+  else cards = 3;
   for (let i = 0; i < state.players.length; i++) { //* deal connection cards to players before inserting viral cards
     while (cards > 0) {
-      state = dealConnectionCard(state)
-      cards--
+      state = dealConnectionCard(state);
+      cards--;
     }
     state.players[i].isCurrent = false;
     if (i !== state.players.length - 1) state.players[i + 1].isCurrent = true;
     else state.players[0].isCurrent = true;
   }
-  let updateState = insertViralCards({ ...state, connectionDeck: withoutViral })
+  let updateState = insertViralCards({ ...state, connectionDeck: withoutViral });
   while (misinfo > 0) {
-    let weight = weights[index]
-    updateState = dealMisinfoCard(updateState, weight, false)!
-    index++
-    misinfo--
+    const weight = weights[index];
+    updateState = dealMisinfoCard(updateState, weight, false)!;
+    index++;
+    misinfo--;
   }
-  updateState = startGame(updateState)
-  let newState = { ...updateState }
-  return newState
+  updateState = startGame(updateState);
+  const newState = { ...updateState };
+  return newState;
 }
 
-export function addPlayerToGame(player: Player, oldState: Gamestate) {
-  oldState.players.push(player)
-  let newState = { ...oldState }
+export function addPlayerToGame (player: Player, oldState: Gamestate) {
+  oldState.players.push(player);
+  const newState = { ...oldState };
   return newState;
 }

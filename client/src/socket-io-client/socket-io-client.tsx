@@ -1,45 +1,45 @@
 
-import io from "socket.io-client";
+import io from 'socket.io-client';
 import * as dotenv from 'dotenv';
-import { store } from '../redux/gameState/store'
-import { GetAllGamesAction, updateGameState } from "../redux/gameState/gameStateActions";
-import { Gamestate } from "../types/gameStateTypes";
+import { store } from '../redux/gameState/store';
+import { GetAllGamesAction, updateGameState } from '../redux/gameState/gameStateActions';
+import { Gamestate } from '../types/gameStateTypes';
 dotenv.config({ path: __dirname + '../.env' });
-const socket = process.env.NODE_ENV === 'production' ? io() : io('http://localhost:3002')
-const Player = store.getState().playerStateReducer
+const socket = process.env.NODE_ENV === 'production' ? io() : io('http://localhost:3002');
+const Player = store.getState().playerStateReducer;
 
 export const joinRoom = (player: typeof Player) => {
   socket.emit('joinRoom', player);
-}
+};
 socket.on('joinConfirmation', (message: string) => {
   console.log(message);
 });
 
 store.subscribe(() => {
-  const newState = store.getState().gameStateReducer
-  const Player = store.getState().playerStateReducer
+  const newState = store.getState().gameStateReducer;
+  const Player = store.getState().playerStateReducer;
 
   if (!newState.received && Player && newState.gameOn) {
-    socket.emit('onChangeState', { newState, Player })
+    socket.emit('onChangeState', { newState, Player });
   }
-})
+});
 
 socket.on('updatedState', (newState: Gamestate) => {
   newState.received = true;
-  store.dispatch(updateGameState(newState))
-})
+  store.dispatch(updateGameState(newState));
+});
 
 export const getGame = (player: typeof Player) => {
-  player && socket.emit('retriveGame', player)
-}
+  player && socket.emit('retriveGame', player);
+};
 
 export const getGames = () => {
-  socket.emit('getGames')
+  socket.emit('getGames');
   socket.on('games', (
     (data: string[]) => {
-      store.dispatch(GetAllGamesAction(data))
+      store.dispatch(GetAllGamesAction(data));
     }
-  ))
-}
+  ));
+};
 getGames();
-socket.on('userLeft', (message: string) => console.log(message)) 
+socket.on('userLeft', (message: string) => console.log(message)); 

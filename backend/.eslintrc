@@ -33,6 +33,7 @@
     "space-before-blocks": "error",
     "space-before-function-paren": "error",
     "@typescript-eslint/no-namespace": "off", 
-    "@typescript-eslint/no-var-requires": 0
+    "@typescript-eslint/no-var-requires": 0, 
+    "no-sparse-arrays": "off"
   }
 }

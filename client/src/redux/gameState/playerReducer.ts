@@ -1,9 +1,9 @@
 
-import { createPlayer } from "../../logic/setup";
-import { Player } from "../../types/gameStateTypes";
-import { ADD_PLAYER, PlayerStateActionTypes } from "./reduxTypes";
+import { createPlayer } from '../../logic/setup';
+import { Player } from '../../types/gameStateTypes';
+import { ADD_PLAYER, PlayerStateActionTypes } from './reduxTypes';
 
-let PlayerState: Player = {
+const PlayerState: Player = {
   name: '',
   id: '',
   cards: [],
@@ -12,17 +12,17 @@ let PlayerState: Player = {
   pawnColor: '',
   currentSource: '',
   room: '',
-}
-export function playerStateReducer(
+};
+export function playerStateReducer (
   state = PlayerState,
   action: PlayerStateActionTypes
 ): Player {
   switch (action.type) {
-    case ADD_PLAYER: {
-      const newstate = createPlayer(action.payload.name, action.payload.color, action.payload.room)
-      return { ...newstate }
-    }
-    default: return state
+  case ADD_PLAYER: {
+    const newstate = createPlayer(action.payload.name, action.payload.color, action.payload.room);
+    return { ...newstate };
+  }
+  default: return state;
   }
 }
 

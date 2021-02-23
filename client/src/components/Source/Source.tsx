@@ -1,35 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { Player, Source } from '../../types/gameStateTypes'
-import { getIcon } from '../../helpers/iconExporter'
+import { Player, Source } from '../../types/gameStateTypes';
+import { getIcon } from '../../helpers/iconExporter';
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
-import './Source.scss'
+import './Source.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearMisinfoAction, debunkMisinfoAction, moveAction, logOnOffAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
 import { ModalComponent } from './DebunkModal';
 
-
-
 export interface SourceProps {
   source: Source;
 }
-
-
 export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) => { // SVGIcon
 
 
-  const dispatch = useDispatch()
-  const gamestate = useSelector((state: RootState) => state.gameStateReducer)
-  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0]
+  const dispatch = useDispatch();
+  const gamestate = useSelector((state: RootState) => state.gameStateReducer);
+  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0];
 
-  const allPlayers = useSelector((state: RootState) => state.gameStateReducer.players)
+  const allPlayers = useSelector((state: RootState) => state.gameStateReducer.players);
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  let { name, markers_community, markers_social, markers_relations,
+  const { name, markers_community, markers_social, markers_relations,
     canMove, canLogOff, canLogOn, canClearCommunity,
-    canClearRelations, canClearSocial, canShare, canDebunk, misinfoType } = source;
+    canClearRelations, canClearSocial, canDebunk, misinfoType } = source;
 
   const SVGIconSource: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     = getIcon(toCamelCase(name) + 'Icon');
@@ -39,80 +35,62 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   const getMarker = (category: string, num: number, canBeCleared: boolean, canDebunk: string[]) => {
     if (canDebunk.includes(category)) {
 
-      const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${'3'}`)) //TODO this should be a seperate icon for debunking each relevant misinfo, here its defaulting to '3' as no svg available
-      return (<div onClick={() => debunkMisinforamtion(category)}><DebunkableIcon /></div>)
+      const DebunkableIcon = getIcon(toCamelCase(`marker ${category} ${'3'}`)); //TODO this should be a seperate icon for debunking each relevant misinfo, here its defaulting to '3' as no svg available
+      return (<div onClick={() => debunkMisinforamtion(category)}><DebunkableIcon /></div>);
 
     }
-
 
     if (num > 0 && canBeCleared) {
-
-      const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`))
-
-
-      return (<div onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></div>)
-
+      const ClearableIcon = getIcon(toCamelCase(`marker ${category} ${num}`));
+      return (<div onClick={() => clearMisinformationbyOne(category)}><ClearableIcon /></div>);
     }
     if (num > 0) {
-
       const Icon = getIcon(toCamelCase(`marker ${category} ${num}`));
       return <Icon className={`${num === 1 ? 'small' : num === 2 ? 'medium' : num === 3 ? 'large' : ''}-marker`} />;
     }
-  }
+  };
 
   const debunkMisinforamtion = (category: string) => {
-    setIsOpen(true)
-  }
+    setIsOpen(true);
+  };
 
   const clearMisinformationbyOne = (misinfoType: string) => {
-
-    dispatch(clearMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, misinfoType, location: source.name }))
-  }
-
-
+    dispatch(clearMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, misinfoType, location: source.name }));
+  };
   const getPlayerPawns = () => {
-    let test: Player[] = [];
+    const test: Player[] = [];
     for (const player of allPlayers) {
       if (player.currentSource === source.name && !test.includes(player)) {
-        test.push(player)
-
+        test.push(player);
       }
     }
-
     if (test.length > 0) return test.map(player => {
-      return <PlayerPawn color={player.pawnColor} key={player.id} />
-    })
-    else return null
-
-  }
-
-
+      return <PlayerPawn color={player.pawnColor} key={player.id} />;
+    });
+    else return null;
+  };
   const changePlayersCurrentSource = () => {
-    dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }))
-  }
+    dispatch(moveAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name }));
+  };
 
   const logonToNewSource = () => {
-    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard: source.name }))
-  }
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard: source.name }));
+  };
 
   const logoffToNewSource = () => {
     const spentCard = gamestate.players.filter(player => player.id === currentPlayer.id)[0].currentSource;
-    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard: spentCard }))
-  }
+    dispatch(logOnOffAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, location: source.name, usedCard: spentCard }));
+  };
+  const canMoveClassName = canMove ? 'can-move-to' : '';
+  const canLogOffClassName = canLogOff ? 'can-log-off' : '';
+  const canLogOnClassName = canLogOn ? 'can-log-on' : '';
+  const canDebunkClassName = canDebunk ? 'can-debunk' : '';
 
-
-  let canMoveClassName = canMove ? 'can-move-to' : ''
-  let canLogOffClassName = canLogOff ? 'can-log-off' : ''
-  let canLogOnClassName = canLogOn ? 'can-log-on' : ''
-  let canDebunkClassName = canDebunk ? 'can-debunk' : ''
-
-  function unclickableMessage () {return null}
+  function unclickableMessage () { return null; }
 
   const closeModal = () => {
-    setIsOpen(false)
-  }
-
-
+    setIsOpen(false);
+  };
   return (
     <>
       {modalIsOpen ?
@@ -144,6 +122,5 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
         </div>
       </div>
     </>
-
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ChaosMeter.scss';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/gameState/store';
 
 export const ChaosMeter: React.FC = () => {

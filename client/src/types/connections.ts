@@ -1,4 +1,4 @@
-import { Connection } from '../types/gameStateTypes'
+import { Connection } from '../types/gameStateTypes';
 export const connections: Connection[] = [
   {
     name: 'high school',

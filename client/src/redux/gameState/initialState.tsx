@@ -1,5 +1,5 @@
 
-import { Gamestate} from '../../types/gameStateTypes'
+import { Gamestate} from '../../types/gameStateTypes';
 
 export const initialState: Gamestate = {
   sources: [
@@ -70,4 +70,4 @@ export const initialState: Gamestate = {
   gameLost: false,
   received: false,
   gameOn:false
-}
+};

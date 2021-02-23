@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import lottie from 'lottie-web'
-import './GameOver.scss'
+import lottie from 'lottie-web';
+import './GameOver.scss';
 
 export const GameOver: React.FC = (): JSX.Element => {
-  const container = useRef<HTMLDivElement>(null)
+  const container = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (container.current) {
       lottie.loadAnimation({
@@ -12,9 +12,9 @@ export const GameOver: React.FC = (): JSX.Element => {
         autoplay: true,
         loop: false,
         animationData: require('../../assets/endgame.json')
-      })
+      });
     }
-  })
+  });
   return (
     <div className="main-game-container" >
       <div className='game-over-container'>
@@ -24,5 +24,5 @@ export const GameOver: React.FC = (): JSX.Element => {
           className='game-over'> GAME OVER! </h1>
       </div >
     </div>
-  )
-}
+  );
+};

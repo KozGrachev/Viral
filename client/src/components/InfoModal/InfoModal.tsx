@@ -17,7 +17,7 @@ export const InfoModal: React.FC = () => {
         Each type of misinformation is debunked by collection 4 source cards representing that type of misinformation.
         The game is over if the chaos meter increases to 100%, you run out of source cards or if you run out of any type of misinformation marker.
         Good luck!
-          </p>
+      </p>
     </div>
 
 

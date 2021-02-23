@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { SourceCard } from '../SourceCard/SourceCard';
 import { Card } from '../../types/gameStateTypes';
 import ReactModal from 'react-modal';
@@ -18,7 +18,7 @@ const customStyles = {
 };
 interface ModalProps {
   modalIsOpen: boolean,
-  closeModal: Function,
+  closeModal: () =>void,
   debunkableCards: Card[]
 }
 
@@ -26,25 +26,21 @@ interface CardWithId extends Card {
   id: string
 }
 
-export function ModalComponent({ modalIsOpen, closeModal, debunkableCards }: ModalProps) {
+export function ModalComponent ({ modalIsOpen, closeModal, debunkableCards }: ModalProps) {
   const dispatch = useDispatch();
   const gamestate = useSelector((state: RootState) => state.gameStateReducer);
-  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0]
-  
-  const [pickedCards, setpickedCards] = useState<CardWithId[]>([])
+  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0];
+
+  const [pickedCards, setpickedCards] = useState<CardWithId[]>([]);
 
   const debunkableCardsWithIdInit: CardWithId[] = debunkableCards.map((card) => {
-    (card as CardWithId).id = uid()
-    return card
-  }) as CardWithId[]
+    (card as CardWithId).id = uid();
+    return card;
+  }) as CardWithId[];
 
-  const [debunkableCardsWithId, setDebunkableCardsWithId] = useState(debunkableCardsWithIdInit)
+  const [debunkableCardsWithId, setDebunkableCardsWithId] = useState(debunkableCardsWithIdInit);
 
-  useEffect(() => {
-
-  }, [pickedCards])
-
-  function uid(rounds: number = 1) {
+  function uid (rounds = 1) {
     let uid = '';
     while (rounds > 0) {
       uid += Math.random().toString(32).substring(2, 10);
@@ -53,32 +49,32 @@ export function ModalComponent({ modalIsOpen, closeModal, debunkableCards }: Mod
     return uid;
   }
 
-  function sendcloseModal(e: any) {
-    e.preventDefault()
+  function sendcloseModal (e: any) {
+    e.preventDefault();
     const pickedCardsAsCard: Card[] = pickedCards.map((cardWithId) => {
-      const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType }
-      return card
-    }) as Card[]
-    dispatch(debunkMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, usedCards: pickedCardsAsCard.map(pickedCard => pickedCard.sourceName), misinfoType: pickedCardsAsCard[0].misinfoType }))
-    closeModal()
+      const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType };
+      return card;
+    }) as Card[];
+    dispatch(debunkMisinfoAction({ oldState: gamestate, currentPlayerID: currentPlayer.id, usedCards: pickedCardsAsCard.map(pickedCard => pickedCard.sourceName), misinfoType: pickedCardsAsCard[0].misinfoType }));
+    closeModal();
   }
-  function sendCloseModal(e: any) {
-    e.preventDefault()
-    closeModal()
+  function sendCloseModal (e: any) {
+    e.preventDefault();
+    closeModal();
   }
 
   const clickOnCard = (e: React.MouseEvent<HTMLElement>, card: CardWithId) => {
-    let div = e.target as HTMLInputElement; //! this is a different target depending on whether the icon, text, or containing div are clicked
+    const div = e.target as HTMLInputElement; //! this is a different target depending on whether the icon, text, or containing div are clicked
 
     if (!div.classList.contains('selectedDebunkableCard')) {
-      div.classList.add('selectedDebunkableCard')
-      setpickedCards(prev => [...pickedCards, card])
+      div.classList.add('selectedDebunkableCard');
+      setpickedCards(prev => [...pickedCards, card]);
     } else {
-      div.classList.remove('selectedDebunkableCard')
-      const filtered = pickedCards.filter(pickedCard => pickedCard.id !== card.id)
-      setpickedCards(filtered)
+      div.classList.remove('selectedDebunkableCard');
+      const filtered = pickedCards.filter(pickedCard => pickedCard.id !== card.id);
+      setpickedCards(filtered);
     }
-  }
+  };
 
   return (
     <div>
@@ -89,15 +85,15 @@ export function ModalComponent({ modalIsOpen, closeModal, debunkableCards }: Mod
         style={customStyles}
         contentLabel="Example Modal"
       >
-        {debunkableCardsWithId.map((card, index) => 
-          <div 
-            style={{ height: 50, borderWidth: 'solid', margin: '20px' }} 
+        {debunkableCardsWithId.map((card, index) =>
+          <div
+            style={{ height: 50, borderWidth: 'solid', margin: '20px' }}
             key={index}
             onClick={(e) => clickOnCard(e, card)}
           >
             <SourceCard name={card.sourceName} category={card.cardType} canShare={[]} />
           </div>)}
-        {pickedCards.length === 4 ? 
+        {pickedCards.length === 4 ?
           <button onClick={sendcloseModal}>
             Debunk {debunkableCardsWithId[0].misinfoType}
           </button> :
