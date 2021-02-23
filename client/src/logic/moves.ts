@@ -33,8 +33,6 @@ export function moveAction(oldState: Gamestate, currentPlayerID: Player['id'], l
 
   messages.push(`${playerName} moved to "${location}"`)
   messages.push(`${playerName} has ${newState.turnMovesLeft} moves left`)
-  // logging - debunk function
-  console.table(newState.sources[14].canDebunk)
   return nextMoveChecker(newState, currentPlayerID);
 }
 
