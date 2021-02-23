@@ -4,7 +4,7 @@ import { RootState } from '../../redux/gameState/store';
 import { useSelector } from 'react-redux';
 import { Card as SourceCardType } from '../../types/gameStateTypes';
 import { DiscardModal } from './DiscardModal';
-import './CardHand.scss'
+import './CardHand.scss';
 
 export const CardHand: React.FC = () => {
   const Player = useSelector((state: RootState) => state.playerStateReducer);
@@ -16,23 +16,23 @@ export const CardHand: React.FC = () => {
       if (card.cardType !=='viral' ) {
         return <SourceCard name={card.sourceName} key={card.sourceName} category={card.misinfoType} canShare={[]} />;
       }  else {
-        return <h1> this is a viral card you are trying to pass </h1>
+        return <h1> this is a viral card you are trying to pass </h1>;
       }
-    })
-  }
+    });
+  };
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
 
-  let cardsToDiscard = cards;
+  const cardsToDiscard = cards;
 
   useEffect(() => { 
     if (cardHandOverflow) { 
       setIsOpen(true); }}, 
-      [cardHandOverflow, setIsOpen, dealHistory])
+  [cardHandOverflow, setIsOpen, dealHistory]);
 
 
   return (
@@ -47,5 +47,5 @@ export const CardHand: React.FC = () => {
         {renderCards(cards)}
       </div>
     </>
-  )
-}
+  );
+};

@@ -23,7 +23,7 @@ export const OtherPlayer: React.FC = () => {
         className="displace" 
         style={{transform: ` rotate(${rotationAngle}deg)`}}
         key = {index}
-        >
+      >
         <div
           className="other-player-card"
           key={uuidv4()}

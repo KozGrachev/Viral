@@ -26,7 +26,7 @@ interface CardWithId extends Card {
   id: string
 }
 
-export function DebunkModal({ modalIsOpen, closeModal, debunkableCards }: ModalProps) {
+export function DebunkModal ({ modalIsOpen, closeModal, debunkableCards }: ModalProps) {
   const dispatch = useDispatch();
   const gamestate = useSelector((state: RootState) => state.gameStateReducer);
   const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0];
@@ -41,7 +41,7 @@ export function DebunkModal({ modalIsOpen, closeModal, debunkableCards }: ModalP
   const [debunkableCardsWithId, setDebunkableCardsWithId] = useState(debunkableCardsWithIdInit);
 
 
-  function uid(rounds: number = 1) {
+  function uid (rounds = 1) {
     let uid = '';
     while (rounds > 0) {
       uid += Math.random().toString(32).substring(2, 10);
@@ -53,15 +53,15 @@ export function DebunkModal({ modalIsOpen, closeModal, debunkableCards }: ModalP
   function sendcloseModal (e: any) {
     e.preventDefault();
     const pickedCardsAsCard: Card[] = pickedCards.map((cardWithId) => {
-      const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType }
-      return card
-    }) as Card[]
+      const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType };
+      return card;
+    }) as Card[];
     dispatch(debunkMisinfoAction({ 
       oldState: gamestate, 
       currentPlayerID: currentPlayer.id, 
       usedCards: pickedCardsAsCard.map(pickedCard => pickedCard.sourceName), 
-      misinfoType: pickedCardsAsCard[0].misinfoType }))
-    closeModal()
+      misinfoType: pickedCardsAsCard[0].misinfoType }));
+    closeModal();
   }
   function sendCloseModal (e: any) {
     e.preventDefault();
@@ -69,7 +69,7 @@ export function DebunkModal({ modalIsOpen, closeModal, debunkableCards }: ModalP
   }
 
   const clickOnCard = (e: React.MouseEvent<HTMLElement>, card: CardWithId) => {
-    let div = e.currentTarget as HTMLInputElement;
+    const div = e.currentTarget as HTMLInputElement;
     if (!div.classList.contains('selectedDebunkableCard')) {
       div.classList.add('selectedDebunkableCard');
       setpickedCards(prev => [...pickedCards, card]);

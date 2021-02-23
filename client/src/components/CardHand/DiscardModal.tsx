@@ -18,7 +18,7 @@ const customStyles = {
 };
 interface ModalProps {
   modalIsOpen: boolean,
-  closeModal: Function,
+  closeModal: () => void,
   discardableCards: Card[]
 }
 
@@ -26,27 +26,23 @@ interface CardWithId extends Card {
   id: string
 }
 
-export function DiscardModal({ 
+export function DiscardModal ({ 
   modalIsOpen, closeModal, 
   discardableCards }: ModalProps) {
   const dispatch = useDispatch();
   const gamestate = useSelector((state: RootState) => state.gameStateReducer);
-  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0]
+  const currentPlayer = useSelector((state: RootState) => state.gameStateReducer.players.filter(player => player.isCurrent === true))[0];
   
-  const [pickedCards, setpickedCards] = useState<CardWithId[]>([])
+  const [pickedCards, setpickedCards] = useState<CardWithId[]>([]);
 
   const discardableCardsWithIdInit: CardWithId[] = discardableCards.map((card) => {
-    (card as CardWithId).id = uid()
-    return card
-  }) as CardWithId[]
+    (card as CardWithId).id = uid();
+    return card;
+  }) as CardWithId[];
 
-  const [discardableCardsWithId, setDiscardableCardsWithId] = useState(discardableCardsWithIdInit)
+  const [discardableCardsWithId, setDiscardableCardsWithId] = useState(discardableCardsWithIdInit);
 
-  useEffect(() => {
-
-  }, [pickedCards])
-
-  function uid(rounds: number = 1) {
+  function uid (rounds = 1) {
     let uid = '';
     while (rounds > 0) {
       uid += Math.random().toString(32).substring(2, 10);
@@ -55,37 +51,37 @@ export function DiscardModal({
     return uid;
   }
 
-  function sendcloseModal(e: any) {
-    e.preventDefault()
+  function sendcloseModal (e: any) {
+    e.preventDefault();
     const pickedCardsAsCard: Card[] = pickedCards.map((cardWithId) => {
-      const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType }
-      return card
-    }) as Card[]
+      const card: Card = { cardType: cardWithId.cardType, sourceName: cardWithId.sourceName, misinfoType: cardWithId.misinfoType };
+      return card;
+    }) as Card[];
     dispatch(discardCardAction({ 
       oldState: gamestate, 
       currentPlayerID: currentPlayer.id, 
-      discardedCard: pickedCardsAsCard[0].sourceName }))
-    closeModal()
+      discardedCard: pickedCardsAsCard[0].sourceName }));
+    closeModal();
   }
-  function sendCloseModal(e: any) {
-    e.preventDefault()
-    closeModal()
+  function sendCloseModal (e: any) {
+    e.preventDefault();
+    closeModal();
   }
 
   const clickOnCard = (e: React.MouseEvent<HTMLElement>, card: CardWithId) => {
-    let div = e.currentTarget as HTMLInputElement;
+    const div = e.currentTarget as HTMLInputElement;
     const discardModalCards = document.getElementsByClassName('discard-modal-card');
     if (!div.classList.contains('discardableCard')) {
       for (let i = 0; i < discardModalCards.length; i++) {
-        discardModalCards[i].classList.remove('discardableCard')
+        discardModalCards[i].classList.remove('discardableCard');
       }
-      div.classList.add('discardableCard')
-      setpickedCards(prev => [card])
+      div.classList.add('discardableCard');
+      setpickedCards(prev => [card]);
     } else {
-      div.classList.remove('discardableCard')
-      setpickedCards([])
+      div.classList.remove('discardableCard');
+      setpickedCards([]);
     }
-  }
+  };
 
   return (
     <div>

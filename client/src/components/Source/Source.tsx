@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Player, Source } from '../../types/gameStateTypes'
-import { getIcon } from '../../helpers/iconExporter'
+import { Player, Source } from '../../types/gameStateTypes';
+import { getIcon } from '../../helpers/iconExporter';
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss';
 import { useDispatch, useSelector } from 'react-redux';
