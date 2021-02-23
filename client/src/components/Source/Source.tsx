@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Player, Source } from '../../types/gameStateTypes';
-import { getIcon } from '../../helpers/iconExporter';
+import React, { useState } from 'react';
+import { Player, Source } from '../../types/gameStateTypes'
+import { getIcon } from '../../helpers/iconExporter'
 import { toCamelCase, toKebabCase } from '../../helpers/utils';
 import './Source.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearMisinfoAction, debunkMisinfoAction, moveAction, logOnOffAction } from '../../redux/gameState/gameStateActions';
+import { clearMisinfoAction, moveAction, logOnOffAction } from '../../redux/gameState/gameStateActions';
 import { RootState } from '../../redux/gameState/store';
 import { PlayerPawn } from '../PlayerPawn/PlayerPawn';
-import { ModalComponent } from './DebunkModal';
+import { DebunkModal } from './DebunkModal';
 
 export interface SourceProps {
   source: Source;
@@ -93,9 +93,9 @@ export const SourceComponent: React.FC<SourceProps> = ({ source }: SourceProps) 
   };
   return (
     <>
-      {modalIsOpen ?
-        <ModalComponent
-          modalIsOpen={modalIsOpen}
+      {modalIsOpen ? 
+        <DebunkModal 
+          modalIsOpen={modalIsOpen} 
           closeModal={closeModal}
           debunkableCards={currentPlayer.cards.filter(card => canDebunk.includes(card.misinfoType))}
         /> : null}
