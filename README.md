@@ -43,8 +43,6 @@ The MVP of the game (featured screenshots), including design of all assets, was 
 
 ## Future Tasks 🚧
 
-
-- Refactoring
 - Improving UX
 - Add testing
 
